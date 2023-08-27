@@ -1,0 +1,405 @@
+<HEAD>
+    <title>SMRPG Timings</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="timings.css">
+	<meta name="viewport" content="width=device-width">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="attacks.js"></script>
+    <script src="narrower.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+</HEAD>
+<HTML>
+    <BODY>
+        <form id="attacks">
+            <p>
+                <input type="text" id="narrower" size="12"/>
+            </p>
+			<p>
+                <input type="checkbox" id="anyOnly" onClick="recreateList()"/>
+				<label for="anyOnly">Filter to only timed hits that are used in the any% speedrun</label>
+			</p>
+            <p>
+                <span id="matches">2 Matches</span>
+                <br>
+                <select id="items" class="selector" onchange="itemClick();"/>
+                </select>
+            </p>
+        </form>
+
+        <div class="image">
+            <h1 id="title"></h1>
+        </div>
+        <h2 id="info"></h2>
+        <p id="notewrapper"><pre><h5 id="note"></pre></h5></p>
+        <div id="videodiv">
+            <p id="speed" class="status"></p>
+        </div>
+		<div class="firefox-container">(Not recommended for mobile browsers. <span class="firefox">Videos not playing in Firefox?</span>)
+		<div class="firefox-popup">This is usually an issue with a plugin or browser setting. I had to use Refresh Firefox to fix it on my side, but this removes all plugins. Use at your own risk.</div></div>
+		<br><br>
+        <button class="pure-button button-secondary" onclick="frameAdvance()">Frame Advance</button>
+        <button class="pure-button button-secondary" onclick="frameReverse()">Frame Reverse</button>
+        <button class="pure-button pure-button-primary" onclick="seekToStart()">First Perfect Timed Frame</button>
+        </br>
+        </br>
+        <button class="pure-button button-setting" onclick="loopSwitch()">Loop</button>
+        <button class="pure-button button-setting" onclick="doublePlaybackRate()">Double Speed</button>
+        <button class="pure-button button-setting" onclick="halvePlaybackRate()">Halve Speed</button>
+        <button class="pure-button button-setting" onclick="resetPlaybackRate()">Reset Speed</button>
+        </br>
+        </br>
+		<div>Press any key during the animation to practice the timing.
+		<br/>(Note: These windows are very small, and responsiveness between your keyboard and the browser can vary. For accurate results, practice on your console.)
+        </br>
+		</br>
+		<div id="showClickTest"><span>Your input: </span><span id="clickTest"></span></div>
+		<br/>
+		</div>
+    </BODY>
+    <FOOTER>
+            <p>HUGE shoutouts to:<br><br> TrogdorSRL <a href='https://twitter.com/trogdorsrl'><img border="0" src='./resources/twitter.jpg'/></a> <a href='http://www.twitch.tv/trogdor'><img border="0" height="15px" widght="15px" src='./resources/twitch.png'/></a><br> BeenieWeenie <a href='https://twitter.com/BeenieWeen1e'><img border="0" src='./resources/twitter.jpg'/></a> <a href='https://www.twitch.tv/beenieweenie'><img border="0" height="15px" widght="15px" src='./resources/twitch.png'/></a><br> Calereliya <a href='https://twitter.com/calereliya'><img border="0" src='./resources/twitter.jpg'/></a><br> Kancerl <a href='https://twitter.com/OU818'><img border="0" src='./resources/twitter.jpg'/></a><br> Kaypar <a href='https://twitter.com/ahKaypar'><img border="0" src='./resources/twitter.jpg'/></a><br> Mr Dean <a href='https://twitter.com/GLS_MrDean'><img border="0" src='./resources/twitter.jpg'/></a> <a href='https://www.twitch.tv/gls_mrdean'><img border="0" height="15px" widght="15px" src='./resources/twitch.png'/></a><br> Oz <a href='https://www.twitter.com/ozkmtg'><img border="0" src='./resources/twitter.jpg'/></a> <a href='https://www.twitch.tv/teh_bungee'><img border="0" height="15px" widght="15px" src='./resources/twitch.png'/></a><br> spacejamiscanon <a href='https://twitter.com/spacejamiscanon'><img border="0" src='./resources/twitter.jpg'/></a> <br><br>for taking the videos and getting the frame data.
+            <p>Code by Caerulius <a href='http://twitch.tv/caerulius'><img border="0" height="15px" widght="15px" src='./resources/twitch.png'/></a>.</p>
+            <p>Maintained by pidgezero_one <a href='https://twitter.com/pidgezero_one'><img border="0" src='./resources/twitter.jpg'/></a> <a href='http://www.twitch.tv/pidgezero_one'><img border="0" height="15px" widght="15px" src='./resources/twitch.png'/></a>.</p>
+			<br>
+            <br>
+    </FOOTER>
+</HTML>
+
+<script type="text/javascript">
+	const SNES_FRAMERATE = 60.0988138974405;
+    //defaults
+    var currentSpeed = 1;
+    var defaultName = "Alley Rat/Rat Funk Attack";
+	
+	var timestamps = {};
+
+    //declare globals
+    var tag;
+    var searchList;
+    var name;
+
+    var inp = document.getElementById('narrower');
+    var selector = document.getElementById('items');
+    var display = document.getElementById('matches');
+    var list = getList();
+    var narrower = new Narrower(inp, selector, display, list);
+    narrower.init();
+	
+	var allowInput = true;
+	var videoEnded = true;
+
+    //default stylings
+    $("#speed").css('visibility', 'visible');
+    $("#speed").html("<pre> </pre>");
+
+    $("#notewrapper").css('visibility', 'visible');
+
+    //run the page setup functions
+    $(document).ready(function(){
+        checkHash();
+        document.getElementById('videodiv').appendChild(generateVideo(defaultName));
+        tag = document.getElementById("video");
+        tag.play();
+        tag.pause();
+	
+		tag.addEventListener('ended',function(){
+			videoEnded = true;
+			allowInput = false;
+		}, false);
+		tag.addEventListener('playing',function(){
+			if (videoEnded) {
+				videoEnded = false;
+				allowInput = true;
+				$('#showClickTest').hide();
+			}
+		}, false);
+        update();
+		$('#showClickTest').hide();
+		
+		lastTime = -1;
+		function realtimeBorder() {
+			var time = tag.currentTime;
+			if (time < lastTime) {
+				videoEnded = false;
+				allowInput = true;
+				$('#showClickTest').hide();
+			}
+			if (time !== lastTime) {
+				borderCheck();
+				lastTime = time;
+			}
+			requestAnimationFrame(realtimeBorder);
+		}
+		realtimeBorder();
+		
+		$(".firefox").click(function() {
+			$(".firefox-popup").show();
+		});
+		$(document).mouseup(function(e) 
+		{
+			var container = $(".firefox-popup");
+
+			// if the target of the click isn't the container nor a descendant of the container
+			if (!container.is(e.target) && container.has(e.target).length === 0) 
+			{
+				container.hide();
+			}
+		});
+		
+		
+
+    });
+	
+	function recreateList() {
+		list = getList();
+		narrower = new Narrower(inp, selector, display, list);
+		narrower.init();
+		narrower.update(document.getElementById("narrower").value);
+	}
+	
+	var prevVal;
+	$('#items').mouseup(() => {
+		var open = $(this).data("isopen");
+
+        if (open) {
+            if (this.value === prevVal)
+            {
+                itemClick();
+            }
+        }
+
+        prevVal = this.value;
+    
+        $(this).data("isopen", !open);
+	});
+	
+    function itemClick(){
+		videoEnded = false;
+		allowInput = true;
+		$('#showClickTest').hide();
+        var selectBox = document.getElementById("items");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        window.location = "#" + selectedValue;
+        checkHash();
+        update();
+    }
+    function checkHash(){
+        var hash = window.location.hash;
+
+        if(window.location.hash)
+        {
+            hash = hash.replace(/_/g, ' ').replace('#', '').replace(/%20/g, ' ');
+        }
+        
+        if(typeof attacks[hash] === 'undefined')
+        {
+            name = defaultName;
+        }
+        else
+        {
+            name = hash;
+        }
+		timestamps = {
+			halfBegins: parseTime(attacks[name].partialStart + 1),
+			perfectBegins: parseTime(attacks[name].perfect + 1),
+			perfectEnds: parseTime(attacks[name].perfect + attacks[name].frames + 1),
+			halfEnds: parseTime(attacks[name].partialEnd + 1)
+		}
+    }
+    function getList() {
+        var values = [];
+
+        for(i in attacks)
+        {
+		
+		  if ((document.getElementById("anyOnly").checked && attacks[i].hasOwnProperty("relevant") && attacks[i].relevant) || !document.getElementById("anyOnly").checked) {
+			values.push(attacks[i].name)
+		  }
+        }
+		
+        return values;
+    }
+    function updateTitle() {
+        $("#title").html(attacks[name].name);
+    }
+    function updateInfo() {
+        $("#info").html(attacks[name].info);
+        $("#note").html(attacks[name].note);
+    }
+    function updateVideo() {
+        $("#video").attr('poster', attacks[name].poster);
+        $("#video").attr('src', attacks[name].video);
+    }
+    function updateURL() {
+        document.location = "#" + underscorify(name);
+    }
+    function underscorify(name) {
+        if(name.search(" ") != -1)
+        {
+            return(name.replace(" ", "_").replace(" ", "_"));
+        }
+        return name;
+    }
+    function update() {
+        updateURL();
+        updateTitle();
+        updateInfo();
+        updateVideo();
+        borderCheck();
+        tag.playbackRate = currentSpeed;
+    }
+    function updateName(n) {
+        name = n;
+        update();
+    }
+    function doSeek(time) {
+        tag.currentTime = time;
+        tag.pause();
+        borderCheck();
+    }
+    function seekToStart() {
+        tag.currentTime = timestamps.perfectBegins;
+        tag.pause();
+    }
+    function addSeek(time) {
+    	tag.currentTime = tag.currentTime + time;
+        tag.pause();
+    }
+    function generateVideo(name) {
+        var element = document.createElement("video");
+        var source = document.createElement("source");
+        element.height = "672";
+        element.width = "768";
+        element.id = "video";
+        element.setAttribute('poster', attacks[name].poster);
+        element.setAttribute('controls', true);
+        element.setAttribute('muted', true);
+        element.setAttribute('autobuffer', true);
+        element.setAttribute('preload', true);
+        element.addEventListener("timeupdate", function() { borderCheck()});
+        element.style.border = "8px solid transparent";
+
+        source.setAttribute('src', attacks[name].video);
+        source.setAttribute('type', 'video/mp4');
+        element.appendChild(source);
+
+        return element;
+    }
+    function loopSwitch() {
+        if(tag.loop == undefined ||
+           tag.loop == false )
+        {
+            tag.loop = true;
+            doSeek(0);
+            tag.play();
+        }
+        else
+        {
+            tag.loop = false;
+        }
+    }
+    function changePlaybackRate(rate) {
+        tag.playbackRate = rate;
+    }
+    function halvePlaybackRate() {
+        tag.playbackRate = tag.playbackRate / 2;
+        if(currentSpeed > .0625){
+                currentSpeed = currentSpeed / 2;
+        }
+        if(currentSpeed == 1){
+            $("#speed").css('visibility', 'hidden');
+        }
+        else{
+            $("#speed").css('visibility', 'visible');
+            $("#speed").html("Speed: " + currentSpeed);
+        }
+    }
+    function doublePlaybackRate() {
+        tag.playbackRate = tag.playbackRate * 2;
+        if(currentSpeed < 8){
+                currentSpeed = currentSpeed * 2;
+        }
+        if(currentSpeed == 1){
+            $("#speed").css('visibility', 'hidden');
+        }
+        else{
+            $("#speed").css('visibility', 'visible');
+            $("#speed").html("Speed: " + currentSpeed);    
+        } 
+    }
+    function resetPlaybackRate() {
+        tag.playbackRate = 1;
+        currentspeed = 1;
+        $("#speed").css('visibility', 'hidden');
+    }
+	
+	function frameAdvance() { 
+		tag.currentTime = parseTime(getFrame(tag.currentTime) + 1)
+	}
+	function frameReverse() { 
+		tag.currentTime = parseTime(getFrame(tag.currentTime) -1)
+	}
+	
+	function getFrame(t) {
+		return Math.round(t * SNES_FRAMERATE)
+	}
+	
+	function parseTime(t) {
+		function getRawTime() {
+			if (typeof(t) == 'string')
+				return parseFloat(t);
+			else if (typeof(t) == 'number') {
+				return parseFloat(t) / SNES_FRAMERATE;
+			}
+		}
+		return parseFloat(getRawTime().toFixed(6))
+	}
+	
+	function windowCheck() {
+        if (tag.currentTime >= timestamps.halfBegins && tag.currentTime < timestamps.halfEnds) {
+            if (tag.currentTime >= timestamps.perfectBegins && tag.currentTime < timestamps.perfectEnds) {
+                return 2
+            }
+            else {
+                return 1
+            }
+        }
+        else {
+            return 0
+        }
+	}
+	
+    //there's a minus 1 in the final check for perfect...not totally sure when that became necessary but ok
+    function borderCheck() {
+		const w = windowCheck();
+		if (w === 1) {
+			$("#video").css('border', '8px solid yellow');
+		}
+		else if (w === 2) {
+			$("#video").css('border', '8px solid #00FF00');
+		}
+		else {
+			$("#video").css('border', '8px solid transparent');
+		}
+    }
+	
+	$('body').keydown(function() {
+		$('#showClickTest').show();
+		if (allowInput) {
+			const w = windowCheck();
+			if (w === 1) {
+				if(tag.currentTime < timestamps.perfectBegins)
+					$("#clickTest").text('Half-timed (too early)').css("color", "orange");
+				else
+					$("#clickTest").text('Half-timed (too late)').css("color", "orange");
+			}
+			else if (w === 2) {
+				$("#clickTest").text('Perfect timed').css("color", "rgb(42, 207, 42)");
+			}
+			else {
+				$("#clickTest").text('Missed').css("color", "red");
+			}
+			allowInput = false;
+		}
+	})
+</script>

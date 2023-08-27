@@ -1,0 +1,110 @@
+body { text-align: center; padding: 40px; background: #F5F5F5; }
+/*
+.container { width: 500px; text-align: center; margin: auto;}
+.copyright { margin-top: 50px; font-size: 12px; text-transform: uppercase; }
+.copyright a { text-decoration: none; padding: 5px;background: #c0392b; color: #FFFFFF; }
+.copyright a:hover { background: transparent; color: #c0392b; }*/
+
+.button-secondary{
+	background: rgb(66, 184, 221);
+}
+
+.button-setting{
+    background: rgb(222, 172, 24);
+}
+
+.status{
+	font-family: 'sans-serif';
+	font-size: 18px;
+}
+
+.list{
+	list-style-type: none;
+	width: 1700px;
+	margin-top: 4px;
+	overflow: hidden;
+    border-top: 1px solid #ccc;
+}
+
+.item{
+	line-height: 1.7em;
+	border-bottom: 1px solid #ccc;
+	float: left;
+	display: table-cell;
+	width: 11.1111%;
+	margin-bottom: 20px;
+}
+
+.speed{
+	margin: 0px;
+}
+
+footer{
+	padding-top: 150px;
+}
+
+pre{
+	margin: 0px;
+}
+
+a{
+	font-size: 25px;
+}
+
+@font-face {
+    font-family: 'smrpg';
+    src: url('smrpg.ttf');
+}
+
+h1 {
+	font-family: 'smrpg';
+	font-size: 50px;
+}
+
+h2{
+	font-size: 30px;
+}
+
+h5{
+	margin: 0px;
+}
+.image{
+	background: url(./resources/scroll.jpg);
+	margin: 0 auto;
+	width: 1006px;
+	height: 232px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+	background: url(./resources/bg.jpg);
+}
+
+.selector{
+	width: 270px;
+}
+
+.wip{
+	color: #707070;
+}
+.firefox-container {
+	position: relative;
+	font-size: 0.75em;
+	display: inline-block;
+}
+.firefox {
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	cursor:help;
+}
+.firefox-popup {
+	display: none;
+	position:absolute;
+	top: 1em;
+	left: 0;
+	background: #fff;
+	border: 1px solid #000;
+	padding: 5px;
+}
