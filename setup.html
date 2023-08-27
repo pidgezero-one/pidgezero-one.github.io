@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Stream Equipment</h1>
+<ul>
+<li><a href="#console">Console video/audio</a></li>
+<li><a href="#3ds">3DS setup</a></li>
+<li><a href="#dos">DOS games</a></li>
+<li><a href="#displays">Input Displays and Controller Adapters</a></li>
+<li><a href="#specs">Other broadcasting equipment & PC specs</a></li>
+</ul>
+
+<h2 id="console">Console video/audio</h2>
+
+<img style="max-width:100%;" src="images/setup_new.png"/>
+<ul>
+<li><a target="_blank" href="https://www.amazon.co.uk/Hama-Video-switching-console-switches/dp/B000PTQICU">scart switch</a></li>
+<li><a target="_blank" href="http://www.ani-av.com/shop/product_info.php?products_id=206">scart splitter</a></li>
+<li><a target="_blank" href="https://www.retrotink.com/product-page/retrotink-2x-scart">scart to HDMI</a></li>
+<li><a target="_blank" href="http://arcadeforge.net/Scaler-and-Strike-Devices/Sync-Strike::15.html">scart to vga</a></li>
+<li><a target="_blank" href="https://www.amazon.ca/gp/product/B004G3WCLM/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">vga to dvi</a></li>
+<li><a target="_blank" href="https://www.ebay.ca/itm/5-Port-HDMI-Switch-Switcher-Splitter-Full-HD-for-HDTV-HD-DVD-PS3-STV-IR-Remote/253277052495">hdmi switch</a></li>
+<li><a target="_blank" href="https://www.amazon.ca/BenQ-Console-eSports-Gaming-Monitor/dp/B01H5KKRLO/">hdmi passthrough monitor</a></li>
+<li><a target="_blank" href="https://www.amazon.com/gp/product/B00KBHX072/">hdmi audio extractor</a></li>
+<li><a target="_blank" href="https://www.amazon.ca/gp/product/B01FM52438/">hdmi to dvi</a></li>
+<li><a target="_blank" href="https://www.amazon.ca/HQ-DVI-I-Switch-Port-AVSWITCH-10/dp/B000GTLFS6/">dvi switch</a></li>
+<li><a target="_blank" href="http://speedrun.evilash25.com/2017/11/perfect-analog-capture-with-datapath.html">game feed cap card: datapath e1s</a></li>
+<li><a target="_blank" href="https://www.amazon.com/I-connection-video-capture-GV-USB2/dp/B00428BF1Y">webcam cap card: gv-usb2</a></li>
+<li><a target="_blank" href="https://www.amazon.com/gp/product/B0002BG2S6/">audio mixer</a></li>
+</ul>
+
+(if you're looking for my old equipment, here is the list, but i no longer use it)
+<ul>
+<li><a target="_blank" href="https://www.wagneronline.com.au/stereo-av-switch-box-4-way/december-new-products-2/new-products/av421s-40112/965468/pd/">svideo switch</a></li>
+<li><a target="_blank" href="https://www.amazon.com/RadioShack-1500320-Component-Distribution-Amplifier/dp/B010EIK6K6">svideo splitter</a></li>
+<li><a target="_blank" href="http://www.ani-av.com/shop/product_info.php?products_id=220">scart to component</a></li>
+</ul>
+
+<h2 id="3ds">3DS</h2>
+<p>I stream this using <a href="http://3dscapture.com/" target="_blank" rel="noopener noreferrer nofollow">3DS capture</a>. This does not seem to be available any longer but you can check out the forums there for ppl buying and selling theirs.</p>
+<p>My 3DS supports <a href="http://www.gummods.com/" target="_blank" rel="noopener noreferrer nofollow">gamecube input</a>, w/ <a href="http://3dscapture.com/forum/viewtopic.php?p=9243&amp;sid=f4edb818b2a17b956c99d7902fc33953#p9243" target="_blank" rel="noopener noreferrer nofollow">custom mapping.</a></p>
+
+<h2 id="dos">DOS games</h2>
+<p>I speedrun DOS games on <a href="https://www.dosbox.com/" target="_blank">DOSbox 0.74</a>. If you are interested in speedrunning DOS games, remember to set your CPU cycles to 100%. <a href="https://www.dosbox.com/wiki/Performance#CPU_Cycles_.28speed_up.2Fslow_down.29" target="_blank">(Explanation)</a> <a href="https://www.dosbox.com/wiki/Dosbox.conf" target="_blank">(How to set it)</a></p>
+
+<p>I play DOS games using a Super Nintendo controller. You can use a <a target="_blank" href="http://www.raphnet-tech.com/products/snes_to_usb_cable/index.php">SNES to USB adapter</a> for this, but USB conversion introduces input lag. I installed a <a href="http://www.rosewill.com/rosewill-rc-302e-pcie-1-port-parallel-card.html" target="_blank">PCIe parallel port card</a> and use a <a href="http://www.raphnet-tech.com/products/snes_controller_parport/index.php" target="_blank">SNES to Parallel adapter</a> instead (these were birthday gifts from <a href="https://twitch.tv/DorkmasterFlek" target="_blank" rel="noopener noreferrer">Dorkmaster Flek</a>). This requires using <a href="https://github.com/elitak/PPJoy" target="_blank">ppjoy</a> and <a target="_blank" href="http://joytokey.net/en/">JoyToKey</a> to map buttons to keyboard inputs.</p>
+
+<h2 id="displays">Input Displays and Controller Adapters</h2>
+
+<p>SNES, N64, and Gamecube inputs are all Arduino based. You take an Arduino board, attach an input and output cable for your controller, attach USB cable, and load the board with <a target="_blank" href="https://github.com/jaburns/NintendoSpy">NintendoSpy firmware</a>.</p>
+<p><a href="https://twitch.tv/hitokage220" target="_blank" rel="noopener noreferrer">hitokage220</a> made my SNES/N64 adapters and <a href="https://twitter.com/cdgexe" target="_blank" rel="noopener noreferrer nofollow">cdgexe</a> made my Gamecube adapter. <a href="https://twitch.tv/bluntbunny" target="_blank" rel="noopener noreferrer">BluntBunny</a> made the skin for my SNES input display.</p>
+<p>For some games you may see me using an input display that does not match the console it is being played on. That is because sometime I use a <a target="_blank" href="http://www.raphnet-tech.com/products/snes_to_wii/index.php">SNES to Gamecube adapter</a> (for Virtual Console and Game Boy Player), a <a target="_blank" href="http://www.raphnet-tech.com/products/gc_to_n64_adapter/index.php">Gamecube to N64 adapter</a> (for some n64 games), and a <a target="_blank" href="http://www.raphnet-tech.com/products/snes_to_nes_cable/index.php">SNES to NES adapter</a> (for pretty much all NES games).</p>
+
+
+<h2 id="specs">Other broadcasting equipment & PC Specs</h2>
+<ul>
+<li>Broadcasting software: <a href="https://obsproject.com/" target="_blank" rel="noopener noreferrer nofollow">obs studio</a></li>
+<li>timer: <a href="http://livesplit.github.io/" target="_blank" rel="noopener noreferrer nofollow">livesplit</a></li>
+<li>Mic: <a href="http://www.bluemic.com/yeti/" target="_blank" rel="noopener noreferrer nofollow">blue yeti</a></li>
+<li>OS - windows 10 pro; processor - intel core i5-7500; RAM - G.SKILL Ripjaws V Series 8GB DDR4 2400; graphics - EVGA GeForce GTX 1060; built in 2017</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+.icon {
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	margin: 2px;
+	background-image: url(../graysprites.png);
+	opacity: 0.8;
+}
+.icon.found {
+	background-image: url(../sprites.png);
+	opacity: 1;
+}
+.ki-container, .boss-container {
+max-width: 144px;
+float: left;
+}
+/*.ki-container {
+	margin-right: 10px;
+}*/
+.boss-container {
+	/*padding-left: 10px;*/
+	/*border-left: 1px solid #fff;*/
+}
+body {
+	background: #000063;
+}

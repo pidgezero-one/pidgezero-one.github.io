@@ -1,0 +1,99 @@
+<head>
+	<title>pick some FF4 chars</title>
+	<style>
+	body {
+		background: #333;
+		text-align: center;
+		color: #f2f2f2;
+	}
+	.button-container {
+		margin: 10px auto;
+		text-align: center;
+		width:100%;
+	}
+	img {
+		margin: 5px;
+	}
+	.lul {
+		font-size: 69px;
+		color: #ff0000;
+		font-family: "Comic Sans MS", cursive, sans-serif;
+		display: none;
+		font-style: italic;
+	}
+	</style>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="button-container"><button onclick="randomize()">Reroll</button></div>
+<div class="chosencharacters"></div>
+<div class="lul">is this even randomized lul</div>
+<div class="flags"></div>
+<script type="text/javascript">
+
+function randomize() {
+	$('.lul').hide();
+
+	$('.chosencharacters').empty();
+	$('.flags').empty();
+	
+	var order = ["Cecil", "Kain", "Rydia", "Tellah", "Edward", "Rosa", "Yang", "Palom", "Porom", "Cid", "Edge", "Fusoya"];
+	
+	characters = [
+		{name: "Cecil", flag: "-nocecil"},
+		{name: "Kain", flag: "-nokain"},
+		{name: "Rydia", flag: "-norydia"},
+		{name: "Tellah", flag: "-notellah"},
+		{name: "Edward", flag: "-noedward"},
+		{name: "Rosa", flag: "-norosa"},
+		{name: "Yang", flag: "-noyang"},
+		{name: "Palom", flag: "-nopalom"},
+		{name: "Porom", flag: "-noporom"},
+		{name: "Cid", flag: "-nocid"},
+		{name: "Edge", flag: "-noedge"},
+		{name: "Fusoya", flag: "-nofusoya"},
+	];
+	
+	var j, x, i;
+    for (i = characters.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = characters[i];
+        characters[i] = characters[j];
+        characters[j] = x;
+    }
+	
+	chosen = characters.splice(0,5);
+	
+	chosen.forEach(function(character) {
+		$('.chosencharacters').append("<img src='/ff4/" + character.name + ".png'/>");
+	})
+	function compare( a, b ) {
+	  if ( order.indexOf(a.name) < order.indexOf(b.name) ){
+		return -1;
+	  }
+	  if ( order.indexOf(a.name) > order.indexOf(b.name) ){
+		return 1;
+	  }
+	  return 0;
+	}
+
+	characters.sort( compare );
+
+	characters.forEach(function(character) {
+		$('.flags').append(character.flag + "<br/>");
+	})
+	if (chosen.findIndex(p => p.name == "Cecil") > -1 && chosen.findIndex(p => p.name == "Kain") > -1 && chosen.findIndex(p => p.name == "Rydia") > -1 && chosen.findIndex(p => p.name == "Rosa") > -1 && chosen.findIndex(p => p.name == "Edge") > -1) {
+		$('.lul').show();
+	}
+}
+
+randomize();
+
+</script>
+
+
+</body>
+

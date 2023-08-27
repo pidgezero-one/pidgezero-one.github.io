@@ -1,0 +1,109 @@
+<head>
+	<title>not DKC2 Bingo</title>
+	<style>
+		body {
+			background: #000;
+			text-align: center;
+		}
+		body div {
+			margin: 10px auto;
+			width: 100%;
+			text-align: center;
+		}
+		.dik-container {
+			height: 56px;
+			width: 56px;
+			position: relative;
+		}
+		.dik-container div {
+			position: absolute;
+			height: 28px;
+			width: 28px;
+		}
+		#dik1 {
+			top: 0; left: 0;
+		}
+		#dik2 {
+			top: 0; left: 28px;
+		}
+		#dik3 {
+			top: 28px; left: 0;
+		}
+		#dik4 {
+			top: 28px; left: 28px;
+		}
+		.lul {
+			font-size: 69px;
+			color: #ff0000;
+			font-family: "Comic Sans MS", cursive, sans-serif;
+			display: none;
+			font-style: italic;
+		}
+	</style>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="button-container"><button onclick="randomize()">Randomize you're dik</button></div>
+<div class="dik-container">
+	<div id='dik1'></div>
+	<div id='dik2'></div>
+	<div id='dik3'></div>
+	<div id='dik4'></div>
+</div>
+<div class="lul">is this even randomized lul</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<a href="https://www.press1ifyouare.gay" target=_blank style="text-align: center;">Press 1 if your gay</a>
+<script type="text/javascript">
+
+function randomize() {
+	$('.lul').hide();
+	
+	knobs = [1, 2, 3, 4];
+	
+	var j, x, i;
+    for (i = knobs.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = knobs[i];
+        knobs[i] = knobs[j];
+        knobs[j] = x;
+    }
+	
+	$('#dik1').css('background-image', 'url(\"/knob/knob' + knobs[0] + '.png\")');
+	$('#dik2').css('background-image', 'url(\"/knob/knob' + knobs[1] + '.png\")');
+	$('#dik3').css('background-image', 'url(\"/knob/knob' + knobs[2] + '.png\")');
+	$('#dik4').css('background-image', 'url(\"/knob/knob' + knobs[3] + '.png\")');
+	
+	if (knobs[0] == 1 && knobs[1] == 2 && knobs[2] == 3 && knobs[3] == 4) {
+		$('.lul').show();
+	}
+	
+	
+}
+
+randomize();
+
+</script>
+
+
+</body>
+

@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>SMRPG Shop Item Tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+
+</head>
+
+<body>
+<ul class="tracker-list display-table" id="list">
+
+
+
+</ul>
+
+<div class="credits-container">
+	<div class="map-options">Mode: <div class="option-container"><span class="button" id="selectCompactIcons">Compact Icons</span> / <span class="button" id="selectTownNames">Show Town Names</span></div></div>
+	<div class="map-options">Show town lists as a: <div class="option-container"><span class="button" id="selectLinearMap">Horizontal Line</span> / <span class="button" id="selectVerticalMap">Vertical Line</span> / <span class="button" id="selectBlockMap">Block</span></div></div>
+	<div class="map-options">Show list of shops by: <div class="option-container"><span class="button" id="selectHoverMap">Hovering</span> / <span class="button" id="selectClickMap">Clicking</span></div></div>
+	<div class="map-options">Auto-add if only one match found? <div class="option-container"><span class="button" id="selectClickAdd">No</span> / <span class="button" id="selectAutoAdd">Yes</span></div></div>
+	<div class="map-options">Auto-sort unfound items to the bottom? - turn this off to sort your default order <div class="option-container"><span class="button" id="dontAutoSort">No</span> / <span class="button" id="selectAutoSort">Yes</span></div></div>
+	-
+	<div>Search and select the items you care about.<br>Then click Shop to set the town you find it in.<br>You can drag and drop to rearrange.<br>Your saved items will autoload<br>the next time you open this tracker.<br>The item list is set to max width 100%, so you can resize this window to set the max space you want it to occupy.</div>
+	-
+	<div><span class="button" id="clearAll">Remove All Saved Items</span></div>
+	-
+	<div>SMRPG Shop Tracker by <a target="_blank" href="https://twitch.tv/pidgezero_one">pidge</a></div>
+	<div>font from <a target="_blank" href="https://mfgg.net/index.php?act=resdb&param=02&c=6&id=28423">here</a></div>
+</div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/vars.js"></script>
+  <script src="js/script.js"></script>
+  
+</body>
+</html>

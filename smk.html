@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>smk il</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+	var db = openDatabase('SMK IL', '1.0', 'IL times', 2 * 1024 * 1024);
+	db.transaction(function (tx) {
+	  tx.executeSql('CREATE TABLE IF NOT EXISTS ILs (id unique, name text, type text, time text)');
+	  tx.executeSql('CREATE UNIQUE INDEX IF NOT EXISTS course_name ON ILs (name, type)');
+	}, function(e) { console.log(e)});
+	
+	$(document).ready(function() {
+		db.transaction(function (tx) {
+		  tx.executeSql('SELECT * FROM ILs', [], function(tx, results) {
+			for (var i = 0; i < results.rows.length; i++) {
+				if (results.rows.item(i).type == "course")
+					$('#' + results.rows.item(i).name + "_course").text(results.rows.item(i).time);
+				else if (results.rows.item(i).type == "lap")
+					$('#' + results.rows.item(i).name + "_lap").text(results.rows.item(i).time);
+			}
+		  });
+		});
+		
+		$('#saveTimes').click(function() {
+			db.transaction(function (tx) {
+				if ($('#courseTime').val() != "" && $('#courseTime').val() != null)
+					tx.executeSql("REPLACE INTO ILs (name, type, time) VALUES (?, ?, ?)", [$('#courseName').val(), "course", $('#courseTime').val()]);
+				if ($('#lapTime').val() != "" && $('#lapTime').val() != null)
+					tx.executeSql("REPLACE INTO ILs (name, type, time) VALUES (?, ?, ?)", [$('#courseName').val(), "lap", $('#lapTime').val()]);
+				tx.executeSql('SELECT * FROM ILs', [], function(tx, results) {
+					for (var i = 0; i < results.rows.length; i++) {
+						if (results.rows.item(i).type == "course")
+							$('#' + results.rows.item(i).name + "_course").text(results.rows.item(i).time);
+						else if (results.rows.item(i).type == "lap")
+							$('#' + results.rows.item(i).name + "_lap").text(results.rows.item(i).time);
+					}
+					$('#courseTime').val(null);
+					$('#lapTime').val(null);
+				})
+			}, function(e) { console.log(e)});
+		});
+		
+		function highlightCourse() {
+			var val = $('#courseName').val();
+			$('.display-cell').removeClass("this-track");
+			$('.display-cell[id^="' + val + '"]').addClass("this-track");
+		}
+		highlightCourse();
+		
+		$('#courseName').change(function() {
+			highlightCourse();
+		});
+	});
+
+
+</script>
+<style>
+.this-track {
+	background: blue;
+}
+.streamContainer {
+	width: 320px;
+	height: 400px;
+	box-size: border-box;
+	background-color: #5B005B;
+	color: white;
+	padding: 0;
+	font-family: sans-serif;
+	max-width: 320px;
+    font-size: 12px;
+}
+.buttonContainer .display-cell {
+	padding-right: 10px;
+}
+.display-table {
+	display: table;
+	width: 100%;
+}
+.display-row {
+	display: table-row;
+}
+.display-cell {
+	display: table-cell;
+}
+.streamContainer .display-cell, .buttonContainer .display-cell {
+	height: 40px;
+	vertical-align: middle;
+}
+.display-cell > * {
+	vertical-align: middle;
+}
+.display-cell img {
+    margin-right: 5px;
+}
+.streamContainer .display-cell:first-child, .streamContainer .display-cell:nth-child(4) {
+	width: auto;
+	font-weight: bold;
+	padding-left:10px;
+}
+.streamContainer .display-cell:nth-child(2), .streamContainer .display-cell:nth-child(5) {
+	width: 15%;
+	color: cyan;
+	text-align: center;
+}
+.streamContainer .display-cell:nth-child(3), .streamContainer .display-cell:nth-child(6) {
+	width: 12%;
+	color: pink;
+	text-align: center;
+}
+input {
+	width: 50px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="streamContainer" style="display: inline-block; margin-right: 100px;">
+
+	<div class="display-table">
+		<div class="display-row">
+			<div class="display-cell" id="MC1">
+				<img src="images/mushroom.png"/>MC1
+			</div>
+			<div class="display-cell" id="MC1_course">
+				
+			</div>
+			<div class="display-cell" id="MC1_lap">
+				
+			</div>
+			<div class="display-cell" id="KB1">
+				<img src="images/star.png"/>KB1
+			</div>
+			<div class="display-cell" id="KB1_course">
+				
+			</div>
+			<div class="display-cell" id="KB1_lap">
+				
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell" id="DP1">
+				<img src="images/mushroom.png"/>DP1
+			</div>
+			<div class="display-cell" id="DP1_course">
+				
+			</div>
+			<div class="display-cell" id="DP1_lap">
+				
+			</div>
+			<div class="display-cell" id="CI2">
+				<img src="images/star.png"/>CI2
+			</div>
+			<div class="display-cell" id="CI2_course">
+				
+			</div>
+			<div class="display-cell" id="CI2_lap">
+				
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell" id="GV1">
+				<img src="images/mushroom.png"/>GV1
+			</div>
+			<div class="display-cell" id="GV1_course">
+				
+			</div>
+			<div class="display-cell" id="GV1_lap">
+				
+			</div>
+			<div class="display-cell" id="VL1">
+				<img src="images/star.png"/>VL1
+			</div>
+			<div class="display-cell" id="VL1_course">
+				
+			</div>
+			<div class="display-cell" id="VL1_lap">
+				
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell" id="BC1">
+				<img src="images/mushroom.png"/>BC1
+			</div>
+			<div class="display-cell" id="BC1_course">
+				
+			</div>
+			<div class="display-cell" id="BC1_lap">
+				
+			</div>
+			<div class="display-cell" id="BC3">
+				<img src="images/star.png"/>BC3
+			</div>
+			<div class="display-cell" id="BC3_course">
+				
+			</div>
+			<div class="display-cell" id="BC3_lap">
+				
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell" id="MC2">
+				<img src="images/mushroom.png"/>MC2
+			</div>
+			<div class="display-cell" id="MC2_course">
+				
+			</div>
+			<div class="display-cell" id="MC2_lap">
+				
+			</div>
+			<div class="display-cell" id="MC4">
+				<img src="images/star.png"/>MC4
+			</div>
+			<div class="display-cell" id="MC4_course">
+				
+			</div>
+			<div class="display-cell" id="MC4_lap">
+				
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell" id="CI1">
+				<img src="images/flower.png"/>CI1
+			</div>
+			<div class="display-cell" id="CI1_course">
+				
+			</div>
+			<div class="display-cell" id="CI1_lap">
+				
+			</div>
+			<div class="display-cell" id="DP3">
+				<img src="images/special.png"/>DP3
+			</div>
+			<div class="display-cell" id="DP3_course">
+				
+			</div>
+			<div class="display-cell" id="DP3_lap">
+				
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell" id="GV2">
+				<img src="images/flower.png"/>GV2
+			</div>
+			<div class="display-cell" id="GV2_course">
+				
+			</div>
+			<div class="display-cell" id="GV2_lap">
+				
+			</div>
+			<div class="display-cell" id="KB2">
+				<img src="images/special.png"/>KB2
+			</div>
+			<div class="display-cell" id="KB2_course">
+				
+			</div>
+			<div class="display-cell" id="KB2_lap">
+				
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell" id="DP2">
+				<img src="images/flower.png"/>DP2
+			</div>
+			<div class="display-cell" id="DP2_course">
+				
+			</div>
+			<div class="display-cell" id="DP2_lap">
+				
+			</div>
+			<div class="display-cell" id="GV3">
+				<img src="images/special.png"/>GV3
+			</div>
+			<div class="display-cell" id="GV3_course">
+				
+			</div>
+			<div class="display-cell" id="GV3_lap">
+				
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell" id="BC2">
+				<img src="images/flower.png"/>BC2
+			</div>
+			<div class="display-cell" id="BC2_course">
+				
+			</div>
+			<div class="display-cell" id="BC2_lap">
+				
+			</div>
+			<div class="display-cell" id="VL2">
+				<img src="images/special.png"/>VL2
+			</div>
+			<div class="display-cell" id="VL2_course">
+				
+			</div>
+			<div class="display-cell" id="VL2_lap">
+				
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell" id="MC3">
+				<img src="images/flower.png"/>MC3
+			</div>
+			<div class="display-cell" id="MC3_course">
+				
+			</div>
+			<div class="display-cell" id="MC3_lap">
+				
+			</div>
+			<div class="display-cell" id="RR">
+				<img src="images/special.png"/>RR
+			</div>
+			<div class="display-cell" id="RR_course">
+				
+			</div>
+			<div class="display-cell" id="RR_lap">
+				
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="buttonContainer" style="display: inline-block;">
+<div class="display-table">
+		<div class="display-row">
+			<div class="display-cell">
+				<select id="courseName">
+				<option>BC1</option>
+				<option>BC2</option>
+				<option>BC3</option>
+				<option>CI1</option>
+				<option>CI2</option>
+				<option>DP1</option>
+				<option>DP2</option>
+				<option>DP3</option>
+				<option>GV1</option>
+				<option>GV2</option>
+				<option>GV3</option>
+				<option>KB1</option>
+				<option>KB2</option>
+				<option>MC1</option>
+				<option>MC2</option>
+				<option>MC3</option>
+				<option>MC4</option>
+				<option>RR</option>
+				<option>VL1</option>
+				<option>VL2</option>
+				</select>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="courseTime"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="lapTime"/>
+			</div>
+			<div class="display-cell">
+				<button id="saveTimes">Save</button>
+			</div>
+		</div>
+</div>
+
+</div>
+
+<!--div class="buttonContainer" style="display: inline-block;">
+	<div class="display-table">
+		<div class="display-row">
+			<div class="display-cell">
+				MC1
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_MC1_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_MC1_lap"/>
+			</div>
+			<div class="display-cell">
+				KB1
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_KB1_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_KB1_lap"/>
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell">
+				DP1
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_DP1_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_DP1_lap"/>
+			</div>
+			<div class="display-cell">
+				CI2
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_CI2_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_CI2_lap"/>
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell">
+				GV1
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_GV1_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_GV1_lap"/>
+			</div>
+			<div class="display-cell">
+				VL1
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_VL1_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_VL1_lap"/>
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell">
+				BC1
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_BC1_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_BC1_lap"/>
+			</div>
+			<div class="display-cell">
+				BC3
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_BC3_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_BC3_lap"/>
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell">
+				MC2
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_MC2_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_MC2_lap"/>
+			</div>
+			<div class="display-cell">
+				MC4
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_MC4_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_MC4_lap"/>
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell">
+				CI1
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_CI1_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_CI1_lap"/>
+			</div>
+			<div class="display-cell">
+				DP3
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_DP3_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_DP3_lap"/>
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell">
+				GV2
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_GV2_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_GV2_lap"/>
+			</div>
+			<div class="display-cell">
+				KB2
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_KB2_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_KB2_lap"/>
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell">
+				DP2
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_DP2_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_DP2_lap"/>
+			</div>
+			<div class="display-cell">
+				GV3
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_GV3_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_GV3_lap"/>
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell">
+				BC2
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_BC2_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_BC2_lap"/>
+			</div>
+			<div class="display-cell">
+				VL2
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_VL2_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_VL2_lap"/>
+			</div>
+		</div>
+		<div class="display-row">
+			<div class="display-cell">
+				MC3
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_MC3_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_MC3_lap"/>
+			</div>
+			<div class="display-cell">
+				RR
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_RR_course"/>
+			</div>
+			<div class="display-cell">
+				<input type="text" id="input_RR_lap"/>
+			</div>
+		</div>
+	</div>
+</div-->
+
+
+</body>
+</html>

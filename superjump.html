@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h1>Smithy</h1>
+	<div>
+		<label for="marioAttack">Mario attack:</label>
+		<input type="number" id="marioAttack"/>
+	</div>
+	<br>
+	<div>
+		<label for="peachAttack">Peach attack:</label>
+		<input type="number" id="peachAttack" />
+	</div>
+	<div>
+		<span id="2rock"></span>
+		<br>
+		<span id="1rock"></span>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	
+	
+	
+	<h1>Jinx</h1>
+	<div>
+		<label for="marioAttack2">Mario attack:</label>
+		<input type="number" id="marioAttack2"/>
+	</div>
+	<br>
+	<div>
+		<label for="peachAttack2">Peach attack:</label>
+		<input type="number" id="peachAttack2" />
+	</div>
+	<div>
+		<span id="lv16"></span>
+		<br>
+		<span id="lv17"></span>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		
+			function calculateSJs() {
+				var marioAtk = parseInt($("#marioAttack").val());
+				var peachAtk = parseInt($("#peachAttack").val());
+				if (isNaN(marioAtk)) marioAtk = 0;
+				if (isNaN(peachAtk)) peachAtk = 0;
+				var totalDamage = parseInt(marioAtk + peachAtk);
+				var sjs2Rock = Math.ceil((1400 - totalDamage) / 21) - 8;
+				var sjs1Rock = Math.ceil((1700 - totalDamage) / 21) - 8;
+				$("#2rock").text("2 rock candies: " + sjs2Rock + " (" + (sjs2Rock / 4) + ")");
+				$("#1rock").text("1 rock candy: " + sjs1Rock + " (" + (sjs1Rock / 4) + ")");
+			}
+			
+			function calculateSJs2() {
+				var marioAtk2 = parseInt($("#marioAttack2").val());
+				var peachAtk2 = parseInt($("#peachAttack2").val());
+				if (isNaN(marioAtk2)) marioAtk2 = 0;
+				if (isNaN(peachAtk2)) peachAtk2 = 0;
+				var totalDamage = parseInt(marioAtk2 + peachAtk2);
+				var lv16sjs = Math.ceil((1000 - totalDamage) / 19) - 8;
+				var lv17sjs = Math.ceil((1000 - totalDamage) / 20) - 8;
+				$("#lv16").text("Level 16: " + lv16sjs + " (" + (lv16sjs / 4) + ")");
+				$("#lv17").text("Level 17: " + lv17sjs + " (" + (lv17sjs / 4) + ")");
+			}
+			
+			$("#marioAttack, #peachAttack").change(function() {
+				calculateSJs();
+			});
+			
+			$("#marioAttack2, #peachAttack2").change(function() {
+				calculateSJs2();
+			});
+		});
+	</script>
+</body>
+</html>

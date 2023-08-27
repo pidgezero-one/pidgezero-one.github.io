@@ -1,0 +1,973 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>freebies</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<style>
+body {
+	font-size: 12px;
+}
+.display-table {
+	display: table;
+	width: 100%;
+}
+.display-row {
+	display: table-row;
+}
+.display-cell {
+	display: table-cell;
+}
+.display-row .display-cell {
+	border-top: 1px solid;
+}
+.display-row:last-child .display-cell {
+	border-bottom: 1px solid;
+}
+.display-cell {
+	border-left: 1px solid;
+}
+.display-cell:last-child {
+	border-right: 1px solid;
+}
+.table-container {
+	float: right;
+	width: 80%;
+}
+.rc-container, .axem-container, .gunyolk-container {
+	margin-top: 20px;
+}
+.button-container {
+	float: right;
+	width: 45%;
+	background: #999;
+	border: 1px solid #000;
+	border-radius:5px;
+	text-align: center;
+}
+.route {
+	float: right;
+	width: 15%;
+	margin-left: 2%;
+	font-weight:bold;
+}
+.button-container button {
+	padding: 5px;
+	margin: 5px;
+	width: 75%;
+}
+.active {
+	background: #FF0;
+}
+.indented {
+	padding-left:10px;
+	font-weight: normal;
+}
+.bomb-viewer-container {
+	width: 320px;
+	max-width: 320px;
+	height: 40px;
+	border: transparent;
+	background: #5B005B;
+	text-align: left;
+	color: #ffffff;
+	font-family: 'Verdana';
+	font-size: 14px;
+}
+.bomb-viewer-container.last-table {
+	margin-bottom: 25px;
+}
+.bomb-viewer-container img {
+	vertical-align: middle;
+}
+.bomb-viewer-container .display-cell {
+	border: none !important;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.bomb-viewer-container .display-cell span {
+	font-weight: bold;
+}
+.bomb-viewer-container .display-cell span.no-bold {
+	font-weight: normal;
+}
+.bomb-container, .rc-container, .axem-container, .gunyolk-container {
+	display: none;
+}
+.bomb-cell {
+	width: 36px;
+	text-align: center;
+}
+.bomb-cell img {
+	margin: 0px auto;
+}
+.count-cell {
+	width: 32px;
+}
+.count-cell span {
+	margin-left: 3px;
+}
+.all-notes {
+float: none;
+width: auto;
+white-space:nowrap;
+}
+.stream-container {
+display: inline-block;
+position: fixed;
+}
+</style>
+</head>
+
+<body>
+	<div class="stream-container">
+		<div class="bomb-viewer-container display-table">
+			<div class="display-row">
+				<div class="display-cell bomb-cell"><img src="images/box.png"/></div>
+				<div class="display-cell"><span style="margin-left: 3px;" id="thisBox"></span><span id="numBox" class="no-bold"></span></div>
+				<div class="display-cell bomb-cell"><img id="energizer" src="images/energizer.png"/></div>
+				<div class="display-cell count-cell"><span id="numEnergizer">0</span></div>
+				<div class="display-cell bomb-cell"><img id="fire" src="images/fire.png"/></div>
+				<div class="display-cell count-cell"><span id="numFire">0</span></div>
+				<div class="display-cell bomb-cell"><img id="fright" src="images/fright.png"/></div>
+				<div class="display-cell count-cell"><span id="numFright">0</span></div>
+			</div>
+		</div>
+		<div class="bomb-viewer-container last-table display-table">
+			<div class="display-row">
+				<div class="display-cell bomb-cell"><img src="images/re.png"/></div>
+				<div class="display-cell"><span style="margin-left: 3px;" id="thisRE"></span><span id="numRE" class="no-bold"></span></div>
+				<div class="display-cell bomb-cell"><img id="bad" src="images/badmushroom.png"/></div>
+				<div class="display-cell count-cell"><span id="numBad">0</span></div>
+				<div class="display-cell bomb-cell"><img id="ice" src="images/ice.png"/></div>
+				<div class="display-cell count-cell"><span id="numIce">0</span></div>
+				<div class="display-cell bomb-cell"><img id="rc" src="images/rc.png"/></div>
+				<div class="display-cell count-cell"><span id="numRock">0</span></div>
+			</div>
+		</div>
+		
+		<div class='button-container' style="float: left;">
+			<button id="Box" style="background: #b5bf62">Box</button>
+			<button id="NoBox" style="background: #b5bf62">No Box</button>
+			<hr />
+			<button id="RE" style="background: #bf6266">RE Freebie</button>
+			<button id="NoRE" style="background: #bf6266">No RE Freebie</button>
+			<hr />
+			<button id="genoded">Geno ded</button>
+		</div>
+	</div>
+	
+	<div class="table-container">
+		mario: 3 atk, 15 sp<br>
+		mallow: atk/pow/atk<br>
+		peach: 10 hp
+		<div id="section-1" class="section">
+			<div class="indented">
+				<b>Belome</b>
+				<div class="indented">jump/bolt<br>
+				jump/atk<br>
+				jump or AJ / HS<br>
+				jump/null<br>
+				jump/HS if no one was asleep<br>
+				jump/HS otherwise</div>
+
+				<b>Moleville</b>
+				<div class="indented">
+					sell
+						<div class="indented">FT/3 kero</div>
+					buy:
+						<div class="indented">wpns, 4 wp, mid</div>
+				</div>
+
+				<b>Booster menu</b>
+				<div class="indented">
+				swap
+					<div class="indented">m->b</div>
+				equip
+					<div class="indented">mario -> amu<br>
+					bowser -> wp<br>
+					bowser acc -> geno<br>
+					mallow acc -> geno</div>
+				</div>
+
+				<b>Seaside menu</b>
+					<div class="indented">buy
+						<div class="indented">3 ice / fright</div>
+					sell
+						<div class="indented">HS/PMU/AJ/tab/jar/GB</div>
+					buy
+						<div class="indented">ice / 3 fire / fright / bad</div>
+					sell
+						<div class="indented">EQ</div>
+					sell
+						<div class="indented">FB</div>
+					buy
+						<div class="indented">2 ice / 2 fire</div>
+					sell
+						<div class="indented">wallet / (FB / RE)</div>
+					buy
+						<div class="indented">fire / (fire / 2 ice)</div>
+				</div>
+			</div>
+			<button>CLICK WHEN SEA STAR DONE</button>
+		</div>
+		<div id="section-2" class="section">
+			<div class="indented">
+				<b>post sea star</b>
+				<div class="indented">
+				mario acc to geno</div>
+
+				<b>safety ring menu</b>
+				<div class="indented">switch b->p<br>
+				mario acc -> geno<br>
+				peach -> sr</div>
+
+				<b>bandana menu</b>
+				<div class="indented">mario acc -> geno<br>
+				geno acc -> peach</div>
+
+				<b>after johnny</b>
+
+				<div class="indented">mario acc -> peach</div>
+			</div>
+
+			<button>CLICK DURING YARID CUTSCENE</button>
+		</div>
+		<div id="section-3" class="section">
+			<div class="indented">
+
+				<b>yarid</b>
+				<div class="indented" id="yaridovich"></div>
+			</div>
+			<button>CLICK DURING SHED CUTSCENE</button>
+		</div>
+		<div id="section-4" class="section">
+			<div class="indented">
+				<b>seaside menu</b>
+				<div class="indented">buy: wpns<br>
+				sell: mush/fb<br>
+				eq: ts/dp/peach acc -> geno</div>
+				<b>belome</b>
+				<div class="indented">170-174: 14 + 3<br>
+				176-188: 14 + 2<br>
+				190-200: 14 + 1</div>
+
+				<b>troopa menu</b>
+				<div class="indented">switch <div class="indented">p->b</div>
+				equip
+				<div class="indented">bowser: hg<br>
+				geno: suit, pin<br>
+				peach acc -> bowser</div></div>
+			</div>
+			<button>CLICK SOMETIME DURING MONSTRO</button>
+		</div>
+		<div id="section-5" class="section">
+			<div class="indented">
+				<b>megasmilax</b>
+					<div class="indented" id="megasmilax"></div>
+
+				<b>nimbus menu</b>
+					<div class="indented">
+					buy
+						<div class="indented">PMU / AJ / MG</div>
+					equip
+					<div class="indented">mario: mg, as<br>
+						mario armor -> geno<br>
+						geno acc -> bowser<br>
+						geno: amu<br>
+						peach: exp booster</div>
+					</div>
+
+				<b>Birdo</b>
+					<div class="indented">
+					<input type="number"/ id="birdo1"><br>
+					<input type="number"/ id="birdo2"><br>
+					<input type="number"/ id="birdo3"><br>
+					<span id='summary'></span><div id="birdo"></div>
+				</div>
+			</div>
+			<button>CLICK DURING VALENTINA THRONE ROOM</button>
+		</div>
+		<div id="section-6" class="section">
+			<div class="indented">
+				<div class="tonsofice">don't swap armor during star</div>
+				<b>dodo</b>
+					<div class="indented" id="dodo"></div>
+
+				<b>corkpedite</b>
+					<div class="indented" id="corkpedite"></div>
+
+				<b>menu</b>
+					<div class="indented">
+					item
+						<div class="indented">flower jar</div>
+					equip
+					<div class="indented">mario: as<br>
+						<span class="nottonsofice">mario armor -> peach<br></span>
+						peach: exp<br>
+						geno: feather</div>
+					switch
+						<div class="indented">b->p, p->g</div>
+					</div>
+			</div>
+			<button>CLICK DURING HINOPIO</button>
+		</div>
+		<div id="section-7" class="section">
+			<div class="indented">
+				<b>czar</b>
+					<div class="indented" id="czar"></div>
+			</div>
+			<button>CLICK DURING AXEM CUTSCENE</button>
+		</div>
+		<div id="section-8" class="section">
+			<div class="indented">
+				<b>axems</b>
+					<div class="indented" id="axems"></div>
+					
+					
+				<b>nimbus manip</b>
+					<div class="indented">
+						2
+						<div class="indented">
+							coin:
+							<div class="indented">
+								4
+								<div class="indented">
+									invis: 1,6<br>
+									plat: 2,6<br>
+									quiz: 5
+									<div class="indented">
+										invis: 3<br>
+										plat: 1
+									</div>
+								</div>
+							</div>
+							quiz:
+							<div class="indented">
+								5, 3
+								<div class="indented">
+									invis: 1<br>
+									plat: 6
+								</div>
+							</div>
+							plat:
+							<div class="indented">
+								1, 6, 5
+							</div>
+							invis:
+							<div class="indented">
+								3, 5, 1
+							</div>
+						</div>
+					</div>
+			</div>
+			<button>CLICK DURING POST-MAGIKOOPA CUTSCENE</button>
+		</div>
+		<div id="section-9" class="section">
+			<div class="indented">
+				<b>menu</b>
+					<div class="indented">
+					item
+						<div class="indented">back out</div>
+					equip
+					<div class="indented">mario armor -> bowser<br>
+						bowser: hg<br>
+						geno: sr</div>
+					</div>
+				<b>boomer</b>
+					<div class="indented">11+3</div>
+				<b>countdown</b>
+					<div class="indented">
+						UJ / boost M / RC<br>
+						nobody dead:
+							<div class="indented">UJ / RC / RC<br>
+							atk</div>
+						bowser usable/recoverable:
+							<div class="indented">UJ most jumped DAL / restore bowser / RC<br>
+							atk<br>
+							(CONSERVE 1 RC)</div>
+						every1 dead:
+							<div class="indented">SJ DALs 4 + 3<br>
+							(CONSERVE 2 RC)</div>
+					</div>
+				<b>MMY</b>
+					<div class="indented" id="mmy"></div>
+				<b>earthlink</b>
+					<div class="indented">16</div>
+				<b>menu</b>
+					<div class="indented">
+					switch
+						<div class="indented">b->p</div>
+					equip
+					<div class="indented">mario armor -> peach<br>
+						peach: amulet<br>
+						bowser acc -> peach</div>
+					</div>
+			</div>
+			<button>CLICK DURING CLERK CUTSCENE</button>
+		</div>
+		<div id="section-10" class="section">
+			<div class="indented">
+				<b>mallets</b>
+					<div class="indented" id="mallets"></div>
+				<b>menu after manager</b>
+					equip
+					<div class="indented">mario armor -> peach<br>
+						peach: slap<br>
+						peach acc -> geno</div>
+				<b>director</b>
+					<div class="indented">9+3/rc</div>
+			</div>
+			<button>CLICK DURING GUNYOLK CUTSCENE</button>
+		</div>
+		<div id="section-11" class="section">
+			<div class="indented">
+				<b>gunyolk</b>
+					<div class="indented" id="gunyolk"></div>
+			</div>
+			<button>CLICK DURING PRESMITHY CUTSCENE</button>
+		</div>
+		<div id="section-12" class="section">
+			<div class="indented">
+				<b>smithy 1</b>
+					<div class="indented">atk/boost mario/def<br>
+					<span id="smithy1"></span></div>
+			</div>
+			<button>CLICK DURING FALLING CUTSCENE</button>
+		</div>
+		<div id="section-13" class="section">
+			<div class="indented">
+				<b>smithy 2</b>
+					<div class="indented">atk/atk/atk<br>100 SJ/kero/shocker<br>
+					<span id="smithy2"></span></div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+
+	var db = openDatabase('freebies', '1.0', 'IL times', 2 * 1024 * 1024);
+	db.transaction(function (tx) {
+	  tx.executeSql('CREATE TABLE IF NOT EXISTS freebies (name text unique, type text, number integer)');
+	  //tx.executeSql('CREATE UNIQUE INDEX IF NOT EXISTS item_type ON freebies (name)');
+	}, function(e) { console.log(e)});
+	
+	var boxType;
+	var box = 0;
+	var REType;
+	var RE = 0;
+	
+	
+	
+	db.transaction(function (tx) {
+	  tx.executeSql('SELECT * FROM freebies', [], function(tx, results) {
+		for (var i = 0; i < results.rows.length; i++) {
+			if (results.rows.item(i).name == "box") {
+				boxType = results.rows.item(i).type;
+				box = parseInt(results.rows.item(i).number);
+				$('#thisBox').text("?");
+				$('#numBox').text(" (x?)");
+			}
+			else if (results.rows.item(i).name == "RE") {
+				REType = results.rows.item(i).type;
+				RE = parseInt(results.rows.item(i).number);
+				$('#thisRE').text("?");
+				$('#numRE').text(" (x?)");
+			}
+		}
+	  });
+	});
+	
+		
+	var bm = 1;
+	var fright = 2;
+	var ice = 6;
+	var fire = 6;
+	var rockcandy = 1;
+	
+	yarid = 0;
+	megasmilax = 0;
+	birdo = 1;
+	dodo = 0;
+	corkpedite = 0;
+	czar = 0;
+	axems = 0;
+	mmy = 0;
+	mallets = 0;
+	gunyolk = 0;
+	smithy1 = 0;
+	smithy2 = 0;
+	
+	section = 1;
+	
+	$(document).ready(function() {
+		$('.section').hide();
+		$('#section-1').show();
+		$('.section button').click(function() {
+			var id = $(this).parent().attr('id');
+			$('#' + id).hide();
+			sectionNum = id.split('-')[1];
+			nextSection = (parseInt(sectionNum) + 1);
+			
+			if (nextSection == 3) {
+				fire -= 6;
+			}
+			if (nextSection == 4) {
+				if (yarid == 1) fire--;
+				else if (yarid == 2) ice--;
+				fright--;
+			}
+			if (nextSection == 5) {
+				ice -= 4;
+				fright--;
+				$('#birdo1').focus();
+			}
+			if (nextSection == 6) {
+				if (megasmilax == 1) ice -= 2;
+				else if (megasmilax == 2) { ice--; fire--; }
+				else if (megasmilax == 3) { ice--; }
+				else if (megasmilax == 4) { fire--; }
+				if (birdo == 1) bm--;
+			}
+			if (nextSection == 7) {
+				if (corkpedite == 2) ice --;
+			}
+			if (nextSection == 8) {
+				if (dodo == 1) fire--;
+				else if (dodo == 2) { bm--; fright--;}
+				else if (dodo == 3) bm--;
+				if (czar == 1) ice -= 2;
+				else if (czar == 2) ice --;
+			}
+			if (nextSection == 9) {
+				if (axems == 1) rockcandy-= 2;
+				else if (axems == 2) { rockcandy--; ice--; fire--;}
+				else if (axems == 3) {rockcandy--; ice--;}
+				else if (axems == 4) {rockcandy--; fire--;}
+				else rockcandy--;
+				rockcandy += 4;
+				fright++;
+				ice++;
+				fire++;
+				rockcandy -= 3;
+			}
+			if (nextSection == 10) {
+				if (mmy == 2) rockcandy--;
+			}
+			if (nextSection == 11) {
+				if (mallets == 1) rockcandy--;
+				else if (mallets == 2) ice--;
+				rockcandy++;
+				rockcandy--;
+			}
+			if (nextSection == 12) {
+				if (gunyolk == 1) { ice-=4;}
+				else if (gunyolk == 2) { ice-=3; rockcandy -= 2;}
+				else if (gunyolk == 3) { ice-=3; rockcandy -= 1;}
+				else if (gunyolk == 4) { ice-=2; rockcandy -= 2;}
+				else if (gunyolk == 5) { ice-=2; rockcandy -= 1;}
+				else if (gunyolk == 6) { ice-=1; rockcandy -= 2;}
+				else if (gunyolk == 7) { ice-=1; rockcandy -= 1;}
+			}
+			if (nextSection == 13) {
+				if (smithy1 == 1) { rockcandy--;}
+				else if (smithy1 == 2) { ice--;}
+				else if (smithy1 == 3) { fire--;}
+				else if (smithy1 == 4) { fright--;}
+				else if (smithy1 == 5) { bm--;}
+			}
+			writeStrats(nextSection);
+			section = nextSection;
+			$('#section-' + nextSection).show();
+			if (nextSection == 5) {
+				$('#birdo1').focus();
+			}
+			console.log(rockcandy, ice, fire, fright, bm);
+		});
+		
+		function writeStrats(section) {
+			prevSection = section - 1;
+			if (section == 3) {
+				if (fire >= 2) {
+					yarid = 1;
+					$("#yaridovich").html('boost peach / shocker<br>boost self / mid geno / shocker<br>kero if mario dead, fire otherwise / kero / shocker<br>fright if didnt kero, fire otherwise / def / shocker<br>fright if unused / def / shocker');
+				}
+				else {
+					yarid = 2
+					$("#yaridovich").html('boost peach / shocker<br>boost self / mid geno / shocker<br>kero if mario dead, ice otherwise / kero / shocker<br>fright if didnt kero, ice otherwise / def / shocker<br>fright if unused / def / shocker');
+				}
+			}
+			if (section == 4) {
+			}
+			if (section == 5) {
+				if ((ice >= 2 && fire >= 1) || ice > 2) {
+					megasmilax = 1;
+					$("#megasmilax").html("atk<br>atk<br>ice<br>ice/atk");
+				}
+				else if ((ice == 1 && fire >= 2) || (ice >= 2 && fire == 1)) {
+					megasmilax = 2;
+					$("#megasmilax").html("atk<br>atk<br>fire / atk (finish w/ bowser)<br>ice/atk");
+				}
+				else if ((ice == 1 && fire <= 1) || (fire == 0 && ice >= 2)) {
+					megasmilax = 3;
+					$("#megasmilax").html("atk<br>atk<br>ice<br>atk left / right / left");
+				}
+				else if (ice == 0 && fire >= 2) {
+					megasmilax = 4;
+					$("#megasmilax").html("atk<br>atk<br>fire / atk (finish w/ bowser)<br>atk left / right / left");
+				}
+				if (birdo <= 1) {
+					$('#birdo').text("bowser BM");
+				}
+				else if (birdo == 2) {
+					$('#birdo').text("geno atk");
+				}
+			}
+			if (section == 6) {
+				if (fire >= 2) {
+					dodo = 1;
+					$("#dodo").html('FB / untimed');
+				}
+				else if (fright >= 1 && bm >= 1) {
+					dodo = 2;
+					$("#dodo").html('bm / def / fright');
+				}
+				else if (bm >= 1) {
+					dodo = 3;
+					$("#dodo").html('bm / atk...');
+				}
+				else {
+					dodo = 4;
+					$("#dodo").html('atk...');
+				}
+				if (ice >= 3) {
+					corkpedite = 2;
+					$('.tonsofice').show();
+					$('.nottonsofice').hide();
+					$("#corkpedite").text('ice bomb');
+				}
+				else {
+					corkpedite = 1;
+					$('.tonsofice').hide();
+					$('.nottonsofice').show();
+					$("#corkpedite").text('geno blast');
+				}
+			}
+			if (section == 7) {
+				if (ice > 2 || (ice == 2 && fire >= 1)) {
+					czar = 1;
+					$("#czar").html('atk / boost M / ice<br>atk / def or enable bowser / ice<br>atk / atk / 11-12 UJ');
+				}
+				else if (ice == 1 && fire >= 1) {
+					czar = 2;
+					$("#czar").html('atk / boost M / ice<br>6 / def / def<br>atk / atk / 11-12 UJ');
+				}
+				else {
+					czar = 3;
+					$("#czar").html('atk / boost M / def<br>10+2 / def / def<br>atk / atk / 11-12 UJ');
+				}
+			}
+			if (section == 8) {
+				if (rockcandy >= 2) {
+					axems = 1;
+					$("#axems").html('rc / boost M / rc<br>atk / ut / atk...');
+				}
+				else if (rockcandy >= 1 && ice >= 1 && fire >= 1) {
+					axems = 2;
+					$("#axems").html('rc  / fire / UJ 1ea<br>ice / boost M / atk<br>atk...');
+				}
+				else if (rockcandy >= 1 && ice >= 1) {
+					axems = 3;
+					$("#axems").html('rc / ice / UJ pink 4x<br>atk / boost m / atk<br>atk...');
+				}
+				else if (rockcandy >= 1 && fire >= 1) {
+					axems = 4;
+					$("#axems").html('rc / fire / uj 1ea<br>atk / boost M , untiled atk<br>atk, heal, atk...');
+				}
+				else {
+					$("#axems").html('reset if no RC freebie');
+				}
+			}
+			if (section == 9) {
+				if (rockcandy > 1) {
+					mmy = 2;
+					$("#mmy").html('5 / RC');
+				}
+				else {
+					mmy = 1;
+					$("#mmy").html('9+2');
+				}
+			}
+			if (section == 10) {
+				if (rockcandy >= 4) {
+					mallets = 1;
+					$("#mallets").html('rc');
+				}
+				else if (ice >=4) {
+					mallets = 2;
+					$("#mallets").html('rc');
+				}
+				else {
+					mallets = 3;
+					$("#mallets").html('geno blast');
+				}
+			}
+			if (section == 11) {
+				if (ice >= 4) {
+					gunyolk = 1;
+					$("#gunyolk").html('sb/ice/ice<br>d/ice/UT FC<br>atk FC/ice');
+				}
+				else if (ice ==3 && rockcandy >= 2) {
+					gunyolk = 2;
+					$("#gunyolk").html('sb/ice/ice<br>d/ice/RC<br>d/RC');
+				}
+				else if (ice ==3 && rockcandy == 1) {
+					gunyolk = 3;
+					$("#gunyolk").html('sb/ice/ice<br>d/ice/d<br>atk FC/RC/d<br>UT G');
+				}
+				else if (ice == 2 && rockcandy >= 2) {
+					gunyolk = 4;
+					$("#gunyolk").html('sb/boost P/ice<br>d/ice/RC<br>UT G/RC');
+				}
+				else if (ice == 2 && rockcandy == 1) {
+					gunyolk = 5;
+					$("#gunyolk").html('sb/ice/d<br>UJ 2+1/ice/sh<br>atk FC/RC');
+				}
+				else if (ice == 1 && rockcandy >= 2) {
+					gunyolk = 6;
+					$("#gunyolk").html('sb/boost P/ice<br>j/RC/sh<br>atk FC/RC');
+				}
+				else if (ice == 1 && rockcandy == 1) {
+					gunyolk = 7;
+					$("#gunyolk").html('sb/boost M/d<br>UJ 1+1/boost P/ice<br>atk FC/RC/sh<br>atk G');
+				}
+			}
+			if (section == 12) {
+				if (rockcandy >= 1) {
+					smithy1 = 1;
+					$("#smithy1").html('<198: 18<br>198+: 17+3<br>boost peach / rc');
+				}
+				else if (ice >= 1) {
+					smithy1 = 2;
+					$("#smithy1").html('<193: 19+1<br>193-211: 19<br>212+:18+3<br>boost peach / ice');
+				}
+				else if (fire >= 1) {
+					smithy1 = 3;
+					$("#smithy1").html('<204: 19+2<br>204+: 19+1<br>boost peach / fire');
+				}
+				else if (fright >= 1) {
+					smithy1 = 4;
+					$("#smithy1").html('<196: 20<br>196+: 19+3<br>boost peach / fright');
+				}
+				else if (bm >= 1) {
+					smithy1 = 5;
+					$("#smithy1").html('<195: 21<br>195-213: 20+3<br>214+: 20+2<br>boost peach / bm');
+				}
+				else {
+					smithy1 = 6;
+					$("#smithy1").html('<199: 21+3<br>199+: 21+2<br>boost peach / atk');
+				}
+			}
+			if (section == 13) {
+				if (smithy2 != 7) {
+					if ((fire == 2 && rockcandy == 0) || (fire == 1 && rockcandy == 0 && (fright >= 1 || bm >= 1 || ice >= 1))) {
+						smithy2 = 1;
+						$("#smithy2").html('8+1/def/sh<br>chest:<div class="indented">SF/fire/bombs<br>SF/bombs</div>tank:<div class="indented">17</div>');
+					}
+					else if (fire == 2 && rockcandy == 1) {
+						smithy2 = 2;
+						$("#smithy2").html('5+2/rc/sh<br>chest:<div class="indented">SF/fire/fire<br>SF</div>tank:<div class="indented">17</div>');
+					}
+					else if (fire == 2 && ice == 1) {
+						smithy2 = 3;
+						$("#smithy2").html('6+1/ice/sh<br>chest:<div class="indented">SF/fire/fire<br>SF</div>tank:<div class="indented">17</div>');
+					}
+					else if (fire == 3) {
+						smithy2 = 4;
+						$("#smithy2").html('3+3/def/sh<br>chest:<div class="indented">SF/fire/fire<br>SF/fire/atk</div>tank:<div class="indented">21+2</div>');
+					}
+					else if (fire >= 4) {
+						smithy2 = 5;
+						$("#smithy2").html('atk/def/sh<br>chest:<div class="indented">SF/fire/fire<br>SF/fire/fire</div>tank:<div class="indented">24+3</div>');
+					}
+					else {
+						smithy2 = 6;
+						$("#smithy2").html('100 sjs/bomb/sh');
+					}
+				}
+				else {
+					$("#smithy2").html('8+1/sh<br>chest:<div class="indented">SF/fire<br>SF/fire</div>tank:<div class="indented">17</div>');
+				}
+			}
+		}
+	
+		function layoutFreebies(id) {
+			var f = parseInt($('#' + id).text());
+			f++;
+			$('#' + id).text(f);
+		}
+		
+		$('#numEnergizer').click(function() {
+			layoutFreebies('numEnergizer');
+		});
+		
+		$('#numFire').click(function() {
+			layoutFreebies('numFire');
+			fire++;
+		});
+		$('#fire').click(function() {
+			fire++;
+		});
+		
+		$('#numIce').click(function() {
+			layoutFreebies('numIce');
+			ice++;
+			
+			if (section == 5 || section == 7 || (section == 11 && gunyolk < 4)) {
+				writeStrats(section);
+			}
+		});
+		$('#ice').click(function() {
+			ice++;
+		});
+		
+		$('#numRock').click(function() {
+			layoutFreebies('numRock');
+			rockcandy++;
+			if (section == 8 || section == 9) {
+				writeStrats(section);
+			}
+		});
+		$('#rc').click(function() {
+			rockcandy++;
+		});
+		
+		$('#numBad').click(function() {
+			layoutFreebies('numBad');
+			bm++;
+		});
+		$('#bad').click(function() {
+			bm++;
+		});
+		
+		$('#numFright').click(function() {
+			layoutFreebies('numFright');
+			fright++;
+		});
+		$('#fright').click(function() {
+			fright++;
+		});
+		
+		$('#Box').click(function() {
+			ice+=2;
+			if (boxType != "yes") {
+				box = 1;
+				boxType = 'yes';
+			}
+			else
+				box++;
+			db.transaction(function (tx) {
+				tx.executeSql("REPLACE INTO freebies (name, type, number) VALUES (?, ?, ?)", ['box', 'yes', box]);
+				$('#thisBox').text('Yes');
+				$('#numBox').text(" (x" + box + ")");
+			}, function(e) { console.log(e)});
+		});
+		$('#NoBox').click(function() {
+			if (boxType != "no") {
+				box = 1;
+				boxType = 'no';
+			}
+			else
+				box++;
+			db.transaction(function (tx) {
+				tx.executeSql("REPLACE INTO freebies (name, type, number) VALUES (?, ?, ?)", ['box', 'no', box]);
+				$('#thisBox').text('No');
+				$('#numBox').text(" (x" + box + ")");
+			}, function(e) { console.log(e)});
+		});
+		$('#RE').click(function() {
+			fire++;
+			if (REType != "yes") {
+				RE = 1;
+				REType = 'yes';
+			}
+			else
+				RE++;
+			db.transaction(function (tx) {
+				tx.executeSql("REPLACE INTO freebies (name, type, number) VALUES (?, ?, ?)", ['RE', 'yes', RE]);
+				$('#thisRE').text('Yes');
+				$('#numRE').text(" (x" + RE + ")");
+			}, function(e) { console.log(e)});
+		});
+		$('#NoRE').click(function() {
+			if (REType != "no") {
+				RE = 1;
+				REType = 'no';
+			}
+			else
+				RE++;
+			db.transaction(function (tx) {
+				tx.executeSql("REPLACE INTO freebies (name, type, number) VALUES (?, ?, ?)", ['RE', 'no', RE]);
+				$('#thisRE').text('No');
+				$('#numRE').text(" (x" + RE + ")");
+			}, function(e) { console.log(e)});
+		});
+		
+		$('#genoded').click(function() {
+			if (smithy2 < 6) {
+				smithy2 = 7;
+				if (section == 13) {
+					writeStrats(section);
+				}
+			}
+		});
+		var typingTimer;                //timer identifier
+		var doneTypingInterval = 500;  //time in ms, 5 second for example
+		$('body').on('keyup', '#birdo1', function() {
+		  clearTimeout(typingTimer);
+		  typingTimer = setTimeout(gotoBirdo2, doneTypingInterval);
+		});
+		$('body').on('keyup', '#birdo2', function() {
+		  clearTimeout(typingTimer);
+		  typingTimer = setTimeout(gotoBirdo3, doneTypingInterval);
+		});
+		$('body').on('keyup', '#birdo3', function() {
+			if (parseInt($('#birdo1').val()) + parseInt($('#birdo2').val()) + parseInt($('#birdo3').val()) >= 747) {
+				birdo = 2;
+				writeStrats(section);
+			}
+		});
+		$('body').on('keyup', '#birdo1, #birdo2, #birdo3', function() {
+		if (!isNaN(parseInt($('#birdo1').val()))) {
+			val1 = parseInt($('#birdo1').val());
+		}
+		else {
+			val1 = 0;
+		}
+		if (!isNaN(parseInt($('#birdo2').val()))) {
+			val2 = parseInt($('#birdo2').val());
+		}
+		else {
+			val2 = 0;
+		}
+		if (!isNaN(parseInt($('#birdo3').val()))) {
+			val3 = parseInt($('#birdo3').val());
+		}
+		else {
+			val3 = 0;
+		}
+			$('#summary').text(val1+val2+val3);
+		});
+		$('body').on('keydown', '#birdo1, #birdo2, #birdo3', function() {
+			clearTimeout(typingTimer);
+		});
+		gotoBirdo2 = function() {
+			$('#birdo2').focus();
+		}
+		gotoBirdo3 = function() {
+			$('#birdo3').focus();
+		}
+	});
+		
+</script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+@font-face {
+    font-family: smrpg;
+    src: url(forgotmybazookaathome.ttf);
+}
+
+body {
+	background: #000063;
+	font-family: smrpg;
+	color: #fff;
+	font-size: 0.5rem;
+}
+a {
+	color: #fff;
+}
+
+.display-table {
+	display: table;
+	max-width: 100%;
+}
+.display-row {
+	display: table-row;
+	width: 100%;
+}
+.display-cell {
+	display: table-cell;
+}
+.item-row > .display-cell.name-column {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.hidden {
+	display: none !important;
+}
+.credits-container {
+	float: right;
+	text-align: right;
+	line-height: 36px;
+	margin-top: 100px;
+}
+.tracker-list {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+.tracker-list li.ui-sortable-helper {
+	display: table-row;
+}
+.remove-button-container {
+	padding-left: 25px;
+}
+.location-container {
+	position: relative;
+	color: #c5c5c5;
+}
+.location-selector {
+	position: absolute;
+	top: 0;
+	left: 0;
+    background: #000063;
+    z-index: 99;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+.location-selector span {
+	opacity: 0.6;
+	width: 100%;
+    display: block;
+    cursor: pointer;
+	cursor: pointer;
+}
+.location-selector .display-cell {
+	text-align: center;
+	padding: 2px 5px;
+}
+.location-selector .display-cell:not(.empty) span:hover,
+.location-selector .display-cell:not(.empty) div.pic:hover {
+	background: #333398;
+}
+.location-container .selected span,
+.location-container .selected .pic {
+	opacity: 1.0;
+}
+.location-container .default {
+	color: #00ffff;
+}
+.location-container .locked {
+	color: #ffa700;
+}
+.location-container .missable {
+	color: #ffb3e3;
+}
+.location-container .semilocked {
+	color: #ffcb68;
+}
+.location-container .frog {
+	color: #65ff51;
+}
+/*.item-container {
+	vertical-align: middle;
+}*/
+.item-name {
+	display: inline-block;
+	vertical-align: middle;
+}
+.search-results-container {
+	position: relative;
+}
+.search-results {
+	position: absolute;
+	display: none;
+	border: 1px solid #fff;
+	padding: 5px;
+    background: #000063;
+}
+.search-results .clickable:hover {
+	background: #333398;
+}
+
+.item-row .name-column {
+	width: 125px;
+}
+input[type="text"] {
+	max-width: 100px;
+}
+
+.map-options .selected {
+    background: #fff;
+    color: #000063;
+}
+.button {
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.icon {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.icon.glove {
+	background: url(icons.png) 0px 0px;
+}
+.icon.hammer {
+	background: url(icons.png) -16px 0px;
+}
+.icon.shell {
+	background: url(icons.png) -32px 0px;
+}
+.icon.music {
+	background: url(icons.png) -48px 0px;
+}
+.icon.pan {
+	background: url(icons.png) -60px 0px;
+}
+.icon.chomp {
+	background: url(icons.png) 0px -16px;
+}
+.icon.stick {
+	background: url(icons.png) -16px -16px;
+}
+.icon.geno {
+	background: url(icons.png) -32px -16px;
+}
+.icon.drink {
+	background: url(icons.png) -48px -16px;
+}
+.icon.bomb {
+	background: url(icons.png) -60px -16px;
+}
+.icon.armor {
+	background: url(icons.png) 0px -32px;
+}
+.icon.accessory {
+	background: url(icons.png) -16px -32px;
+}
+.icon.question {
+	background: url(icons.png) -32px -32px;
+}
+.icon.dot {
+	background: url(icons.png) -48px -32px;
+}
+
+.ui-sortable-helper .display-cell:not(.item-name) {
+	display: none;
+}
+.option-container {
+	display: inline-block;
+	margin-bottom:20px;
+}
+.status {
+	color: red;
+}
+
+.M-Kingdom .pic .img {
+	background: url(towns.png) 0px 0px;
+}
+.Tadpole-JB .pic .img  {
+	background: url(towns.png) -32px 0px;
+}
+.Rose-Item .pic .img  {
+	background: url(towns.png) -64px 0px;
+}
+.Rose-Arm .pic .img  {
+	background: url(towns.png) -96px 0px;
+}
+.Moleville .pic .img  {
+	background: url(towns.png) 0px -32px;
+}
+.Marrymore .pic .img  {
+	background: url(towns.png) -32px -32px;
+}
+.Monstro-Item .pic .img  {
+	background: url(towns.png) -64px -32px;
+}
+.Monstro-Trip .pic .img  {
+	background: url(towns.png) -96px -32px;
+}
+.Seaside-1 .pic .img  {
+	background: url(towns.png) 0px -64px;
+}
+.Sea-Ship .pic .img  {
+	background: url(towns.png) -32px -64px;
+}
+.Nimbus .pic .img  {
+	background: url(towns.png) -64px -64px;
+}
+.Croco-1 .pic .img  {
+	background: url(towns.png) -96px -64px;
+}
+.Seaside-Item .pic .img  {
+	background: url(towns.png) 0px -96px;
+}
+.Seaside-Wpn .pic .img  {
+	background: url(towns.png) -32px -96px;
+}
+.Seaside-Arm .pic .img  {
+	background: url(towns.png) -64px -96px;
+}
+.Seaside-Acc .pic .img  {
+	background: url(towns.png) -96px -96px;
+}
+.Volcano-Item .pic .img  {
+	background: url(towns.png) 0px -128px;
+}
+.Volcano-Arm .pic .img  {
+	background: url(towns.png) -32px -128px;
+}
+.Croco-2 .pic .img  {
+	background: url(towns.png) -64px -128px;
+}
+.Toad .pic .img  {
+	background: url(towns.png) -96px -128px;
+}
+.Tadpole-FCE .pic .img  {
+	background: url(towns.png) -32px -160px;
+}
+.Seaside-FC .pic .img  {
+	background: url(towns.png) -64px -160px;
+}
+.noshop .pic .img  {
+	background: url(towns.png) -96px -160px;
+}
+
+.pic {
+	padding: 1px;
+	display: inline-block;
+	opacity: 0.6;
+	vertical-align: middle;
+}
+.pic .img {
+	width: 32px;
+	height: 32px;
+}
+body.compact-icons .location-selector .display-cell span {
+	display: none;
+}
+body:not(.compact-icons) .location-selector .display-cell .pic {
+	display: none;
+}
+body.compact-icons .display-location span {
+	display: none;
+}
+body:not(.compact-icons) .display-location > div {
+	display: none;
+}
+.display-location > div {
+	display: inline-block;
+}

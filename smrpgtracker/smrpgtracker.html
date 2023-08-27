@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SMRPG Open Rando Tracker</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="ki-container">
+	</div>
+	<div class="boss-container">
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var KIS = ["Star Piece 1", "Elder Key", "Room Key", "Shed Key", "Star Piece 2", "Temple Key", "Castle Key 1", "Castle Key 2", "Star Piece 3", "Alto Card", "Tenor Card", "Soprano Card", "Star Piece 4", "Greaper Flag", "Dry Bones Flag", "Big Boo Flag", "Star Piece 5", "Rare Frog Coin", "Cricket Pie", "Cricket Jam", "Star Piece 6", "Bambino Bomb", "Seed", "Fertilizer", "Star Piece 7", "Bright Card", "Shiny Stone", "Carbo Cookie"];
+			var bosses = ["Hammer Bros", "Croco (1)", "Mack", "Pandorite", "Belome (1)", "Bowyer", "Croco (2)", "Punchinello", "Booster", "Knife Guy/Grate Guy", "Bundt", "Star Hill", "King Kalimari", "Hidon", "Johnny", "Yaridovich", "Belome (2)", "Jagger", "Jinx (1)", "Jinx (2)", "Jinx (3)", "Culex", "Box Boy", "Megasmilax", "Dodo", "Birdo", "Valentina", "Czar Dragon", "Axem Rangers", "Magikoopa", "Boomer", "Exor", "Count Down", "Cloaker+Domino", "Clerk", "Manager", "Director", "Gunyolk", "Smithy"];
+
+			for (var i = 0; i < KIS.length; i++) {
+				var x = -32 * (i % 4);
+				var y = -32 * Math.floor(i / 4);
+				$('.ki-container').append(
+					"<div class='icon' style='background-position: " + x + "px " + y + "px' title='" + KIS[i] + "'></div>"
+				);
+			}
+			for (var i = 0; i < bosses.length; i++) {
+				var x = -32 * (i % 4) - 128;
+				var y = -32 * Math.floor(i / 4);
+				$('.boss-container').append(
+					"<div class='icon' style='background-position: " + x + "px " + y + "px' title='" + bosses[i] + "'></div>"
+				);
+			}
+			$('body').on('click', '.icon', function() {
+				$(this).toggleClass("found");
+			});
+		});
+	</script>
+</body>
+</html>

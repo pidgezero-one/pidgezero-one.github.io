@@ -1,0 +1,298 @@
+@font-face {
+    font-family: ff4;
+    src: url(ff4.ttf);
+}
+
+body {
+	background: #000063;
+	font-family: ff4;
+	color: #fff;
+	font-size: 2rem;
+}
+a {
+	color: #fff;
+}
+
+.display-table {
+	display: table;
+	max-width: 100%;
+}
+.display-row {
+	display: table-row;
+	width: 100%;
+}
+.display-cell {
+	display: table-cell;
+}
+.item-row > .display-cell {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.hidden {
+	display: none !important;
+}
+.credits-container {
+	float: right;
+	text-align: right;
+	line-height: 36px;
+	margin-top: 100px;
+}
+.tracker-list {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+.tracker-list li.ui-sortable-helper {
+	display: table-row;
+}
+.remove-button-container {
+	padding-left: 25px;
+}
+.location-container {
+	position: relative;
+	color: #c5c5c5;
+}
+.location-selector {
+	position: absolute;
+	top: 0;
+	left: 0;
+    background: #000063;
+    z-index: 99;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+.location-selector span {
+	opacity: 0.6;
+	width: 100%;
+    display: block;
+    cursor: pointer;
+	cursor: pointer;
+}
+.location-selector .display-cell {
+	text-align: center;
+	padding: 2px 5px;
+}
+.location-selector .display-cell:not(.empty) span:hover,
+.location-selector .display-cell:not(.empty) div.pic:hover {
+	background: #333398;
+}
+.location-container .selected span,
+.location-container .selected .pic {
+	opacity: 1.0;
+}
+.location-container .overworld {
+	color: #00ffff;
+}
+.location-container .underworld {
+	color: #ffa700;
+}
+.location-container .moon {
+	color: #e3b3ff;
+}
+/*.item-container {
+	vertical-align: middle;
+}*/
+.item-name {
+	display: inline-block;
+	vertical-align: middle;
+}
+.search-results-container {
+	position: relative;
+}
+.search-results {
+	position: absolute;
+	display: none;
+	border: 1px solid #fff;
+	padding: 5px;
+    background: #000063;
+}
+.search-results .clickable:hover {
+	background: #333398;
+}
+
+.item-row .name-column {
+	width: 125px;
+}
+input[type="text"] {
+	max-width: 100px;
+}
+
+.map-options .selected {
+    background: #fff;
+    color: #000063;
+}
+.button {
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.icon {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.icon.claw {
+	background: url(icons.png) 0px 0px;
+}
+.icon.rod {
+	background: url(icons.png) -20px 0px;
+}
+.icon.staff {
+	background: url(icons.png) -40px 0px;
+}
+.icon.darksword {
+	background: url(icons.png) -60px 0px;
+}
+.icon.sword {
+	background: url(icons.png) -80px 0px;
+}
+.icon.katana{
+	background: url(icons.png) -100px 0px;
+}
+.icon.dagger {
+	background: url(icons.png) -120px 0px;
+}
+.icon.whip {
+	background: url(icons.png) 0px -20px;
+}
+.icon.axe {
+	background: url(icons.png) -20px -20px;
+}
+.icon.star {
+	background: url(icons.png) -40px -20px;
+}
+.icon.boomerang {
+	background: url(icons.png) -60px -20px;
+}
+.icon.harp {
+	background: url(icons.png) -80px -20px;
+}
+.icon.hammer {
+	background: url(icons.png) -100px -20px;
+}
+.icon.potion {
+	background: url(icons.png) -120px -20px;
+}
+.icon.bow {
+	background: url(icons.png) 0px -40px;
+}
+.icon.arrow {
+	background: url(icons.png) -20px -40px;
+}
+.icon.shield {
+	background: url(icons.png) -40px -40px;
+}
+.icon.hat {
+	background: url(icons.png) -60px -40px;
+}
+.icon.armor {
+	background: url(icons.png) -80px -40px;
+}
+.icon.robe {
+	background: url(icons.png) -100px -40px;
+}
+.icon.glove {
+	background: url(icons.png) -120px -40px;
+}
+.icon.ring {
+	background: url(icons.png) 0px -60px;
+}
+.icon.summon {
+	background: url(icons.png) -20px -60px;
+}
+.icon.tent {
+	background: url(icons.png) -40px -60px;
+}
+.icon.plus {
+	background: url(icons.png) -60px -60px;
+	margin-left: 45px;
+}
+.icon.spear {
+	background: url(icons.png) -80px -60px;
+}
+
+.ui-sortable-helper .display-cell:not(.item-name) {
+	display: none;
+}
+.option-container {
+	display: inline-block;
+	margin-bottom:20px;
+}
+.status {
+	color: red;
+}
+
+.Baron .pic .img {
+	background: url(towns.png) 0px 0px;
+}
+.Mist .pic .img  {
+	background: url(towns.png) -20px 0px;
+}
+.Kaipo .pic .img  {
+	background: url(towns.png) -40px 0px;
+}
+.Toroia .pic .img  {
+	background: url(towns.png) -60px 0px;
+}
+.Fabul .pic .img  {
+	background: url(towns.png) 0px -20px;
+}
+.Silvera .pic .img  {
+	background: url(towns.png) -20px -20px;
+}
+.Mysidia .pic .img  {
+	background: url(towns.png) -40px -20px;
+}
+.Agart .pic .img  {
+	background: url(towns.png) -60px -20px;
+}
+.Eblan .pic .img  {
+	background: url(towns.png) 0px -40px;
+}
+.Namingway .pic .img  {
+	background: url(towns.png) -60px -40px;
+}
+.Dwarf .pic .img  {
+	background: url(towns.png) 0px -60px;
+}
+.Tomra .pic .img  {
+	background: url(towns.png) -20px -60px;
+}
+.LoS .pic .img  {
+	background: url(towns.png) -40px -60px;
+}
+.Kokkol .pic .img  {
+	background: url(towns.png) -60px -60px;
+}
+.noshop .pic .img  {
+	background: url(towns.png) 0px -80px;
+}
+.pic {
+	padding: 5px;
+	display: inline-block;
+	opacity: 0.6;
+	vertical-align: middle;
+}
+.pic .img {
+	width: 16px;
+	height: 16px;
+}
+body.compact-icons .location-selector .display-cell span {
+	display: none;
+}
+body:not(.compact-icons) .location-selector .display-cell .pic {
+	display: none;
+}
+body.compact-icons .display-location span {
+	display: none;
+}
+body:not(.compact-icons) .display-location > div {
+	display: none;
+}
+.display-location > div {
+	display: inline-block;
+}

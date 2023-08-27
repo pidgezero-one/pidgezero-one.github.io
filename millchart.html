@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>freebies</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<style>
+body {
+	font-family: 'Verdana';
+	font-size: 18px;
+}
+.display-table {
+	display: table;
+	width: 100%;
+}
+.display-row {
+	display: table-row;
+}
+.display-cell {
+	display: table-cell;
+}
+.bomb-viewer-container {
+	width: 320px;
+	max-width: 320px;
+	height: 40px;
+	border: transparent;
+	background: #00cc00;
+	text-align: center;
+	color: #ffffff;
+}
+.bomb-viewer-container img {
+	vertical-align: middle;
+	margin-right: 8px;
+}
+.bomb-viewer-container .display-cell {
+	border: none !important;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.bomb-viewer-container .display-cell span {
+	font-weight: bold;
+}
+.bomb-viewer-container .display-cell span.no-bold {
+	font-weight: normal;
+}
+.button-table {
+	width: 320px;
+	max-width: 320px;
+	text-align: center;
+	margin-top: 100px;
+}
+.button-table button {
+	width: 80%;
+}
+</style>
+</head>
+
+<body>
+
+
+		<div class="bomb-viewer-container display-table">
+			<div class="display-row">
+				<div class="display-cell"><img src="images/fire.png"/>× <span id="numFire">0</span></div>
+				<div class="display-cell"><img src="images/ice.png"/>× <span id="numIce">0</span></div>
+				<div class="display-cell"><img src="images/rc.png"/>× <span id="numRock">0</span></div>
+			</div>
+		</div>
+		<div class="display-table button-table">
+			<div class="display-row">
+				<div class="display-cell"><button id="fire"><img src="images/fire.png"/>+1</button></div>
+				<div class="display-cell"><button id="ice"><img src="images/ice.png"/>+1</button></div>
+				<div class="display-cell"><button id="rc"><img src="images/rc.png"/>+1</button></div>
+			</div>
+			<div class="display-row">
+				<div class="display-cell"><button id="firedec"><img src="images/fire.png"/>-1</button></div>
+				<div class="display-cell"><button id="icedec"><img src="images/ice.png"/>-1</button></div>
+				<div class="display-cell"><button id="rcdec"><img src="images/rc.png"/>-1</button></div>
+			</div>
+			<div class="display-row">
+				<div class="display-cell"><button id="firedef"><img src="images/fire.png"/>6</button></div>
+				<div class="display-cell"><button id="icedef"><img src="images/ice.png"/>6</button></div>
+				<div class="display-cell"></div>
+			</div>
+		</div>
+		
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#fire').click(function() {
+			$('#numFire').text(parseInt($('#numFire').text())+ 1);
+		});
+		$('#ice').click(function() {
+			$('#numIce').text(parseInt($('#numIce').text())+ 1);
+		});
+		$('#rc').click(function() {
+			$('#numRock').text(parseInt($('#numRock').text())+ 1);
+		});
+		$('#firedec').click(function() {
+			$('#numFire').text(parseInt($('#numFire').text())- 1);
+		});
+		$('#icedec').click(function() {
+			$('#numIce').text(parseInt($('#numIce').text())- 1);
+		});
+		$('#rcdec').click(function() {
+			$('#numRock').text(parseInt($('#numRock').text())- 1);
+		});
+		$('#firedef').click(function() {
+			$('#numFire').text(6);
+		});
+		$('#icedef').click(function() {
+			$('#numIce').text(6);
+		});
+	});
+</script>
+</body>
+</html>

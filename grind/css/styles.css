@@ -1,0 +1,69 @@
+@font-face {
+    font-family: ff4;
+    src: url(ff4.ttf);
+}
+
+body {
+	background: #000063;
+	font-family: ff4;
+	color: #fff;
+	font-size: 2rem;
+}
+a {
+	color: #fff;
+}
+
+.display-table {
+	display: table;
+	max-width: 100%;
+}
+.display-row {
+	display: table-row;
+	width: 100%;
+}
+.display-cell {
+	display: table-cell;
+}
+
+.panel {
+	padding: 20px 10px;
+}
+.panel .inner-panel {
+	border: 3px dashed #fff;
+	border-radius: 15px;
+}
+span.note {
+	font-size: 1.3rem;
+}
+
+select, input[type="text"], input[type="number"], button {
+	width: 100%;
+	vertical-align: middle;
+	height: 30px;
+	line-height: 24px;
+}
+
+hr {
+	border-color: white;
+    border-style: dashed;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+li {
+	display: block;
+}
+label {
+	margin: 0;
+}
+.hidden {
+	display: none;
+}
+.half {
+	opacity: 0.3;
+}
+.result {
+	font-size: 3rem;
+}
