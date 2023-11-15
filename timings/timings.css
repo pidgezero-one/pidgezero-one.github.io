@@ -51,6 +51,10 @@ a{
 	font-size: 25px;
 }
 
+.outbound a{
+	font-size: 10px;
+}
+
 @font-face {
     font-family: 'smrpg';
     src: url('smrpg.ttf');

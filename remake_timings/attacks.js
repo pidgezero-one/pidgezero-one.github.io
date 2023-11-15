@@ -9,6 +9,6 @@ var attacks = {
     name: "Belome Attack",
     info: "Right when the tongue makes contact",
     note: "",
-    frames: 5,
+    frames: 6,
   }
 };
