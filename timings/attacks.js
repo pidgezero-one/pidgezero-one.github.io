@@ -347,14 +347,14 @@ var attacks = {
     frames: 5,
     relevant: true,
   },
-  "Bodyguard/Shyper/Shyster Jump": {
+  "Bodyguard/Shyper/Shyster/Springer Jump": {
     type: "block",
     perfect: 46,
     partialStart: 38,
     partialEnd: 59,
     video: "./resources/ShysterJump.mp4",
     poster: "./resources/ShysterJump.png",
-    name: "Bodyguard/Shyper/Shyster Jump",
+    name: "Bodyguard/Shyper/Shyster/Springer Jump",
     info:
       "Just after Shyster reaches the character, before his spring is fully compressed",
     note: "",
