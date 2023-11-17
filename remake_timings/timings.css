@@ -51,8 +51,14 @@ a{
 	font-size: 25px;
 }
 
+.outbound,
 .outbound a{
 	font-size: 10px;
+}
+
+.outbound2,
+.outbound2 a{
+	font-size: 14px;
 }
 
 @font-face {
