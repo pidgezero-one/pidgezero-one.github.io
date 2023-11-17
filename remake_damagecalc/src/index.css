@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  font-family: "Arial", "Sans";
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container {
+  display: flex;
+}
+
+.column1 {
+  flex: 1;
+  padding: 10px;
+  max-width: 50%;
+}
+
+.column2 {
+  flex: 1;
+  padding: 10px;
+}
+
+.form {
+  display: table;
+  width: 100%;
+}
+
+.row {
+  display: table-row;
+}
+
+.label {
+  display: table-cell;
+  width: 100px;
+  padding-bottom: 15px;
+}
+.formElements {
+  display: table-cell;
+  padding-bottom: 15px;
+}
+
+input[type="text"], input[type="number"], select {
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #999;
+  box-sizing: border-box;
+}
+
+.verticalRadio {
+  display: block;
+}
