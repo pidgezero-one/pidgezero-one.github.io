@@ -7,7 +7,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -29,6 +29,7 @@ code {
 .form {
   display: table;
   width: 100%;
+  padding-top: 15px;
 }
 
 .row {
@@ -37,7 +38,7 @@ code {
 
 .label {
   display: table-cell;
-  width: 100px;
+  width: 150px;
   padding-bottom: 15px;
 }
 .formElements {
@@ -45,7 +46,9 @@ code {
   padding-bottom: 15px;
 }
 
-input[type="text"], input[type="number"], select {
+input[type="text"],
+input[type="number"],
+select {
   padding: 5px;
   border-radius: 5px;
   width: 100%;

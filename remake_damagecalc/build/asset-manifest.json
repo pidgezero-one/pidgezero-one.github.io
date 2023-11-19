@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/remake_damagecalc/static/css/main.56ab0906.css",
+    "main.js": "/remake_damagecalc/static/js/main.a9a4b603.js",
+    "static/js/787.6d5f9816.chunk.js": "/remake_damagecalc/static/js/787.6d5f9816.chunk.js",
+    "index.html": "/remake_damagecalc/index.html",
+    "main.56ab0906.css.map": "/remake_damagecalc/static/css/main.56ab0906.css.map",
+    "main.a9a4b603.js.map": "/remake_damagecalc/static/js/main.a9a4b603.js.map",
+    "787.6d5f9816.chunk.js.map": "/remake_damagecalc/static/js/787.6d5f9816.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.56ab0906.css",
+    "static/js/main.a9a4b603.js"
+  ]
+}
