@@ -164,7 +164,7 @@ var attacks = {
     partialEnd: "00:00:01.016",
     video: "./resources/axem-pink-counter.mp4",
     poster: "./resources/axem-pink-counter.png",
-    name: "Axem Pink Counter",
+    name: "Axem Pink Attack",
     info: "Just before the swing",
     note: "",
     frames: 6,
