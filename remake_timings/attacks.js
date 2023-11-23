@@ -1462,7 +1462,7 @@ var attacks = {
     video: "./resources/geno-stella-023.mp4",
     poster: "./resources/geno-stella-023.png",
     name: "Geno Stella 023",
-    info: "RIght before the laser fires",
+    info: "Right before the laser fires",
     note: "",
     frames: 13,
   },
