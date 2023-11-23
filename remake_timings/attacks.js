@@ -1882,8 +1882,8 @@ var attacks = {
     video: "./resources/jinx-triple-kick.mp4",
     poster: "./resources/jinx-triple-kick.png",
     name: "Jinx Triple Kick",
-    info: "About a third of the way towards the character, 3/10 frames",
-    note: "",
+    info: "About a third of the way towards the character",
+    note: "3/10 frames",
     frames: 5,
   },
   Jinxed: {
