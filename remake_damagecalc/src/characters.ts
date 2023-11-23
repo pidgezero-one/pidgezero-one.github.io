@@ -5,6 +5,7 @@ import {
   ArmorName,
   AccessoryName,
   AttackName,
+  AttackBoostModifier,
 } from "./types";
 
 let CHARACTER_DATA: Character[] = [
@@ -12,6 +13,429 @@ let CHARACTER_DATA: Character[] = [
     id: "mario",
     name: "Mario",
     minLevel: 1,
+    speed: 20,
+    levelBonuses: [
+      {
+        stats: {
+          hp: 20,
+          attack: 20,
+          defense: 0,
+          magicAttack: 10,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 0 },
+          pow: { attack: 0, defense: 0 },
+          sp: { magicAttack: 0, magicDefense: 0 },
+        },
+      },
+      {
+        stats: {
+          hp: 5,
+          attack: 3,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 5,
+          attack: 3,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 5,
+          attack: 3,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 5,
+          attack: 3,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 5,
+          attack: 4,
+          defense: 3,
+          magicAttack: 3,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 6,
+          attack: 4,
+          defense: 3,
+          magicAttack: 3,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 6,
+          attack: 4,
+          defense: 3,
+          magicAttack: 3,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 7,
+          attack: 4,
+          defense: 3,
+          magicAttack: 3,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 7,
+          attack: 4,
+          defense: 3,
+          magicAttack: 3,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 7,
+          attack: 5,
+          defense: 4,
+          magicAttack: 3,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 6,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 6,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 10,
+          attack: 6,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 10,
+          attack: 6,
+          defense: 4,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 10,
+          attack: 6,
+          defense: 4,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+    ],
     statbonuses: Array.from({ length: 29 }, () => LevelupBonus.HP),
     level: 1,
     attacks: [
@@ -22,6 +446,11 @@ let CHARACTER_DATA: Character[] = [
       AttackName.SUPER_FIREBALL,
       AttackName.ULTRA_JUMP,
       AttackName.ULTRA_FIREBALL,
+      AttackName.STAR_GUST,
+      AttackName.STAR_RIDERS,
+      AttackName.CLOWN_CAR_BARRAGE,
+      AttackName.SHOOTING_STAR_SHOT,
+      AttackName.STARRY_SHELL_SPIKE,
     ],
     weapons: [
       WeaponName.UNARMED,
@@ -70,7 +499,8 @@ let CHARACTER_DATA: Character[] = [
       AccessoryName.SAFETY_BADGE,
       AccessoryName.SAFETY_RING,
       AccessoryName.SIGNAL_RING,
-      AccessoryName.TROOPA_PIN,
+      AccessoryName.TEAMWORK_BAND,
+      AccessoryName.TROOPA_MEDAL,
       AccessoryName.TRUEFORM_PIN,
       AccessoryName.WAKE_UP_PIN,
       AccessoryName.ZOOM_SHOES,
@@ -79,11 +509,421 @@ let CHARACTER_DATA: Character[] = [
     activeArmor: ArmorName.NONE,
     activeAccessory: AccessoryName.NONE,
     activeAttack: AttackName.PHYSICAL,
+    activeAttackBoost: AttackBoostModifier.NONE,
   },
   {
     id: "mallow",
     name: "Mallow",
+    speed: 18,
     minLevel: 2,
+    levelBonuses: [
+      {
+        stats: {
+          hp: 20,
+          attack: 22,
+          defense: 3,
+          magicAttack: 15,
+          magicDefense: 10,
+        },
+        bonus: {
+          hp: { hp: 0 },
+          pow: { attack: 0, defense: 0 },
+          sp: { magicAttack: 0, magicDefense: 0 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 3,
+          magicAttack: 3,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 2, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 5,
+          attack: 2,
+          defense: 3,
+          magicAttack: 3,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 5,
+          attack: 3,
+          defense: 3,
+          magicAttack: 3,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 5,
+          attack: 3,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 2, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 6,
+          attack: 3,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 6,
+          attack: 3,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 6,
+          attack: 4,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 2, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 7,
+          attack: 4,
+          defense: 3,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 7,
+          attack: 4,
+          defense: 3,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 7,
+          attack: 4,
+          defense: 3,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 2, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 3,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 3,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 3,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 2, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 5,
+          defense: 3,
+          magicAttack: 5,
+          magicDefense: 4,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 6,
+          defense: 3,
+          magicAttack: 5,
+          magicDefense: 4,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 6,
+          defense: 3,
+          magicAttack: 5,
+          magicDefense: 4,
+        },
+        bonus: {
+          hp: { hp: 4 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 2, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 2, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 2, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 2, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+    ],
     statbonuses: Array.from({ length: 28 }, () => LevelupBonus.HP),
     level: 2,
     attacks: [
@@ -92,6 +932,9 @@ let CHARACTER_DATA: Character[] = [
       AttackName.SHOCKER,
       AttackName.SNOWY,
       AttackName.STAR_RAIN,
+      AttackName.STAR_GUST,
+      AttackName.STAR_RIDERS,
+      AttackName.CLOWN_CAR_BARRAGE,
     ],
     weapons: [
       WeaponName.UNARMED,
@@ -134,7 +977,8 @@ let CHARACTER_DATA: Character[] = [
       AccessoryName.SAFETY_BADGE,
       AccessoryName.SAFETY_RING,
       AccessoryName.SIGNAL_RING,
-      AccessoryName.TROOPA_PIN,
+      AccessoryName.TEAMWORK_BAND,
+      AccessoryName.TROOPA_MEDAL,
       AccessoryName.TRUEFORM_PIN,
       AccessoryName.WAKE_UP_PIN,
       AccessoryName.ZOOM_SHOES,
@@ -143,11 +987,365 @@ let CHARACTER_DATA: Character[] = [
     activeArmor: ArmorName.NONE,
     activeAccessory: AccessoryName.NONE,
     activeAttack: AttackName.PHYSICAL,
+    activeAttackBoost: AttackBoostModifier.NONE,
   },
   {
     id: "geno",
     name: "Geno",
     minLevel: 6,
+    speed: 30,
+    levelBonuses: [
+      {
+        stats: {
+          hp: 45,
+          attack: 60,
+          defense: 23,
+          magicAttack: 25,
+          magicDefense: 17,
+        },
+        bonus: {
+          hp: { hp: 0 },
+          pow: { attack: 0, defense: 0 },
+          sp: { magicAttack: 0, magicDefense: 0 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 6,
+          defense: 4,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 6,
+          defense: 4,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 6 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 6,
+          defense: 4,
+          magicAttack: 5,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 1,
+          attack: 2,
+          defense: 3,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+    ],
     statbonuses: Array.from({ length: 24 }, () => LevelupBonus.HP),
     level: 6,
     attacks: [
@@ -156,6 +1354,9 @@ let CHARACTER_DATA: Character[] = [
       AttackName.GENO_WHIRL,
       AttackName.GENO_BLAST,
       AttackName.GENO_FLASH,
+      AttackName.STAR_GUST,
+      AttackName.STAR_RIDERS,
+      AttackName.SHOOTING_STAR_SHOT,
     ],
     weapons: [
       WeaponName.UNARMED,
@@ -195,7 +1396,8 @@ let CHARACTER_DATA: Character[] = [
       AccessoryName.SAFETY_BADGE,
       AccessoryName.SAFETY_RING,
       AccessoryName.SIGNAL_RING,
-      AccessoryName.TROOPA_PIN,
+      AccessoryName.TEAMWORK_BAND,
+      AccessoryName.TROOPA_MEDAL,
       AccessoryName.TRUEFORM_PIN,
       AccessoryName.WAKE_UP_PIN,
       AccessoryName.ZOOM_SHOES,
@@ -204,11 +1406,337 @@ let CHARACTER_DATA: Character[] = [
     activeArmor: ArmorName.NONE,
     activeAccessory: AccessoryName.NONE,
     activeAttack: AttackName.PHYSICAL,
+    activeAttackBoost: AttackBoostModifier.NONE,
   },
   {
     id: "bowser",
     name: "Bowser",
     minLevel: 8,
+    speed: 15,
+    levelBonuses: [
+      {
+        stats: {
+          hp: 80,
+          attack: 85,
+          defense: 52,
+          magicAttack: 20,
+          magicDefense: 30,
+        },
+        bonus: {
+          hp: { hp: 0 },
+          pow: { attack: 0, defense: 0 },
+          sp: { magicAttack: 0, magicDefense: 0 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 3,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 3,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 4,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 4,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 4,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 4,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 4,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 5,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 6,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 6,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 2, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+    ],
     statbonuses: Array.from({ length: 22 }, () => LevelupBonus.HP),
     level: 8,
     attacks: [
@@ -217,6 +1745,10 @@ let CHARACTER_DATA: Character[] = [
       AttackName.POISON_GAS,
       AttackName.CRUSHER,
       AttackName.BOWSER_CRUSH,
+      AttackName.STAR_GUST,
+      AttackName.CLOWN_CAR_BARRAGE,
+      AttackName.SHOOTING_STAR_SHOT,
+      AttackName.STARRY_SHELL_SPIKE,
     ],
     weapons: [
       WeaponName.UNARMED,
@@ -254,7 +1786,8 @@ let CHARACTER_DATA: Character[] = [
       AccessoryName.SAFETY_BADGE,
       AccessoryName.SAFETY_RING,
       AccessoryName.SIGNAL_RING,
-      AccessoryName.TROOPA_PIN,
+      AccessoryName.TEAMWORK_BAND,
+      AccessoryName.TROOPA_MEDAL,
       AccessoryName.TRUEFORM_PIN,
       AccessoryName.WAKE_UP_PIN,
       AccessoryName.ZOOM_SHOES,
@@ -263,14 +1796,331 @@ let CHARACTER_DATA: Character[] = [
     activeArmor: ArmorName.NONE,
     activeAccessory: AccessoryName.NONE,
     activeAttack: AttackName.PHYSICAL,
+    activeAttackBoost: AttackBoostModifier.NONE,
   },
   {
     id: "peach",
     name: "Peach",
+    speed: 24,
     minLevel: 9,
+    levelBonuses: [
+      {
+        stats: {
+          hp: 50,
+          attack: 40,
+          defense: 24,
+          magicAttack: 40,
+          magicDefense: 28,
+        },
+        bonus: {
+          hp: { hp: 0 },
+          pow: { attack: 0, defense: 0 },
+          sp: { magicAttack: 0, magicDefense: 0 },
+        },
+      },
+      {
+        stats: {
+          hp: 4,
+          attack: 1,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 9 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 5,
+          attack: 2,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 6,
+          attack: 3,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 7,
+          attack: 4,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 9 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 8,
+          attack: 5,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 9,
+          attack: 6,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 3,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 10,
+          attack: 7,
+          defense: 3,
+          magicAttack: 4,
+          magicDefense: 4,
+        },
+        bonus: {
+          hp: { hp: 9 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 11,
+          attack: 8,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 4,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 12,
+          attack: 9,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 4,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 13,
+          attack: 10,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 4,
+        },
+        bonus: {
+          hp: { hp: 9 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 14,
+          attack: 10,
+          defense: 4,
+          magicAttack: 4,
+          magicDefense: 4,
+        },
+        bonus: {
+          hp: { hp: 5 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 2 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 1 },
+          pow: { attack: 1, defense: 1 },
+          sp: { magicAttack: 3, magicDefense: 1 },
+        },
+      },
+      {
+        stats: {
+          hp: 2,
+          attack: 2,
+          defense: 2,
+          magicAttack: 2,
+          magicDefense: 2,
+        },
+        bonus: {
+          hp: { hp: 3 },
+          pow: { attack: 3, defense: 1 },
+          sp: { magicAttack: 1, magicDefense: 1 },
+        },
+      },
+    ],
     statbonuses: Array.from({ length: 21 }, () => LevelupBonus.HP),
     level: 9,
-    attacks: [AttackName.PHYSICAL, AttackName.PSYCH_BOMB],
+    attacks: [
+      AttackName.PHYSICAL,
+      AttackName.PSYCH_BOMB,
+      AttackName.STAR_GUST,
+      AttackName.STARRY_SHELL_SPIKE,
+    ],
     weapons: [
       WeaponName.UNARMED,
       WeaponName.FRYING_PAN,
@@ -308,7 +2158,8 @@ let CHARACTER_DATA: Character[] = [
       AccessoryName.SAFETY_BADGE,
       AccessoryName.SAFETY_RING,
       AccessoryName.SIGNAL_RING,
-      AccessoryName.TROOPA_PIN,
+      AccessoryName.TEAMWORK_BAND,
+      AccessoryName.TROOPA_MEDAL,
       AccessoryName.TRUEFORM_PIN,
       AccessoryName.WAKE_UP_PIN,
       AccessoryName.ZOOM_SHOES,
@@ -317,6 +2168,7 @@ let CHARACTER_DATA: Character[] = [
     activeArmor: ArmorName.NONE,
     activeAccessory: AccessoryName.NONE,
     activeAttack: AttackName.PHYSICAL,
+    activeAttackBoost: AttackBoostModifier.NONE,
   },
 ];
 

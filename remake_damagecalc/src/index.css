@@ -18,7 +18,7 @@ code {
 .column1 {
   flex: 1;
   padding: 10px;
-  max-width: 50%;
+  max-width: 40%;
 }
 
 .column2 {
@@ -41,9 +41,15 @@ code {
   width: 150px;
   padding-bottom: 15px;
 }
+.label:not(:first-child) {
+  padding-left: 15px;
+}
 .formElements {
   display: table-cell;
   padding-bottom: 15px;
+}
+.formElements:not(:last-child) {
+  width: 250px;
 }
 
 input[type="text"],
@@ -58,4 +64,8 @@ select {
 
 .verticalRadio {
   display: block;
+}
+
+.padLeft15 {
+  padding-left: 15px;
 }
