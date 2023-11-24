@@ -31,8 +31,7 @@ var attacks = {
     video: "./resources/ameboid-attack.mp4",
     poster: "./resources/ameboid-attack.png",
     name: "Ameboid Attack",
-    info:
-      "First frame the Ameboid is extended to hit you, plus the four frames prior",
+    info: "First frame the Ameboid is extended to hit you, plus the four frames prior",
     note: "",
     frames: 5,
   },
@@ -164,8 +163,7 @@ var attacks = {
     video: "./resources/axemyellow1.mp4",
     poster: "./resources/axemyellow1.png",
     name: "Axem Yellow Attack",
-    info:
-      "When his axe is statically pointing at you after the swing (5 frames)",
+    info: "When his axe is statically pointing at you after the swing (5 frames)",
     note: "",
     frames: 5,
   },
@@ -190,8 +188,7 @@ var attacks = {
     poster: "./resources/axem_yellow_body_slam.png",
     name: "Axem Yellow Body Slam",
     info: "First blockable post-spin and when axe is brought down in chop",
-    note:
-      "Awkward timing. Shoot for the instant you think you'll hear the audio cue",
+    note: "Awkward timing. Shoot for the instant you think you'll hear the audio cue",
     frames: 5,
   },
   "Bahamutt Bite": {
@@ -202,8 +199,7 @@ var attacks = {
     video: "./resources/Bahamutt_Bite.mp4",
     poster: "./resources/Bahamutt_Bite.png",
     name: "Bahamutt Bite",
-    info:
-      "Bahamutt will rear it's head back, soon as you see him shut his mouth press block",
+    info: "Bahamutt will rear it's head back, soon as you see him shut his mouth press block",
     note: "The moment is just when his mouth closes",
     frames: 5,
   },
@@ -227,8 +223,7 @@ var attacks = {
     video: "./resources/bandanablueattack.mp4",
     poster: "./resources/bandanablueattack.png",
     name: "Bandana Blue/Bandana Red Attack",
-    info:
-      "First blockable on final frame of spear the farthest back before second stab. (5 frames)",
+    info: "First blockable on final frame of spear the farthest back before second stab. (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -242,8 +237,7 @@ var attacks = {
     poster: "./resources/bandanabluepierce.png",
     name: "Bandana Blue Pierce",
     info: "First blockable at the end of the last stab. (5 frames)",
-    note:
-      "(partial block only has 4 frames after end of perfect block, instead of the regular 8)",
+    note: "(partial block only has 4 frames after end of perfect block, instead of the regular 8)",
     frames: 5,
     relevant: true,
   },
@@ -256,7 +250,7 @@ var attacks = {
     poster: "./resources/skewer.png",
     name: "Bandana Red Skewer",
     info: "First blockable at the end of the last stab. (5 frames)",
-    frames: 5
+    frames: 5,
   },
   "Belome Attack": {
     type: "block",
@@ -266,8 +260,7 @@ var attacks = {
     video: "./resources/belomeattack.mp4",
     poster: "./resources/belomeattack.png",
     name: "Belome Attack",
-    info:
-      "First blockable when tongue curls first above Belome's snout. (5 frames)",
+    info: "First blockable when tongue curls first above Belome's snout. (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -305,8 +298,7 @@ var attacks = {
     video: "./resources/birdy-grinder.mp4",
     poster: "./resources/birdy-grinder.png",
     name: "Birdy/Bluebird Grinder",
-    info:
-      "Window starts the third frame of the spear recoiling after stabbing you",
+    info: "Window starts the third frame of the spear recoiling after stabbing you",
     note: "",
     frames: 5,
   },
@@ -355,8 +347,7 @@ var attacks = {
     video: "./resources/ShysterJump.mp4",
     poster: "./resources/ShysterJump.png",
     name: "Bodyguard/Shyper/Shyster/Springer Jump",
-    info:
-      "Just after Shyster reaches the character, before his spring is fully compressed",
+    info: "Just after Shyster reaches the character, before his spring is fully compressed",
     note: "",
     frames: 5,
   },
@@ -368,8 +359,7 @@ var attacks = {
     video: "./resources/boomer1.mp4",
     poster: "./resources/boomer1.png",
     name: "Boomer Attack",
-    info:
-      "During the swipe of his sword when you start to see the motion blur (5 frames)",
+    info: "During the swipe of his sword when you start to see the motion blur (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -395,8 +385,7 @@ var attacks = {
     video: "./resources/boomer3.mp4",
     poster: "./resources/boomer3.png",
     name: "Boomer Skewer",
-    info:
-      "When he puts his sword back to his side and begins to retreat (5 frames)",
+    info: "When he puts his sword back to his side and begins to retreat (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -445,8 +434,7 @@ var attacks = {
     video: "./resources/crusher.mp4",
     poster: "./resources/crusher.png",
     name: "Bowser Crusher",
-    info:
-      "Right before all the rocks dissipate, as the rumbling sound effect is ending",
+    info: "Right before all the rocks dissipate, as the rumbling sound effect is ending",
     note: "",
     frames: 4,
   },
@@ -470,8 +458,7 @@ var attacks = {
     video: "./resources/hurlygloves.mp4",
     poster: "./resources/hurlygloves.png",
     name: "Bowser Hurly Gloves",
-    info:
-      "As soon as Mario begins moving forward. Ends 4 frames before contact. (7 frames)",
+    info: "As soon as Mario begins moving forward. Ends 4 frames before contact. (7 frames)",
     note: "",
     frames: 7,
     relevant: true,
@@ -484,8 +471,7 @@ var attacks = {
     video: "./resources/bowser-spiked-link.mp4",
     poster: "./resources/bowser-spiked-link.png",
     name: "Bowser Spiked Link",
-    info:
-      "While the ball is airborne travelling from Bowser's hand to the target",
+    info: "While the ball is airborne travelling from Bowser's hand to the target",
     note: "Bowser begins leaning forward the frame he releases it",
     frames: 7,
   },
@@ -510,8 +496,7 @@ var attacks = {
     video: "./resources/bowser_clone_claw.mp4",
     poster: "./resources/bowser_clone_claw.png",
     name: "Bowser Clone Claw",
-    info:
-      "First blockable frame the instant after the arc of the slash animation",
+    info: "First blockable frame the instant after the arc of the slash animation",
     note: "Ends on frame 69",
     frames: 5,
   },
@@ -535,10 +520,8 @@ var attacks = {
     video: "./resources/bowyerarrow.mp4",
     poster: "./resources/bowyerarrow.png",
     name: "Bowyer Arrow",
-    info:
-      "First blockable when arrow tip aligns with Bowyer's right shoulder. (5 frames)",
-    note:
-      "(Last blockable when arrow tip aligns with Bowyer's stretched index finger)",
+    info: "First blockable when arrow tip aligns with Bowyer's right shoulder. (5 frames)",
+    note: "(Last blockable when arrow tip aligns with Bowyer's stretched index finger)",
     frames: 5,
     relevant: true,
   },
@@ -550,8 +533,7 @@ var attacks = {
     video: "./resources/boxboy-attack.mp4",
     poster: "./resources/boxboy-attack.png",
     name: "Box Boy Attack",
-    info:
-      "After the ghost face splits in two(ish), the final four frames prior to the box shaking, plus the first frame of the box shaking",
+    info: "After the ghost face splits in two(ish), the final four frames prior to the box shaking, plus the first frame of the box shaking",
     note: "",
     frames: 5,
   },
@@ -563,8 +545,7 @@ var attacks = {
     video: "./resources/bundtattack.mp4",
     poster: "./resources/bundtattack.png",
     name: "Bundt Attack",
-    info:
-      "First blockable 3 frames before he makes the 'O' with his mouth. (4 frames)",
+    info: "First blockable 3 frames before he makes the 'O' with his mouth. (4 frames)",
     note: "",
     frames: 4,
     relevant: true,
@@ -603,8 +584,7 @@ var attacks = {
     video: "./resources/bundtorb.mp4",
     poster: "./resources/bundtorb.png",
     name: "Bundt Orb (Right)",
-    info:
-      "The final six frames of the orb on screen are partial block. The five before those are perfect block. (5 frames)",
+    info: "The final six frames of the orb on screen are partial block. The five before those are perfect block. (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -701,8 +681,7 @@ var attacks = {
     video: "./resources/manager.mp4",
     poster: "./resources/manager.png",
     name: "Clerk/Director/Manager Attack",
-    info:
-      "When his hand first stops shaking and starts extending into and past you (5 frames)",
+    info: "When his hand first stops shaking and starts extending into and past you (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -741,8 +720,7 @@ var attacks = {
     video: "./resources/cloaker3.mp4",
     poster: "./resources/cloaker3.png",
     name: "Cloaker Rock",
-    info:
-      "When the rock has disintegrated and the falling bits are only overlapping the lower half of your body (5 frames)",
+    info: "When the rock has disintegrated and the falling bits are only overlapping the lower half of your body (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -779,8 +757,7 @@ var attacks = {
     video: "./resources/corkpedite-attack.mp4",
     poster: "./resources/corkpedite-attack.png",
     name: "Corkpedite Attack",
-    info:
-      "The mouth is at maximum detached for 14 frames; window opens on frame 5",
+    info: "The mouth is at maximum detached for 14 frames; window opens on frame 5",
     note: "",
     frames: 5,
   },
@@ -792,8 +769,7 @@ var attacks = {
     video: "./resources/croco1attack.mp4",
     poster: "./resources/croco1attack.png",
     name: "Croco Attack",
-    info:
-      "First blockable when model returns to standing from charging. (5 frames)",
+    info: "First blockable when model returns to standing from charging. (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -806,10 +782,8 @@ var attacks = {
     video: "./resources/croco2chomp.mp4",
     poster: "./resources/croco2chomp.png",
     name: "Croco Chomp",
-    info:
-      "First blockable on first frame that enemy begins downward arc. (5 frames)",
-    note:
-      "(only 6 partial block frames after the perfect window, instead of 8)",
+    info: "First blockable on first frame that enemy begins downward arc. (5 frames)",
+    note: "(only 6 partial block frames after the perfect window, instead of 8)",
     frames: 5,
     relevant: true,
   },
@@ -857,10 +831,8 @@ var attacks = {
     video: "./resources/culex-attack.mp4",
     poster: "./resources/culex-attack.png",
     name: "Culex Attack",
-    info:
-      "After being attacked, Culex always re-enters the bobbing animation at the bottom. The window begins 3 frames after he begins moving back downwards after the upwards swing",
-    note:
-      "Alternatively, the window begins 23 frames after the prior character comes to rest from their attack",
+    info: "After being attacked, Culex always re-enters the bobbing animation at the bottom. The window begins 3 frames after he begins moving back downwards after the upwards swing",
+    note: "Alternatively, the window begins 23 frames after the prior character comes to rest from their attack",
     frames: 5,
   },
   "Czar Dragon Attack": {
@@ -910,8 +882,7 @@ var attacks = {
     video: "./resources/dodo2.mp4",
     poster: "./resources/dodo2.png",
     name: "Dodo Multistrike",
-    info:
-      "Right before the 4th strike noise, when Dodo's head is poking you after his hat momentarily pops off (5 frames)",
+    info: "Right before the 4th strike noise, when Dodo's head is poking you after his hat momentarily pops off (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -948,8 +919,7 @@ var attacks = {
     video: "./resources/Dry_Bone_Toss.mp4",
     poster: "./resources/Dry_Bone_Toss.png",
     name: "Dry Bones/Vomer Bone Toss",
-    info:
-      "you want to hit block as soon as the bone reaches the top of the arc",
+    info: "you want to hit block as soon as the bone reaches the top of the arc",
     note: "pereft frames are when the bone is Horizontal at the peak",
     frames: 5,
   },
@@ -961,8 +931,7 @@ var attacks = {
     video: "./resources/Dry_Bone_HeadSpin.mp4",
     poster: "./resources/Dry_Bone_HeadSpin.png",
     name: "Dry Bones/Vomer Head Spin",
-    info:
-      "Right near the end of the spinning attack, befor It's head returns to it's body",
+    info: "Right near the end of the spinning attack, befor It's head returns to it's body",
     note: "",
     frames: 5,
   },
@@ -974,8 +943,7 @@ var attacks = {
     video: "./resources/earthlink1.mp4",
     poster: "./resources/earthlink1.png",
     name: "Earthlink Attack",
-    info:
-      "When he is upright in the middle of his lunge after retracting backwards (5 frames)",
+    info: "When he is upright in the middle of his lunge after retracting backwards (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -988,8 +956,7 @@ var attacks = {
     video: "./resources/earthlink2.mp4",
     poster: "./resources/earthlink2.png",
     name: "Earthlink Carni-kiss",
-    info:
-      "When he is upright in the middle of his lunge after retracting backwards (5 frames)",
+    info: "When he is upright in the middle of his lunge after retracting backwards (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -1014,8 +981,7 @@ var attacks = {
     video: "./resources/factorychief-attack.mp4",
     poster: "./resources/factorychief-attack.png",
     name: "Factory Chief Attack",
-    info:
-      "The 2 frames on either side of the blade's visual swoosh first appearing",
+    info: "The 2 frames on either side of the blade's visual swoosh first appearing",
     note: "",
     frames: 5,
   },
@@ -1039,8 +1005,7 @@ var attacks = {
     video: "./resources/fautso-lightball.mp4",
     poster: "./resources/fautso-lightball.png",
     name: "Fautso Orb",
-    info:
-      "Ball fires when chin is fully tucked, window starts first frame of two animation cels later",
+    info: "Ball fires when chin is fully tucked, window starts first frame of two animation cels later",
     note: "",
     frames: 5,
   },
@@ -1052,8 +1017,7 @@ var attacks = {
     video: "./resources/fautso-rockthrow-left.mp4",
     poster: "./resources/fautso-rockthrow-left.png",
     name: "Fautso Rock (Left)",
-    info:
-      "Window starts the frame before the debris crosses the back of the playfield",
+    info: "Window starts the frame before the debris crosses the back of the playfield",
     note: "",
     frames: 5,
   },
@@ -1065,8 +1029,7 @@ var attacks = {
     video: "./resources/fautso-rockthrow-middle.mp4",
     poster: "./resources/fautso-rockthrow-middle.png",
     name: "Fautso Rock (Middle)",
-    info:
-      "Window starts the second frame after the debris has crossed the back edge of the playfield",
+    info: "Window starts the second frame after the debris has crossed the back edge of the playfield",
     note: "",
     frames: 5,
   },
@@ -1078,10 +1041,8 @@ var attacks = {
     video: "./resources/fautso-rockthrow-right.mp4",
     poster: "./resources/fautso-rockthrow-right.png",
     name: "Fautso Rock (Right)",
-    info:
-      "As the rock flies at you, he tucks his chin. As the debris is scattering, he untucks it (2 cels) and then re-tucks it. Window begins the frame before it is re-tucked.",
-    note:
-      "Or, window starts the fourth frame after debris crosses the back of the playfield",
+    info: "As the rock flies at you, he tucks his chin. As the debris is scattering, he untucks it (2 cels) and then re-tucks it. Window begins the frame before it is re-tucked.",
+    note: "Or, window starts the fourth frame after debris crosses the back of the playfield",
     frames: 5,
   },
   "Fink Flower/Snapdragon Attack": {
@@ -1116,8 +1077,7 @@ var attacks = {
     video: "./resources/jawful-attack.mp4",
     poster: "./resources/jawful-attack.png",
     name: "Forkies/Jawful Attack",
-    info:
-      "Window opens the frame that Jawful is reaching as far back as possible",
+    info: "Window opens the frame that Jawful is reaching as far back as possible",
     note: "",
     frames: 5,
   },
@@ -1129,8 +1089,7 @@ var attacks = {
     video: "./resources/frogog1.mp4",
     poster: "./resources/frogog1.png",
     name: "Frogog Attack 1",
-    info:
-      "When the three drops on the left disappear, but before the three on the right disappear",
+    info: "When the three drops on the left disappear, but before the three on the right disappear",
     note: "",
     frames: 5,
   },
@@ -1190,9 +1149,8 @@ var attacks = {
     video: "./resources/genobeam.mp4",
     poster: "./resources/genobeam.png",
     name: "Geno Beam/Geno Blast/Geno Flash",
-    info:
-      "Release Y at any point you see three stars on screen",
-    note: "You must start holding Y before you hear the charge-up sound begin.<br/>You can begin holding Y during the \"Hold Y for power!\" dialog, and press another button or D-pad direction to clear it.",
+    info: "Release Y at any point you see three stars on screen",
+    note: 'You must start holding Y before you hear the charge-up sound begin.<br/>You can begin holding Y during the "Hold Y for power!" dialog, and press another button or D-pad direction to clear it.',
     frames: 25,
   },
   "Geno Boost": {
@@ -1203,8 +1161,7 @@ var attacks = {
     video: "./resources/geno-boost.mp4",
     poster: "./resources/geno-boost.png",
     name: "Geno Boost",
-    info:
-      "Aim for just before the arrows stop spawning, but err on the side of being early",
+    info: "Aim for just before the arrows stop spawning, but err on the side of being early",
     note: "Only has a single boost level; ATK if fail, ATK+DEF if successful",
     frames: 31,
   },
@@ -1216,8 +1173,7 @@ var attacks = {
     video: "./resources/doublepunch.mp4",
     poster: "./resources/doublepunch.png",
     name: "Geno Double Punch",
-    info:
-      "when his arms are extended and the explosions appear at his elbows (7 frames)",
+    info: "when his arms are extended and the explosions appear at his elbows (7 frames)",
     note: "",
     frames: 7,
     relevant: true,
@@ -1230,8 +1186,7 @@ var attacks = {
     video: "./resources/fingershot.mp4",
     poster: "./resources/fingershot.png",
     name: "Geno Finger Shot",
-    info:
-      "Frame before elbow appears, until frame when hand locks into place (7 frames)",
+    info: "Frame before elbow appears, until frame when hand locks into place (7 frames)",
     note: "",
     frames: 7,
     relevant: true,
@@ -1244,8 +1199,7 @@ var attacks = {
     video: "./resources/geno-handcannon.mp4",
     poster: "./resources/geno-handcannon.png",
     name: "Geno Hand Cannon",
-    info:
-      "As his elbow bends, his hand goes beyond 90 degrees and closes slightly prior to the shots; window starts 3 frames after it begins to close",
+    info: "As his elbow bends, his hand goes beyond 90 degrees and closes slightly prior to the shots; window starts 3 frames after it begins to close",
     note: "Window ends on the first frame a bullet is visible on screen",
     frames: 7,
   },
@@ -1281,8 +1235,7 @@ var attacks = {
     video: "./resources/genounarmed.mp4",
     poster: "./resources/genounarmed.png",
     name: "Geno Unarmed",
-    info:
-      "during his forward lunge, after his elbow is fully extended (7 frames)",
+    info: "during his forward lunge, after his elbow is fully extended (7 frames)",
     note: "",
     frames: 7,
     relevant: true,
@@ -1308,8 +1261,7 @@ var attacks = {
     video: "./resources/geno_clone_attack.mp4",
     poster: "./resources/geno_clone_attack.png",
     name: "Geno Clone Attack",
-    info:
-      "First blockable frame when Geno is aligned with target and instant he begins walking towards them",
+    info: "First blockable frame when Geno is aligned with target and instant he begins walking towards them",
     note: "",
     frames: 5,
   },
@@ -1322,8 +1274,7 @@ var attacks = {
     poster: "./resources/Greaper_Attack.png",
     name: "Glum Reaper/Greaper Attack",
     info: "Right before greaper reaches the top of it's swing",
-    note:
-      "There are only 5 still sprites used for the windup of this attack. 26 total frames [4,4,4,6,8]",
+    note: "There are only 5 still sprites used for the windup of this attack. 26 total frames [4,4,4,6,8]",
     frames: 5,
   },
   "Glum Reaper Scythe": {
@@ -1406,8 +1357,7 @@ var attacks = {
     video: "./resources/grateguyattack.mp4",
     poster: "./resources/grateguyattack.png",
     name: "Grate Guy Attack",
-    info:
-      "First blockable two frames before he starts springing up the second time. (5 frames)",
+    info: "First blockable two frames before he starts springing up the second time. (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -1420,8 +1370,7 @@ var attacks = {
     video: "./resources/gunyolk-attack.mp4",
     poster: "./resources/gunyolk-attack.png",
     name: "Gunyolk Attack",
-    info:
-      "After the guns pucker like lips, the bottom hits you followed by the top. Window is the final 2 frames of the lower gun and the first 3 frames of the upper gun",
+    info: "After the guns pucker like lips, the bottom hits you followed by the top. Window is the final 2 frames of the lower gun and the first 3 frames of the upper gun",
     note: "",
     frames: 5,
   },
@@ -1433,8 +1382,7 @@ var attacks = {
     video: "./resources/hammerbrosattack.mp4",
     poster: "./resources/hammerbrosattack.png",
     name: "Hammer Bros. Attack",
-    info:
-      "First blockable on second to last frame of highest hammer position (5 frames)",
+    info: "First blockable on second to last frame of highest hammer position (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -1447,10 +1395,8 @@ var attacks = {
     video: "./resources/hammertime.mp4",
     poster: "./resources/hammertime.png",
     name: "Hammer Bros. Hammer Time",
-    info:
-      "First blockable when last hammer begins pointing straight down (5 frames)",
-    note:
-      "Hammer placement random, look for orientation of hammer with only one on screen",
+    info: "First blockable when last hammer begins pointing straight down (5 frames)",
+    note: "Hammer placement random, look for orientation of hammer with only one on screen",
     frames: 5,
     relevant: true,
   },
@@ -1462,8 +1408,7 @@ var attacks = {
     video: "./resources/heavytroopa-attack.mp4",
     poster: "./resources/heavytroopa-attack.png",
     name: "Heavy Troopa/Tub-O-Troopa Attack",
-    info:
-      "Window begins on 7th frame of Troopa's shadow being visible on top of the defending unit",
+    info: "Window begins on 7th frame of Troopa's shadow being visible on top of the defending unit",
     note: "",
     frames: 5,
   },
@@ -1512,8 +1457,7 @@ var attacks = {
     poster: "./resources/hobgoblinphysical.png",
     name: "Hobgoblin/Straw Head Attack",
     info: "When swaying, just before it fully extends to the left",
-    note:
-      "There's a few 'steps' to when it swings to the left. When the skull pops a little further left, it's too late",
+    note: "There's a few 'steps' to when it swings to the left. When the skull pops a little further left, it's too late",
     frames: 5,
   },
   "Jagger/Terrapin Attack": {
@@ -1669,8 +1613,7 @@ var attacks = {
     poster: "./resources/johnnyattack.png",
     name: "Johnny Attack",
     info: 240,
-    note:
-      "(The very last frame before the trident starts extending is a partial block)",
+    note: "(The very last frame before the trident starts extending is a partial block)",
     frames: 4,
     relevant: true,
   },
@@ -1698,6 +1641,19 @@ var attacks = {
     note: "",
     frames: 5,
   },
+  "King Calamari Attack": {
+    type: "block",
+    perfect: 36,
+    partialStart: 28,
+    partialEnd: 49,
+    video: "./resources/kingcalamariattack.mp4",
+    poster: "./resources/kingcalamariattack.png",
+    name: "King Calamari Attack",
+    info: "First blockable when its eyes look down and mouth tentacles are all the way back. (5 frames)",
+    note: "",
+    frames: 5,
+  },
+
   "Knife Guy Attack": {
     type: "block",
     perfect: 91,
@@ -1707,8 +1663,7 @@ var attacks = {
     poster: "./resources/knifeguyattack.png",
     name: "Knife Guy Attack",
     info: "First blockable the moment he stops juggling (5 frames)",
-    note:
-      "(note that this attack is first perfect blockable a full 10 frames before the stab happens)",
+    note: "(note that this attack is first perfect blockable a full 10 frames before the stab happens)",
     frames: 5,
     relevant: true,
   },
@@ -1867,8 +1822,7 @@ var attacks = {
     poster: "./resources/hprain.png",
     name: "Mallow HP Rain",
     info: "When the cloud fully disappears",
-    note:
-      "yes, this is a 58 frame half-time window followed by a 2 frame perfect window followed by no timing window, it is just as rude as it sounds",
+    note: "yes, this is a 58 frame half-time window followed by a 2 frame perfect window followed by no timing window, it is just as rude as it sounds",
     frames: 2,
   },
   "Mallow Psychopath": {
@@ -1903,8 +1857,7 @@ var attacks = {
     video: "./resources/shocker.mp4",
     poster: "./resources/shocker.png",
     name: "Mallow/Toadstool Shocker",
-    info:
-      "The lightning sound has 2 pitches, press the button halfway through the duration of the second/lower pitch (6 frames)",
+    info: "The lightning sound has 2 pitches, press the button halfway through the duration of the second/lower pitch (6 frames)",
     note: "There is no visual cue for the perfect timing of this Attack",
     frames: 6,
     relevant: true,
@@ -1929,8 +1882,7 @@ var attacks = {
     video: "./resources/mallow-stickyglove.mp4",
     poster: "./resources/mallow-stickyglove.png",
     name: "Mallow Sticky Glove",
-    info:
-      "2 frames before until 4 frames after Mallow's fists touch each other",
+    info: "2 frames before until 4 frames after Mallow's fists touch each other",
     note: "",
     frames: 7,
   },
@@ -1943,8 +1895,7 @@ var attacks = {
     poster: "./resources/thunderbolt.png",
     name: "Mallow Thunderbolt",
     info: "When the sound effect has just ended (31 frames)",
-    note:
-      "The audio cue works best for this, but you can press the button when you see all the bolts scattering around",
+    note: "The audio cue works best for this, but you can press the button when you see all the bolts scattering around",
     frames: 31,
     relevant: true,
   },
@@ -1993,8 +1944,7 @@ var attacks = {
     video: "./resources/mario_hammer.mp4",
     poster: "./resources/mario_hammer.png",
     name: "Mario Hammer",
-    info:
-      "Perfect hit window starts at the height of Mario's jump, with the hammer behind him",
+    info: "Perfect hit window starts at the height of Mario's jump, with the hammer behind him",
     note: "",
     frames: 7,
   },
@@ -2006,8 +1956,7 @@ var attacks = {
     video: "./resources/mariojump.mp4",
     poster: "./resources/mariojump.png",
     name: "Mario Jump",
-    info:
-      "First perfect frame is the last frame where 2 marios are still visible (5 frames)",
+    info: "First perfect frame is the last frame where 2 marios are still visible (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -2044,8 +1993,7 @@ var attacks = {
     video: "./resources/megaglove.mp4",
     poster: "./resources/megaglove.png",
     name: "Mario Mega Glove",
-    info:
-      "Starts frame before glove begins moving forward, ends one frame before glove reaches final position (7 frames)",
+    info: "Starts frame before glove begins moving forward, ends one frame before glove reaches final position (7 frames)",
     note: "",
     frames: 7,
     relevant: true,
@@ -2095,8 +2043,7 @@ var attacks = {
     video: "./resources/troopashell.mp4",
     poster: "./resources/troopashell.png",
     name: "Mario Troopa Shell",
-    info:
-      "When the shell is falling around halfway down until it hits Mario's foot",
+    info: "When the shell is falling around halfway down until it hits Mario's foot",
     note: "Has a very small partial timed buffer",
     frames: 7,
     relevant: true,
@@ -2170,8 +2117,7 @@ var attacks = {
     video: "./resources/megasmilax.mp4",
     poster: "./resources/megasmilax.png",
     name: "Megasmilax Attack",
-    info:
-      "After Megasmilax's mouth is fully opened, before it's fully closed (5 frames)",
+    info: "After Megasmilax's mouth is fully opened, before it's fully closed (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -2185,8 +2131,7 @@ var attacks = {
     poster: "./resources/bigbobomb.png",
     name: "Mezzo Bomb Explosion",
     info: "As soon as you see the circle of the explosion (5 frames)",
-    note:
-      "(only 4 partial block frames after the perfect window, instead of 8)",
+    note: "(only 4 partial block frames after the perfect window, instead of 8)",
     frames: 5,
     relevant: true,
   },
@@ -2283,8 +2228,7 @@ var attacks = {
     video: "./resources/ninja-attack-warpstab.mp4",
     poster: "./resources/ninja-attack-warpstab.png",
     name: "Ninja Warp Stab",
-    info:
-      "The 2 frames on either side of the blade's visual swoosh first appearing",
+    info: "The 2 frames on either side of the blade's visual swoosh first appearing",
     note: "",
     frames: 5,
   },
@@ -2308,8 +2252,7 @@ var attacks = {
     video: "./resources/spikey1.mp4",
     poster: "./resources/spikey1.png",
     name: "Oerlikon/Spikester/Spikey Attack 1",
-    info:
-      "From when Spikey is curled, and on the ground, for one full rotation",
+    info: "From when Spikey is curled, and on the ground, for one full rotation",
     note: "",
     frames: 5,
   },
@@ -2333,8 +2276,7 @@ var attacks = {
     video: "./resources/orbison-attack.mp4",
     poster: "./resources/orbison-attack.png",
     name: "Orbison Attack",
-    info:
-      "Starts the frame after it first turns perpendicular to the defender during the second rotation",
+    info: "Starts the frame after it first turns perpendicular to the defender during the second rotation",
     note: "ie, the first rotation at the faster speed",
     frames: 5,
   },
@@ -2347,8 +2289,7 @@ var attacks = {
     poster: "./resources/pandoriteattack.png",
     name: "Pandorite Attack",
     info: "First blockable 6 frames before rehiding (6 frames)",
-    note:
-      "Blockable on the last part of the animation when his right arm stays still",
+    note: "Blockable on the last part of the animation when his right arm stays still",
     frames: 6,
     relevant: true,
   },
@@ -2360,8 +2301,7 @@ var attacks = {
     video: "./resources/pinwheel-attack.mp4",
     poster: "./resources/pinwheel-attack.png",
     name: "Pinwheel Attack",
-    info:
-      "Starts the first frame the fourth time it flashes red / the 15th frame after it comes to rest in front of the defender",
+    info: "Starts the first frame the fourth time it flashes red / the 15th frame after it comes to rest in front of the defender",
     note: "Good luck!",
     frames: 5,
   },
@@ -2430,13 +2370,13 @@ var attacks = {
   },
   "Puppox Attack 2": {
     type: "block",
-    perfect: 46,
-    partialStart: 38,
-    partialEnd: 58,
-    video: "./resources/puppox-attack.mp4",
-    poster: "./resources/puppox-attack.png",
+    perfect: 62,
+    partialStart: 54,
+    partialEnd: 75,
+    video: "./resources/puppoxattack2.mp4",
+    poster: "./resources/puppoxattack2.png",
     name: "Puppox Attack 2",
-    info: "Starts the first frame the hammer head is visible at Puppox's side",
+    info: "First blockable at the peak of the hammer's arc. (5 frames)",
     note: "",
     frames: 5,
   },
@@ -2460,8 +2400,7 @@ var attacks = {
     video: "./resources/raspberry1.mp4",
     poster: "./resources/raspberry1.png",
     name: "Raspberry Attack",
-    info:
-      "When the Raspberry returns to neutral position after moving backwards, before moving forwards (5 frames)",
+    info: "When the Raspberry returns to neutral position after moving backwards, before moving forwards (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -2525,10 +2464,8 @@ var attacks = {
     video: "./resources/Reacher_Reach.mp4",
     poster: "./resources/Reacher_Reach.png",
     name: "Reacher Reach",
-    info:
-      "Hit block when Reacher is pulling it's hands back about halfway from it's body",
-    note:
-      "The reach animation is, close to body, middle, far, middle, close back to resting.",
+    info: "Hit block when Reacher is pulling it's hands back about halfway from it's body",
+    note: "The reach animation is, close to body, middle, far, middle, close back to resting.",
     frames: 5,
   },
   "Reacher Reaching Bone Toss": {
@@ -2540,8 +2477,7 @@ var attacks = {
     poster: "./resources/Reacher_ReachingBone_Toss.png",
     name: "Reacher Reaching Bone Toss",
     info: "Timing is right before or on the top most arc of the bone.",
-    note:
-      "Arms will reach out and pull back, then immediately launch a bone in an arc",
+    note: "Arms will reach out and pull back, then immediately launch a bone in an arc",
     frames: 5,
   },
   "Remo Con Body Slam": {
@@ -2660,8 +2596,7 @@ var attacks = {
     video: "./resources/smilax.mp4",
     poster: "./resources/smilax.png",
     name: "Smilax Attack",
-    info:
-      "As soon as his mouth is fully open during the second bite animation (5 frames)",
+    info: "As soon as his mouth is fully open during the second bite animation (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -2687,10 +2622,8 @@ var attacks = {
     video: "./resources/smithy2-fingergun-left.mp4",
     poster: "./resources/smithy2-fingergun-left.png",
     name: "Smithy 2 Finger Gun (Left)",
-    info:
-      "Starts the first frame that only 2 of the fired bullets are still on the screen",
-    note:
-      "The bullet you're looking for to disappear is the second one that bounces over his left shoulder",
+    info: "Starts the first frame that only 2 of the fired bullets are still on the screen",
+    note: "The bullet you're looking for to disappear is the second one that bounces over his left shoulder",
     frames: 5,
     relevant: true,
   },
@@ -2702,8 +2635,7 @@ var attacks = {
     video: "./resources/smithy2shot.mp4",
     poster: "./resources/smithy2shot.png",
     name: "Smithy 2 Finger Gun (Middle)",
-    info:
-      "First blockable 2 frames after bottom finger does second explosion (5 frames)",
+    info: "First blockable 2 frames after bottom finger does second explosion (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -2716,10 +2648,8 @@ var attacks = {
     video: "./resources/smithy2-fingergun-right.mp4",
     poster: "./resources/smithy2-fingergun-right.png",
     name: "Smithy 2 Finger Gun (Right)",
-    info:
-      "Starts the first frame that only 2 of the fired bullets are still on the screen",
-    note:
-      "The bullet you're looking for to disappear is the second one that bounces over his left shoulder",
+    info: "Starts the first frame that only 2 of the fired bullets are still on the screen",
+    note: "The bullet you're looking for to disappear is the second one that bounces over his left shoulder",
     frames: 5,
     relevant: true,
   },
@@ -2744,8 +2674,7 @@ var attacks = {
     video: "./resources/starslap.mp4",
     poster: "./resources/starslap.png",
     name: "Starslap/Zeostar Attack",
-    info:
-      "During the last slap animation before the Starslap returns to its position",
+    info: "During the last slap animation before the Starslap returns to its position",
     note: "",
     frames: 5,
   },
@@ -2757,8 +2686,7 @@ var attacks = {
     video: "./resources/stumpet-backfire.mp4",
     poster: "./resources/stumpet-backfire.png",
     name: "Stumpet Backfire",
-    info:
-      "The explosion animation is random. Window opens 198 frames/3.3 seconds after the Backfire namebar disappears",
+    info: "The explosion animation is random. Window opens 198 frames/3.3 seconds after the Backfire namebar disappears",
     note: "",
     frames: 5,
   },
@@ -2770,8 +2698,7 @@ var attacks = {
     video: "./resources/stumpet-vavavoom.mp4",
     poster: "./resources/stumpet-vavavoom.png",
     name: "Stumpet Va Va Voom",
-    info:
-      "The explosion animation is random. Window opens 197 frames/3.283 seconds after the Va Va Voom namebar disappears",
+    info: "The explosion animation is random. Window opens 197 frames/3.283 seconds after the Va Va Voom namebar disappears",
     note: "",
     frames: 5,
   },
@@ -2845,8 +2772,7 @@ var attacks = {
     video: "./resources/peach-grouphug.mp4",
     poster: "./resources/peach-grouphug.png",
     name: "Toadstool Group Hug",
-    info:
-      "Only has a single boost level; just aim anywhere in the back half of the animation",
+    info: "Only has a single boost level; just aim anywhere in the back half of the animation",
     note: "",
     frames: 31,
   },
@@ -2908,8 +2834,7 @@ var attacks = {
     poster: "./resources/PeachUnarmed.png",
     name: "Toadstool Unarmed",
     info: "As her hand starts to slap",
-    note:
-      "Long half-hit frame window after perfect window (20 frames) and before window (10 frames)",
+    note: "Long half-hit frame window after perfect window (20 frames) and before window (10 frames)",
     frames: 7,
   },
   "Toadstool War Fan": {
@@ -2921,8 +2846,7 @@ var attacks = {
     poster: "./resources/warfan.png",
     name: "Toadstool War Fan",
     info: "Right after the fan is first raised (7 frames)",
-    note:
-      "Like Super Slap, the perfect timed window is very early. Unlike all other characters' weapons, there is only a 2 frame half-time buffer before the perfect time window instead of 8 frames",
+    note: "Like Super Slap, the perfect timed window is very early. Unlike all other characters' weapons, there is only a 2 frame half-time buffer before the perfect time window instead of 8 frames",
     frames: 7,
   },
   "Toadstool 2 Attack": {
@@ -2945,10 +2869,8 @@ var attacks = {
     video: "./resources/chefattack.mp4",
     poster: "./resources/chefattack.png",
     name: "Torte Attack",
-    info:
-      "First blockable when right hand is up for the third time. (5 frames)",
-    note:
-      "(only 6 partial block frames after the perfect window, instead of 8)",
+    info: "First blockable when right hand is up for the third time. (5 frames)",
+    note: "(only 6 partial block frames after the perfect window, instead of 8)",
     frames: 5,
     relevant: true,
   },
@@ -2960,8 +2882,7 @@ var attacks = {
     video: "./resources/valentina.mp4",
     poster: "./resources/valentina.png",
     name: "Valentina Attack",
-    info:
-      "When her arm is being raised between 45 and 90 degrees pointing at you (5 frames)",
+    info: "When her arm is being raised between 45 and 90 degrees pointing at you (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
@@ -3023,8 +2944,7 @@ var attacks = {
     video: "./resources/yarid3.mp4",
     poster: "./resources/yarid3.png",
     name: "Yaridovich Pierce",
-    info:
-      "When he has already started retreating, partway through the sound effect (5 frames)",
+    info: "When he has already started retreating, partway through the sound effect (5 frames)",
     note: "",
     frames: 5,
   },
@@ -3036,10 +2956,9 @@ var attacks = {
     video: "./resources/zombone.mp4",
     poster: "./resources/zombone.png",
     name: "Zombone Attack",
-    info:
-      "While his neck is fully arched upright, right before hitting you (5 frames)",
+    info: "While his neck is fully arched upright, right before hitting you (5 frames)",
     note: "",
     frames: 5,
     relevant: true,
-  }
+  },
 };

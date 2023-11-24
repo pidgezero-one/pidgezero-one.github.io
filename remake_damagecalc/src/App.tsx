@@ -129,7 +129,7 @@ const App: React.FC = () => {
       ? terrCount
       : selectedCharacter.activeAttack === AttackName.POISON_GAS
       ? pgCount
-      : selectedCharacter.activeAttack === AttackName.BOWSER_CRUSH
+      : selectedCharacter.activeAttack === AttackName.MECHAKOOPA_STOMP
       ? bcCount
       : selectedCharacter.activeAttack === AttackName.PSYCH_BOMB
       ? pbCount
@@ -335,7 +335,7 @@ const App: React.FC = () => {
       setTerrCount(value);
     } else if (selectedCharacter.activeAttack === AttackName.POISON_GAS) {
       setPGCount(value);
-    } else if (selectedCharacter.activeAttack === AttackName.BOWSER_CRUSH) {
+    } else if (selectedCharacter.activeAttack === AttackName.MECHAKOOPA_STOMP) {
       setBCCount(value);
     } else if (selectedCharacter.activeAttack === AttackName.PSYCH_BOMB) {
       setPBCount(value);
@@ -1322,5 +1322,6 @@ export default App;
 // TODO: Toad assist
 // TODO: Japanese names for attacks and weapons
 // TODO: What happens when enemy with no attack selected (torte)?
+// TODO: Relationship between tripler barrier and geno chain
 // TODO: Bundt mag attack goes up by 5 for every candle. OG bundt?
 // 0x81c, whatever encounter that is. candles * 5 + matk

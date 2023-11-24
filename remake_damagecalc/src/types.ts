@@ -247,7 +247,7 @@ export enum AttackName {
   TERRORIZE = "Terrorize (きょうふのしょうげき)",
   POISON_GAS = "Poison Gas (どくガスもくもく)",
   CRUSHER = "Crusher (つきでろボボーン)",
-  BOWSER_CRUSH = "Bowser Crush (メカクッパプレス)",
+  MECHAKOOPA_STOMP = "Mechakoopa Stomp (メカクッパプレス)",
   PSYCH_BOMB = "Psych Bomb (ヒステリックボム)",
   STAR_GUST = "Star Gust (ほしのあめ)",
   STAR_RIDERS = "Star Riders (スターライダーズ)",

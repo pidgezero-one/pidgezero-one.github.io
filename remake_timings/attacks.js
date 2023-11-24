@@ -385,6 +385,18 @@ var attacks = {
     note: "",
     frames: 6,
   },
+  "Birdo Single Egg Shot": {
+    type: "block",
+    perfect: "00:00:00.683",
+    partialStart: "00:00:00.616",
+    partialEnd: "00:00:00.983",
+    video: "./resources/birdo-single-egg-shot.mp4",
+    poster: "./resources/birdo-single-egg-shot.png",
+    name: "Birdo Single Egg Shot",
+    info: "When the egg is about to hit you",
+    note: "",
+    frames: 5,
+  },
   "Birdy/Bluebird Attack": {
     type: "block",
     perfect: "00:00:00.766",
