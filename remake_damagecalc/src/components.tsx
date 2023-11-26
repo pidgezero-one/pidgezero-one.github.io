@@ -2,7 +2,6 @@ import React, { ReactNode, useEffect, useState } from "react";
 import {
   AccessoryName,
   ArmorName,
-  AttackBoostModifier,
   AttackName,
   Character,
   HitType,
@@ -64,58 +63,36 @@ export const CharacterForm: React.FC<CharacterFormContainerProps> = ({
   mode,
   children = undefined,
 }) => {
-  /*const [selectedLevel, setSelectedLevel] = useState<number>(
-    character.minLevel
-  );
-  const [selectedAttackBoost, setSelectedAttackBoostType] =
-    useState<AttackBoostModifier>(character.activeAttackBoost);
-  const [selectedWeapon, setSelectedWeapon] = useState<WeaponName>(
-    character.activeWeapon
-  );
-  const [selectedArmor, setSelectedArmor] = useState<ArmorName>(
-    character.activeArmor
-  );
-  const [selectedAccessory, setSelectedAccessory] = useState<AccessoryName>(
-    character.activeAccessory
-  );
-  const [selectedAllyAttack, setSelectedAllyAttack] = useState<AttackName>(
-    character.activeAttack
-  );*/
-
   const [char, setChar] = useState<Character>(character);
   useEffect(() => {
     setChar(character);
   }, [character]);
 
   const handleWeaponChange = (value: WeaponName) => {
-    /*character.activeWeapon = value;
-    setSelectedWeapon(value);*/
     setChar({ ...char, activeWeapon: value });
   };
 
   const handleArmorChange = (value: ArmorName) => {
-    /*character.activeArmor = value;
-    setSelectedArmor(value);*/
     setChar({ ...char, activeArmor: value });
   };
 
   const handleAccessoryChange = (value: AccessoryName) => {
-    /*character.activeAccessory = value;
-    setSelectedAccessory(value);*/
     setChar({ ...char, activeAccessory: value });
   };
 
   const handleAllyAttackChange = (value: AttackName) => {
-    /*character.activeAttack = value;
-    setSelectedAllyAttack(value);*/
     setChar({ ...char, activeAttack: value });
     updateAttack(value);
   };
 
-  const handleAttackBoostChange = (value: AttackBoostModifier) => {
-    /*character.activeAttackBoost = value;
-    setSelectedAttackBoostType(value);*/
-    setChar({ ...char, activeAttackBoost: value });
+  const handleAttackBoostChange = (event: any) => {
+    setChar({ ...char, hasAttackBoost: !char.hasAttackBoost });
+  };
+  const handleDefenseBoostChange = (event: any) => {
+    setChar({ ...char, hasDefenseBoost: !char.hasDefenseBoost });
+  };
+  const handleFearChange = (event: any) => {
+    setChar({ ...char, isFeared: !char.isFeared });
   };
 
   const handleLevelChange = (value: number) => {
@@ -138,7 +115,7 @@ export const CharacterForm: React.FC<CharacterFormContainerProps> = ({
   return (
     <>
       <TableRow>
-        <FormContainer label="Level">
+        <FormContainer label="Level:">
           <select
             onChange={(e) => handleLevelChange(Number(e.target.value))}
             id="selectLevel"
@@ -154,7 +131,7 @@ export const CharacterForm: React.FC<CharacterFormContainerProps> = ({
         </FormContainer>
       </TableRow>
       <TableRow>
-        <FormContainer label="Weapon">
+        <FormContainer label="Weapon:">
           <select
             onChange={(e) => handleWeaponChange(e.target.value as WeaponName)}
             value={char.activeWeapon || WeaponName.UNARMED}
@@ -166,7 +143,7 @@ export const CharacterForm: React.FC<CharacterFormContainerProps> = ({
         </FormContainer>
       </TableRow>
       <TableRow>
-        <FormContainer label="Armor">
+        <FormContainer label="Armor:">
           <select
             onChange={(e) => handleArmorChange(e.target.value as ArmorName)}
             value={char.activeArmor || ArmorName.NONE}
@@ -178,7 +155,7 @@ export const CharacterForm: React.FC<CharacterFormContainerProps> = ({
         </FormContainer>
       </TableRow>
       <TableRow>
-        <FormContainer label="Accessory">
+        <FormContainer label="Accessory:">
           <select
             onChange={(e) =>
               handleAccessoryChange(e.target.value as AccessoryName)
@@ -194,7 +171,7 @@ export const CharacterForm: React.FC<CharacterFormContainerProps> = ({
       {mode === HitType.HIT && (
         <>
           <TableRow>
-            <FormContainer label="Attack">
+            <FormContainer label="Attack:">
               <select
                 onChange={(e) =>
                   handleAllyAttackChange(e.target.value as AttackName)
@@ -212,61 +189,39 @@ export const CharacterForm: React.FC<CharacterFormContainerProps> = ({
               </select>
             </FormContainer>
           </TableRow>
-          <TableRow>
-            <FormContainer label="Boost modifier">
-              <label className="verticalRadio" htmlFor="attackBoostBoosted">
+          {mode === HitType.HIT && (
+            <TableRow>
+              <FormContainer label="Attack boost:">
                 <input
-                  type="radio"
-                  name="attackBoost"
-                  value={AttackBoostModifier.BOOSTED}
-                  checked={
-                    char.activeAttackBoost === AttackBoostModifier.BOOSTED
-                  }
-                  onChange={(e) =>
-                    handleAttackBoostChange(
-                      e.target.value as AttackBoostModifier
-                    )
-                  }
-                  id="attackBoostBoosted"
+                  type="checkbox"
+                  checked={char.hasAttackBoost}
+                  onChange={handleAttackBoostChange}
                 />
-                Player atk boosted (x1.5)
-              </label>
-              <label className="verticalRadio" htmlFor="attackBoostFeared">
-                <input
-                  type="radio"
-                  name="attackBoost"
-                  value={AttackBoostModifier.FEARED}
-                  checked={
-                    char.activeAttackBoost === AttackBoostModifier.FEARED
-                  }
-                  onChange={(e) =>
-                    handleAttackBoostChange(
-                      e.target.value as AttackBoostModifier
-                    )
-                  }
-                  id="attackBoostFeared"
-                />
-                Player feared (x0.5)
-              </label>
-              <label className="verticalRadio" htmlFor="attackBoostNone">
-                <input
-                  type="radio"
-                  name="attackBoost"
-                  value={AttackBoostModifier.NONE}
-                  checked={char.activeAttackBoost === AttackBoostModifier.NONE}
-                  onChange={(e) =>
-                    handleAttackBoostChange(
-                      e.target.value as AttackBoostModifier
-                    )
-                  }
-                  id="attackBoostNone"
-                />
-                None (x1)
-              </label>
-            </FormContainer>
-          </TableRow>
+              </FormContainer>
+            </TableRow>
+          )}
         </>
       )}
+      {mode === HitType.BLOCK && (
+        <TableRow>
+          <FormContainer label="Defense boost:">
+            <input
+              type="checkbox"
+              checked={char.hasDefenseBoost}
+              onChange={handleDefenseBoostChange}
+            />
+          </FormContainer>
+        </TableRow>
+      )}
+      <TableRow>
+        <FormContainer label="Feared:">
+          <input
+            type="checkbox"
+            checked={char.isFeared}
+            onChange={handleFearChange}
+          />
+        </FormContainer>
+      </TableRow>
       {/* this is where timing counters, etc will go */}
       {children}
       {!!char.statbonuses &&

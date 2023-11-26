@@ -1,3 +1,11 @@
+export enum Party {
+  MARIO = "mario",
+  MALLOW = "mallow",
+  GENO = "geno",
+  BOWSER = "bowser",
+  PEACH = "peach",
+}
+
 export enum LevelupBonus {
   ATTACK = 0,
   HP = 1,
@@ -14,16 +22,11 @@ export enum HitType {
   BLOCK = "1",
 }
 
-export enum AttackBoostModifier {
-  BOOSTED = "1.5",
-  FEARED = "0.5",
-  NONE = "1",
-}
-
-export enum DefenseBoostModifier {
-  BOOSTED = "2",
-  FEARED = "2/3",
-  NONE = "1",
+export enum ChainLevel {
+  ZERO = "0",
+  TWO = "2",
+  THREE = "3",
+  FIVE = "5",
 }
 
 export enum AttackTimingModifier {
@@ -55,6 +58,7 @@ export enum AttackType {
   PHYSICAL = 0,
   SPELL = 1,
   TRIPLE = 2,
+  ITEM = 3,
 }
 
 export enum TimingType {
@@ -81,6 +85,7 @@ export enum SpeedBuff {
 export enum MallowBuff {
   NO_CHAIN = "1",
   TWO_CHAIN = "1.1",
+  SSS_BUFF = "1.12",
   THREE_CHAIN = "1.2",
   FIVE_CHAIN = "1.25",
 }
@@ -104,6 +109,8 @@ export interface Attack {
   minLevel: number;
   element: AttackElement;
   timingType: TimingType;
+  hosei: number;
+  per_hit: number;
   cap?: number;
   tiers?: string[];
   defaultTier?: string;
@@ -157,12 +164,13 @@ export enum EnemyAttackName {
   INK_BLAST = "Ink Blast",
   JINXED = "Jinxed",
   LAST_SHOT = "Last Shot!",
-  LIGHT_BEAM = "Light Beam",
+  LIGHT_BUBBLE = "Light Bubble",
   LIGHTNING_ORB = "Lightning Orb",
   LOCO_EXPRESS = "Loco Express",
   LOCO_EXPRESS_023 = "Loco Express 023",
   MAGNUM = "Magnum",
   MEGA_RECOVER = "Mega Recover",
+  METEOR = "Meteor",
   METEOR_BLAST = "Meteor Blast",
   METEOR_SWARM = "Meteor Swarm",
   MIGRAINE = "Migraine",
@@ -176,7 +184,7 @@ export enum EnemyAttackName {
   QUICKSILVER = "Quicksilver",
   RECOVER = "Recover",
   SAND_STORM = "Sand Storm",
-  SCYTHE = "Scythe",
+  REAPER_SICKLE = "Reaper Scicke",
   SHAKER = "Shaker",
   SILVER_BULLET = "Silver Bullet",
   SKEWER = "Skewer",
@@ -254,6 +262,12 @@ export enum AttackName {
   CLOWN_CAR_BARRAGE = "Clown Car Barrage (ビリひやファイアビッグボム)",
   SHOOTING_STAR_SHOT = "Shooting Star Shot (シューティングスターショット)",
   STARRY_SHELL_SPIKE = "Starry Shell Spike (ムテキこうらスパイク)",
+  BAD_MUSHROOM = "Bad Mushroom",
+  FRIGHT_BOMB = "Fright Bomb",
+  STAR_EGG = "Star Egg",
+  FIRE_BOMB = "Fire Bomb",
+  ICE_BOMB = "Ice Bomb",
+  ROCK_CANDY = "Rock Candy"
 }
 
 export enum WeaponName {
@@ -385,7 +399,7 @@ export interface Level {
 }
 
 export interface Character {
-  id: string;
+  id: Party;
   name: string;
   levelBonuses: Level[];
   statbonuses: LevelupBonus[];
@@ -399,7 +413,9 @@ export interface Character {
   activeArmor: ArmorName;
   activeAccessory: AccessoryName;
   activeAttack: AttackName;
-  activeAttackBoost: AttackBoostModifier;
+  hasAttackBoost: boolean;
+  hasDefenseBoost: boolean;
+  isFeared: boolean;
   speed: number;
 }
 
@@ -434,7 +450,7 @@ export enum EnemyNames {
   BIRDO = "Birdo",
   BIRDY = "Birdy",
   BLASTER = "Blaster",
-  BLOOBER = "Bloober",
+  BLOOPER = "Blooper",
   BLUEBIRD = "Bluebird",
   BOB_OMB = "Bob-omb",
   BOB_OMB_STRONG = "Bob-omb (Strong)",
@@ -452,7 +468,12 @@ export enum EnemyNames {
   BOWYER = "Bowyer",
   BOWYER_MACHINE_MADE = "Bowyer (Machine Made)",
   BUNDT = "Bundt",
-  BUNDT_EXTRA_FANCY = "Bundt (Extra-Fancy)",
+  BUNDT_EXTRA_FANCY = "Bundt (Extra-Fancy, 0 candles)",
+  BUNDT_1 = "Bundt (Extra-Fancy, 1 candle)",
+  BUNDT_2 = "Bundt (Extra-Fancy, 2 candles)",
+  BUNDT_3 = "Bundt (Extra-Fancy, 3 candles)",
+  BUNDT_4 = "Bundt (Extra-Fancy, 4 candles)",
+  BUNDT_5 = "Bundt (Extra-Fancy, 5 candles)",
   BUZZER = "Buzzer",
   CARROBOSCIS = "Carroboscis",
   CHAIN_CHOMP = "Chain Chomp",
@@ -609,8 +630,8 @@ export enum EnemyNames {
   SNIFSTER = "Snifster",
   SNIFSTER_STRONG = "Snifster (Strong)",
   SPEARDOVICH = "Speardovich",
+  SPEARDOVICH_DUPLICATE = "Speardovich (Duplicate)",
   SPEARDOVICH_MACHINE_MADE = "Speardovich (Machine Made)",
-  SPEARDOVICH_MIRAGE = "Speardovich (Mirage)",
   SPIKESTER = "Spikester",
   SPIKEY = "Spikey",
   SPINTHRA = "Spinthra",

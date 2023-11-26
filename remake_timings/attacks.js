@@ -1502,14 +1502,14 @@ var attacks = {
     note: "",
     frames: 5,
   },
-  "Glum Reaper Scythe": {
+  "Glum Reaper Sickle": {
     type: "block",
     perfect: "00:00:00.916",
     partialStart: "00:00:00.850",
     partialEnd: "00:00:01.233",
     video: "./resources/glum-reaper-scythe.mp4",
     poster: "./resources/glum-reaper-scythe.png",
-    name: "Glum Reaper Scythe",
+    name: "Glum Reaper Sickle",
     info: "Just before the scythe connects",
     note: "",
     frames: 5,

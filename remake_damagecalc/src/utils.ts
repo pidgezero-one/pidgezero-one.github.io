@@ -137,12 +137,55 @@ export const getEffectiveStats = (c: Character): LevelStats => {
 
 export const getEnemyStats = (
   enemy: Enemy,
-  breezy: boolean = false
-): LevelStats => ({
-  attack: Math.round(enemy.attack * (breezy ? 0.9 : 1)),
-  defense: Math.round(enemy.defense * (breezy ? 0.9 : 1)),
-  magicAttack: Math.round(enemy.magicAttack * (breezy ? 0.9 : 1)),
-  magicDefense: Math.round(enemy.magicDefense * (breezy ? 0.9 : 1)),
-  speed: enemy.speed,
-  hp: Math.round(enemy.hp * (breezy ? 0.9 : 1)),
-});
+  breezy: boolean = false,
+  special: boolean = false
+): LevelStats => {
+  let atkMult = 1;
+  let defMult = 1;
+  let matkMult = 1;
+  let mdefMult = 1;
+  const breezyMult = breezy ? 0.9 : 1;
+  if (special) {
+    atkMult = 1.2;
+    defMult = 1.2;
+    matkMult = 1.2;
+    mdefMult = 1.2;
+    if (
+      enemy.magicDefense >= enemy.attack &&
+      enemy.magicDefense >= enemy.defense &&
+      enemy.magicDefense >= enemy.magicAttack
+    ) {
+      mdefMult = 1.5;
+    } else if (
+      enemy.magicAttack >= enemy.attack &&
+      enemy.magicAttack >= enemy.defense &&
+      enemy.magicAttack >= enemy.magicDefense
+    ) {
+      matkMult = 1.5;
+    } else if (
+      enemy.defense >= enemy.attack &&
+      enemy.defense >= enemy.magicAttack &&
+      enemy.defense >= enemy.magicDefense
+    ) {
+      defMult = 1.5;
+    } else if (
+      enemy.attack >= enemy.defense &&
+      enemy.attack >= enemy.magicAttack &&
+      enemy.attack >= enemy.magicDefense
+    ) {
+      atkMult = 1.5;
+    }
+  }
+  return {
+    attack: Math.floor(Math.floor(enemy.attack * atkMult) * breezyMult),
+    defense: Math.floor(Math.floor(enemy.defense * defMult) * breezyMult),
+    magicAttack: Math.floor(
+      Math.floor(enemy.magicAttack * matkMult) * breezyMult
+    ),
+    magicDefense: Math.floor(
+      Math.floor(enemy.magicDefense * mdefMult) * breezyMult
+    ),
+    speed: enemy.speed + (special ? 10 : 0),
+    hp: Math.floor(Math.floor(enemy.hp * (special ? 3 : 1)) * breezyMult),
+  };
+};
