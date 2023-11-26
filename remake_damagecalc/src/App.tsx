@@ -397,8 +397,6 @@ const App: React.FC = () => {
     const selectedEnemyAttackDiff = baseAttackEnemyDiff(selectedCharacter);
     const selectedEnemyMagicDiff = baseMagicEnemyDiff(selectedCharacter);
 
-    console.log(activeAttack.name);
-
     const doPhysicalAttackDamage = (
       c: Character,
       variance: number = 0
@@ -430,9 +428,9 @@ const App: React.FC = () => {
       character2: Character,
       character3: Character
     ): number[] => {
-      const c1 = characters[0];
-      const c2 = characters[1];
-      const c3 = characters[2];
+      const c1 = character1;
+      const c2 = character2;
+      const c3 = character3;
       const w1 = Weapons.find((w) => w.name === c1.activeWeapon) || Weapons[0];
       const w2 = Weapons.find((w) => w.name === c2.activeWeapon) || Weapons[0];
       const w3 = Weapons.find((w) => w.name === c3.activeWeapon) || Weapons[0];
@@ -504,7 +502,6 @@ const App: React.FC = () => {
       selectedType === HitType.HIT &&
       selectedCharacter.activeAttack === AttackName.PHYSICAL
     ) {
-      console.log(1);
       const w =
         Weapons.find((w) => w.name === selectedCharacter.activeWeapon) ||
         Weapons[0];
@@ -523,7 +520,6 @@ const App: React.FC = () => {
       selectedType === HitType.HIT &&
       selectedCharacter.activeAttack === AttackName.JUMP
     ) {
-      console.log(2);
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
       b += jumpCount >> 1;
@@ -548,7 +544,6 @@ const App: React.FC = () => {
 
     // Multi-hit ally spells
     else if (selectedType === HitType.HIT && activeAttack.per_hit !== 1.0) {
-      console.log(3);
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
       b = Math.max(1, b);
@@ -601,7 +596,6 @@ const App: React.FC = () => {
         activeAttack.name
       )
     ) {
-      console.log(4);
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
       b = Math.max(1, b);
@@ -632,7 +626,6 @@ const App: React.FC = () => {
         AttackName.GENO_FLASH,
       ].includes(activeAttack.name)
     ) {
-      console.log(5);
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
       b = Math.max(1, b);
@@ -654,7 +647,6 @@ const App: React.FC = () => {
       selectedType === HitType.HIT &&
       activeAttack.name === AttackName.GENO_WHIRL
     ) {
-      console.log(6);
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
       b = Math.max(1, b);
@@ -682,8 +674,6 @@ const App: React.FC = () => {
       selectedType === HitType.HIT &&
       activeAttack.type === AttackType.ITEM
     ) {
-      console.log(7);
-      console.log(activeAttack);
       let b = activeAttack.basepower;
       if (selectedCharacter.isFeared) {
         b = Math.max(1, b >> 1);
@@ -730,7 +720,7 @@ const App: React.FC = () => {
         b = Math.max(b, 1);
         return b;
       });
-      console.log(bf);
+
       if (bf[0] === bf[2]) {
         setWrittenDamage(`${bf[1]}`);
       } else {
@@ -780,15 +770,13 @@ const App: React.FC = () => {
       const bowser = characters[3];
 
       let [high, sumAvg, low] = getTriplerBases(mario, geno, bowser);
+
       high = Math.floor(high * 1.7);
       sumAvg = Math.floor(sumAvg * 1.7);
       low = Math.floor(low * 1.7);
 
       high = Math.max(1, Math.floor((high * (0.9 + 0.01 * 21)) / 5));
-      sumAvg = Math.max(
-        1,
-        Math.floor((sumAvg * (0.9 + (0.01 * 21) / 2)) / 5)
-      );
+      sumAvg = Math.max(1, Math.floor((sumAvg * (0.9 + (0.01 * 21) / 2)) / 5));
       low = Math.max(1, Math.floor((low * 0.9) / 5));
 
       if (high === low) {
