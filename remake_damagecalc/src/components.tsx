@@ -77,7 +77,21 @@ export const CharacterForm: React.FC<CharacterFormContainerProps> = ({
   };
 
   const handleAccessoryChange = (value: AccessoryName) => {
-    setChar({ ...char, activeAccessory: value });
+    if (value === AccessoryName.TROOPA_MEDAL) {
+      setChar({ ...char, activeAccessory: value, hasAttackBoost: true });
+    } else if (value === AccessoryName.GHOST_MEDAL) {
+      setChar({ ...char, activeAccessory: value, hasDefenseBoost: true });
+    }
+    else if (value === AccessoryName.QUARTZ_CHARM) {
+      setChar({
+        ...char,
+        activeAccessory: value,
+        hasAttackBoost: true,
+        hasDefenseBoost: true,
+      });
+    } else {
+      setChar({ ...char, activeAccessory: value });
+    }
   };
 
   const handleAllyAttackChange = (value: AttackName) => {
