@@ -535,7 +535,10 @@ const App: React.FC = () => {
       }
       if (selectedEnemy.weakness.includes(AttackElement.JUMP)) {
         b *= 2;
-      } else if (selectedEnemy.resistance.includes(AttackElement.JUMP)) {
+      } else if (
+        selectedEnemy.resistance.includes(AttackElement.JUMP) &&
+        selectedCharacter.activeAccessory !== AccessoryName.JUMP_SHOES
+      ) {
         b = 0;
       }
       b = Math.floor(b * parseFloat(selectedAttackTiming));
@@ -558,7 +561,13 @@ const App: React.FC = () => {
       }
       if (selectedEnemy.weakness.includes(activeAttack.element)) {
         b *= 2;
-      } else if (selectedEnemy.resistance.includes(activeAttack.element)) {
+      } else if (
+        selectedEnemy.resistance.includes(activeAttack.element) &&
+        !(
+          selectedCharacter.activeAccessory !== AccessoryName.JUMP_SHOES &&
+          activeAllyAttack.element === AttackElement.JUMP
+        )
+      ) {
         b = 0;
       }
 
