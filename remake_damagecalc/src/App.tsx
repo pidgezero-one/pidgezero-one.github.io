@@ -813,7 +813,7 @@ const App: React.FC = () => {
         setWrittenDamage(`${sumAvg}`);
       } else {
         setWrittenDamage(
-          `Upper: ${high}\nSum of medians: ${sumAvg}\nLower: ${low}\n(multi hit)`
+          `Upper: ${high}\nSum of medians: ${sumAvg}\nLower: ${low}`
         );
       }
     } else if (
@@ -833,7 +833,7 @@ const App: React.FC = () => {
         setWrittenDamage(`${sumAvg}`);
       } else {
         setWrittenDamage(
-          `Upper: ${high}\nSum of medians: ${sumAvg}\nLower: ${low}\n(multi hit)`
+          `Upper: ${high}\nSum of medians: ${sumAvg}\nLower: ${low}`
         );
       }
     }
