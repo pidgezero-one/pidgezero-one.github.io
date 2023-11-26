@@ -784,9 +784,12 @@ const App: React.FC = () => {
       sumAvg = Math.floor(sumAvg * 1.7);
       low = Math.floor(low * 1.7);
 
-      high = Math.max(1, Math.floor((high * 0.9) / 5));
-      sumAvg = Math.max(1, Math.floor((low * (0.9 + (0.01 * 21) / 2)) / 5));
-      low = Math.max(1, Math.floor((low * (0.9 + 0.01 * 21)) / 5));
+      high = Math.max(1, Math.floor(1 + (high * (0.9 + 0.01 * 21)) / 5));
+      sumAvg = Math.max(
+        1,
+        Math.floor(1 + (sumAvg * (0.9 + (0.01 * 21) / 2)) / 5)
+      );
+      low = Math.max(1, Math.floor(1 + (low * 0.9) / 5));
 
       if (high === low) {
         setWrittenDamage(`${sumAvg}`);
