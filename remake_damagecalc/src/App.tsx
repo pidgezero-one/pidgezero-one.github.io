@@ -473,7 +473,6 @@ const App: React.FC = () => {
           b = Math.floor(b * fearMultiplier);
         }
 
-        // it's weird to have no multiplier if the enemy IS feared, but the code only seems to check for not feared...
         if (!enemyFear) {
           let boostNum = 0;
           if (c1.isFeared) {
