@@ -805,8 +805,8 @@ const App: React.FC = () => {
 
       let [high, sumAvg, low] = getTriplerBases(mario, mallow, bowser);
       high = Math.max(2, Math.floor(high * 5)) >> 2;
-      sumAvg = Math.max(2, Math.floor(high * 5)) >> 2;
-      low = Math.max(2, Math.floor(high * 5)) >> 2;
+      sumAvg = Math.max(2, Math.floor(sumAvg * 5)) >> 2;
+      low = Math.max(2, Math.floor(low * 5)) >> 2;
 
       if (
         selectedEnemy.weakness.includes(AttackElement.FIRE) ||
@@ -835,8 +835,8 @@ const App: React.FC = () => {
 
       let [high, sumAvg, low] = getTriplerBases(mario, bowser, peach);
       high = Math.max(2, Math.floor(high * 6)) >> 2;
-      sumAvg = Math.max(2, Math.floor(high * 6)) >> 2;
-      low = Math.max(2, Math.floor(high * 6)) >> 2;
+      sumAvg = Math.max(2, Math.floor(sumAvg * 6)) >> 2;
+      low = Math.max(2, Math.floor(low * 6)) >> 2;
 
       if (high === low) {
         setWrittenDamage(`${sumAvg}`);
