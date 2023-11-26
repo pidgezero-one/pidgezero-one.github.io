@@ -950,6 +950,7 @@ const App: React.FC = () => {
     jumpCount,
     selectedEnemy.weakness,
     selectedEnemy.resistance,
+    activeAllyAttack.element,
     fbCount,
     sjCount,
     sfCount,
