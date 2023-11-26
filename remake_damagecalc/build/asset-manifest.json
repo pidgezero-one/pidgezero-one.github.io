@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/remake_damagecalc/static/css/main.dc31450f.css",
-    "main.js": "/remake_damagecalc/static/js/main.f01fc1a9.js",
-    "static/js/787.6d5f9816.chunk.js": "/remake_damagecalc/static/js/787.6d5f9816.chunk.js",
-    "index.html": "/remake_damagecalc/index.html",
-    "main.dc31450f.css.map": "/remake_damagecalc/static/css/main.dc31450f.css.map",
-    "main.f01fc1a9.js.map": "/remake_damagecalc/static/js/main.f01fc1a9.js.map",
-    "787.6d5f9816.chunk.js.map": "/remake_damagecalc/static/js/787.6d5f9816.chunk.js.map"
+    "main.css": "/remake_damagecalc/build/static/css/main.dc31450f.css",
+    "main.js": "/remake_damagecalc/build/static/js/main.aa0a7fd9.js",
+    "static/js/787.6d5f9816.chunk.js": "/remake_damagecalc/build/static/js/787.6d5f9816.chunk.js",
+    "index.html": "/remake_damagecalc/build/index.html",
+    "main.dc31450f.css.map": "/remake_damagecalc/build/static/css/main.dc31450f.css.map",
+    "main.aa0a7fd9.js.map": "/remake_damagecalc/build/static/js/main.aa0a7fd9.js.map",
+    "787.6d5f9816.chunk.js.map": "/remake_damagecalc/build/static/js/787.6d5f9816.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dc31450f.css",
-    "static/js/main.f01fc1a9.js"
+    "static/js/main.aa0a7fd9.js"
   ]
 }
