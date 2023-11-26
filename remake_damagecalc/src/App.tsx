@@ -1,5 +1,7 @@
 /* eslint-disable no-eval */
 
+// run npm run build before committing
+
 import React, { useState, useEffect, useCallback } from "react";
 import {
   HitType,
