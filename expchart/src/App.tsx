@@ -309,6 +309,10 @@ function App() {
             If you've saved exported code from a previous session, paste it here
             and click "Apply" to load it. (Any current data in the calculator
             right now will be lost.)
+            <br />
+            Be careful not to paste any incorrect JSON as it may crash the page,
+            only use JSON that you've exported from this tool without manual
+            editing.
           </div>
           <textarea
             rows={20}
@@ -318,9 +322,16 @@ function App() {
           <div>
             <button onClick={handleImportCode}>Apply</button>
           </div>
-          {importErrorState !== "" && <div style={{color: "red"}}>{importErrorState}</div>}
+          {importErrorState !== "" && (
+            <div style={{ color: "red" }}>{importErrorState}</div>
+          )}
           <div>
-            <button onClick={handleCloseImportModal} style={{marginTop: "50px"}}>Close</button>
+            <button
+              onClick={handleCloseImportModal}
+              style={{ marginTop: "50px" }}
+            >
+              Close
+            </button>
           </div>
         </>
       )}
@@ -614,7 +625,6 @@ function App() {
                 const prevPeachLevel =
                   idx > 0 ? getLevel(prevState[CharacterName.PEACH].exp) : 1;
 
-                console.log(eventIndex === idx, eventIndex, idx);
                 return (
                   <tr className="content-row">
                     {e.type === EventType.PARTY && (

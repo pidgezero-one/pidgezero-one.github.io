@@ -2,6 +2,7 @@ export interface EnemyDefinition {
   name: string;
   switch_name?: string;
   exp: number;
+  switch_exp?: number;
 }
 
 export interface Enemy {
@@ -65,11 +66,12 @@ export const getFightExp = (
 ) => {
   let exp =
     event.enemies?.reduce((accumulator: number, enemy: Enemy) => {
-      let enemyExp = enemy.defn.exp;
+      let enemyExp =
+        mode === Mode.SNES
+          ? enemy.defn.exp
+          : (enemy.defn.switch_exp !== undefined ? enemy.defn.switch_exp : enemy.defn.exp);
       if (mode === Mode.BREEZY) {
-        enemyExp = (enemyExp * 5) >> 2;
       }
-      console.log(enemyExp);
       if (mode !== Mode.SNES && enemy.special) {
         enemyExp *= 2;
       }
