@@ -94,7 +94,7 @@ export const bosses: EnemyDefinition[] = [
   { name: "Smithy (Magic Head)", exp: 0 },
   { name: "Smithy (Treasure Head)", exp: 0 },
   { name: "Smithy (Mask Head)", exp: 0 },
-  { name: "Scratchy-Throad Belome", exp: 0, switch_exp: 84 },
+  { name: "Scratchy-Throat Belome", exp: 0, switch_exp: 84 },
   { name: "Strong Mario Clone", exp: 0, switch_exp: 9 },
   { name: "Strong Mallow Clone", exp: 0, switch_exp: 60 },
   { name: "Strong Geno Clone", exp: 0, switch_exp: 39 },
