@@ -41,3 +41,7 @@ export const TableCell: React.FC<CellProps> = ({
     </div>
   );
 };
+
+export const Modal: React.FC<{ children?: ReactNode }> = ({ children }) => {
+  return <div>test box</div>;
+};

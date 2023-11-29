@@ -148,3 +148,8 @@ body {
 .tdLarge {
 	width: 15%;
 }
+
+.header .importExportButton {
+	width: 47.5%;
+	display: inline-block;
+}

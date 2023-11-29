@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/expchart/build/static/css/main.a4b5c6a5.css",
+    "main.js": "/expchart/build/static/js/main.00b232c9.js",
+    "static/js/787.f8ca55c7.chunk.js": "/expchart/build/static/js/787.f8ca55c7.chunk.js",
+    "index.html": "/expchart/build/index.html",
+    "main.a4b5c6a5.css.map": "/expchart/build/static/css/main.a4b5c6a5.css.map",
+    "main.00b232c9.js.map": "/expchart/build/static/js/main.00b232c9.js.map",
+    "787.f8ca55c7.chunk.js.map": "/expchart/build/static/js/787.f8ca55c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a4b5c6a5.css",
+    "static/js/main.00b232c9.js"
+  ]
+}

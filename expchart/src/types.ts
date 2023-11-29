@@ -58,19 +58,35 @@ export interface PartyState {
   hitLevelups: CharacterName[][];
 }
 
-export const getFightExp = (event: GameEvent, mode: Mode) =>
-  event.enemies?.reduce(
-    (accumulator: number, enemy: Enemy) => {
+export const getFightExp = (
+  event: GameEvent,
+  mode: Mode,
+  partyCount: number
+) => {
+  let exp =
+    event.enemies?.reduce((accumulator: number, enemy: Enemy) => {
       let enemyExp = enemy.defn.exp;
       if (mode === Mode.BREEZY) {
         enemyExp = (enemyExp * 5) >> 2;
       }
-      console.log(enemyExp)
+      console.log(enemyExp);
       if (mode !== Mode.SNES && enemy.special) {
         enemyExp *= 2;
       }
       accumulator += enemyExp;
       return accumulator;
-    },
-    0
-  ) || 0;
+    }, 0) || 0;
+  if (partyCount === 1) {
+    return exp;
+  } else if (partyCount === 2) {
+    return Math.ceil(exp / 2);
+  } else {
+    return Math.ceil(exp / 3);
+  }
+};
+
+export enum AppState {
+  WORK = 0,
+  EXPORT = 1,
+  IMPORT = 2,
+}
