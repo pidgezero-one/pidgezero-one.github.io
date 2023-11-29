@@ -402,12 +402,6 @@ const App: React.FC = () => {
       variance: number = 0
     ): number => {
       let b = baseAttackDiff(c, variance);
-      if (
-        selectedAttackTiming === AttackTimingModifier.PERFECT &&
-        splashDamage
-      ) {
-        b = Math.floor(b / 5);
-      }
       b = Math.max(1, b);
       if (selectedCharacter.isFeared) {
         b = Math.max(1, b >> 1);
@@ -417,6 +411,12 @@ const App: React.FC = () => {
       }
       if (selectedCharacter.hasAttackBoost || enemyFear) {
         b = Math.floor(b * 1.5);
+      }
+      if (
+        selectedAttackTiming === AttackTimingModifier.PERFECT &&
+        splashDamage
+      ) {
+        b = Math.floor(b / 5);
       }
       b = Math.floor(b * parseFloat(selectedAttackTiming));
 
