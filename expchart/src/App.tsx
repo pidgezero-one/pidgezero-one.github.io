@@ -150,6 +150,7 @@ function App() {
     ]);
     setEventIndex(eventIndex + 1);
     setEnemiesInProgress([]);
+    setStarHits(0);
   };
 
   const getPartyState = (idx: number) => {
@@ -701,17 +702,18 @@ function App() {
                         <td />
                       </>
                     )}
+
                     {state.partyCount >= 4 ? (
                       <>
                         <td>
-                          {peachLevel > prevPeachLevel ? (
-                            <b>{peachLevel}</b>
+                          {bowserLevel > prevBowserLevel ? (
+                            <b>{bowserLevel}</b>
                           ) : (
-                            peachLevel
+                            bowserLevel
                           )}
                         </td>
-                        <td>{state[CharacterName.PEACH].exp}</td>
-                        <td>{expRemaining(state[CharacterName.PEACH].exp)}</td>
+                        <td>{state[CharacterName.BOWSER].exp}</td>
+                        <td>{expRemaining(state[CharacterName.BOWSER].exp)}</td>
                       </>
                     ) : (
                       <>
@@ -723,14 +725,14 @@ function App() {
                     {state.partyCount >= 5 ? (
                       <>
                         <td>
-                          {bowserLevel > prevBowserLevel ? (
-                            <b>{bowserLevel}</b>
+                          {peachLevel > prevPeachLevel ? (
+                            <b>{peachLevel}</b>
                           ) : (
-                            bowserLevel
+                            peachLevel
                           )}
                         </td>
-                        <td>{state[CharacterName.BOWSER].exp}</td>
-                        <td>{expRemaining(state[CharacterName.BOWSER].exp)}</td>
+                        <td>{state[CharacterName.PEACH].exp}</td>
+                        <td>{expRemaining(state[CharacterName.PEACH].exp)}</td>
                       </>
                     ) : (
                       <>

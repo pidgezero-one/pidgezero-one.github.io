@@ -71,6 +71,7 @@ export const getFightExp = (
           ? enemy.defn.exp
           : (enemy.defn.switch_exp !== undefined ? enemy.defn.switch_exp : enemy.defn.exp);
       if (mode === Mode.BREEZY) {
+        enemyExp = (enemyExp * 5) >> 2;
       }
       if (mode !== Mode.SNES && enemy.special) {
         enemyExp *= 2;
