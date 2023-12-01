@@ -437,17 +437,17 @@ const App: React.FC = () => {
       const w3 = Weapons.find((w) => w.name === c3.activeWeapon) || Weapons[0];
       // console.log(w1, w2, w3);
       const br1 = [
-        baseAttackDiff(c1, w1.variance - 1),
+        baseAttackDiff(c1, w1.variance - (w1.variance > 0 ? 1 : 0)),
         baseAttackDiff(c1),
         baseAttackDiff(c1, -1 * w1.variance),
       ];
       const br2 = [
-        baseAttackDiff(c2, w2.variance - 1),
+        baseAttackDiff(c2, w2.variance - (w2.variance > 0 ? 1 : 0)),
         baseAttackDiff(c2),
         baseAttackDiff(c2, -1 * w2.variance),
       ];
       const br3 = [
-        baseAttackDiff(c3, w3.variance - 1),
+        baseAttackDiff(c3, w3.variance - (w3.variance > 0 ? 1 : 0)),
         baseAttackDiff(c3),
         baseAttackDiff(c3, -1 * w3.variance),
       ];
@@ -510,7 +510,10 @@ const App: React.FC = () => {
       const w =
         Weapons.find((w) => w.name === selectedCharacter.activeWeapon) ||
         Weapons[0];
-      const upper = doPhysicalAttackDamage(selectedCharacter, w.variance - 1); // +variance is an exclusive max in the game's random number gen code
+      const upper = doPhysicalAttackDamage(
+        selectedCharacter,
+        w.variance - (w.variance > 0 ? 1 : 0)
+      ); // +variance is an exclusive max in the game's random number gen code
       const mid = doPhysicalAttackDamage(selectedCharacter);
       const lower = doPhysicalAttackDamage(selectedCharacter, w.variance * -1);
       if (upper === lower) {
@@ -715,7 +718,7 @@ const App: React.FC = () => {
       const w =
         Weapons.find((w) => w.name === mario.activeWeapon) || Weapons[0];
       let br = [
-        baseAttackDiff(mario, w.variance - 1),
+        baseAttackDiff(mario, w.variance - (w.variance > 0 ? 1 : 0)),
         baseAttackDiff(mario),
         baseAttackDiff(mario, -1 * w.variance),
       ];

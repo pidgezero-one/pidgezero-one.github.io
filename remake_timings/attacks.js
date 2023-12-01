@@ -2210,14 +2210,14 @@ var attacks = {
     note: "",
     frames: 9,
   },
-  "Mallow Thought Pee": {
+  "Mallow Thought Peek": {
     type: "block",
     perfect: "00:00:02.800",
     partialStart: "00:00:02.716",
     partialEnd: "00:00:03.349",
     video: "./resources/mallow-thought-pee.mp4",
     poster: "./resources/mallow-thought-pee.png",
-    name: "Mallow Thought Pee",
+    name: "Mallow Thought Peek",
     info: "When the spotlights converge",
     note: "",
     frames: 19,
