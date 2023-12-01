@@ -362,7 +362,8 @@ const App: React.FC = () => {
     const baseAttackDiff = (c: Character, variance: number = 0) => {
       const e = getEffectiveStats(c);
       return Math.floor(
-        (e.attack + variance) * parseFloat(selectedGenoBuff) - enemyStats.defense
+        (e.attack + variance) * parseFloat(selectedGenoBuff) -
+          enemyStats.defense
       );
     };
     const baseMagicDiff = (c: Character) => {
@@ -434,29 +435,29 @@ const App: React.FC = () => {
       const w1 = Weapons.find((w) => w.name === c1.activeWeapon) || Weapons[0];
       const w2 = Weapons.find((w) => w.name === c2.activeWeapon) || Weapons[0];
       const w3 = Weapons.find((w) => w.name === c3.activeWeapon) || Weapons[0];
-      //console.log(w1, w2, w3)
+      // console.log(w1, w2, w3);
       const br1 = [
-        baseAttackDiff(c1, w1.variance),
+        baseAttackDiff(c1, w1.variance - 1),
         baseAttackDiff(c1),
         baseAttackDiff(c1, -1 * w1.variance),
       ];
       const br2 = [
-        baseAttackDiff(c2, w2.variance),
+        baseAttackDiff(c2, w2.variance - 1),
         baseAttackDiff(c2),
         baseAttackDiff(c2, -1 * w2.variance),
       ];
       const br3 = [
-        baseAttackDiff(c3, w3.variance),
+        baseAttackDiff(c3, w3.variance - 1),
         baseAttackDiff(c3),
         baseAttackDiff(c3, -1 * w3.variance),
       ];
-      //console.log(br1, br2, br3)
+      // console.log(br1, br2, br3);
       const br = [
         Math.max(0, br1[0]) + Math.max(br2[0], 0) + Math.max(br3[0], 0),
         Math.max(0, br1[1]) + Math.max(br2[1], 0) + Math.max(br3[1], 0),
         Math.max(0, br1[2]) + Math.max(br2[2], 0) + Math.max(br3[2], 0),
       ];
-      //console.log(br)
+      // console.log(br);
 
       const output = br.map((b) => {
         if (enemyDefenseBoost) {
@@ -488,7 +489,7 @@ const App: React.FC = () => {
             boostNum++;
           }
           const boostMultiplier = (boostNum / 3) * 0.5 + 1;
-          //console.log("bm", boostMultiplier)
+          // console.log("bm", boostMultiplier);
           b = Math.floor(b * boostMultiplier);
         } else {
           b *= 3;
@@ -509,7 +510,7 @@ const App: React.FC = () => {
       const w =
         Weapons.find((w) => w.name === selectedCharacter.activeWeapon) ||
         Weapons[0];
-      const upper = doPhysicalAttackDamage(selectedCharacter, w.variance);
+      const upper = doPhysicalAttackDamage(selectedCharacter, w.variance - 1); // +variance is an exclusive max in the game's random number gen code
       const mid = doPhysicalAttackDamage(selectedCharacter);
       const lower = doPhysicalAttackDamage(selectedCharacter, w.variance * -1);
       if (upper === lower) {
@@ -714,7 +715,7 @@ const App: React.FC = () => {
       const w =
         Weapons.find((w) => w.name === mario.activeWeapon) || Weapons[0];
       let br = [
-        baseAttackDiff(mario, w.variance),
+        baseAttackDiff(mario, w.variance - 1),
         baseAttackDiff(mario),
         baseAttackDiff(mario, -1 * w.variance),
       ];
@@ -807,16 +808,16 @@ const App: React.FC = () => {
       const mallow = characters[1];
       const bowser = characters[3];
 
-      //console.log(mario, mallow, bowser)
+      // console.log(mario, mallow, bowser);
 
       let [high, sumAvg, low] = getTriplerBases(mario, mallow, bowser);
-      //console.log(high, sumAvg, low)
+      // console.log(high, sumAvg, low);
 
       high = Math.max(2, Math.floor(high * 5)) >> 2;
       sumAvg = Math.max(2, Math.floor(sumAvg * 5)) >> 2;
       low = Math.max(2, Math.floor(low * 5)) >> 2;
 
-      //console.log(high, sumAvg, low)
+      // console.log(high, sumAvg, low);
 
       if (
         selectedEnemy.weakness.includes(AttackElement.FIRE) ||
@@ -827,13 +828,13 @@ const App: React.FC = () => {
         sumAvg *= 2;
         low *= 2;
       }
-      //console.log(high, sumAvg, low)
+      // console.log(high, sumAvg, low);
 
       if (high === low) {
-        //console.log(`${sumAvg}`);
+        // console.log(`${sumAvg}`);
         setWrittenDamage(`${sumAvg}`);
       } else {
-        //console.log(`Upper: ${high}\nSum of medians: ${sumAvg}\nLower: ${low}`)
+        // console.log(`Upper: ${high}\nSum of medians: ${sumAvg}\nLower: ${low}`);
         setWrittenDamage(
           `Upper: ${high}\nSum of medians: ${sumAvg}\nLower: ${low}`
         );
@@ -1005,8 +1006,9 @@ const App: React.FC = () => {
           This is a brand new damage calc and hasn't been heavily calibrated
           against real game data.
           <br />
-          Note that off-by-one errors between this calc and the game may sometimes be caused by floating point errors in Unity.
-          <br/>
+          Note that off-by-one errors between this calc and the game may
+          sometimes be caused by floating point errors in Unity.
+          <br />
           Feel free to{" "}
           <a
             href="https://github.com/pidgezero-one/pidgezero-one.github.io/blob/main/remake_damagecalc/src/App.tsx"
