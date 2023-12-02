@@ -771,6 +771,10 @@ const App: React.FC = () => {
       }
       low = Math.floor(low) >> 2;
 
+      high = Math.max(1, high);
+      sumAvg = Math.max(1, sumAvg);
+      low = Math.max(1, low);
+
       if (high === low) {
         setWrittenDamage(`${sumAvg}`);
       } else {
@@ -822,6 +826,10 @@ const App: React.FC = () => {
 
       // console.log(high, sumAvg, low);
 
+      high = Math.max(1, high);
+      sumAvg = Math.max(1, sumAvg);
+      low = Math.max(1, low);
+
       if (
         selectedEnemy.weakness.includes(AttackElement.FIRE) ||
         selectedEnemy.weakness.includes(AttackElement.ICE) ||
@@ -854,6 +862,10 @@ const App: React.FC = () => {
       high = Math.max(2, Math.floor(high * 6)) >> 2;
       sumAvg = Math.max(2, Math.floor(sumAvg * 6)) >> 2;
       low = Math.max(2, Math.floor(low * 6)) >> 2;
+
+      high = Math.max(1, high);
+      sumAvg = Math.max(1, sumAvg);
+      low = Math.max(1, low);
 
       if (high === low) {
         setWrittenDamage(`${sumAvg}`);
@@ -1003,16 +1015,13 @@ const App: React.FC = () => {
     <>
       <div className="padLeft15">
         <b>
-          SMRPG Remake Damage Calculator by pidgezero_one (
+          SMRPG Remake Damage Calculator (beta) by pidgezero_one (
           <a href="https://pidgezero.one/damagecalc.html">looking for SNES?</a>)
           <br />
-          This is a brand new damage calc and hasn't been heavily calibrated
-          against real game data.
-          <br />
-          Note that off-by-one errors between this calc and the game may
+          Off-by-one errors between this calc and the game may
           sometimes be caused by floating point errors in Unity.
           <br />
-          Feel free to{" "}
+          If the values here don't match what you get in game, feel free to{" "}
           <a
             href="https://github.com/pidgezero-one/pidgezero-one.github.io/blob/main/remake_damagecalc/src/App.tsx"
             target="_blank"
