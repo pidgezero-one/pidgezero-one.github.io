@@ -354,6 +354,38 @@ const App: React.FC = () => {
     });
   }, []);
 
+  const getCounterLabel = () => {
+    if (selectedCharacter.activeAttack === AttackName.JUMP) {
+      return "Jumps done before this:";
+    } else if (
+      [
+        AttackName.FIREBALL,
+        AttackName.SUPER_FIREBALL,
+        AttackName.ULTRA_FIREBALL,
+        AttackName.MECHAKOOPA_STOMP,
+        AttackName.PSYCH_BOMB,
+      ].includes(selectedCharacter.activeAttack)
+    ) {
+      return "Button mashes:";
+    } else if (
+      [
+        AttackName.SUPER_JUMP,
+        AttackName.ULTRA_JUMP,
+        AttackName.STAR_RAIN,
+      ].includes(selectedCharacter.activeAttack)
+    ) {
+      return "Consecutive timed hits:";
+    } else if (
+      [AttackName.SNOWY, AttackName.TERRORIZE, AttackName.POISON_GAS].includes(
+        selectedCharacter.activeAttack
+      )
+    ) {
+      return "Directional inputs:";
+    } else {
+      return "Count:";
+    }
+  };
+
   /* damage formula stuff */
 
   const recalcDamage = useCallback(() => {
@@ -530,7 +562,7 @@ const App: React.FC = () => {
     ) {
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
-      b += jumpCount >> 1;
+      b += (jumpCount + 1) >> 1;
       b = Math.max(1, b);
       if (selectedCharacter.isFeared) {
         b = Math.max(1, b >> 1);
@@ -1018,8 +1050,8 @@ const App: React.FC = () => {
           SMRPG Remake Damage Calculator (beta) by pidgezero_one (
           <a href="https://pidgezero.one/damagecalc.html">looking for SNES?</a>)
           <br />
-          Off-by-one errors between this calc and the game may
-          sometimes be caused by floating point errors in Unity.
+          Off-by-one errors between this calc and the game may sometimes be
+          caused by floating point errors in Unity.
           <br />
           If the values here don't match what you get in game,{" "}
           <a
@@ -1029,8 +1061,7 @@ const App: React.FC = () => {
           >
             make a pull request
           </a>{" "}
-          (ctrl+f for /* damage formula stuff */) to suggest
-          formula changes.{" "}
+          (ctrl+f for /* damage formula stuff */) to suggest formula changes.{" "}
           <a
             href="https://sites.google.com/site/supermariorpgspeedruns/home/community/discord-server"
             target="_blank"
@@ -1091,7 +1122,7 @@ const App: React.FC = () => {
                       TimingType.BUTTON_PRESSES ||
                       activeAllyAttack.timingType === TimingType.JUMP) && (
                       <TableRow>
-                        <FormContainer label="Count:">
+                        <FormContainer label={getCounterLabel()}>
                           <input
                             type="number"
                             id="hitCounter"
