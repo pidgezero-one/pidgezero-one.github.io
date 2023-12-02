@@ -1035,11 +1035,6 @@ export const Weapons: Weapon[] = [
     variance: 7,
   },
   {
-    name: WeaponName.HURLY_GLOVES,
-    basepower: 20,
-    variance: 5,
-  },
-  {
     name: WeaponName.FAKE_CHOMP,
     basepower: 9,
     variance: 3,
@@ -1075,6 +1070,11 @@ export const Weapons: Weapon[] = [
     variance: 4,
   },
   {
+    name: WeaponName.HURLY_GLOVES,
+    basepower: 20,
+    variance: 5,
+  },
+  {
     name: WeaponName.KOOPA_SHELL,
     basepower: 20,
     variance: 2,
@@ -1100,14 +1100,40 @@ export const Weapons: Weapon[] = [
     variance: 6,
   },
   {
+    name: WeaponName.PARASOL,
+    basepower: 50,
+    variance: 5,
+  },
+  {
+    name: WeaponName.PARATROOPA_SHELL,
+    basepower: 50,
+    variance: 5,
+  },
+  {
     name: WeaponName.PUNCH_GLOVE,
     basepower: 30,
     variance: 3,
   },
   {
+    name: WeaponName.RIBBIT_STICK,
+    basepower: 50,
+    variance: 5,
+  },
+  {
+    name: WeaponName.SAGE_STICK,
+    basepower: 80,
+    magicAttack: 15,
+    variance: 10,
+  },
+  {
     name: WeaponName.SLAP_GLOVE,
     basepower: 40,
     variance: 4,
+  },
+  {
+    name: WeaponName.SONIC_CYMBALS,
+    basepower: 70,
+    variance: 7,
   },
   {
     name: WeaponName.SPIKED_CHOMP,
@@ -1122,43 +1148,17 @@ export const Weapons: Weapon[] = [
   {
     name: WeaponName.STELLA_023,
     basepower: 62,
-    variance: 0,
-  },
-  {
-    name: WeaponName.SUPER_HAMMER,
-    basepower: 40,
-    variance: 4,
-  },
-  {
-    name: WeaponName.PARASOL,
-    basepower: 50,
-    variance: 5,
-  },
-  {
-    name: WeaponName.PARATROOPA_SHELL,
-    basepower: 50,
-    variance: 5,
-  },
-  {
-    name: WeaponName.RIBBIT_STICK,
-    basepower: 50,
-    variance: 5,
-  },
-  {
-    name: WeaponName.SAGE_STICK,
-    basepower: 80,
-    magicAttack: 10,
-    variance: 0,
-  },
-  {
-    name: WeaponName.SONIC_CYMBALS,
-    basepower: 70,
-    variance: 7,
+    variance: 20,
   },
   {
     name: WeaponName.STICKY_GLOVE,
     basepower: 60,
     variance: 6,
+  },
+  {
+    name: WeaponName.SUPER_HAMMER,
+    basepower: 40,
+    variance: 4,
   },
   {
     name: WeaponName.SUPER_SLAP,
@@ -1174,11 +1174,6 @@ export const Weapons: Weapon[] = [
     name: WeaponName.WHOMP_GLOVE,
     basepower: 35,
     variance: 4,
-  },
-  {
-    name: WeaponName.SPIKED_CHOMP,
-    basepower: 30,
-    variance: 6,
   },
   {
     name: WeaponName.WAR_FAN,
