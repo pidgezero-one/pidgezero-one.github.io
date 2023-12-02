@@ -9,6 +9,10 @@ input[type="text"], input[type="number"], select {
     border: 1px solid #999;
     box-sizing: border-box;
 }
+.content-row input[type="number"] {
+	display: inline-block;
+	width: 50px;
+}
 button {
 	padding: 5px;
 	border-radius: 5px;

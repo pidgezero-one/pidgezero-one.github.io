@@ -224,9 +224,8 @@ function App() {
                   starExp * (booster === CharacterName.BOWSER ? 2 : 1) * (j - 1)
               ) <
                 getLevel(
-                  party[CharacterName.BOWSER].exp *
-                    (booster === CharacterName.BOWSER ? 2 : 1) +
-                    starExp * j
+                  party[CharacterName.BOWSER].exp +
+                    starExp * (booster === CharacterName.BOWSER ? 2 : 1) * j
                 )
             ) {
               hits.push(CharacterName.BOWSER);
@@ -651,8 +650,30 @@ function App() {
                     )}
                     {e.type === EventType.STAR && (
                       <td>
-                        {e.star?.name} x{e.hits} ({e.star?.exp} per hit,{" "}
-                        {(e.hits || 0) * (e.star?.exp || 0)} exp ea.)
+                        <span>{e.star?.name} x</span>
+                        <input
+                          type="number"
+                          min="0"
+                          step="1"
+                          value={e.hits}
+                          onChange={(event) => {
+                            const value = parseInt(event.target.value);
+                            const updatedEvent = {
+                              ...e,
+                              hits: value,
+                            };
+                            setGameEvents([
+                              ...gameEvents.slice(0, idx),
+                              updatedEvent,
+                              ...gameEvents.slice(idx + 1),
+                            ]);
+                          }}
+                        />
+                        <span>
+                          {" "}
+                          ({e.star?.exp} per hit,{" "}
+                          {(e.hits || 0) * (e.star?.exp || 0)} exp ea.)
+                        </span>
                       </td>
                     )}
                     <td>
@@ -742,9 +763,30 @@ function App() {
                       </>
                     )}
                     <td>
-                      {e.type === EventType.PARTY
-                        ? ""
-                        : e.booster || CharacterName.NONE}
+                      {e.type !== EventType.PARTY && (
+                        <select
+                          value={e.booster}
+                          onChange={(event) => {
+                            const value = event.target.value as CharacterName;
+                            const updatedEvent = {
+                              ...e,
+                              booster: value,
+                            };
+                            setGameEvents([
+                              ...gameEvents.slice(0, idx),
+                              updatedEvent,
+                              ...gameEvents.slice(idx + 1),
+                            ]);
+                          }}
+                        >
+                          <option>{CharacterName.NONE}</option>
+                          <option>{CharacterName.MARIO}</option>
+                          <option>{CharacterName.MALLOW}</option>
+                          <option>{CharacterName.GENO}</option>
+                          <option>{CharacterName.BOWSER}</option>
+                          <option>{CharacterName.PEACH}</option>
+                        </select>
+                      )}
                     </td>
                     <td>
                       {state.hitLevelups.map((arr, idx) => {
