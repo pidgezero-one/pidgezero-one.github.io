@@ -1021,7 +1021,7 @@ const App: React.FC = () => {
           Off-by-one errors between this calc and the game may
           sometimes be caused by floating point errors in Unity.
           <br />
-          If the values here don't match what you get in game, feel free to{" "}
+          If the values here don't match what you get in game,{" "}
           <a
             href="https://github.com/pidgezero-one/pidgezero-one.github.io/blob/main/remake_damagecalc/src/App.tsx"
             target="_blank"
@@ -1029,7 +1029,7 @@ const App: React.FC = () => {
           >
             make a pull request
           </a>{" "}
-          (ctrl+f for /* damage formula stuff */) if you'd like to suggest
+          (ctrl+f for /* damage formula stuff */) to suggest
           formula changes.{" "}
           <a
             href="https://sites.google.com/site/supermariorpgspeedruns/home/community/discord-server"
