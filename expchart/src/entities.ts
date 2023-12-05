@@ -65,7 +65,7 @@ export const bosses: EnemyDefinition[] = [
   { name: "Exor", exp: 100 },
   { name: "Right Eye", exp: 30, switch_exp: 0 },
   { name: "Left Eye", exp: 30, switch_exp: 0 },
-  { name: "Neosquid", switch_name: "Mouth", exp: 40 },
+  { name: "Neosquid", switch_name: "Mouth", exp: 40, switch_exp: 0 },
   { name: "Count Down", exp: 140 },
   { name: "Ding-A-Ling", switch_name: "Ring-A-Ding", exp: 30 },
   {
