@@ -415,7 +415,7 @@ const App: React.FC = () => {
       const e = getEffectiveStats(c);
       return Math.floor(
         enemyStats.magicAttack -
-          Math.floor(e.defense * parseFloat(selectedPeachBuff))
+          Math.floor(e.magicDefense * parseFloat(selectedPeachBuff))
       );
     };
 
