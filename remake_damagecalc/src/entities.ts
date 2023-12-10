@@ -140,7 +140,7 @@ export const AllyAttacks: Attack[] = [
     minLevel: 18,
     element: AttackElement.NONE,
     timingType: TimingType.BUTTON_PRESSES,
-    cap: 16,
+    cap: 17,
     hosei: 1.0,
     per_hit: 0.0625,
   },

@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/remake_damagecalc/build/static/css/main.dc31450f.css",
-    "main.js": "/remake_damagecalc/build/static/js/main.ae63d26f.js",
+    "main.js": "/remake_damagecalc/build/static/js/main.aac0c6b8.js",
     "static/js/787.6d5f9816.chunk.js": "/remake_damagecalc/build/static/js/787.6d5f9816.chunk.js",
     "index.html": "/remake_damagecalc/build/index.html",
     "main.dc31450f.css.map": "/remake_damagecalc/build/static/css/main.dc31450f.css.map",
-    "main.ae63d26f.js.map": "/remake_damagecalc/build/static/js/main.ae63d26f.js.map",
+    "main.aac0c6b8.js.map": "/remake_damagecalc/build/static/js/main.aac0c6b8.js.map",
     "787.6d5f9816.chunk.js.map": "/remake_damagecalc/build/static/js/787.6d5f9816.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dc31450f.css",
-    "static/js/main.ae63d26f.js"
+    "static/js/main.aac0c6b8.js"
   ]
 }

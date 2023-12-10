@@ -7261,7 +7261,7 @@
             }
             if ($("#chosenAttack").val().indexOf("Snowy") == 0) {
               $("#damageFormula").html(
-                "floor((mAtk + 40 - mDef) * boostModifier) * elementModifier + ((((mAtk + 40 - mDef) * boostModifier) * elementModifier) / 16) * quarterRotations"
+                "floor((mAtk + 40 - mDef) * boostModifier) * elementModifier + ((((mAtk + 40 - mDef) * boostModifier) * elementModifier) / 8) * quarterRotations"
               );
             }
             if ($("#chosenAttack").val().indexOf("Star Rain") == 0) {
@@ -7821,9 +7821,9 @@
                             boostModifier,
                             matk,
                             mdef
-                          ) * boostModifier
+                          )
                         ) * elementModifier
-                      ) / 16
+                      ) / 8
                     ) *
                       quarterRotations
                 )
