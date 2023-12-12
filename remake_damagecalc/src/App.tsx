@@ -1057,14 +1057,15 @@ const App: React.FC = () => {
         </a>
         )
         <br />
+        To suggest calculation changes,{" "}
         <a
-          href="https://opensource.com/article/19/7/create-pull-request-github"
+          href="https://www.freecodecamp.org/news/how-to-make-your-first-pull-request-on-github-3/"
           target="_blank"
           rel="noreferrer"
         >
-          Open a pull request
+          open a pull request
         </a>{" "}
-        (NOT an Issue/Bug Report) to suggest formula changes. Code{" "}
+        (don't open an issue/bug report). Source code{" "}
         <a
           href="https://github.com/pidgezero-one/pidgezero-one.github.io/blob/main/remake_damagecalc/src/App.tsx"
           target="_blank"
