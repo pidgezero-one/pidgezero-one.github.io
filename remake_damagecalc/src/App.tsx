@@ -1046,31 +1046,32 @@ const App: React.FC = () => {
   return (
     <>
       <div className="padLeft15">
-        <b>
-          SMRPG Remake Damage Calculator (beta) by pidgezero_one (
-          <a href="https://pidgezero.one/damagecalc.html">looking for SNES?</a>)
-          <br />
-          Off-by-one errors between this calc and the game may sometimes be
-          caused by floating point errors in Unity.
-          <br />
-          If the values here don't match what you get in game,{" "}
-          <a
-            href="https://github.com/pidgezero-one/pidgezero-one.github.io/blob/main/remake_damagecalc/src/App.tsx"
-            target="_blank"
-            rel="noreferrer"
-          >
-            make a pull request
-          </a>{" "}
-          (ctrl+f for /* damage formula stuff */) to suggest formula changes.{" "}
-          <a
-            href="https://sites.google.com/site/supermariorpgspeedruns/home/community/discord-server"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Join the SMRPG discord
-          </a>{" "}
-          for more discussion.
-        </b>
+        <b>SMRPG Remake Damage Calculator (beta) by pidgezero_one</b> (
+        <a href="https://pidgezero.one/damagecalc.html">looking for SNES?</a>) (
+        <a
+          href="https://sites.google.com/site/supermariorpgspeedruns/home/community/discord-server"
+          target="_blank"
+          rel="noreferrer"
+        >
+          SMRPG discord
+        </a>
+        )
+        <br />
+        <a
+          href="https://opensource.com/article/19/7/create-pull-request-github"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open a pull request
+        </a>{" "}
+        (NOT an Issue/Bug Report) to suggest formula changes. Code{" "}
+        <a
+          href="https://github.com/pidgezero-one/pidgezero-one.github.io/blob/main/remake_damagecalc/src/App.tsx"
+          target="_blank"
+          rel="noreferrer"
+        >
+          here
+        </a>{" "}(ctrl+f for /* damage formula stuff */)
       </div>
       <div className="container">
         <div className="column1">
@@ -1608,6 +1609,11 @@ const App: React.FC = () => {
                   {writtenDamage?.split("\n").map((p) => (
                     <p>{p}</p>
                   ))}
+                </span>
+                <br />
+                <span>
+                  (Off-by-one errors between this calc and the game may
+                  sometimes be caused by floating point errors in Unity.)
                 </span>
               </FormContainer>
             </TableRow>
