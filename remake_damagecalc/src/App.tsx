@@ -1049,7 +1049,7 @@ const App: React.FC = () => {
         <b>SMRPG Remake Damage Calculator (beta) by pidgezero_one</b> (
         <a href="https://pidgezero.one/damagecalc.html">looking for SNES?</a>) (
         <a
-          href="https://sites.google.com/site/supermariorpgspeedruns/home/community/discord-server"
+          href="https://sites.google.com/site/supermariorpgspeedruns/community/discord-server"
           target="_blank"
           rel="noreferrer"
         >
@@ -1071,7 +1071,8 @@ const App: React.FC = () => {
           rel="noreferrer"
         >
           here
-        </a>{" "}(ctrl+f for /* damage formula stuff */)
+        </a>{" "}
+        (ctrl+f for /* damage formula stuff */)
       </div>
       <div className="container">
         <div className="column1">
