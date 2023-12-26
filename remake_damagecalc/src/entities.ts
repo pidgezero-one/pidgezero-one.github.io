@@ -2113,7 +2113,7 @@ export const Enemies: Enemy[] = [
     attack: 160,
     defense: 100,
     magicAttack: 1,
-    magicDefense: 20,
+    magicDefense: 50,
     resistance: [AttackElement.WATER],
     weakness: [AttackElement.JUMP],
     attacks: [EnemyAttackName.PHYSICAL],
