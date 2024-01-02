@@ -430,21 +430,45 @@ const App: React.FC = () => {
     const selectedEnemyAttackDiff = baseAttackEnemyDiff(selectedCharacter);
     const selectedEnemyMagicDiff = baseMagicEnemyDiff(selectedCharacter);
 
+    const basicBoostEvalPartyAttacker = (b: number) => {
+      if (selectedCharacter.isFeared) {
+        b = Math.max(1, b >> 1);
+      } else if (selectedCharacter.hasAttackBoost && !enemyFear) {
+        b = Math.floor(b * 1.5);
+      }
+
+      if (enemyFear) {
+        b = Math.floor(b * 1.5);
+      } else if (enemyDefenseBoost) {
+        b = Math.max(1, b >> 1);
+      }
+      return b;
+    };
+    const basicBoostEvalEnemyAttacker = (b: number) => {
+      if (enemyFear) {
+        b = Math.max(1, b >> 1);
+      } else if (enemyAttackBoost && !selectedCharacter.isFeared) {
+        b = Math.floor(b * 1.5);
+      }
+
+      if (selectedCharacter.isFeared) {
+        b = Math.floor(b * 1.5);
+      } else if (selectedCharacter.hasDefenseBoost && !defending) {
+        b = Math.max(1, b >> 1);
+      }
+      if (defending) {
+        b = Math.max(1, b >> 1);
+      }
+      return b;
+    };
+
     const doPhysicalAttackDamage = (
       c: Character,
       variance: number = 0
     ): number => {
       let b = baseAttackDiff(c, variance);
       b = Math.max(1, b);
-      if (selectedCharacter.isFeared) {
-        b = Math.max(1, b >> 1);
-      }
-      if (enemyDefenseBoost) {
-        b = Math.max(1, b >> 1);
-      }
-      if (selectedCharacter.hasAttackBoost || enemyFear) {
-        b = Math.floor(b * 1.5);
-      }
+      b = basicBoostEvalPartyAttacker(b);
       if (
         selectedAttackTiming === AttackTimingModifier.PERFECT &&
         splashDamage
@@ -564,15 +588,7 @@ const App: React.FC = () => {
       b += activeAttack.basepower;
       b += (jumpCount + 1) >> 1;
       b = Math.max(1, b);
-      if (selectedCharacter.isFeared) {
-        b = Math.max(1, b >> 1);
-      }
-      if (enemyDefenseBoost) {
-        b = Math.max(1, b >> 1);
-      }
-      if (selectedCharacter.hasAttackBoost || enemyFear) {
-        b = Math.floor(b * 1.5);
-      }
+      b = basicBoostEvalPartyAttacker(b);
       if (selectedEnemy.weakness.includes(AttackElement.JUMP)) {
         b *= 2;
       } else if (
@@ -590,15 +606,7 @@ const App: React.FC = () => {
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
       b = Math.max(1, b);
-      if (selectedCharacter.isFeared) {
-        b = Math.max(1, b >> 1);
-      }
-      if (enemyDefenseBoost) {
-        b = Math.max(1, b >> 1);
-      }
-      if (selectedCharacter.hasAttackBoost || enemyFear) {
-        b = Math.floor(b * 1.5);
-      }
+      b = basicBoostEvalPartyAttacker(b);
       if (selectedEnemy.weakness.includes(activeAttack.element)) {
         b *= 2;
       } else if (
@@ -648,15 +656,7 @@ const App: React.FC = () => {
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
       b = Math.max(1, b);
-      if (selectedCharacter.isFeared) {
-        b = Math.max(1, b >> 1);
-      }
-      if (enemyDefenseBoost) {
-        b = Math.max(1, b >> 1);
-      }
-      if (selectedCharacter.hasAttackBoost || enemyFear) {
-        b = Math.floor(b * 1.5);
-      }
+      b = basicBoostEvalPartyAttacker(b);
       if (selectedEnemy.weakness.includes(activeAttack.element)) {
         b *= 2;
       } else if (selectedEnemy.resistance.includes(activeAttack.element)) {
@@ -678,15 +678,7 @@ const App: React.FC = () => {
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
       b = Math.max(1, b);
-      if (selectedCharacter.isFeared) {
-        b = Math.max(1, b >> 1);
-      }
-      if (enemyDefenseBoost) {
-        b = Math.max(1, b >> 1);
-      }
-      if (selectedCharacter.hasAttackBoost || enemyFear) {
-        b = Math.floor(b * 1.5);
-      }
+      b = basicBoostEvalPartyAttacker(b);
       b = Math.floor(b * parseFloat(selectedAttackTiming));
       setWrittenDamage(`${b}`);
     }
@@ -699,15 +691,7 @@ const App: React.FC = () => {
       let b = selectedBaseMagicDiff;
       b += activeAttack.basepower;
       b = Math.max(1, b);
-      if (selectedCharacter.isFeared) {
-        b = Math.max(1, b >> 1);
-      }
-      if (enemyDefenseBoost) {
-        b = Math.max(1, b >> 1);
-      }
-      if (selectedCharacter.hasAttackBoost || enemyFear) {
-        b = Math.floor(b * 1.5);
-      }
+      b = basicBoostEvalPartyAttacker(b);
       if (
         whirlTiming &&
         !selectedEnemy.resistance.includes(AttackElement.CRITICAL)
@@ -724,15 +708,7 @@ const App: React.FC = () => {
       activeAttack.type === AttackType.ITEM
     ) {
       let b = activeAttack.basepower;
-      if (selectedCharacter.isFeared) {
-        b = Math.max(1, b >> 1);
-      }
-      if (enemyDefenseBoost) {
-        b = Math.max(1, b >> 1);
-      }
-      if (selectedCharacter.hasAttackBoost || enemyFear) {
-        b = Math.floor(b * 1.5);
-      }
+      b = basicBoostEvalPartyAttacker(b);
       if (selectedEnemy.weakness.includes(activeAttack.element)) {
         b *= 2;
       } else if (selectedEnemy.resistance.includes(activeAttack.element)) {
@@ -919,15 +895,7 @@ const App: React.FC = () => {
       b += selectedEnemyAttack.basepower;
       b = Math.floor(b * selectedEnemyAttack.multiplier);
       b = Math.max(1, b);
-      if (enemyFear) {
-        b = Math.max(1, b >> 1);
-      }
-      if (selectedCharacter.hasDefenseBoost || defending) {
-        b = Math.max(1, b >> 1);
-      }
-      if (selectedCharacter.isFeared) {
-        b = Math.floor(b * 1.5);
-      }
+      b = basicBoostEvalEnemyAttacker(b);
 
       if (
         [AttackElement.FIRE, AttackElement.ICE, AttackElement.THUNDER].includes(
@@ -1004,10 +972,12 @@ const App: React.FC = () => {
     selectedMallowBuff,
     selectedBowserBuff,
     selectedPeachBuff,
+    enemyFear,
+    enemyDefenseBoost,
+    enemyAttackBoost,
+    defending,
     selectedAttackTiming,
     splashDamage,
-    enemyDefenseBoost,
-    enemyFear,
     jumpCount,
     selectedEnemy.weakness,
     selectedEnemy.resistance,
@@ -1031,7 +1001,6 @@ const App: React.FC = () => {
     selectedEnemyAttack.element,
     selectedEnemyAttack.name,
     selectedEnemyAttack.blockable,
-    defending,
     selectedDefenseTiming,
     breezy,
     effectiveStats.hp,
