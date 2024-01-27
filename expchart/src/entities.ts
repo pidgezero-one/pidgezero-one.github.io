@@ -257,6 +257,7 @@ export const stars: ExpStarDefinition[] = [
   { name: "Sea star", exp: 8 },
   { name: "Land's End (1) star", exp: 11 },
   { name: "Land's End (2) star", exp: 6 },
+  { name: "Land's End (3) star", exp: 9 },
   { name: "Nimbus Castle star", exp: 5 },
   { name: "Barrel Volcano star", exp: 11 },
 ];
