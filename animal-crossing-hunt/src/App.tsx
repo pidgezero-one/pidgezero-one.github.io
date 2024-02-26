@@ -6,6 +6,12 @@ enum AnimalType {
   FISH = "Fish",
 }
 
+enum TextColour {
+  RED = "red",
+  BLACK = "black",
+  GREEN = "green",
+}
+
 enum Month {
   JAN = 0,
   FEB = 1,
@@ -36,6 +42,7 @@ interface Availability {
   type: AnimalType;
   name: string;
   location: string;
+  colour: TextColour;
   notes?: string;
 }
 
@@ -1062,6 +1069,22 @@ const animals: Animal[] = [
   },
 ];
 
+const isLeaving = (animal: Animal, d: Date): boolean => {
+  const month = d.getMonth();
+  const nextMonth = month === 11 ? 0 : month + 1;
+  return animal.months.includes(month) && !animal.months.includes(nextMonth);
+};
+const isNew = (animal: Animal, d: Date): boolean => {
+  const month = d.getMonth();
+  const lastMonth = month === 0 ? 11 : month - 1;
+  return animal.months.includes(month) && !animal.months.includes(lastMonth);
+};
+const getColour = (animal: Animal, d: Date): TextColour => {
+  if (isLeaving(animal, d)) return TextColour.RED;
+  if (isNew(animal, d)) return TextColour.GREEN;
+  return TextColour.BLACK;
+};
+
 const jellyfishRestriction = (animal: Animal, d: Date): boolean => {
   if (!animal.isJellyfish) return false;
   const month = d.getMonth();
@@ -1108,8 +1131,10 @@ const isAvailableLaterIsland = (animal: Animal, d: Date): boolean => {
   );
 };
 
-const availabilityString = (av: Availability): JSX.Element => (
-  <p style={{ marginBlockEnd: 0, marginBlockStart: 0 }}>
+const availabilityString = (
+  av: Availability
+): JSX.Element => (
+  <p style={{ marginBlockEnd: 0, marginBlockStart: 0, color: av.colour }}>
     {av.type === AnimalType.FISH ? "🐟" : "🐛"} <b>{av.name}</b> @ {av.location}
     {!!av.notes ? ` (${av.notes})` : ""}
   </p>
@@ -1129,34 +1154,22 @@ const getCurrentAvailabilities = (
   let laterIsland: Availability[] = [];
 
   for (let a of animals) {
+    console.log(a.name, getColour(a, d))
+    const av = {
+      type: a.type,
+      name: a.name,
+      location: a.location,
+      notes: a.notes,
+      colour: getColour(a, d),
+    } as Availability;
     if (isAvailableNow(a, d)) {
-      now.push({
-        type: a.type,
-        name: a.name,
-        location: a.location,
-        notes: a.notes,
-      });
+      now.push(av);
     } else if (isAvailableNowOnIsland(a, d)) {
-      island.push({
-        type: a.type,
-        name: a.name,
-        location: a.location,
-        notes: a.notes,
-      });
+      island.push(av);
     } else if (isAvailableLater(a, d)) {
-      later.push({
-        type: a.type,
-        name: a.name,
-        location: a.location,
-        notes: a.notes,
-      });
+      later.push(av);
     } else if (isAvailableLaterIsland(a, d)) {
-      laterIsland.push({
-        type: a.type,
-        name: a.name,
-        location: a.location,
-        notes: a.notes,
-      });
+      laterIsland.push(av);
     }
   }
 
@@ -1210,7 +1223,9 @@ function App() {
           hour: "2-digit",
           minute: "2-digit",
           hour12: true,
-        })}
+        })}<br/>
+        <span style={{color: TextColour.RED}}>Red = leaving this month</span><br/>
+        <span style={{color: TextColour.GREEN}}>Green = new this month</span>
       </p>
       <div style={{ display: "flex", flexDirection: "row", gap: 25 }}>
         <div>
