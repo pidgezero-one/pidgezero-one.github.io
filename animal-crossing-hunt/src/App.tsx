@@ -113,10 +113,6 @@ interface Availability {
   notes?: string;
 }
 
-const fish = {
-  river: [],
-};
-
 const animals: Animal[] = [
   {
     type: AnimalType.FISH,
@@ -7018,10 +7014,10 @@ const animals: Animal[] = [
 const getRow = (d: Date): number => {
   const month = d.getMonth();
   const day = d.getDay();
-  if (month <= 6 || (month == 7 && day < 16)) {
+  if (month <= 6 || (month === 7 && day < 16)) {
     return month;
   }
-  if (month == 7 || (month == 8 && day < 16)) {
+  if (month === 7 || (month === 8 && day < 16)) {
     return month + 1;
   }
   return month + 2;
@@ -7063,7 +7059,9 @@ const isAvailableLater = (
   let later = false;
 
   const options = animals.filter(
-    (a) => a.name === animal.name && (a.island == island || (a.island === undefined && !island))
+    (a) =>
+      a.name === animal.name &&
+      (a.island === island || (a.island === undefined && !island))
   );
   for (let a of options) {
     a.appearances[row].forEach((h, i) => {
@@ -7130,6 +7128,48 @@ const getCurrentAvailabilities = (
       } as Availability;
       now.push(av);
       continue;
+    }
+
+    const optionsIsland = animals.filter((a) => a.name === name && a.island);
+    if (optionsIsland.length > 0) {
+      let ai: Animal = optionsIsland[0];
+      for (let o of optionsIsland) {
+        if (o.appearances[row][hour] > ai.appearances[row][hour]) {
+          ai = o;
+        }
+      }
+      if (isAvailableNow(ai, d)) {
+        const av = {
+          type: ai.type,
+          name: ai.name,
+          location: ai.location,
+          notes:
+            ai.type === AnimalType.BUG
+              ? ai.notes
+              : `${ai.notes}, ${(ai.appearances[row][hour] * 100).toFixed(0)}%`,
+          new: isNew(ai, d),
+          leaving: isLeaving(ai, d),
+        } as Availability;
+        nowIsland.push(av);
+        continue;
+      } else if (isAvailableLater(a, d)) {
+        const av = {
+          type: a.type,
+          name: a.name,
+          new: isNew(a, d),
+          leaving: isLeaving(a, d),
+        } as Availability;
+        later.push(av);
+        continue;
+      } else if (isAvailableLater(ai, d, true)) {
+        const av = {
+          type: ai.type,
+          name: ai.name,
+          new: isNew(ai, d),
+          leaving: isLeaving(ai, d),
+        } as Availability;
+        laterIsland.push(av);
+      }
     } else if (isAvailableLater(a, d)) {
       const av = {
         type: a.type,
@@ -7139,41 +7179,7 @@ const getCurrentAvailabilities = (
       } as Availability;
       later.push(av);
       continue;
-    } 
-
-    
-    const optionsIsland = animals.filter((a) => a.name === name && a.island);
-    if (optionsIsland.length < 1) { continue; }
-    let ai: Animal = optionsIsland[0];
-    for (let o of optionsIsland) {
-      if (o.appearances[row][hour] > ai.appearances[row][hour]) {
-        ai = o;
-      }
     }
-
-    if (isAvailableNow(ai, d)) {
-      const av = {
-        type: ai.type,
-        name: ai.name,
-        location: ai.location,
-        notes:
-          ai.type === AnimalType.BUG
-            ? ai.notes
-            : `${ai.notes}, ${(ai.appearances[row][hour] * 100).toFixed(0)}%`,
-        new: isNew(ai, d),
-        leaving: isLeaving(ai, d),
-      } as Availability;
-      nowIsland.push(av);
-    } else if (isAvailableLater(ai, d, true)) {
-      const av = {
-        type: ai.type,
-        name: ai.name,
-        new: isNew(ai, d),
-        leaving: isLeaving(ai, d),
-      } as Availability;
-      laterIsland.push(av);
-    }
-
   }
 
   return {
@@ -7196,9 +7202,9 @@ function App() {
   const [availableNowIsland, setAvailableNowIsland] = useState<Availability[]>(
     availabilities.nowIsland
   );
-  const [availableLaterIsland, setAvailableLaterIsland] = useState<Availability[]>(
-    availabilities.laterIsland
-  );
+  const [availableLaterIsland, setAvailableLaterIsland] = useState<
+    Availability[]
+  >(availabilities.laterIsland);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -7206,13 +7212,15 @@ function App() {
       const availabilitiesNow = getCurrentAvailabilities(date);
       setAvailableNow(availabilitiesNow.now);
       setAvailableLater(availabilitiesNow.later);
+      setAvailableNowIsland(availabilitiesNow.nowIsland);
+      setAvailableLaterIsland(availabilitiesNow.laterIsland);
     }, 60000); // 60000 milliseconds = 1 minute
 
     return () => clearInterval(interval);
   }, [date]); // Empty dependency array means this effect runs only once after initial render
 
-  const style: React.CSSProperties = {width: "40%"}
-  const style2: React.CSSProperties = {width: "20%"}
+  const style: React.CSSProperties = { width: "40%" };
+  const style2: React.CSSProperties = { width: "20%" };
 
   return (
     <div style={{ padding: 15 }}>
@@ -7248,7 +7256,9 @@ function App() {
         </div>
         <div style={style2}>
           <h3>Available Later (Island)</h3>
-          {availableLaterIsland.map((av: Availability) => availabilityString(av))}
+          {availableLaterIsland.map((av: Availability) =>
+            availabilityString(av)
+          )}
         </div>
       </div>
     </div>
