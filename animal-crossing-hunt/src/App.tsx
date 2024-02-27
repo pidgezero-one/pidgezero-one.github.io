@@ -6081,7 +6081,7 @@ const animals: Animal[] = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ],
-    location: "tree / pansies / cosmos / spoiled turnips",
+    location: "spoiled turnips anytime, tree/pansies/cosmos from mar-nov",
     notes: "only tree if raining",
   },
   {

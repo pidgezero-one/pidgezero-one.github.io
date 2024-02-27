@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/animal-crossing-hunt/build/static/css/main.f855e6bc.css",
-    "main.js": "/animal-crossing-hunt/build/static/js/main.050f0cf1.js",
+    "main.js": "/animal-crossing-hunt/build/static/js/main.caa2c25f.js",
     "static/js/453.2c9844e0.chunk.js": "/animal-crossing-hunt/build/static/js/453.2c9844e0.chunk.js",
     "index.html": "/animal-crossing-hunt/build/index.html",
     "main.f855e6bc.css.map": "/animal-crossing-hunt/build/static/css/main.f855e6bc.css.map",
-    "main.050f0cf1.js.map": "/animal-crossing-hunt/build/static/js/main.050f0cf1.js.map",
+    "main.caa2c25f.js.map": "/animal-crossing-hunt/build/static/js/main.caa2c25f.js.map",
     "453.2c9844e0.chunk.js.map": "/animal-crossing-hunt/build/static/js/453.2c9844e0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.050f0cf1.js"
+    "static/js/main.caa2c25f.js"
   ]
 }
