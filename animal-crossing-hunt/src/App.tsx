@@ -111,7 +111,74 @@ interface Availability {
   leaving: boolean;
   location?: string;
   notes?: string;
+  lastHour: boolean;
+  ranges: AvailabilityRange[];
 }
+
+interface AvailabilityRange {
+  start: number;
+  end: number;
+}
+
+const getAvailabilityRanges = (
+  animal: Animal,
+  d: Date
+): AvailabilityRange[] => {
+  const row = getRow(d);
+  const byHour = animal.appearances[row];
+  if (byHour.filter((h) => h !== 0).length === 24) {
+    return [{ start: 0, end: 0 } as AvailabilityRange];
+  }
+
+  let output: AvailabilityRange[] = [];
+  let isWorkingOvernight = true;
+  let isWorking = false;
+  let workingOvernightEnd: number = 0;
+  let workingStart: number = 0;
+  let workingEnd: number = 0;
+
+  for (let hour = 0; hour < byHour.length; hour++) {
+    let availability = byHour[hour];
+    if (hour === 0 && availability !== 0) {
+      isWorkingOvernight = true;
+    } else {
+      if (availability !== 0 && !isWorkingOvernight) {
+        if (!isWorking) {
+          workingStart = hour;
+          isWorking = true;
+        }
+      } else if (availability === 0) {
+        if (isWorkingOvernight) {
+          workingOvernightEnd = hour;
+          isWorkingOvernight = false;
+        } else if (isWorking) {
+          workingEnd = hour;
+          output.push({
+            start: workingStart,
+            end: workingEnd,
+          } as AvailabilityRange);
+          isWorking = false;
+        }
+      }
+    }
+  }
+
+  if (workingOvernightEnd) {
+    if (isWorking) {
+      output.push({
+        start: workingStart,
+        end: workingOvernightEnd,
+      } as AvailabilityRange);
+    } else {
+      output.push({
+        start: 0,
+        end: workingOvernightEnd,
+      } as AvailabilityRange);
+    }
+  }
+
+  return output;
+};
 
 const animals: Animal[] = [
   {
@@ -7049,6 +7116,15 @@ const isAvailableNow = (animal: Animal, d: Date): boolean => {
   return animal.appearances[row][hour] > 0;
 };
 
+const isLastHour = (animal: Animal, d: Date): boolean => {
+  const hour = d.getHours();
+  const nextHour = hour === 23 ? 0 : hour + 1;
+  const row = getRow(d);
+  return (
+    animal.appearances[row][hour] > 0 && animal.appearances[row][nextHour] === 0
+  );
+};
+
 const isAvailableLater = (
   animal: Animal,
   d: Date,
@@ -7065,7 +7141,7 @@ const isAvailableLater = (
   );
   for (let a of options) {
     a.appearances[row].forEach((h, i) => {
-      if (i != hour && h > 0) {
+      if (i !== hour && h > 0) {
         later = true;
       }
     });
@@ -7074,15 +7150,52 @@ const isAvailableLater = (
   return later;
 };
 
+const overallAvailabilityString = (av: Availability): string => av.ranges.map((a: AvailabilityRange) => {
+  if (a.start === a.end) {
+    return "24 hour"
+  }
+  let start = "";
+  if (a.start === 0) {
+    start = "12 am"
+  } else if (a.start < 12) {
+    start = `${a.start} am`
+  } else if (a.start === 12) {
+    start = `12 pm`
+  } else {
+    start = `${a.start - 12} pm`
+  }
+  let end = "";
+  if (a.end === 0) {
+    end = "12 am"
+  } else if (a.end < 12) {
+    end = `${a.end} am`
+  } else if (a.end === 12) {
+    end = `12 pm`
+  } else {
+    end = `${a.end - 12} pm`
+  }
+  return `${start} - ${end}`
+}).join("; ")
+
 const availabilityString = (av: Availability) => {
   const colour = av.leaving
     ? TextColour.RED
     : av.new
     ? TextColour.GREEN
     : TextColour.BLACK;
+  let tooltipNotes: string[] = [];
+  if (av.lastHour) {
+    tooltipNotes.push("unavailable at the next hour")
+  }
+  if (av.new) {
+    tooltipNotes.push("new this month")
+  }
+  if (av.leaving) {
+    tooltipNotes.push("leaving this month")
+  }
   return (
-    <p style={{ marginBlockEnd: 0, marginBlockStart: 0, color: colour }}>
-      {av.type === AnimalType.FISH ? "🐟" : "🐛"} <b>{av.name}</b>
+    <p style={{ marginBlockEnd: 0, marginBlockStart: 0, color: colour }} title={`${av.name}: ${overallAvailabilityString(av)}${tooltipNotes.length > 0 ? ` (${tooltipNotes.join(", ")})` : ""}`}>
+      {av.type === AnimalType.FISH ? "🐟" : "🐛"} {av.lastHour ? "🕒" : ""} <b>{av.name}</b>
       {!!av.location ? ` @ ${av.location}` : ""}
       {!!av.notes ? ` (${av.notes})` : ""}
     </p>
@@ -7125,6 +7238,8 @@ const getCurrentAvailabilities = (
             : `${a.notes}, ${(a.appearances[row][hour] * 100).toFixed(0)}%`,
         new: isNew(a, d),
         leaving: isLeaving(a, d),
+        lastHour: isLastHour(a, d),
+        ranges: getAvailabilityRanges(a, d),
       } as Availability;
       now.push(av);
       continue;
@@ -7149,6 +7264,8 @@ const getCurrentAvailabilities = (
               : `${ai.notes}, ${(ai.appearances[row][hour] * 100).toFixed(0)}%`,
           new: isNew(ai, d),
           leaving: isLeaving(ai, d),
+          lastHour: isLastHour(ai, d),
+          ranges: getAvailabilityRanges(ai, d),
         } as Availability;
         nowIsland.push(av);
         continue;
@@ -7158,6 +7275,8 @@ const getCurrentAvailabilities = (
           name: a.name,
           new: isNew(a, d),
           leaving: isLeaving(a, d),
+          lastHour: isLastHour(a, d),
+          ranges: getAvailabilityRanges(a, d),
         } as Availability;
         later.push(av);
         continue;
@@ -7167,6 +7286,8 @@ const getCurrentAvailabilities = (
           name: ai.name,
           new: isNew(ai, d),
           leaving: isLeaving(ai, d),
+          lastHour: isLastHour(ai, d),
+          ranges: getAvailabilityRanges(ai, d),
         } as Availability;
         laterIsland.push(av);
       }
@@ -7176,6 +7297,8 @@ const getCurrentAvailabilities = (
         name: a.name,
         new: isNew(a, d),
         leaving: isLeaving(a, d),
+        lastHour: isLastHour(a, d),
+        ranges: getAvailabilityRanges(a, d),
       } as Availability;
       later.push(av);
       continue;
@@ -7236,10 +7359,6 @@ function App() {
           minute: "2-digit",
           hour12: true,
         })}
-        <br />
-        <span style={{ color: TextColour.RED }}>Red = leaving this month</span>
-        <br />
-        <span style={{ color: TextColour.GREEN }}>Green = new this month</span>
       </div>
       <div style={{ display: "flex", flexDirection: "row", gap: 25 }}>
         <div style={style}>
@@ -7251,11 +7370,11 @@ function App() {
           {availableNowIsland.map((av: Availability) => availabilityString(av))}
         </div>
         <div style={style2}>
-          <h3>Available Later (Town)</h3>
+          <h3>This month (Town)</h3>
           {availableLater.map((av: Availability) => availabilityString(av))}
         </div>
         <div style={style2}>
-          <h3>Available Later (Island)</h3>
+          <h3>This month (Island)</h3>
           {availableLaterIsland.map((av: Availability) =>
             availabilityString(av)
           )}
