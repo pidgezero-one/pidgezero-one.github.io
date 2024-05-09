@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 enum AnimalType {
   BUG = "Bug",
@@ -102,6 +102,7 @@ interface Animal {
   location: string;
   notes?: string;
   island?: boolean;
+  raining?: boolean;
 }
 
 interface Availability {
@@ -5112,7 +5113,8 @@ const animals: Animal[] = [
       ],
     ],
     location: "ocean",
-    notes: "very large, raining",
+    notes: "very large",
+    raining: true,
   },
   {
     type: AnimalType.FISH,
@@ -5664,8 +5666,9 @@ const animals: Animal[] = [
       ],
     ],
     location: "island",
-    notes: "very large, raining",
+    notes: "very large",
     island: true,
+    raining: true,
   },
   {
     type: AnimalType.BUG,
@@ -5687,7 +5690,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "everywhere",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -5709,7 +5712,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "everywhere",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -5731,7 +5734,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "everywhere",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -5863,7 +5866,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "everywhere",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -5885,7 +5888,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "everywhere",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -5907,7 +5910,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "everywhere",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -5929,7 +5932,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "everywhere",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -5951,7 +5954,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "bush",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -5973,7 +5976,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "bush",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -5995,7 +5998,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "bush",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6017,7 +6020,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "bush",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6039,7 +6042,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "pansies / cosmos",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6061,7 +6064,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "pansies / cosmos",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6083,7 +6086,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "pansies / cosmos",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6105,7 +6108,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "everywhere",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6127,7 +6130,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "everywhere",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6171,7 +6174,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "river / lake / ponds",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6391,7 +6394,7 @@ const animals: Animal[] = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ],
     location: "candy / spoiled turnips",
-    notes: "not raining",
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6501,7 +6504,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "pansies / cosmos",
-    notes: "raining",
+    raining: true,
   },
   {
     type: AnimalType.BUG,
@@ -6566,9 +6569,9 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; everywhere",
-    notes: "not raining",
+    location: "everywhere",
     island: true,
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6589,9 +6592,9 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; everywhere",
-    notes: "not raining",
+    location: "everywhere",
     island: true,
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6612,9 +6615,9 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; everywhere",
-    notes: "not raining",
+    location: "everywhere",
     island: true,
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6635,7 +6638,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6658,7 +6661,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6681,7 +6684,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6704,7 +6707,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6727,7 +6730,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0],
       [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6750,9 +6753,9 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; everywhere",
-    notes: "not raining",
+    location: "everywhere",
     island: true,
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6773,9 +6776,9 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; everywhere",
-    notes: "not raining",
+    location: "everywhere",
     island: true,
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6796,9 +6799,9 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; pansies / cosmos",
-    notes: "not raining",
+    location: "pansies / cosmos",
     island: true,
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6819,9 +6822,9 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; pansies / cosmos",
-    notes: "not raining",
+    location: "pansies / cosmos",
     island: true,
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6842,9 +6845,9 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; pansies / cosmos",
-    notes: "not raining",
+    location: "pansies / cosmos",
     island: true,
+    raining: false,
   },
   {
     type: AnimalType.BUG,
@@ -6865,7 +6868,7 @@ const animals: Animal[] = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6888,7 +6891,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6911,7 +6914,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6934,7 +6937,7 @@ const animals: Animal[] = [
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6957,7 +6960,7 @@ const animals: Animal[] = [
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -6980,7 +6983,7 @@ const animals: Animal[] = [
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -7003,7 +7006,7 @@ const animals: Animal[] = [
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -7026,7 +7029,7 @@ const animals: Animal[] = [
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     ],
-    location: "island; tree",
+    location: "tree",
     notes: "",
     island: true,
   },
@@ -7049,7 +7052,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0],
     ],
-    location: "island; everywhere",
+    location: "everywhere",
     notes: "",
     island: true,
   },
@@ -7072,9 +7075,9 @@ const animals: Animal[] = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ],
-    location: "island; pansies / cosmos",
-    notes: "raining",
+    location: "pansies / cosmos",
     island: true,
+    raining: true,
   },
 ];
 
@@ -7150,32 +7153,35 @@ const isAvailableLater = (
   return later;
 };
 
-const overallAvailabilityString = (av: Availability): string => av.ranges.map((a: AvailabilityRange) => {
-  if (a.start === a.end) {
-    return "24 hour"
-  }
-  let start = "";
-  if (a.start === 0) {
-    start = "12 am"
-  } else if (a.start < 12) {
-    start = `${a.start} am`
-  } else if (a.start === 12) {
-    start = `12 pm`
-  } else {
-    start = `${a.start - 12} pm`
-  }
-  let end = "";
-  if (a.end === 0) {
-    end = "12 am"
-  } else if (a.end < 12) {
-    end = `${a.end} am`
-  } else if (a.end === 12) {
-    end = `12 pm`
-  } else {
-    end = `${a.end - 12} pm`
-  }
-  return `${start} - ${end}`
-}).join("; ")
+const overallAvailabilityString = (av: Availability): string =>
+  av.ranges
+    .map((a: AvailabilityRange) => {
+      if (a.start === a.end) {
+        return "24 hour";
+      }
+      let start = "";
+      if (a.start === 0) {
+        start = "12 am";
+      } else if (a.start < 12) {
+        start = `${a.start} am`;
+      } else if (a.start === 12) {
+        start = `12 pm`;
+      } else {
+        start = `${a.start - 12} pm`;
+      }
+      let end = "";
+      if (a.end === 0) {
+        end = "12 am";
+      } else if (a.end < 12) {
+        end = `${a.end} am`;
+      } else if (a.end === 12) {
+        end = `12 pm`;
+      } else {
+        end = `${a.end - 12} pm`;
+      }
+      return `${start} - ${end}`;
+    })
+    .join("; ");
 
 const availabilityString = (av: Availability) => {
   const colour = av.leaving
@@ -7185,17 +7191,23 @@ const availabilityString = (av: Availability) => {
     : TextColour.BLACK;
   let tooltipNotes: string[] = [];
   if (av.lastHour) {
-    tooltipNotes.push("unavailable at the next hour")
+    tooltipNotes.push("unavailable at the next hour");
   }
   if (av.new) {
-    tooltipNotes.push("new this month")
+    tooltipNotes.push("new this month");
   }
   if (av.leaving) {
-    tooltipNotes.push("leaving this month")
+    tooltipNotes.push("leaving this month");
   }
   return (
-    <p style={{ marginBlockEnd: 0, marginBlockStart: 0, color: colour }} title={`${av.name}: ${overallAvailabilityString(av)}${tooltipNotes.length > 0 ? ` (${tooltipNotes.join(", ")})` : ""}`}>
-      {av.type === AnimalType.FISH ? "🐟" : "🐛"} {av.lastHour ? "🕒" : ""} <b>{av.name}</b>
+    <p
+      style={{ marginBlockEnd: 0, marginBlockStart: 0, color: colour }}
+      title={`${av.name}: ${overallAvailabilityString(av)}${
+        tooltipNotes.length > 0 ? ` (${tooltipNotes.join(", ")})` : ""
+      }`}
+    >
+      {av.type === AnimalType.FISH ? "🐟" : "🐛"} {av.lastHour ? "🕒" : ""}{" "}
+      <b>{av.name}</b>
       {!!av.location ? ` @ ${av.location}` : ""}
       {!!av.notes ? ` (${av.notes})` : ""}
     </p>
@@ -7203,7 +7215,9 @@ const availabilityString = (av: Availability) => {
 };
 
 const getCurrentAvailabilities = (
-  d: Date
+  d: Date,
+  raining: boolean,
+  rainingIsland: boolean
 ): {
   now: Availability[];
   later: Availability[];
@@ -7220,29 +7234,32 @@ const getCurrentAvailabilities = (
 
   for (let name of Object.values(AnimalName)) {
     const options = animals.filter((a) => a.name === name && !a.island);
-    let a: Animal = options[0];
-    for (let o of options) {
-      if (o.appearances[row][hour] > a.appearances[row][hour]) {
-        a = o;
+    let a: Animal | undefined = undefined;
+    if (options.length > 0) {
+      a = options[0];
+      for (let o of options) {
+        if (o.appearances[row][hour] > a.appearances[row][hour]) {
+          a = o;
+        }
       }
-    }
 
-    if (isAvailableNow(a, d)) {
-      const av = {
-        type: a.type,
-        name: a.name,
-        location: a.location,
-        notes:
-          a.type === AnimalType.BUG
-            ? a.notes
-            : `${a.notes}, ${(a.appearances[row][hour] * 100).toFixed(0)}%`,
-        new: isNew(a, d),
-        leaving: isLeaving(a, d),
-        lastHour: isLastHour(a, d),
-        ranges: getAvailabilityRanges(a, d),
-      } as Availability;
-      now.push(av);
-      continue;
+      if (isAvailableNow(a, d) && a.raining !== !raining) {
+        const av = {
+          type: a.type,
+          name: a.name,
+          location: a.location,
+          notes:
+            a.type === AnimalType.BUG
+              ? a.notes
+              : `${a.notes}, ${(a.appearances[row][hour] * 100).toFixed(0)}%`,
+          new: isNew(a, d),
+          leaving: isLeaving(a, d),
+          lastHour: isLastHour(a, d),
+          ranges: getAvailabilityRanges(a, d),
+        } as Availability;
+        now.push(av);
+        continue;
+      }
     }
 
     const optionsIsland = animals.filter((a) => a.name === name && a.island);
@@ -7253,7 +7270,7 @@ const getCurrentAvailabilities = (
           ai = o;
         }
       }
-      if (isAvailableNow(ai, d)) {
+      if (isAvailableNow(ai, d) && ai.raining !== !rainingIsland) {
         const av = {
           type: ai.type,
           name: ai.name,
@@ -7269,7 +7286,7 @@ const getCurrentAvailabilities = (
         } as Availability;
         nowIsland.push(av);
         continue;
-      } else if (isAvailableLater(a, d)) {
+      } else if (!!a && isAvailableLater(a, d)) {
         const av = {
           type: a.type,
           name: a.name,
@@ -7291,7 +7308,7 @@ const getCurrentAvailabilities = (
         } as Availability;
         laterIsland.push(av);
       }
-    } else if (isAvailableLater(a, d)) {
+    } else if (!!a && isAvailableLater(a, d)) {
       const av = {
         type: a.type,
         name: a.name,
@@ -7315,7 +7332,15 @@ const getCurrentAvailabilities = (
 
 function App() {
   const [date, setDate] = useState(new Date());
-  const availabilities = getCurrentAvailabilities(new Date());
+
+  const [isRaining, setIsRaining] = useState<boolean>(false);
+  const [isRainingIsland, setIsRainingIsland] = useState<boolean>(false);
+
+  const availabilities = getCurrentAvailabilities(
+    new Date(),
+    isRaining,
+    isRainingIsland
+  );
   const [availableNow, setAvailableNow] = useState<Availability[]>(
     availabilities.now
   );
@@ -7329,36 +7354,76 @@ function App() {
     Availability[]
   >(availabilities.laterIsland);
 
+  const handleChangeIsRaining = (event: any) => {
+    setIsRaining(!isRaining);
+  };
+  const handleChangeIsRainingIsland = (event: any) => {
+    setIsRainingIsland(!isRainingIsland);
+  };
+
+  const update = useCallback(() => {
+    const availabilitiesNow = getCurrentAvailabilities(
+      date,
+      isRaining,
+      isRainingIsland
+    );
+    setAvailableNow(availabilitiesNow.now);
+    setAvailableLater(availabilitiesNow.later);
+    setAvailableNowIsland(availabilitiesNow.nowIsland);
+    setAvailableLaterIsland(availabilitiesNow.laterIsland);
+  }, [date, isRaining, isRainingIsland]);
+
+  useEffect(() => {
+    update();
+  }, [update]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setDate(new Date());
-      const availabilitiesNow = getCurrentAvailabilities(date);
-      setAvailableNow(availabilitiesNow.now);
-      setAvailableLater(availabilitiesNow.later);
-      setAvailableNowIsland(availabilitiesNow.nowIsland);
-      setAvailableLaterIsland(availabilitiesNow.laterIsland);
     }, 60000); // 60000 milliseconds = 1 minute
 
     return () => clearInterval(interval);
-  }, [date]); // Empty dependency array means this effect runs only once after initial render
+  }, [update]); // Empty dependency array means this effect runs only once after initial render
 
   const style: React.CSSProperties = { width: "40%" };
   const style2: React.CSSProperties = { width: "20%" };
 
   return (
     <div style={{ padding: 15 }}>
-      <div>
-        {date.toLocaleDateString("en-US", {
-          weekday: "long",
-          month: "long",
-          day: "numeric",
-        })}
-        <br />
-        {date.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: true,
-        })}
+      <div style={{ display: "flex", flexDirection: "row", gap: 25 }}>
+        <div>
+          {date.toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+          })}
+          <br />
+          {date.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          })}
+        </div>
+        <div>
+          <div>
+            <input
+              type="checkbox"
+              checked={isRaining}
+              onChange={handleChangeIsRaining}
+              id="isRaining"
+            />
+            <label htmlFor="isRaining">Raining (town)</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              checked={isRainingIsland}
+              onChange={handleChangeIsRainingIsland}
+              id="isRainingIsland"
+            />
+            <label htmlFor="isRainingIsland">Raining (island)</label>
+          </div>
+        </div>
       </div>
       <div style={{ display: "flex", flexDirection: "row", gap: 25 }}>
         <div style={style}>
