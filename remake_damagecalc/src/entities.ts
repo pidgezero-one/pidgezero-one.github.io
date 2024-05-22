@@ -91,7 +91,7 @@ export const AllyAttacks: Attack[] = [
     name: AttackName.ULTRA_FIREBALL,
     type: AttackType.SPELL,
     basepower: 60,
-    minLevel: 15,
+    minLevel: 18,
     element: AttackElement.FIRE,
     timingType: TimingType.BUTTON_PRESSES,
     cap: 15,
@@ -106,7 +106,7 @@ export const AllyAttacks: Attack[] = [
     element: AttackElement.THUNDER,
     timingType: TimingType.THREE_TIER,
     tiers: ["1.25", "1"],
-    defaultTier: "1.5",
+    defaultTier: "1.25",
     hosei: 1.0,
     per_hit: 1.0,
   },
@@ -152,6 +152,7 @@ export const AllyAttacks: Attack[] = [
     element: AttackElement.NONE,
     timingType: TimingType.FIVE_TIER,
     tiers: ["2", "1.75", "1.5", "1.25", "1"],
+    defaultTier: "2",
     hosei: 1.0,
     per_hit: 1.0,
   },
@@ -479,6 +480,22 @@ export const EnemyAttacks: EnemyAttack[] = [
     type: AttackType.SPELL,
   },
   {
+    name: EnemyAttackName.CARD_RAIN,
+    basepower: 0,
+    element: AttackElement.NONE,
+    multiplier: 4.0,
+    blockable: true,
+    type: AttackType.PHYSICAL,
+  },
+  {
+    name: EnemyAttackName.CARD_TOSS,
+    basepower: 0,
+    element: AttackElement.NONE,
+    multiplier: 2.0,
+    blockable: true,
+    type: AttackType.PHYSICAL,
+  },
+  {
     name: EnemyAttackName.CARNI_KISS,
     basepower: 0,
     element: AttackElement.NONE,
@@ -503,28 +520,12 @@ export const EnemyAttacks: EnemyAttack[] = [
     type: AttackType.SPELL,
   },
   {
-    name: EnemyAttackName.CHOMP,
-    basepower: 0,
-    element: AttackElement.NONE,
-    multiplier: 2.0,
-    blockable: true,
-    type: AttackType.PHYSICAL,
-  },
-  {
     name: EnemyAttackName.CLAW,
     basepower: 0,
     element: AttackElement.NONE,
     multiplier: 2.0,
     blockable: true,
     type: AttackType.PHYSICAL,
-  },
-  {
-    name: EnemyAttackName.FLARE,
-    basepower: 88,
-    element: AttackElement.FIRE,
-    multiplier: 1,
-    blockable: false,
-    type: AttackType.SPELL,
   },
   {
     name: EnemyAttackName.CRYSTAL,
@@ -549,14 +550,6 @@ export const EnemyAttacks: EnemyAttack[] = [
     multiplier: 1,
     blockable: true,
     type: AttackType.SPELL,
-  },
-  {
-    name: EnemyAttackName.DEATHSICKLE,
-    basepower: 0,
-    element: AttackElement.NONE,
-    multiplier: 2.0,
-    blockable: true,
-    type: AttackType.PHYSICAL,
   },
   {
     name: EnemyAttackName.DIAMOND_SAW,
@@ -599,6 +592,14 @@ export const EnemyAttacks: EnemyAttack[] = [
     type: AttackType.PHYSICAL,
   },
   {
+    name: EnemyAttackName.FEAR_SICKLE,
+    basepower: 0,
+    element: AttackElement.NONE,
+    multiplier: 2.0,
+    blockable: true,
+    type: AttackType.PHYSICAL,
+  },
+  {
     name: EnemyAttackName.FINAL_CLAW,
     basepower: 0,
     element: AttackElement.CRITICAL,
@@ -609,6 +610,14 @@ export const EnemyAttacks: EnemyAttack[] = [
   {
     name: EnemyAttackName.FIRE_SABER,
     basepower: 40,
+    element: AttackElement.FIRE,
+    multiplier: 1,
+    blockable: true,
+    type: AttackType.SPELL,
+  },
+  {
+    name: EnemyAttackName.FLAME,
+    basepower: 12,
     element: AttackElement.FIRE,
     multiplier: 1,
     blockable: true,
@@ -631,20 +640,12 @@ export const EnemyAttacks: EnemyAttack[] = [
     type: AttackType.SPELL,
   },
   {
-    name: EnemyAttackName.FLAME,
-    basepower: 12,
+    name: EnemyAttackName.FLARE,
+    basepower: 88,
     element: AttackElement.FIRE,
     multiplier: 1,
-    blockable: true,
+    blockable: false,
     type: AttackType.SPELL,
-  },
-  {
-    name: EnemyAttackName.CARD_TOSS,
-    basepower: 0,
-    element: AttackElement.NONE,
-    multiplier: 2.0,
-    blockable: true,
-    type: AttackType.PHYSICAL,
   },
   {
     name: EnemyAttackName.FUN_AND_RUN,
@@ -799,6 +800,14 @@ export const EnemyAttacks: EnemyAttack[] = [
     type: AttackType.PHYSICAL,
   },
   {
+    name: EnemyAttackName.MONSTER_TOSS,
+    basepower: 0,
+    element: AttackElement.NONE,
+    multiplier: 2.0,
+    blockable: true,
+    type: AttackType.PHYSICAL,
+  },
+  {
     name: EnemyAttackName.MULTISTRIKE,
     basepower: 0,
     element: AttackElement.NONE,
@@ -855,20 +864,20 @@ export const EnemyAttacks: EnemyAttack[] = [
     type: AttackType.PHYSICAL,
   },
   {
-    name: EnemyAttackName.SAND_STORM,
-    basepower: 16,
-    element: AttackElement.NONE,
-    multiplier: 1,
-    blockable: false,
-    type: AttackType.SPELL,
-  },
-  {
     name: EnemyAttackName.REAPER_SICKLE,
     basepower: 0,
     element: AttackElement.CRITICAL,
     multiplier: 0.0,
     blockable: true,
     type: AttackType.PHYSICAL,
+  },
+  {
+    name: EnemyAttackName.SAND_STORM,
+    basepower: 16,
+    element: AttackElement.NONE,
+    multiplier: 1,
+    blockable: false,
+    type: AttackType.SPELL,
   },
   {
     name: EnemyAttackName.SHAKER,
@@ -991,14 +1000,6 @@ export const EnemyAttacks: EnemyAttack[] = [
     type: AttackType.SPELL,
   },
   {
-    name: EnemyAttackName.CARD_RAIN,
-    basepower: 0,
-    element: AttackElement.NONE,
-    multiplier: 4.0,
-    blockable: true,
-    type: AttackType.PHYSICAL,
-  },
-  {
     name: EnemyAttackName.WILL_O_WISP,
     basepower: 48,
     element: AttackElement.NONE,
@@ -1070,7 +1071,7 @@ export const Weapons: Weapon[] = [
     variance: 4,
   },
   {
-    name: WeaponName.HURLY_GLOVES,
+    name: WeaponName.HURLY_GLOVE,
     basepower: 20,
     variance: 5,
   },
@@ -1172,7 +1173,7 @@ export const Weapons: Weapon[] = [
   },
   {
     name: WeaponName.WHOMP_GLOVE,
-    basepower: 35,
+    basepower: 40,
     variance: 4,
   },
   {
@@ -1205,7 +1206,7 @@ export const Armors: Armor[] = [
     speed: 0,
   },
   {
-    name: ArmorName.FUZZY_SHIRT,
+    name: ArmorName.FLUFFY_SHIRT,
     defense: 36,
     magicDefense: 18,
     attack: 0,
@@ -1239,7 +1240,7 @@ export const Armors: Armor[] = [
   {
     name: ArmorName.MEGA_SHIRT,
     defense: 18,
-    magicDefense: 9,
+    magicDefense: 10,
     attack: 0,
     magicAttack: 0,
     speed: 0,
@@ -1255,7 +1256,7 @@ export const Armors: Armor[] = [
   {
     name: ArmorName.SHIRT,
     defense: 6,
-    magicDefense: 3,
+    magicDefense: 6,
     attack: 0,
     magicAttack: 0,
     speed: 0,
@@ -1271,7 +1272,7 @@ export const Armors: Armor[] = [
   {
     name: ArmorName.THICK_SHIRT,
     defense: 12,
-    magicDefense: 6,
+    magicDefense: 8,
     attack: 0,
     magicAttack: 0,
     speed: 0,
@@ -1293,7 +1294,7 @@ export const Armors: Armor[] = [
     speed: 0,
   },
   {
-    name: ArmorName.FUZZY_PANTS,
+    name: ArmorName.FLUFFY_PANTS,
     defense: 36,
     magicDefense: 18,
     attack: 0,
@@ -1357,7 +1358,7 @@ export const Armors: Armor[] = [
     speed: 0,
   },
   {
-    name: ArmorName.FUZZY_CAPE,
+    name: ArmorName.FLUFFY_CAPE,
     defense: 24,
     magicDefense: 12,
     attack: 0,
@@ -1437,17 +1438,9 @@ export const Armors: Armor[] = [
     speed: 0,
   },
   {
-    name: ArmorName.FUZZY_DRESS,
+    name: ArmorName.FLUFFY_DRESS,
     defense: 36,
     magicDefense: 18,
-    attack: 0,
-    magicAttack: 0,
-    speed: 0,
-  },
-  {
-    name: ArmorName.SAILOR_DRESS,
-    defense: 30,
-    magicDefense: 15,
     attack: 0,
     magicAttack: 0,
     speed: 0,
@@ -1464,6 +1457,14 @@ export const Armors: Armor[] = [
     name: ArmorName.ROYAL_DRESS,
     defense: 48,
     magicDefense: 24,
+    attack: 0,
+    magicAttack: 0,
+    speed: 0,
+  },
+  {
+    name: ArmorName.SAILOR_DRESS,
+    defense: 30,
+    magicDefense: 15,
     attack: 0,
     magicAttack: 0,
     speed: 0,
@@ -1629,7 +1630,7 @@ export const Accessories: Accessory[] = [
     magicAttack: 0,
     defense: 0,
     magicDefense: 0,
-    speed: 10,
+    speed: 0,
   },
   {
     name: AccessoryName.TEAMWORK_BAND,
@@ -1722,9 +1723,9 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.STATIC_ELECTRICITY,
       EnemyAttackName.BOLT,
       EnemyAttackName.GUNK_BALL,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
@@ -1784,8 +1785,8 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.THUNDER],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.SPRITZ_BOMB,
       EnemyAttackName.PHYSICAL_1_5X,
+      EnemyAttackName.SPRITZ_BOMB,
     ],
   },
   {
@@ -1915,7 +1916,7 @@ export const Enemies: Enemy[] = [
   {
     name: EnemyNames.AXEM_YELLOW,
     hp: 600,
-    speed: 3,
+    speed: 30,
     attack: 170,
     defense: 130,
     magicAttack: 6,
@@ -1974,8 +1975,8 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.POISON,
       EnemyAttackName.CARNI_KISS,
+      EnemyAttackName.POISON,
     ],
   },
   {
@@ -1989,15 +1990,15 @@ export const Enemies: Enemy[] = [
     resistance: [
       AttackElement.FIRE,
       AttackStatus.FEAR,
-      AttackStatus.SLEEP,
+      AttackStatus.POISON,
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.FLAME_WALL,
       EnemyAttackName.FLAME,
+      EnemyAttackName.FLAME_WALL,
       EnemyAttackName.HOT_SHOT,
     ],
   },
@@ -2082,12 +2083,11 @@ export const Enemies: Enemy[] = [
     magicAttack: 140,
     magicDefense: 70,
     resistance: [
-      AttackElement.THUNDER,
       AttackStatus.SLEEP,
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
-    weakness: [],
+    weakness: [AttackElement.THUNDER],
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.AURORA_FLASH,
@@ -2186,9 +2186,9 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.FIRE],
     attacks: [
       EnemyAttackName.PHYSICAL,
+      EnemyAttackName.BLIZZARD,
       EnemyAttackName.CRYSTAL,
       EnemyAttackName.GRINDER,
-      EnemyAttackName.BLIZZARD,
     ],
   },
   {
@@ -2238,7 +2238,7 @@ export const Enemies: Enemy[] = [
     name: EnemyNames.BODYGUARD,
     hp: 30,
     speed: 15,
-    attack: 20,
+    attack: 21,
     defense: 22,
     magicAttack: 19,
     magicDefense: 12,
@@ -2261,7 +2261,7 @@ export const Enemies: Enemy[] = [
   {
     name: EnemyNames.BOO,
     hp: 43,
-    speed: 12,
+    speed: 17,
     attack: 18,
     defense: 0,
     magicAttack: 18,
@@ -2270,8 +2270,8 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.LIGHTNING_ORB,
       EnemyAttackName.BOLT,
+      EnemyAttackName.LIGHTNING_ORB,
     ],
   },
   {
@@ -2293,10 +2293,10 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.SKEWER,
-      EnemyAttackName.SHAKER,
-      EnemyAttackName.BLIZZARD,
       EnemyAttackName.BLAST,
+      EnemyAttackName.BLIZZARD,
+      EnemyAttackName.SHAKER,
+      EnemyAttackName.SKEWER,
       EnemyAttackName.STORM,
     ],
   },
@@ -2319,10 +2319,10 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.SKEWER,
-      EnemyAttackName.SHAKER,
-      EnemyAttackName.BLIZZARD,
       EnemyAttackName.BLAST,
+      EnemyAttackName.BLIZZARD,
+      EnemyAttackName.SHAKER,
+      EnemyAttackName.SKEWER,
       EnemyAttackName.STORM,
     ],
   },
@@ -2343,8 +2343,8 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_1_5X,
-      EnemyAttackName.SPRITZ_BOMB,
       EnemyAttackName.LOCO_EXPRESS,
+      EnemyAttackName.SPRITZ_BOMB,
     ],
   },
   {
@@ -2361,12 +2361,12 @@ export const Enemies: Enemy[] = [
       AttackElement.WATER,
     ],
     weakness: [AttackElement.JUMP],
-    attacks: [EnemyAttackName.PHYSICAL_1_5X, EnemyAttackName.LOCO_EXPRESS_023],
+    attacks: [EnemyAttackName.LOCO_EXPRESS_023],
   },
   {
     name: EnemyNames.BOWSER,
     hp: 320,
-    speed: 10,
+    speed: 15,
     attack: 1,
     defense: 12,
     magicAttack: 0,
@@ -2435,15 +2435,15 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.STATIC_ELECTRICITY,
       EnemyAttackName.BOLT,
       EnemyAttackName.LIGHTNING_ORB,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
     name: EnemyNames.BOWYER_MACHINE_MADE,
     hp: 1000,
-    speed: 200,
+    speed: 99,
     attack: 150,
     defense: 120,
     magicAttack: 90,
@@ -2459,9 +2459,9 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.STATIC_ELECTRICITY,
       EnemyAttackName.BOLT,
       EnemyAttackName.LIGHTNING_ORB,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
@@ -2486,8 +2486,8 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.BLIZZARD,
+      EnemyAttackName.DIAMOND_SAW,
     ],
   },
   {
@@ -2505,6 +2505,7 @@ export const Enemies: Enemy[] = [
       AttackStatus.FEAR,
       AttackStatus.POISON,
       AttackStatus.SLEEP,
+      AttackStatus.MUTE,
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
@@ -2512,10 +2513,10 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.BLIZZARD,
-      EnemyAttackName.PETAL_BLAST,
       EnemyAttackName.CELEBRATION_SHOT,
+      EnemyAttackName.DIAMOND_SAW,
+      EnemyAttackName.PETAL_BLAST,
     ],
   },
   {
@@ -2533,6 +2534,7 @@ export const Enemies: Enemy[] = [
       AttackStatus.FEAR,
       AttackStatus.POISON,
       AttackStatus.SLEEP,
+      AttackStatus.MUTE,
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
@@ -2540,10 +2542,10 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.BLIZZARD,
-      EnemyAttackName.PETAL_BLAST,
       EnemyAttackName.CELEBRATION_SHOT,
+      EnemyAttackName.DIAMOND_SAW,
+      EnemyAttackName.PETAL_BLAST,
     ],
   },
   {
@@ -2561,6 +2563,7 @@ export const Enemies: Enemy[] = [
       AttackStatus.FEAR,
       AttackStatus.POISON,
       AttackStatus.SLEEP,
+      AttackStatus.MUTE,
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
@@ -2568,10 +2571,10 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.BLIZZARD,
-      EnemyAttackName.PETAL_BLAST,
       EnemyAttackName.CELEBRATION_SHOT,
+      EnemyAttackName.DIAMOND_SAW,
+      EnemyAttackName.PETAL_BLAST,
     ],
   },
   {
@@ -2589,6 +2592,7 @@ export const Enemies: Enemy[] = [
       AttackStatus.FEAR,
       AttackStatus.POISON,
       AttackStatus.SLEEP,
+      AttackStatus.MUTE,
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
@@ -2596,10 +2600,10 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.BLIZZARD,
-      EnemyAttackName.PETAL_BLAST,
       EnemyAttackName.CELEBRATION_SHOT,
+      EnemyAttackName.DIAMOND_SAW,
+      EnemyAttackName.PETAL_BLAST,
     ],
   },
   {
@@ -2617,6 +2621,7 @@ export const Enemies: Enemy[] = [
       AttackStatus.FEAR,
       AttackStatus.POISON,
       AttackStatus.SLEEP,
+      AttackStatus.MUTE,
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
@@ -2624,10 +2629,10 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.BLIZZARD,
-      EnemyAttackName.PETAL_BLAST,
       EnemyAttackName.CELEBRATION_SHOT,
+      EnemyAttackName.DIAMOND_SAW,
+      EnemyAttackName.PETAL_BLAST,
     ],
   },
   {
@@ -2645,6 +2650,7 @@ export const Enemies: Enemy[] = [
       AttackStatus.FEAR,
       AttackStatus.POISON,
       AttackStatus.SLEEP,
+      AttackStatus.MUTE,
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
@@ -2652,10 +2658,10 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.BLIZZARD,
-      EnemyAttackName.PETAL_BLAST,
       EnemyAttackName.CELEBRATION_SHOT,
+      EnemyAttackName.DIAMOND_SAW,
+      EnemyAttackName.PETAL_BLAST,
     ],
   },
   {
@@ -2681,6 +2687,18 @@ export const Enemies: Enemy[] = [
     resistance: [AttackElement.WATER],
     weakness: [AttackElement.JUMP, AttackElement.FIRE],
     attacks: [EnemyAttackName.PHYSICAL],
+  },
+  {
+    name: EnemyNames.CHAIN_CHOMP,
+    hp: 100,
+    speed: 10,
+    attack: 60,
+    defense: 65,
+    magicAttack: 5,
+    magicDefense: 31,
+    resistance: [AttackElement.WATER],
+    weakness: [AttackElement.THUNDER],
+    attacks: [EnemyAttackName.PHYSICAL, EnemyAttackName.CARNI_KISS],
   },
   {
     name: EnemyNames.CHAINDELIER,
@@ -2737,22 +2755,11 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.HOT_SHOT,
       EnemyAttackName.FIRE_SABER,
+      EnemyAttackName.HOT_SHOT,
     ],
   },
-  {
-    name: EnemyNames.CHAIN_CHOMP,
-    hp: 100,
-    speed: 10,
-    attack: 60,
-    defense: 65,
-    magicAttack: 5,
-    magicDefense: 31,
-    resistance: [AttackElement.WATER],
-    weakness: [AttackElement.THUNDER],
-    attacks: [EnemyAttackName.PHYSICAL, EnemyAttackName.CARNI_KISS],
-  },
+  
   {
     name: EnemyNames.CHOMP_CHOMP,
     hp: 150,
@@ -2777,8 +2784,8 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.POISON,
       EnemyAttackName.CLAW,
+      EnemyAttackName.POISON,
     ],
   },
   {
@@ -2915,8 +2922,8 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.JUMP],
     attacks: [
       EnemyAttackName.FLAME_STONE,
-      EnemyAttackName.SAND_STORM,
       EnemyAttackName.FLAME_WALL,
+      EnemyAttackName.SAND_STORM,
     ],
   },
   {
@@ -2937,12 +2944,12 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [AttackElement.JUMP, AttackElement.THUNDER],
     attacks: [
-      EnemyAttackName.CRYSTAL,
-      EnemyAttackName.ICE_ROCK,
       EnemyAttackName.AURORA_FLASH,
-      EnemyAttackName.WATER_BLAST,
-      EnemyAttackName.PETAL_BLAST,
+      EnemyAttackName.CRYSTAL,
       EnemyAttackName.FLARE,
+      EnemyAttackName.ICE_ROCK,
+      EnemyAttackName.PETAL_BLAST,
+      EnemyAttackName.WATER_BLAST,
     ],
   },
   {
@@ -2978,7 +2985,7 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_1_5X,
-      EnemyAttackName.CHOMP,
+      EnemyAttackName.MONSTER_TOSS,
     ],
   },
   {
@@ -3024,8 +3031,8 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.FLAME_STONE,
       EnemyAttackName.DARK_STAR,
+      EnemyAttackName.FLAME_STONE,
       EnemyAttackName.METEOR_BLAST,
     ],
   },
@@ -3048,11 +3055,11 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.FLAME_STONE,
       EnemyAttackName.DARK_STAR,
-      EnemyAttackName.METEOR_BLAST,
-      EnemyAttackName.METEOR,
       EnemyAttackName.FINAL_CLAW,
+      EnemyAttackName.FLAME_STONE,
+      EnemyAttackName.METEOR,
+      EnemyAttackName.METEOR_BLAST,
     ],
   },
   {
@@ -3072,8 +3079,8 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.WATER_BLAST,
       EnemyAttackName.FLAME_WALL,
+      EnemyAttackName.WATER_BLAST,
     ],
   },
   {
@@ -3156,9 +3163,9 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [],
     attacks: [
+      EnemyAttackName.BLIZZARD,
       EnemyAttackName.FLAME_STONE,
       EnemyAttackName.LIGHTNING_ORB,
-      EnemyAttackName.BLIZZARD,
     ],
   },
   {
@@ -3179,12 +3186,12 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [],
     attacks: [
-      EnemyAttackName.DIAMOND_SAW,
-      EnemyAttackName.LIGHT_BUBBLE,
-      EnemyAttackName.ICE_ROCK,
       EnemyAttackName.BLIZZARD,
-      EnemyAttackName.SOLIDIFY,
       EnemyAttackName.BOLT,
+      EnemyAttackName.DIAMOND_SAW,
+      EnemyAttackName.ICE_ROCK,
+      EnemyAttackName.LIGHT_BUBBLE,
+      EnemyAttackName.SOLIDIFY,
     ],
   },
   {
@@ -3231,16 +3238,16 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.THUNDER],
     attacks: [
       EnemyAttackName.BLAST,
+      EnemyAttackName.BOULDER,
       EnemyAttackName.SAND_STORM,
       EnemyAttackName.STORM,
       EnemyAttackName.WATER_BLAST,
-      EnemyAttackName.BOULDER,
     ],
   },
   {
     name: EnemyNames.EARTH_CRYSTAL_3D,
     hp: 4200,
-    speed: 5,
+    speed: 1,
     attack: 1,
     defense: 100,
     magicAttack: 105,
@@ -3257,10 +3264,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.THUNDER],
     attacks: [
       EnemyAttackName.BLAST,
+      EnemyAttackName.BOULDER,
       EnemyAttackName.SAND_STORM,
       EnemyAttackName.STORM,
       EnemyAttackName.WATER_BLAST,
-      EnemyAttackName.BOULDER,
     ],
   },
   {
@@ -3306,15 +3313,15 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.THUNDER],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.WILL_O_WISP,
       EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.ECHOFINDER,
+      EnemyAttackName.WILL_O_WISP,
     ],
   },
   {
     name: EnemyNames.EXOR,
     hp: 1800,
-    speed: 200,
+    speed: 99,
     attack: 0,
     defense: 120,
     magicAttack: 0,
@@ -3343,8 +3350,8 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.THORNET,
       EnemyAttackName.FUNGUSPIKE,
+      EnemyAttackName.THORNET,
     ],
   },
   {
@@ -3384,11 +3391,11 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [AttackElement.ICE],
     attacks: [
-      EnemyAttackName.HOT_SHOT,
       EnemyAttackName.FIRE_SABER,
       EnemyAttackName.FLAME,
       EnemyAttackName.FLAME_WALL,
       EnemyAttackName.FLARE,
+      EnemyAttackName.HOT_SHOT,
     ],
   },
   {
@@ -3410,17 +3417,17 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [AttackElement.ICE],
     attacks: [
-      EnemyAttackName.HOT_SHOT,
       EnemyAttackName.FIRE_SABER,
       EnemyAttackName.FLAME,
       EnemyAttackName.FLAME_WALL,
       EnemyAttackName.FLARE,
+      EnemyAttackName.HOT_SHOT,
     ],
   },
   {
     name: EnemyNames.FORKIE,
     hp: 350,
-    speed: 200,
+    speed: 99,
     attack: 170,
     defense: 120,
     magicAttack: 45,
@@ -3448,10 +3455,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.FIRE, AttackElement.ICE],
     attacks: [
       EnemyAttackName.BOLT,
-      EnemyAttackName.STATIC_ELECTRICITY,
-      EnemyAttackName.ELECTROSHOCK,
       EnemyAttackName.CRYSTAL,
+      EnemyAttackName.ELECTROSHOCK,
       EnemyAttackName.SOLIDIFY,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
@@ -3485,10 +3492,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.FIRE, AttackElement.ICE],
     attacks: [
       EnemyAttackName.BOLT,
-      EnemyAttackName.STATIC_ELECTRICITY,
-      EnemyAttackName.ELECTROSHOCK,
       EnemyAttackName.CRYSTAL,
+      EnemyAttackName.ELECTROSHOCK,
       EnemyAttackName.SOLIDIFY,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
@@ -3547,7 +3554,6 @@ export const Enemies: Enemy[] = [
     magicAttack: 180,
     magicDefense: 60,
     resistance: [
-      AttackElement.ICE,
       AttackStatus.FEAR,
       AttackStatus.POISON,
       AttackStatus.SLEEP,
@@ -3555,7 +3561,7 @@ export const Enemies: Enemy[] = [
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
-    weakness: [AttackElement.FIRE],
+    weakness: [AttackElement.FIRE, AttackElement.ICE],
     attacks: [EnemyAttackName.PHYSICAL, EnemyAttackName.FLAME_STONE],
   },
   {
@@ -3570,11 +3576,11 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.REAPER_SICKLE,
-      EnemyAttackName.DEATHSICKLE,
-      EnemyAttackName.WILL_O_WISP,
+      EnemyAttackName.FEAR_SICKLE,
       EnemyAttackName.LIGHTNING_ORB,
       EnemyAttackName.PAIN_SPOUT,
+      EnemyAttackName.REAPER_SICKLE,
+      EnemyAttackName.WILL_O_WISP,
     ],
   },
   {
@@ -3634,10 +3640,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.THUNDER],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.CRYSTAL,
-      EnemyAttackName.LIGHTNING_ORB,
       EnemyAttackName.BLIZZARD,
-      EnemyAttackName.DEATHSICKLE,
+      EnemyAttackName.CRYSTAL,
+      EnemyAttackName.FEAR_SICKLE,
+      EnemyAttackName.LIGHTNING_ORB,
     ],
   },
   {
@@ -3668,10 +3674,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.THUNDER, AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.ECHOFINDER,
-      EnemyAttackName.FIRE_SABER,
-      EnemyAttackName.ELECTROSHOCK,
       EnemyAttackName.BREAKER_BEAM,
+      EnemyAttackName.ECHOFINDER,
+      EnemyAttackName.ELECTROSHOCK,
+      EnemyAttackName.FIRE_SABER,
     ],
   },
   {
@@ -3693,7 +3699,7 @@ export const Enemies: Enemy[] = [
   {
     name: EnemyNames.HELIO,
     hp: 10,
-    speed: 0,
+    speed: 1,
     attack: 140,
     defense: 0,
     magicAttack: 0,
@@ -3744,13 +3750,13 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.THUNDER],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.FIRE_SABER,
       EnemyAttackName.BLAST,
+      EnemyAttackName.BODY_SLAM,
+      EnemyAttackName.FIRE_SABER,
       EnemyAttackName.FLAME_STONE,
-      EnemyAttackName.SOLIDIFY,
       EnemyAttackName.PAIN_SPOUT,
       EnemyAttackName.POISON,
-      EnemyAttackName.BODY_SLAM,
+      EnemyAttackName.SOLIDIFY,
     ],
   },
   {
@@ -3787,9 +3793,9 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.JUMP],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.FLAME_WALL,
-      EnemyAttackName.FLAME,
       EnemyAttackName.CARNI_KISS,
+      EnemyAttackName.FLAME,
+      EnemyAttackName.FLAME_WALL,
     ],
   },
   {
@@ -3837,7 +3843,7 @@ export const Enemies: Enemy[] = [
   {
     name: EnemyNames.JAWFUL,
     hp: 278,
-    speed: 200,
+    speed: 99,
     attack: 130,
     defense: 110,
     magicAttack: 8,
@@ -3858,8 +3864,8 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.CARD_TOSS,
       EnemyAttackName.CARD_RAIN,
+      EnemyAttackName.CARD_TOSS,
       EnemyAttackName.FLAME_STONE,
     ],
   },
@@ -3877,6 +3883,7 @@ export const Enemies: Enemy[] = [
       AttackStatus.FEAR,
       AttackStatus.SLEEP,
       AttackStatus.MUTE,
+      AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
     weakness: [AttackElement.JUMP, AttackElement.ICE],
@@ -3932,10 +3939,10 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [],
     attacks: [
-      EnemyAttackName.QUICKSILVER,
       EnemyAttackName.JINXED,
-      EnemyAttackName.TRIPLE_KICK,
+      EnemyAttackName.QUICKSILVER,
       EnemyAttackName.SILVER_BULLET,
+      EnemyAttackName.TRIPLE_KICK,
     ],
   },
   {
@@ -3961,9 +3968,9 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.BOMBS_AWAY,
       EnemyAttackName.JINXED,
-      EnemyAttackName.TRIPLE_KICK,
       EnemyAttackName.QUICKSILVER,
       EnemyAttackName.SILVER_BULLET,
+      EnemyAttackName.TRIPLE_KICK,
     ],
   },
   {
@@ -3984,9 +3991,9 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.BOMBS_AWAY,
       EnemyAttackName.JINXED,
-      EnemyAttackName.TRIPLE_KICK,
       EnemyAttackName.QUICKSILVER,
       EnemyAttackName.SILVER_BULLET,
+      EnemyAttackName.TRIPLE_KICK,
     ],
   },
   {
@@ -4012,9 +4019,9 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.BOMBS_AWAY,
       EnemyAttackName.JINXED,
-      EnemyAttackName.TRIPLE_KICK,
       EnemyAttackName.QUICKSILVER,
       EnemyAttackName.SILVER_BULLET,
+      EnemyAttackName.TRIPLE_KICK,
     ],
   },
   {
@@ -4033,22 +4040,20 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.SKEWER,
       EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.FIRE_SABER,
+      EnemyAttackName.SKEWER,
     ],
   },
   {
-    name: EnemyNames.JOHNNY_SOLO,
+    name: EnemyNames.JOHNNY_BOOST,
     hp: 400,
-    speed: 30,
+    speed: 13,
     attack: 90,
     defense: 100,
     magicAttack: 0,
     magicDefense: 32,
     resistance: [
-      AttackElement.JUMP,
-      AttackElement.FIRE,
       AttackStatus.SLEEP,
       AttackElement.CRITICAL,
       AttackElement.WATER,
@@ -4056,9 +4061,9 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.SKEWER,
       EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.FIRE_SABER,
+      EnemyAttackName.SKEWER,
     ],
   },
   {
@@ -4070,8 +4075,6 @@ export const Enemies: Enemy[] = [
     magicAttack: 150,
     magicDefense: 180,
     resistance: [
-      AttackElement.JUMP,
-      AttackElement.FIRE,
       AttackStatus.SLEEP,
       AttackElement.CRITICAL,
       AttackElement.WATER,
@@ -4079,9 +4082,9 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.SKEWER,
       EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.FIRE_SABER,
+      EnemyAttackName.SKEWER,
     ],
   },
   {
@@ -4135,8 +4138,8 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.INK_BLAST,
-      EnemyAttackName.SAND_STORM,
       EnemyAttackName.PAIN_SPOUT,
+      EnemyAttackName.SAND_STORM,
     ],
   },
   {
@@ -4190,8 +4193,8 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.CHOMP,
       EnemyAttackName.BOLT,
+      EnemyAttackName.MONSTER_TOSS,
       EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
@@ -4207,8 +4210,8 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.HOT_SHOT,
       EnemyAttackName.FLAME_STONE,
+      EnemyAttackName.HOT_SHOT,
     ],
   },
   {
@@ -4223,8 +4226,8 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.JUMP, AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.HOT_SHOT,
       EnemyAttackName.FIRE_SABER,
+      EnemyAttackName.HOT_SHOT,
     ],
   },
   {
@@ -4239,8 +4242,8 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.HOT_SHOT,
       EnemyAttackName.FLAME,
+      EnemyAttackName.HOT_SHOT,
     ],
   },
   {
@@ -4272,14 +4275,14 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.FIRE],
     attacks: [
       EnemyAttackName.BOLT,
-      EnemyAttackName.STATIC_ELECTRICITY,
       EnemyAttackName.SOLIDIFY,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
     name: EnemyNames.MAD_ADDER,
     hp: 1500,
-    speed: 10,
+    speed: 16,
     attack: 150,
     defense: 70,
     magicAttack: 90,
@@ -4294,10 +4297,10 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [],
     attacks: [
+      EnemyAttackName.BOULDER,
       EnemyAttackName.SAND_STORM,
       EnemyAttackName.STORM,
       EnemyAttackName.WATER_BLAST,
-      EnemyAttackName.BOULDER,
     ],
   },
   {
@@ -4335,11 +4338,11 @@ export const Enemies: Enemy[] = [
     resistance: [
       AttackElement.JUMP,
       AttackElement.FIRE,
-      AttackElement.WATER,
       AttackStatus.FEAR,
-      AttackStatus.SLEEP,
       AttackStatus.POISON,
+      AttackStatus.SLEEP,
       AttackStatus.MUTE,
+      AttackElement.WATER,
     ],
     weakness: [AttackElement.ICE],
     attacks: [EnemyAttackName.PHYSICAL],
@@ -4399,7 +4402,7 @@ export const Enemies: Enemy[] = [
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
-    weakness: [],
+    weakness: [AttackElement.FIRE],
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.BOLT,
@@ -4461,7 +4464,7 @@ export const Enemies: Enemy[] = [
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
-    weakness: [],
+    weakness: [AttackElement.THUNDER],
     attacks: [EnemyAttackName.PHYSICAL], // possible 20 pt "base power" on physical. doesnt normally have base power
   },
   {
@@ -4477,8 +4480,8 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.PAIN_SPOUT,
       EnemyAttackName.BLIZZARD,
+      EnemyAttackName.PAIN_SPOUT,
     ],
   },
   {
@@ -4500,9 +4503,9 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.PETAL_BLAST,
-      EnemyAttackName.HOT_SHOT,
       EnemyAttackName.FLAME_WALL,
+      EnemyAttackName.HOT_SHOT,
+      EnemyAttackName.PETAL_BLAST,
     ],
   },
   {
@@ -4542,11 +4545,11 @@ export const Enemies: Enemy[] = [
     hp: 100,
     speed: 16,
     attack: 90,
-    defense: 80,
+    defense: 10,
     magicAttack: 30,
     magicDefense: 30,
     resistance: [AttackElement.WATER],
-    weakness: [AttackElement.FIRE],
+    weakness: [],
     attacks: [EnemyAttackName.PHYSICAL],
   },
   {
@@ -4565,13 +4568,13 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.SOLIDIFY,
       EnemyAttackName.AURORA_FLASH,
-      EnemyAttackName.FLARE,
-      EnemyAttackName.STATIC_ELECTRICITY,
-      EnemyAttackName.FLAME_WALL,
-      EnemyAttackName.WATER_BLAST,
       EnemyAttackName.CARNI_KISS,
+      EnemyAttackName.FLAME_WALL,      
+      EnemyAttackName.FLARE,
+      EnemyAttackName.SOLIDIFY,
+      EnemyAttackName.STATIC_ELECTRICITY,
+      EnemyAttackName.WATER_BLAST,
     ],
   },
   {
@@ -4603,7 +4606,7 @@ export const Enemies: Enemy[] = [
       AttackElement.WATER,
     ],
     weakness: [AttackElement.FIRE],
-    attacks: [EnemyAttackName.CRYSTAL, EnemyAttackName.BLIZZARD],
+    attacks: [EnemyAttackName.BLIZZARD, EnemyAttackName.CRYSTAL],
   },
   {
     name: EnemyNames.NINJA,
@@ -4642,10 +4645,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.JUMP, AttackElement.FIRE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.FLAME_WALL,
-      EnemyAttackName.LIGHTNING_ORB,
       EnemyAttackName.FLAME,
+      EnemyAttackName.FLAME_WALL,
       EnemyAttackName.GUNK_BALL,
+      EnemyAttackName.LIGHTNING_ORB,
     ],
   },
   {
@@ -4660,10 +4663,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.FIRE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.LIGHTNING_ORB,
       EnemyAttackName.BOLT,
-      EnemyAttackName.PAIN_SPOUT,
       EnemyAttackName.GUNK_BALL,
+      EnemyAttackName.LIGHTNING_ORB,
+      EnemyAttackName.PAIN_SPOUT,
     ],
   },
   {
@@ -4751,7 +4754,7 @@ export const Enemies: Enemy[] = [
       AttackElement.CRITICAL,
       AttackElement.WATER,
     ],
-    weakness: [],
+    weakness: [AttackElement.FIRE],
     attacks: [EnemyAttackName.PHYSICAL],
   },
   {
@@ -4773,8 +4776,8 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.STATIC_ELECTRICITY,
       EnemyAttackName.LIGHTNING_ORB,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
@@ -4811,9 +4814,9 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.JUMP],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.WATER_BLAST,
-      EnemyAttackName.CARNI_KISS,
       EnemyAttackName.BLAST,
+      EnemyAttackName.CARNI_KISS,
+      EnemyAttackName.WATER_BLAST,
     ],
   },
   {
@@ -4868,10 +4871,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.FIRE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.STATIC_ELECTRICITY,
-      EnemyAttackName.ELECTROSHOCK,
       EnemyAttackName.BOLT,
+      EnemyAttackName.ELECTROSHOCK,
       EnemyAttackName.MIGRAINE,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
@@ -4954,18 +4957,18 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.SAND_STORM,
       EnemyAttackName.PAIN_SPOUT,
+      EnemyAttackName.SAND_STORM,
     ],
   },
   {
     name: EnemyNames.RASPBERRY_EXTRA_FANCY,
     hp: 600,
     speed: 16,
-    attack: 230,
-    defense: 110,
-    magicAttack: 170,
-    magicDefense: 100,
+    attack: 215,
+    defense: 20,
+    magicAttack: 180,
+    magicDefense: 30,
     resistance: [
       AttackElement.FIRE,
       AttackElement.THUNDER,
@@ -4981,9 +4984,9 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.SAND_STORM,
-      EnemyAttackName.PAIN_SPOUT,
       EnemyAttackName.LIGHT_BUBBLE,
+      EnemyAttackName.PAIN_SPOUT,
+      EnemyAttackName.SAND_STORM,
     ],
   },
   {
@@ -5042,12 +5045,12 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [AttackElement.JUMP, AttackElement.FIRE],
     attacks: [
+      EnemyAttackName.BLAST,
       EnemyAttackName.BOLT,
       EnemyAttackName.DARK_STAR,
       EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.FIRE_SABER,
       EnemyAttackName.FLAME_STONE,
-      EnemyAttackName.BLAST,
     ],
   },
   {
@@ -5100,7 +5103,7 @@ export const Enemies: Enemy[] = [
   {
     name: EnemyNames.SHADOW,
     hp: 85,
-    speed: 14,
+    speed: 18,
     attack: 24,
     defense: 5,
     magicAttack: 20,
@@ -5121,11 +5124,11 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.DIAMOND_SAW,
-      EnemyAttackName.LIGHTNING_ORB,
-      EnemyAttackName.CRYSTAL,
       EnemyAttackName.BLIZZARD,
+      EnemyAttackName.CRYSTAL,
+      EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.FLAME_STONE,
+      EnemyAttackName.LIGHTNING_ORB,
     ],
   },
   {
@@ -5239,7 +5242,7 @@ export const Enemies: Enemy[] = [
   {
     name: EnemyNames.SMELTER,
     hp: 1500,
-    speed: 0,
+    speed: 1,
     attack: 0,
     defense: 120,
     magicAttack: 0,
@@ -5273,7 +5276,7 @@ export const Enemies: Enemy[] = [
       AttackElement.WATER,
     ],
     weakness: [AttackElement.ICE],
-    attacks: [EnemyAttackName.HOT_SHOT, EnemyAttackName.FLAME],
+    attacks: [EnemyAttackName.FLAME, EnemyAttackName.HOT_SHOT],
   },
   {
     name: EnemyNames.SMITHY_1,
@@ -5294,9 +5297,9 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.SLEDGE,
-      EnemyAttackName.METEOR_SWARM,
       EnemyAttackName.FIRE_SABER,
+      EnemyAttackName.METEOR_SWARM,
+      EnemyAttackName.SLEDGE,
     ],
   },
   {
@@ -5338,38 +5341,9 @@ export const Enemies: Enemy[] = [
     attacks: [],
   },
   {
-    name: EnemyNames.SMITHY_WIZARD,
-    hp: 8000,
-    speed: 35,
-    attack: 135,
-    defense: 50,
-    magicAttack: 130,
-    magicDefense: 150,
-    resistance: [
-      AttackElement.FIRE,
-      AttackElement.THUNDER,
-      AttackElement.ICE,
-      AttackStatus.FEAR,
-      AttackStatus.POISON,
-      AttackStatus.SLEEP,
-      AttackStatus.MUTE,
-      AttackElement.CRITICAL,
-      AttackElement.WATER,
-    ],
-    weakness: [],
-    attacks: [
-      EnemyAttackName.SWORD_RAIN,
-      EnemyAttackName.SPEAR_RAIN,
-      EnemyAttackName.ARROW_RAIN,
-      EnemyAttackName.METEOR_SWARM,
-      EnemyAttackName.BOULDER,
-      EnemyAttackName.DARK_STAR,
-    ],
-  },
-  {
     name: EnemyNames.SMITHY_CASKET,
     hp: 8000,
-    speed: 0,
+    speed: 1,
     attack: 40,
     defense: 150,
     magicAttack: 70,
@@ -5428,6 +5402,35 @@ export const Enemies: Enemy[] = [
     attacks: [EnemyAttackName.CHEST_HEAD_SCARECROW_SPELL],
   },
   {
+    name: EnemyNames.SMITHY_WIZARD,
+    hp: 8000,
+    speed: 35,
+    attack: 135,
+    defense: 50,
+    magicAttack: 130,
+    magicDefense: 150,
+    resistance: [
+      AttackElement.FIRE,
+      AttackElement.THUNDER,
+      AttackElement.ICE,
+      AttackStatus.FEAR,
+      AttackStatus.POISON,
+      AttackStatus.SLEEP,
+      AttackStatus.MUTE,
+      AttackElement.CRITICAL,
+      AttackElement.WATER,
+    ],
+    weakness: [],
+    attacks: [
+      EnemyAttackName.ARROW_RAIN,
+      EnemyAttackName.BOULDER,
+      EnemyAttackName.DARK_STAR,
+      EnemyAttackName.METEOR_SWARM,
+      EnemyAttackName.SPEAR_RAIN,
+      EnemyAttackName.SWORD_RAIN,
+    ],
+  },
+  {
     name: EnemyNames.SNAPDRAGON,
     hp: 90,
     speed: 4,
@@ -5452,8 +5455,8 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.CRYSTAL,
-      EnemyAttackName.HOT_SHOT,
       EnemyAttackName.GUNK_BALL,
+      EnemyAttackName.HOT_SHOT,
     ],
   },
   {
@@ -5468,10 +5471,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
+      EnemyAttackName.BLIZZARD,
+      EnemyAttackName.BOLT,
       EnemyAttackName.GUNK_BALL,
       EnemyAttackName.STATIC_ELECTRICITY,
-      EnemyAttackName.BOLT,
-      EnemyAttackName.BLIZZARD,
     ],
   },
   {
@@ -5480,16 +5483,16 @@ export const Enemies: Enemy[] = [
     speed: 26,
     attack: 220,
     defense: 100,
-    magicAttack: 180,
+    magicAttack: 160,
     magicDefense: 60,
     resistance: [AttackStatus.SLEEP, AttackElement.WATER],
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
+      EnemyAttackName.BLIZZARD,
+      EnemyAttackName.BOLT,
       EnemyAttackName.GUNK_BALL,
       EnemyAttackName.STATIC_ELECTRICITY,
-      EnemyAttackName.BOLT,
-      EnemyAttackName.BLIZZARD,
     ],
   },
   {
@@ -5504,8 +5507,8 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.ICE],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.THORNET,
       EnemyAttackName.FUNGUSPIKE,
+      EnemyAttackName.THORNET,
     ],
   },
   {
@@ -5552,35 +5555,10 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.PHYSICAL_2X,
+      EnemyAttackName.FLAME_STONE,
       EnemyAttackName.PIERCE,
       EnemyAttackName.WATER_BLAST,
-      EnemyAttackName.FLAME_STONE,
       EnemyAttackName.WILL_O_WISP,
-    ],
-  },
-  {
-    name: EnemyNames.SPEARDOVICH_MACHINE_MADE,
-    hp: 800,
-    speed: 18,
-    attack: 180,
-    defense: 130,
-    magicAttack: 90,
-    magicDefense: 50,
-    resistance: [
-      AttackStatus.FEAR,
-      AttackStatus.POISON,
-      AttackStatus.SLEEP,
-      AttackStatus.MUTE,
-      AttackElement.CRITICAL,
-      AttackElement.WATER,
-    ],
-    weakness: [AttackElement.THUNDER],
-    attacks: [
-      EnemyAttackName.PHYSICAL,
-      EnemyAttackName.PHYSICAL_2X,
-      EnemyAttackName.PIERCE,
-      EnemyAttackName.FLAME_STONE,
-      EnemyAttackName.METEOR_BLAST,
     ],
   },
   {
@@ -5601,9 +5579,34 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.THUNDER],
     attacks: [
       EnemyAttackName.PHYSICAL,
+      EnemyAttackName.BOLT,
       EnemyAttackName.METEOR_BLAST,
       EnemyAttackName.STATIC_ELECTRICITY,
-      EnemyAttackName.BOLT,
+    ],
+  },
+  {
+    name: EnemyNames.SPEARDOVICH_MACHINE_MADE,
+    hp: 800,
+    speed: 18,
+    attack: 180,
+    defense: 130,
+    magicAttack: 90,
+    magicDefense: 50,
+    resistance: [
+      AttackStatus.FEAR,
+      AttackStatus.POISON,
+      AttackStatus.SLEEP,
+      AttackStatus.MUTE,
+      AttackElement.CRITICAL,
+      AttackElement.WATER,
+    ],
+    weakness: [],
+    attacks: [
+      EnemyAttackName.PHYSICAL,
+      EnemyAttackName.PHYSICAL_2X,
+      EnemyAttackName.FLAME_STONE,
+      EnemyAttackName.METEOR_BLAST,
+      EnemyAttackName.PIERCE,
     ],
   },
   {
@@ -5654,8 +5657,8 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.THORNET,
       EnemyAttackName.FUNGUSPIKE,
+      EnemyAttackName.THORNET,
     ],
   },
   {
@@ -5710,12 +5713,12 @@ export const Enemies: Enemy[] = [
   },
   {
     name: EnemyNames.TENTACLE_LEFT,
-    hp: 260,
+    hp: 200,
     speed: 21,
-    attack: 82,
-    defense: 50,
+    attack: 87,
+    defense: 70,
     magicAttack: 35,
-    magicDefense: 40,
+    magicDefense: 23,
     resistance: [
       AttackStatus.SLEEP,
       AttackStatus.MUTE,
@@ -5727,12 +5730,12 @@ export const Enemies: Enemy[] = [
   },
   {
     name: EnemyNames.TENTACLE_RIGHT,
-    hp: 200,
+    hp: 260,
     speed: 21,
-    attack: 87,
-    defense: 70,
+    attack: 82,
+    defense: 50,
     magicAttack: 35,
-    magicDefense: 23,
+    magicDefense: 40,
     resistance: [
       AttackStatus.SLEEP,
       AttackStatus.MUTE,
@@ -5769,7 +5772,7 @@ export const Enemies: Enemy[] = [
   {
     name: EnemyNames.THE_BLADE,
     hp: 999,
-    speed: 200,
+    speed: 0,
     attack: 0,
     defense: 100,
     magicAttack: 120,
@@ -5857,7 +5860,7 @@ export const Enemies: Enemy[] = [
   {
     name: EnemyNames.VALENTINA,
     hp: 2000,
-    speed: 200,
+    speed: 99,
     attack: 120,
     defense: 80,
     magicAttack: 80,
@@ -5874,15 +5877,15 @@ export const Enemies: Enemy[] = [
     weakness: [],
     attacks: [
       EnemyAttackName.PHYSICAL,
-      EnemyAttackName.PETAL_BLAST,
       EnemyAttackName.AURORA_FLASH,
-      EnemyAttackName.LIGHT_BUBBLE,
-      EnemyAttackName.SOLIDIFY,
-      EnemyAttackName.PAIN_SPOUT,
-      EnemyAttackName.DIAMOND_SAW,
-      EnemyAttackName.WATER_BLAST,
       EnemyAttackName.BLIZZARD,
       EnemyAttackName.CRYSTAL,
+      EnemyAttackName.DIAMOND_SAW,
+      EnemyAttackName.LIGHT_BUBBLE,
+      EnemyAttackName.PAIN_SPOUT,
+      EnemyAttackName.PETAL_BLAST,
+      EnemyAttackName.SOLIDIFY,
+      EnemyAttackName.WATER_BLAST,
     ],
   },
   {
@@ -5905,11 +5908,11 @@ export const Enemies: Enemy[] = [
   {
     name: EnemyNames.WATER_CRYSTAL,
     hp: 1800,
-    speed: 20,
+    speed: 12,
     attack: 0,
-    defense: 110,
-    magicAttack: 140,
-    magicDefense: 80,
+    defense: 130,
+    magicAttack: 120,
+    magicDefense: 50,
     resistance: [
       AttackElement.ICE,
       AttackStatus.FEAR,
@@ -5921,10 +5924,10 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [AttackElement.FIRE],
     attacks: [
+      EnemyAttackName.BLIZZARD,
       EnemyAttackName.CRYSTAL,
       EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.ICE_ROCK,
-      EnemyAttackName.BLIZZARD,
       EnemyAttackName.SOLIDIFY,
     ],
   },
@@ -5947,10 +5950,10 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [AttackElement.FIRE],
     attacks: [
+      EnemyAttackName.BLIZZARD,
       EnemyAttackName.CRYSTAL,
       EnemyAttackName.DIAMOND_SAW,
       EnemyAttackName.ICE_ROCK,
-      EnemyAttackName.BLIZZARD,
       EnemyAttackName.SOLIDIFY,
     ],
   },
@@ -5976,10 +5979,10 @@ export const Enemies: Enemy[] = [
     weakness: [AttackElement.JUMP],
     attacks: [
       EnemyAttackName.PHYSICAL,
+      EnemyAttackName.CARNI_KISS,
+      EnemyAttackName.FLAME_STONE,
       EnemyAttackName.STATIC_ELECTRICITY,
       EnemyAttackName.WILL_O_WISP,
-      EnemyAttackName.FLAME_STONE,
-      EnemyAttackName.CARNI_KISS,
     ],
   },
   {
@@ -6013,12 +6016,12 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [AttackElement.JUMP],
     attacks: [
-      EnemyAttackName.LIGHTNING_ORB,
-      EnemyAttackName.BOLT,
+      EnemyAttackName.BOLT,      
       EnemyAttackName.ELECTROSHOCK,
-      EnemyAttackName.STATIC_ELECTRICITY,
       EnemyAttackName.LIGHT_BUBBLE,
+      EnemyAttackName.LIGHTNING_ORB,
       EnemyAttackName.PETAL_BLAST,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
@@ -6040,12 +6043,12 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [AttackElement.JUMP],
     attacks: [
-      EnemyAttackName.LIGHTNING_ORB,
-      EnemyAttackName.BOLT,
+      EnemyAttackName.BOLT,      
       EnemyAttackName.ELECTROSHOCK,
-      EnemyAttackName.STATIC_ELECTRICITY,
       EnemyAttackName.LIGHT_BUBBLE,
+      EnemyAttackName.LIGHTNING_ORB,
       EnemyAttackName.PETAL_BLAST,
+      EnemyAttackName.STATIC_ELECTRICITY,
     ],
   },
   {
@@ -6065,12 +6068,12 @@ export const Enemies: Enemy[] = [
     ],
     weakness: [],
     attacks: [
-      EnemyAttackName.BOLT,
       EnemyAttackName.BLAST,
-      EnemyAttackName.WILL_O_WISP,
-      EnemyAttackName.WATER_BLAST,
-      EnemyAttackName.SOLIDIFY,
+      EnemyAttackName.BOLT,
       EnemyAttackName.FLAME_WALL,
+      EnemyAttackName.SOLIDIFY,
+      EnemyAttackName.WATER_BLAST,
+      EnemyAttackName.WILL_O_WISP,
     ],
   },
   {
@@ -6106,8 +6109,8 @@ export const Enemies: Enemy[] = [
     attacks: [
       EnemyAttackName.PHYSICAL,
       EnemyAttackName.BLAST,
-      EnemyAttackName.STORM,
       EnemyAttackName.BOULDER,
+      EnemyAttackName.STORM,
     ],
   },
 
