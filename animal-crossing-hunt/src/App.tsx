@@ -1246,7 +1246,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "river",
-    notes: "medium",
+    notes: "small",
   },
   {
     type: AnimalType.FISH,
@@ -2925,7 +2925,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "lake",
-    notes: "medium",
+    notes: "small",
   },
   {
     type: AnimalType.FISH,
@@ -4019,7 +4019,7 @@ const animals: Animal[] = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     location: "waterfall",
-    notes: "medium",
+    notes: "small",
   },
   {
     type: AnimalType.FISH,
