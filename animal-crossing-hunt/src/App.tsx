@@ -7094,13 +7094,29 @@ const getRow = (d: Date): number => {
 };
 
 const isLeaving = (animal: Animal, d: Date): boolean => {
+  const month = d.getMonth();
+  const day = d.getDate();
   const row = getRow(d);
   const nextMonth = row === 13 ? 0 : row + 1;
   const hoursAvailableNow = animal.appearances[row].filter((h) => h > 0).length;
   const hoursAvailableLater = animal.appearances[nextMonth].filter(
     (h) => h > 0
   ).length;
-  return hoursAvailableNow > 0 && hoursAvailableLater <= 0;
+  if (month <= 6 || (month === 7 && day < 16)) {
+    return hoursAvailableNow > 0 && hoursAvailableLater <= 0;
+  }
+  const inTwoMonths = row === 12 || row == 13 ? row - 12 : row + 2;
+  const hoursAvailableInTwoMonths = animal.appearances[inTwoMonths].filter(
+    (h) => h > 0
+  ).length;
+  if (month === 7 || (month === 8 && day < 16)) {
+    return hoursAvailableNow > 0 && (hoursAvailableLater <= 0 || hoursAvailableInTwoMonths <= 0);
+  }
+  const inThreeMonths = row === 11 || row == 12 || row == 13 ? row - 11 : row + 3;
+  const hoursAvailableInThreeMonths = animal.appearances[inThreeMonths].filter(
+    (h) => h > 0
+  ).length;
+  return hoursAvailableNow > 0 && (hoursAvailableLater <= 0 || hoursAvailableInTwoMonths <= 0 || hoursAvailableInThreeMonths <= 0);
 };
 
 const isNew = (animal: Animal, d: Date): boolean => {
@@ -7197,7 +7213,7 @@ const availabilityString = (av: Availability) => {
     tooltipNotes.push("new this month");
   }
   if (av.leaving) {
-    tooltipNotes.push("leaving this month");
+    tooltipNotes.push("leaving within the month");
   }
   return (
     <p
