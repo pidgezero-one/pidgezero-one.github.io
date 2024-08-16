@@ -7102,21 +7102,14 @@ const isLeaving = (animal: Animal, d: Date): boolean => {
   const hoursAvailableLater = animal.appearances[nextMonth].filter(
     (h) => h > 0
   ).length;
-  if (month <= 6 || (month === 7 && day < 16)) {
-    return hoursAvailableNow > 0 && hoursAvailableLater <= 0;
+  if ((month === 7 || month === 8) && day < 16) {
+    const inTwoSpans = row + 2;
+    const hoursAvailableInTwoSpans = animal.appearances[inTwoSpans].filter(
+      (h) => h > 0
+    ).length;
+    return hoursAvailableNow > 0 && (hoursAvailableLater <= 0 || hoursAvailableInTwoSpans <= 0);
   }
-  const inTwoMonths = row === 12 || row == 13 ? row - 12 : row + 2;
-  const hoursAvailableInTwoMonths = animal.appearances[inTwoMonths].filter(
-    (h) => h > 0
-  ).length;
-  if (month === 7 || (month === 8 && day < 16)) {
-    return hoursAvailableNow > 0 && (hoursAvailableLater <= 0 || hoursAvailableInTwoMonths <= 0);
-  }
-  const inThreeMonths = row === 11 || row == 12 || row == 13 ? row - 11 : row + 3;
-  const hoursAvailableInThreeMonths = animal.appearances[inThreeMonths].filter(
-    (h) => h > 0
-  ).length;
-  return hoursAvailableNow > 0 && (hoursAvailableLater <= 0 || hoursAvailableInTwoMonths <= 0 || hoursAvailableInThreeMonths <= 0);
+  return hoursAvailableNow > 0 && hoursAvailableLater <= 0;
 };
 
 const isNew = (animal: Animal, d: Date): boolean => {
