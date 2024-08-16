@@ -7083,7 +7083,7 @@ const animals: Animal[] = [
 
 const getRow = (d: Date): number => {
   const month = d.getMonth();
-  const day = d.getDay();
+  const day = d.getDate();
   if (month <= 6 || (month === 7 && day < 16)) {
     return month;
   }
