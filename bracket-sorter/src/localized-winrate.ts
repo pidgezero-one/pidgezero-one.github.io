@@ -189,7 +189,7 @@ export async function fetchSinglesWinRatesFromTournament(
 				setsWon: wins,
 				setsLost: total - wins,
 				winRate,
-				country: participant.user.location.country
+				country: participant.user?.location?.country
 			});
 
 			await sleep(100);
