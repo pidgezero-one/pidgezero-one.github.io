@@ -109,30 +109,6 @@ const App = () => {
           />
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <label style={{ width: "300px" }}><a target="_blank" rel="noreferrer" href="https://start.gg/admin/profile/developer">start.gg api token</a> <b title={`Click the link, log in to start.gg, click "Create new token", give it any name you want, and copy paste what it gives you into this text box. Your browser will remember this as long as you're not incognito.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
-          <input
-            type="text"
-            placeholder="start.gg api token"
-            value={token}
-            onChange={(e) => setToken(e.target.value)}
-            style={{ flex: 1 }}
-            disabled={working}
-          />
-        </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <label style={{ width: "300px" }}>fetch size (1 - 512) <b title={`Raise this to make it go faster. This can cause "complexity too high" errors, though, in which case you should lower it.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
-          <input
-            type="number"
-            placeholder="fetch size (1 - 512)"
-            value={entrantsPerFetch.toString()}
-            onChange={(e) => handleUpdateEntrantsPerFetch(e.target.value)}
-            style={{ flex: 1 }}
-            disabled={working}
-            min={1}
-            max={512}
-          />
-        </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
           <label style={{ width: "300px" }}>game</label>
           <select
             value={game}
@@ -159,6 +135,30 @@ const App = () => {
             style={{ flex: 1 }}
             disabled={working}
             min={1}
+          />
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <label style={{ width: "300px" }}><a target="_blank" rel="noreferrer" href="https://start.gg/admin/profile/developer">start.gg api token</a> <b title={`Click the link, log in to start.gg, click "Create new token", give it any name you want, and copy paste what it gives you into this text box. Your browser will remember this as long as you're not incognito.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
+          <input
+            type="text"
+            placeholder="start.gg api token"
+            value={token}
+            onChange={(e) => setToken(e.target.value)}
+            style={{ flex: 1 }}
+            disabled={working}
+          />
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <label style={{ width: "300px" }}>fetch size (1 - 512) <b title={`Raise this to make it go faster. This can cause "complexity too high" errors, though, in which case you should lower it.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
+          <input
+            type="number"
+            placeholder="fetch size (1 - 512)"
+            value={entrantsPerFetch.toString()}
+            onChange={(e) => handleUpdateEntrantsPerFetch(e.target.value)}
+            style={{ flex: 1 }}
+            disabled={working}
+            min={1}
+            max={512}
           />
         </div>
       </div>
