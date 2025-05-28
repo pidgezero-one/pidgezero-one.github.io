@@ -97,7 +97,7 @@ const App = () => {
           />
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <label style={{ width: "300px" }}><a target="_blank" rel="noreferrer" href="https://start.gg/admin/profile/developer">start.gg api token</a> <b title={`Click the link, log in to start.gg, click "Create new token", give it any name you want, and copy paste what it gives you into this text box.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
+          <label style={{ width: "300px" }}><a target="_blank" rel="noreferrer" href="https://start.gg/admin/profile/developer">start.gg api token</a> <b title={`Click the link, log in to start.gg, click "Create new token", give it any name you want, and copy paste what it gives you into this text box. Your browser will remember this as long as you're not incognito.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
           <input
             type="text"
             placeholder="start.gg api token"
