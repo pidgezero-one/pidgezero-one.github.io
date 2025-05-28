@@ -180,7 +180,7 @@ const App = () => {
               {!!data.length ?
                 <EntrantStatsTable data={data} game={game} timePeriod={staticTimePeriod} /> :
                 <>{attempted ?
-                  <div>(no entrants - may not be public yet)</div> :
+                  <div style={{ color: 'red', marginTop: '1rem' }}>(no entrants - may not be public yet)</div> :
                   <></>
                 }</>}
             </>}
