@@ -7,6 +7,7 @@ export type EntrantStats = {
 	winRate: number;
 	schuScore?: SchuScore;
 	discriminator?: string;
+	country?: string
 };
 
 export type SchuScore = {
@@ -16,5 +17,5 @@ export type SchuScore = {
 
 export interface Set {
 	winnerId: string;
-	createdAt: string; // Timestamp of when the set was played
+	playerId: string;
 }

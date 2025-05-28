@@ -54,19 +54,19 @@ const EntrantStatsTable: React.FC<Props> = ({ data }) => {
 
 	return (
 		<>
-			<p>* Schu score attempts to match by entrant name and not start.gg ID, so not all listings may be accurate.</p>
+			<p>* Schu score attempts to match to a start.gg user by name and country and not by start.gg user ID, so not all listings may be accurate.</p>
 			<table style={{ borderCollapse: "collapse", width: "100%" }}>
 				<thead>
 					<tr style={{ textAlign: 'left' }}>
 						{getHeader("Name", "gamerTag")}
-						{getHeader("Win rate", "winRate")}
+						{getHeader("start.gg win rate (last 6 months)", "winRate")}
 						{getHeader("Schu score (as of 2025-02-17)*", "schuScore")}
 					</tr>
 				</thead>
 				<tbody>
 					{sortedData.map((entrant, i) => (
 						<tr key={i} className={i % 2 === 0 ? "even-row" : ""}>
-							<td>{entrant.discriminator ? <a target="_blank" rel="noreferrer" href={`https://www.start.gg/user/${entrant.discriminator}`}>{entrant.gamerTag}</a> : <>{entrant.gamerTag}</>}</td>
+							<td>{entrant.discriminator ? <a target="_blank" rel="noreferrer" href={`https://www.start.gg/user/${entrant.discriminator}/results?filter=%7B%22videogameId%22%3A%5B1386%5D%7D`}>{entrant.gamerTag}</a> : <>{entrant.gamerTag}</>}</td>
 							<td>
 								{entrant.setsWon} / {entrant.setsWon + entrant.setsLost} ({entrant.winRate.toFixed(2)})
 							</td>

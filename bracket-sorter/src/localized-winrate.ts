@@ -3,51 +3,102 @@ import { EntrantStats, Set } from "./types";
 const API_URL = "https://api.start.gg/gql/alpha";
 
 
-const fetchPlayerSets = async (
-	userId: string,
-	videoGameId: number,
-	apiKey: string,
-	perPage: number = 50
-): Promise<Set[]> => {
+const fetchPlayerSets = async (userId: string, videogameId: number, API_KEY: string, fetchSize: number): Promise<Set[]> => {
 	let page = 1;
 	let totalPages = 1;
 	const sets: Set[] = [];
+
+	const sixMonthsAgo = new Date();
+	sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+	const unixTimestamp = Math.floor(sixMonthsAgo.getTime() / 1000);
 
 	while (page <= totalPages) {
 		const res = await fetch(API_URL, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: `Bearer ${apiKey}`,
+				Authorization: `Bearer ${API_KEY}`,
 			},
 			body: JSON.stringify({
 				query: `
-          query PlayerSets($userId: ID!, $page: Int!, $perPage: Int!) {
-            user(id: $userId) {
-              player {
-                sets(page: $page, perPage: $perPage) {
-                  pageInfo {
-                    totalPages
-                  }
-                  nodes {
-                    id
-                    winnerId
-                    createdAt
-                  }
+        query PlayerSetHistory($userId: ID!, $page: Int!, $updatedAfter: Timestamp!) {
+          user(id: $userId) {
+            player {
+              id
+              sets(page: $page, perPage: 50, filters: {updatedAfter: $updatedAfter, showByes: false}) {
+                pageInfo { totalPages }
+                nodes {
+                  id
+                  winnerId
+				  slots(includeByes: false) {
+				  	entrant {
+					  id
+					  participants {
+					  	player {
+						  id
+						}
+					  }
+					  event {
+					    videogame {
+						  id
+						}
+					  }
+					}
+				  }
                 }
               }
             }
           }
+        }
         `,
-				variables: { userId, page, perPage },
+				variables: {
+					userId,
+					page,
+					perPage: fetchSize,
+					updatedAfter: unixTimestamp
+				},
 			}),
 		});
 
+		if (res.status === 429) {
+			await sleep(3000);
+			continue
+		}
 		const json = await res.json();
-		const playerSets = json.data?.user?.player?.sets?.nodes || [];
-		totalPages = json.data?.user?.player?.sets?.pageInfo?.totalPages || 1;
+		const player = json.data?.user?.player;
+		const playerId = player?.id;
+		const setNodes = player?.sets?.nodes || [];
+		totalPages = player?.sets?.pageInfo?.totalPages || 1;
 
-		sets.push(...playerSets);
+		for (const set of setNodes) {
+			if (set.slots.length > 2) continue
+			// filter out byes
+			if (set.slots.filter((s: any) => !s.entrant).length > 0) continue
+			// filter out games that aren't ultimate
+			if (set.slots.filter((s: any) => s.entrant.event.videogame.id !== videogameId).length > 0) continue
+			// filter out doubles
+			const doubles = set.slots.filter((s: any) => s.entrant.participants.length !== 1)
+			if (doubles.length > 0) continue
+			const winner = set.slots.find((slot: { entrant: { id: number, participants: { player: { id: number } }[] } }) => slot?.entrant?.id === set.winnerId)
+			if (!winner) {
+				continue
+			}
+			const participants = winner.entrant.participants
+			const winningPlayer = participants[0]?.player.id
+			if (!winningPlayer) {
+				continue
+			}
+			const s = {
+				winnerId: winningPlayer,
+				playerId: playerId,
+			}
+
+			sets.push(s);
+		}
+
+
+		await sleep(100);
+
 		page++;
 	}
 
@@ -56,125 +107,18 @@ const fetchPlayerSets = async (
 
 
 
-async function fetchHistoricalWinRates(
-	userId: string,
-	videoGameId: number,
-	apiKey: string
-): Promise<EntrantStats> {
-	const allSets = await fetchPlayerSets(userId, videoGameId, apiKey);
-
-	// Get the current date and calculate the cutoff date (6 months ago)
-	const now = new Date();
-	const sixMonthsAgo = new Date(now.setMonth(now.getMonth() - 6));
-
-	// Filter sets to include only those within the last 6 months
-	const recentSets = allSets.filter((set) => {
-		const setDate = new Date(set.createdAt);
-		return setDate >= sixMonthsAgo;
-	});
-
-	// Limit to the most recent 500 sets
-	const limitedSets = recentSets.slice(0, 500);
-
-	// Calculate wins and losses
-	const wins = limitedSets.filter((set) => set.winnerId === userId).length;
-	const total = limitedSets.length;
-	const winRate = total > 0 ? wins / total : 0;
-
-	return {
-		entrantName: "Player Name", // Replace with actual player name
-		gamerTag: "Player Tag", // Replace with actual player tag
-		setsWon: wins,
-		setsLost: total - wins,
-		winRate,
-	};
-}
-
-const fetchEntrantNamesAndTags = async (
-	entrantIds: number[],
-	apiKey: string,
-	batchSize = 20
-): Promise<Record<number, { prefix?: string; gamerTag: string; discriminator: string }>> => {
-	const tagMap: Record<number, { prefix?: string; gamerTag: string; discriminator: string }> = {};
-
-	// Helper to run a batch GraphQL request
-	const fetchBatch = async (batch: number[]) => {
-		const aliasQueries = batch
-			.map(
-				(id) => `
-        e${id}: entrant(id: ${id}) {
-          id
-          participants {
-            gamerTag
-            prefix
-			user { discriminator }
-          }
-        }`
-			)
-			.join("\n");
-
-		const query = `
-      query GetEntrants {
-        ${aliasQueries}
-      }
-    `;
-
-		const response = await fetch(API_URL, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${apiKey}`,
-			},
-			body: JSON.stringify({ query }),
-		});
-
-		const json = await response.json();
-
-		if (json.errors) {
-			console.error("GraphQL errors:", JSON.stringify(json.errors, null, 2));
-			throw new Error("Failed to fetch entrant data.");
-		}
-
-		const data = json?.data || {};
-
-		for (const key of Object.keys(data)) {
-			const entrant = data[key];
-			const id = Number(entrant.id);
-			const participant = entrant.participants?.[0];
-			if (participant) {
-				tagMap[id] = {
-					gamerTag: participant.gamerTag || "Unknown",
-					prefix: participant.prefix || undefined,
-					discriminator: participant.user?.discriminator || undefined
-				};
-			}
-		}
-	}
-
-	// Process in batches
-	for (let i = 0; i < entrantIds.length; i += batchSize) {
-		const batch = entrantIds.slice(i, i + batchSize);
-		await fetchBatch(batch);
-	}
-
-	return tagMap;
-}
-
 function sleep(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+
 export async function fetchSinglesWinRatesFromTournament(
 	tournamentSlug: string,
 	videoGameId: number,
-	entrantsPerFetch: number,
+	fetchSize: number,
 	apiKey: string
 ): Promise<EntrantStats[]> {
-	const eventId = await fetchFirstSinglesEventIdByGame(
-		tournamentSlug,
-		videoGameId,
-		apiKey
-	);
+	const eventId = await fetchFirstSinglesEventIdByGame(tournamentSlug, videoGameId, apiKey);
 
 	const winRates: EntrantStats[] = [];
 	let page = 1;
@@ -189,91 +133,75 @@ export async function fetchSinglesWinRatesFromTournament(
 			body: JSON.stringify({
 				query: `
 					query EventEntrants($eventId: ID!, $page: Int!, $perPage: Int!) {
-	event(id: $eventId) {
-		entrants(query: { page: $page, perPage: $perPage }) {
-			pageInfo {
-				totalPages
-				page
-			}
-			nodes {
-				id
-				name
-				paginatedSets(perPage: 100, page: 1) {
-					nodes {
-						winnerId
-						slots {
-							entrant {
-								id
+						event(id: $eventId) {
+							entrants(query: { page: $page, perPage: $perPage }) {
+								pageInfo { totalPages page }
+								nodes {
+									id
+									name
+									participants {
+										gamerTag
+										prefix
+										user { id discriminator location { country } }
+									}
+								}
 							}
 						}
 					}
-				}
-			}
-		}
-	}
-}
-
-					`,
-				variables: { eventId, page, perPage: entrantsPerFetch },
+				`,
+				variables: { eventId, page, perPage: fetchSize },
 			}),
 		});
 
 		if (response.status === 429) {
-			sleep(5000);
+			await sleep(3000);
 			continue;
 		}
+
 		const json = await response.json();
 		if (json.errors) {
-			throw json.errors[0].message;
+			throw new Error(json.errors[0].message);
 		}
 
 		const entrants = json?.data?.event?.entrants?.nodes || [];
+		const pageInfo = json?.data?.event?.entrants?.pageInfo;
 
 		if (!entrants.length) break;
 
-		const entrantIds = entrants.map((e: any) => Number(e.id));
-		const tagMap = await fetchEntrantNamesAndTags(entrantIds, apiKey);
-
-
 		for (const entrant of entrants) {
-			const entrantId = Number(entrant.id);
-			if (!entrantId) continue;
+			const participant = entrant.participants?.[0];
+			if (!participant?.user?.id) continue;
 
-			let setsWon = 0;
-			let setsLost = 0;
 
-			for (const set of entrant.paginatedSets.nodes) {
-				if (set.winnerId === entrantId) {
-					setsWon++;
-				} else {
-					setsLost++;
-				}
-			}
+			const userId = participant.user.id;
 
-			const total = setsWon + setsLost;
-			const winRate = total > 0 ? setsWon / total : 0;
-			const tagInfo = tagMap[entrantId];
+			const sets = await fetchPlayerSets(userId, videoGameId, apiKey, fetchSize);
+
+			const wins = sets.filter((set) => set.playerId === set.winnerId).length;
+			const total = sets.length;
+			const winRate = total > 0 ? wins / total : 0;
 
 			winRates.push({
 				entrantName: entrant.name,
-				prefix: tagInfo?.prefix,
-				gamerTag: tagInfo?.gamerTag || "Unknown",
-				setsWon,
-				setsLost,
+				gamerTag: participant.gamerTag,
+				prefix: participant.prefix,
+				discriminator: participant.user.discriminator,
+				setsWon: wins,
+				setsLost: total - wins,
 				winRate,
-				discriminator: tagInfo?.discriminator
+				country: participant.user.location.country
 			});
+
+			await sleep(100);
 		}
 
-		const pageInfo = json?.data?.event?.entrants?.pageInfo;
 		if (!pageInfo || page >= pageInfo.totalPages) break;
-
 		page++;
-		sleep(500);
 	}
 
 	return winRates;
 }
+
 
 async function fetchFirstSinglesEventIdByGame(
 	slug: string,
