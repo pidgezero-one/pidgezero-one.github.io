@@ -98,10 +98,10 @@ const App = () => {
     <div style={{ padding: "1rem", fontFamily: "sans-serif" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "1rem" }}>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <label style={{ width: "300px" }}>tournament (paste a slug or URL):</label>
+          <label style={{ width: "350px" }}>start.gg tournament (paste a slug or URL):</label>
           <input
             type="text"
-            placeholder="tournament (paste a slug or URL)"
+            placeholder="start.gg tournament (paste a slug or URL)"
             value={tournamentSlug}
             onChange={(e) => handleTournamentInput(e.target.value)}
             style={{ flex: 1 }}
@@ -109,7 +109,7 @@ const App = () => {
           />
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <label style={{ width: "300px" }}>game</label>
+          <label style={{ width: "350px" }}>game</label>
           <select
             value={game}
             onChange={handleChangeGame}
@@ -126,7 +126,7 @@ const App = () => {
           </select>
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <label style={{ width: "300px" }}>win rate time period (months):</label>
+          <label style={{ width: "350px" }}>win rate time period (months):</label>
           <input
             type="number"
             placeholder="time period"
@@ -138,7 +138,7 @@ const App = () => {
           />
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <label style={{ width: "300px" }}><a target="_blank" rel="noreferrer" href="https://start.gg/admin/profile/developer">start.gg api token</a> <b title={`Click the link, log in to start.gg, click "Create new token", give it any name you want, and copy paste what it gives you into this text box. Your browser will remember this as long as you're not incognito.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
+          <label style={{ width: "350px" }}><a target="_blank" rel="noreferrer" href="https://start.gg/admin/profile/developer">start.gg api token</a> <b title={`Click the link, log in to start.gg, click "Create new token", give it any name you want, and copy paste what it gives you into this text box. Your browser will remember this as long as you're not incognito.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
           <input
             type="text"
             placeholder="start.gg api token"
@@ -149,7 +149,7 @@ const App = () => {
           />
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <label style={{ width: "300px" }}>fetch size (1 - 512) <b title={`Raise this to make it go faster. This can cause "complexity too high" errors, though, in which case you should lower it.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
+          <label style={{ width: "350px" }}>fetch size (1 - 512) <b title={`Raise this to make it go faster. This can cause "complexity too high" errors, though, in which case you should lower it.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
           <input
             type="number"
             placeholder="fetch size (1 - 512)"
