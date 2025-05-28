@@ -60,7 +60,7 @@ const fetchPlayerSets = async (userId: string, videogameId: number, API_KEY: str
 			}),
 		});
 
-		if (res.status === 429) {
+		if (res.status >= 400) {
 			await sleep(3000);
 			continue
 		}
@@ -156,7 +156,7 @@ export async function fetchSinglesWinRatesFromTournament(
 			}),
 		});
 
-		if (response.status === 429) {
+		if (response.status >= 400) {
 			await sleep(3000);
 			continue;
 		}
