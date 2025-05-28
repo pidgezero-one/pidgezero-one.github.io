@@ -71,7 +71,6 @@ const App = () => {
         setAttempted(true)
       })
       .catch((e) => {
-        console.log(e.message)
         console.error(e); setError(e?.message);
         setAttempted(false)
       })
