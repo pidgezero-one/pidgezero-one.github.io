@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getSchuScoreFromName } from "./schuscore";
 import { fetchSinglesWinRatesFromTournament } from "./localized-winrate";
 import { EntrantStats } from "./types";
@@ -11,6 +11,18 @@ const extractTournamentSlug = (input: string): string => {
     return match[1];
   }
   return input;
+}
+
+const setCookie = (name: string, value: string) => {
+  const expires = new Date(Date.now() + 365 * 864e5).toUTCString();
+  document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Strict`;
+}
+
+const getCookie = (name: string) => {
+  return document.cookie
+    .split('; ')
+    .find(row => row.startsWith(encodeURIComponent(name) + '='))
+    ?.split('=')[1];
 }
 
 const App = () => {
@@ -45,6 +57,20 @@ const App = () => {
       .finally(() =>
         setWorking(false));
   }
+
+  useEffect(() => {
+    if (token) {
+      setCookie("startgg_token", token);
+    }
+  }, [token]);
+
+  useEffect(() => {
+    const savedToken = getCookie("startgg_token");
+    if (savedToken) {
+      setToken(decodeURIComponent(savedToken));
+    }
+  }, []);
+
 
   return (
     <div style={{ padding: "1rem", fontFamily: "sans-serif" }}>
