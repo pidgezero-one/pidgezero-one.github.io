@@ -97,7 +97,7 @@ const fetchPlayerSets = async (userId: string, videogameId: number, API_KEY: str
 		}
 
 
-		await sleep(100);
+		await sleep(50);
 
 		page++;
 	}
@@ -116,12 +116,15 @@ export async function fetchSinglesWinRatesFromTournament(
 	tournamentSlug: string,
 	videoGameId: number,
 	fetchSize: number,
-	apiKey: string
+	apiKey: string,
+	updateProgress: (s: string) => void
 ): Promise<EntrantStats[]> {
 	const eventId = await fetchFirstSinglesEventIdByGame(tournamentSlug, videoGameId, apiKey);
 
 	const winRates: EntrantStats[] = [];
 	let page = 1;
+
+	let countedEntrants = 0
 
 	while (true) {
 		const response = await fetch(API_URL, {
@@ -135,7 +138,7 @@ export async function fetchSinglesWinRatesFromTournament(
 					query EventEntrants($eventId: ID!, $page: Int!, $perPage: Int!) {
 						event(id: $eventId) {
 							entrants(query: { page: $page, perPage: $perPage }) {
-								pageInfo { totalPages page }
+								pageInfo { totalPages page total }
 								nodes {
 									id
 									name
@@ -168,7 +171,8 @@ export async function fetchSinglesWinRatesFromTournament(
 
 		if (!entrants.length) break;
 
-		for (const entrant of entrants) {
+		for (let index = 0; index < entrants.length; index++) {
+			const entrant = entrants[index];
 			const participant = entrant.participants?.[0];
 			if (!participant?.user?.id) continue;
 
@@ -192,7 +196,13 @@ export async function fetchSinglesWinRatesFromTournament(
 				country: participant.user?.location?.country
 			});
 
-			await sleep(100);
+			countedEntrants++
+
+			if (!!pageInfo?.total) {
+				updateProgress(`Calculated 6mo win rates for ${countedEntrants} of ${pageInfo.total} entrants (${(100 * countedEntrants / pageInfo.total).toFixed(1)}%)...`)
+			}
+
+			await sleep(50);
 		}
 
 		if (!pageInfo || page >= pageInfo.totalPages) break;
