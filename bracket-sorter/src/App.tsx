@@ -32,6 +32,7 @@ const App = () => {
   const [working, setWorking] = useState<boolean>(false)
   const [error, setError] = useState<string | undefined>()
   const [entrantsPerFetch, setEntrantsPerFetch] = useState<number>(50)
+  const [attempted, setAttempted] = useState<boolean>(false)
 
   const handleTournamentInput = (str: string) => {
     setTournamentSlug(extractTournamentSlug(str))
@@ -46,14 +47,19 @@ const App = () => {
     setData([])
     setWorking(true)
     setError(undefined)
+    setAttempted(false)
 
     fetchSinglesWinRatesFromTournament(tournamentSlug, 1386, entrantsPerFetch, token)
       .then((rates) => {
         const dat = rates.filter(r => r.gamerTag !== 'bye').map(r => ({ ...r, schuScore: getSchuScoreFromName(r.gamerTag, r.country) }))
         setData(dat)
         setWorking(false)
+        setAttempted(true)
       })
-      .catch((e) => { console.error(e); setError(e) })
+      .catch((e) => {
+        console.error(e); setError(e);
+        setAttempted(false)
+      })
       .finally(() =>
         setWorking(false));
   }
@@ -111,7 +117,7 @@ const App = () => {
       </div>
       <button onClick={triggerSort} disabled={working}>Get Entrant Table</button>
 
-      {!!error ? <div style={{ color: 'red' }}>error: {error}</div> : <>{working ? <div><em>fetching each entrant's last 6 months of start.gg set history... this can take a few minutes for small tournaments and ~30 mins for tournaments with 1000+ entrants <b title={`In start.gg's API, the relationship between tournament entrants and their history of set wins across all tournaments is not very direct, so this has to do a few seconds worth of complex fetching per participant. start.gg's API is also rate limited so it has to be careful not to get throttled.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(why?)</b></em></div> : <>{!!data.length ? <EntrantStatsTable data={data} /> : <div>(no entrants)</div>}</>}</>}
+      {!!error ? <div style={{ color: 'red' }}>error: {error}</div> : <>{working ? <div><em>fetching each entrant's last 6 months of start.gg set history... this can take a few minutes for small tournaments and ~30 mins for tournaments with 1000+ entrants <b title={`In start.gg's API, the relationship between tournament entrants and their history of set wins across all tournaments is not very direct, so this has to do a few seconds worth of complex fetching per participant. start.gg's API is also rate limited so it has to be careful not to get throttled.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(why?)</b></em></div> : <>{!!data.length ? <EntrantStatsTable data={data} /> : <>{attempted ? <div>(no entrants - may not be public yet)</div> : <></>}</>}</>}</>}
 
     </div>
   );
