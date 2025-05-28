@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/bracket-sorter/build/static/css/main.afb8dbbd.css",
-    "main.js": "/bracket-sorter/build/static/js/main.c6af11d0.js",
+    "main.js": "/bracket-sorter/build/static/js/main.967cd7ce.js",
     "static/js/250.fd6601e2.chunk.js": "/bracket-sorter/build/static/js/250.fd6601e2.chunk.js",
     "index.html": "/bracket-sorter/build/index.html",
     "main.afb8dbbd.css.map": "/bracket-sorter/build/static/css/main.afb8dbbd.css.map",
-    "main.c6af11d0.js.map": "/bracket-sorter/build/static/js/main.c6af11d0.js.map",
+    "main.967cd7ce.js.map": "/bracket-sorter/build/static/js/main.967cd7ce.js.map",
     "250.fd6601e2.chunk.js.map": "/bracket-sorter/build/static/js/250.fd6601e2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.afb8dbbd.css",
-    "static/js/main.c6af11d0.js"
+    "static/js/main.967cd7ce.js"
   ]
 }

@@ -62,8 +62,10 @@ const App = () => {
         console.error(e); setError(e);
         setAttempted(false)
       })
-      .finally(() =>
-        setWorking(false));
+      .finally(() => {
+        setWorking(false);
+        setProgress("")
+      });
   }
 
   useEffect(() => {
