@@ -34,6 +34,9 @@ const App = () => {
   const [entrantsPerFetch, setEntrantsPerFetch] = useState<number>(50)
   const [attempted, setAttempted] = useState<boolean>(false)
   const [progress, setProgress] = useState<string>("")
+  const [game, selectGame] = useState<number>(1386);
+  const [timePeriod, setTimePeriod] = useState<number>(6)
+  const [staticTimePeriod, setStaticTimePeriod] = useState<number>(6)
 
   const handleTournamentInput = (str: string) => {
     setTournamentSlug(extractTournamentSlug(str))
@@ -43,15 +46,24 @@ const App = () => {
     setEntrantsPerFetch(parseInt(str) ?? 50)
   }
 
+  const handleChangeGame = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    selectGame(parseInt(e.target.value) ?? 1386);
+  };
+
+  const handleTimePeriod = (str: string) => {
+    setTimePeriod(parseInt(str) ?? 6)
+  }
+
   const triggerSort = () => {
-    if (!tournamentSlug || !token) return
+    if (!tournamentSlug || !token || timePeriod < 1 || entrantsPerFetch < 1) return
     setData([])
     setWorking(true)
     setError(undefined)
     setAttempted(false)
     setProgress("")
+    setStaticTimePeriod(timePeriod)
 
-    fetchSinglesWinRatesFromTournament(tournamentSlug, 1386, entrantsPerFetch, token, setProgress)
+    fetchSinglesWinRatesFromTournament(tournamentSlug, game, entrantsPerFetch, token, timePeriod, setProgress)
       .then((rates) => {
         const dat = rates.filter(r => r.gamerTag !== 'bye').map(r => ({ ...r, schuScore: getSchuScoreFromName(r.gamerTag, r.country) }))
         setData(dat)
@@ -59,7 +71,8 @@ const App = () => {
         setAttempted(true)
       })
       .catch((e) => {
-        console.error(e); setError(e);
+        console.log(e.message)
+        console.error(e); setError(e?.message);
         setAttempted(false)
       })
       .finally(() => {
@@ -108,20 +121,70 @@ const App = () => {
           />
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <label style={{ width: "300px" }}>fetch size <b title={`Raise this to make it go faster. This can cause "complexity too high" errors, though, in which case you should lower it.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
+          <label style={{ width: "300px" }}>fetch size (1 - 512) <b title={`Raise this to make it go faster. This can cause "complexity too high" errors, though, in which case you should lower it.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(?)</b>:</label>
           <input
             type="number"
-            placeholder="fetch size"
+            placeholder="fetch size (1 - 512)"
             value={entrantsPerFetch.toString()}
             onChange={(e) => handleUpdateEntrantsPerFetch(e.target.value)}
             style={{ flex: 1 }}
             disabled={working}
+            min={1}
+            max={512}
+          />
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <label style={{ width: "300px" }}>game</label>
+          <select
+            value={game}
+            onChange={handleChangeGame}
+            style={{ flex: 1 }}
+            disabled={working}
+          >
+            <option value="4">64</option>
+            <option value="1">Melee</option>
+            <option value="5">Brawl</option>
+            <option value="29">3DS</option>
+            <option value="3">Wii U</option>
+            <option value="1386">Ultimate</option>
+            <option value="33602">Project+</option>
+          </select>
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <label style={{ width: "300px" }}>win rate time period (months):</label>
+          <input
+            type="number"
+            placeholder="time period"
+            value={timePeriod.toString()}
+            onChange={(e) => handleTimePeriod(e.target.value)}
+            style={{ flex: 1 }}
+            disabled={working}
+            min={1}
           />
         </div>
       </div>
       <button onClick={triggerSort} disabled={working}>Get Entrant Table</button>
 
-      {!!error ? <div style={{ color: 'red' }}>error: {error}</div> : <>{working ? <div><em>fetching each entrant's last 6 months of start.gg set history... this can take a few minutes for small tournaments and ~30 mins for tournaments with 1000+ entrants <b title={`In start.gg's API, the relationship between tournament entrants and their history of set wins across all tournaments is not very direct, so this has to do a few seconds worth of complex fetching per participant. start.gg's API is also rate limited so it has to be careful not to get throttled.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(why?)</b></em><br /><br />{progress}</div> : <>{!!data.length ? <EntrantStatsTable data={data} /> : <>{attempted ? <div>(no entrants - may not be public yet)</div> : <></>}</>}</>}</>}
+      {!!error ?
+        <div style={{ color: 'red', marginTop: '1rem' }}>error: {error}</div>
+        : <>
+          {working ?
+            <div style={{ marginTop: '1rem' }}>
+              <em>fetching each entrant's start.gg set history... this can take a while for brackets with hundreds of entrants or for longer win rate time periods{" "}
+                <b title={`In start.gg's API, the relationship between tournament entrants and their history of set wins across all tournaments is not very direct, so this has to do a few seconds worth of complex fetching per participant. start.gg's API is also rate limited so it has to be careful not to get throttled.`} style={{ textDecoration: 'underline', textDecorationStyle: 'dotted' }}>(why?)</b>
+              </em>
+              <br /><br />
+              {progress}
+            </div> :
+            <>
+              {!!data.length ?
+                <EntrantStatsTable data={data} game={game} timePeriod={staticTimePeriod} /> :
+                <>{attempted ?
+                  <div>(no entrants - may not be public yet)</div> :
+                  <></>
+                }</>}
+            </>}
+        </>}
 
     </div>
   );

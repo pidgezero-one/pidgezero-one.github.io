@@ -3,14 +3,14 @@ import { EntrantStats, Set } from "./types";
 const API_URL = "https://api.start.gg/gql/alpha";
 
 
-const fetchPlayerSets = async (userId: string, videogameId: number, API_KEY: string, fetchSize: number): Promise<Set[]> => {
+const fetchPlayerSets = async (userId: string, videogameId: number, API_KEY: string, fetchSize: number, timePeriod: number): Promise<Set[]> => {
 	let page = 1;
 	let totalPages = 1;
 	const sets: Set[] = [];
 
-	const sixMonthsAgo = new Date();
-	sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
-	const unixTimestamp = Math.floor(sixMonthsAgo.getTime() / 1000);
+	const monthsAgo = new Date();
+	monthsAgo.setMonth(monthsAgo.getMonth() - timePeriod);
+	const unixTimestamp = Math.floor(monthsAgo.getTime() / 1000);
 
 	while (page <= totalPages) {
 		const res = await fetch(API_URL, {
@@ -117,6 +117,7 @@ export async function fetchSinglesWinRatesFromTournament(
 	videoGameId: number,
 	fetchSize: number,
 	apiKey: string,
+	timePeriod: number,
 	updateProgress: (s: string) => void
 ): Promise<EntrantStats[]> {
 	const eventId = await fetchFirstSinglesEventIdByGame(tournamentSlug, videoGameId, apiKey);
@@ -179,7 +180,7 @@ export async function fetchSinglesWinRatesFromTournament(
 
 			const userId = participant.user.id;
 
-			const sets = await fetchPlayerSets(userId, videoGameId, apiKey, fetchSize);
+			const sets = await fetchPlayerSets(userId, videoGameId, apiKey, fetchSize, timePeriod);
 
 			const wins = sets.filter((set) => set.playerId === set.winnerId).length;
 			const total = sets.length;
@@ -199,7 +200,7 @@ export async function fetchSinglesWinRatesFromTournament(
 			countedEntrants++
 
 			if (!!pageInfo?.total) {
-				updateProgress(`Calculated 6mo win rates for ${countedEntrants} of ${pageInfo.total} entrants (${(100 * countedEntrants / pageInfo.total).toFixed(1)}%)...`)
+				updateProgress(`Calculated ${timePeriod}mo win rates for ${countedEntrants} of ${pageInfo.total} entrants (${(100 * countedEntrants / pageInfo.total).toFixed(1)}%)...`)
 			}
 
 			await sleep(50);
@@ -254,7 +255,7 @@ async function fetchFirstSinglesEventIdByGame(
 
 	if (!match)
 		throw new Error(
-			`No *Singles* event with videoGame ID ${videoGameId} found in tournament "${slug}"`
+			`this tournament does not have a singles bracket for your selected game`
 		);
 
 	return match.id;

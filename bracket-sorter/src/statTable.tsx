@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EntrantStats } from "./types";
 
 type Props = {
 	data: EntrantStats[];
+	game: number;
+	timePeriod: number;
 };
 
 type SortKey = keyof Pick<EntrantStats, "gamerTag" | "winRate" | "schuScore">;
 
-const EntrantStatsTable: React.FC<Props> = ({ data }) => {
-	const [sortKey, setSortKey] = useState<SortKey>("schuScore");
+const EntrantStatsTable: React.FC<Props> = ({ data, game, timePeriod }) => {
+	const [sortKey, setSortKey] = useState<SortKey>(game === 1386 ? "schuScore" : "winRate");
 	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
 
 	const handleSort = (key: SortKey) => {
@@ -19,6 +21,14 @@ const EntrantStatsTable: React.FC<Props> = ({ data }) => {
 			setSortDirection("desc");
 		}
 	};
+
+	useEffect(() => {
+		if (game === 1386) {
+			setSortKey("schuScore")
+		} else {
+			setSortKey("winRate")
+		}
+	}, [game])
 
 	const sortedData = [...data].sort((a, b) => {
 		const aVal = a[sortKey];
@@ -54,13 +64,13 @@ const EntrantStatsTable: React.FC<Props> = ({ data }) => {
 
 	return (
 		<>
-			<p>* Schu score attempts to match to a start.gg user by name and country and not by start.gg user ID, so not all listings may be accurate.</p>
+			{game === 1386 && <p>* Schu score attempts to match to a start.gg user by name and country and not by start.gg user ID, so not all listings may be accurate.</p>}
 			<table style={{ borderCollapse: "collapse", width: "100%" }}>
 				<thead>
 					<tr style={{ textAlign: 'left' }}>
 						{getHeader("Name", "gamerTag")}
-						{getHeader("start.gg win rate (last 6 months)", "winRate")}
-						{getHeader("Schu score (as of 2025-02-17)*", "schuScore")}
+						{getHeader(`start.gg win rate (last ${timePeriod} months)`, "winRate")}
+						{game === 1386 && getHeader("Schu score (as of 2025-02-17)*", "schuScore")}
 					</tr>
 				</thead>
 				<tbody>
@@ -70,11 +80,11 @@ const EntrantStatsTable: React.FC<Props> = ({ data }) => {
 							<td>
 								{entrant.setsWon} / {entrant.setsWon + entrant.setsLost} ({entrant.winRate.toFixed(2)})
 							</td>
-							<td>
+							{game === 1386 && <td>
 								{entrant.schuScore !== undefined
 									? `${entrant.schuScore.score.toFixed(2)} (${entrant.schuScore.place + 1})`
 									: "—"}
-							</td>
+							</td>}
 						</tr>
 					))}
 				</tbody>
