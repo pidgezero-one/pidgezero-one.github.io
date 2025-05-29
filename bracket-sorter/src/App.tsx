@@ -123,6 +123,7 @@ const App = () => {
             <option value="3">Wii U</option>
             <option value="1386">Ultimate</option>
             <option value="33602">Project+</option>
+            <option value="53945">Rivals 2</option>
           </select>
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
