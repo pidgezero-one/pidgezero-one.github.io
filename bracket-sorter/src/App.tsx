@@ -7,7 +7,7 @@ import EntrantStatsTable from "./statTable";
 import { fetchSinglesEventIdsByGame } from "./choose-tournament";
 
 const extractTournamentSlug = (input: string): string => {
-  const match = input.match(/^(?:https?:\/\/)?(?:www\.)?start.gg\/tournament\/([^\/?#]+)/i);
+  const match = input.match(/^(?:https?:\/\/)?(?:www\.)?start.gg\/(?:admin\/)?tournament\/([^\/?#]+)/i);
   if (match && match[1]) {
     return match[1];
   }
@@ -77,9 +77,9 @@ const App = () => {
     setBracketChoices([])
   }
 
-  const triggerSort = (e?: number) => {
+  const triggerSort = (eventId: number) => {
     setWorking(true)
-    fetchSinglesWinRatesFromTournament(tournamentSlug, game, entrantsPerFetch, token, timePeriod, eventId ?? e, setProgress)
+    fetchSinglesWinRatesFromTournament(tournamentSlug, game, entrantsPerFetch, token, timePeriod, eventId, setProgress)
       .then((rates) => {
         const dat = rates.filter(r => r.gamerTag !== 'bye').map(r => ({ ...r, schuScore: getSchuScoreFromName(r.gamerTag, r.country) }))
         setData(dat)
@@ -99,11 +99,14 @@ const App = () => {
   const fetchBrackets = () => {
     if (!readyToFetchBrackets) return
     setFetchingBrackets(true)
+    setData([])
+    setAttempted(false)
     fetchSinglesEventIdsByGame(tournamentSlug, game, token).then((res: any) => {
       setBracketChoices(res)
       if (res.length > 0) {
         setEventId(res[0].id)
         if (res.length === 1) {
+          console.log(res[0].id)
           triggerSort(res[0].id)
         }
       }
@@ -220,7 +223,7 @@ const App = () => {
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
 
-            <button onClick={() => triggerSort()} disabled={working}>confirm</button>
+            <button onClick={() => triggerSort(eventId)} disabled={working}>confirm</button>
 
             <button onClick={reset} disabled={working}>cancel</button>
           </div>
