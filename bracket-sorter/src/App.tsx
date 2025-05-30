@@ -4,6 +4,7 @@ import { getSchuScoreFromName } from "./schuscore";
 import { fetchSinglesWinRatesFromTournament } from "./localized-winrate";
 import { EntrantStats } from "./types";
 import EntrantStatsTable from "./statTable";
+import { fetchSinglesEventIdsByGame } from "./choose-tournament";
 
 const extractTournamentSlug = (input: string): string => {
   const match = input.match(/^(?:https?:\/\/)?(?:www\.)?start.gg\/tournament\/([^\/?#]+)/i);
@@ -29,6 +30,7 @@ const App = () => {
   const [token, setToken] = useState("");
   const [tournamentSlug, setTournamentSlug] = useState("");
   const [data, setData] = useState<EntrantStats[]>([])
+  const [fetchingBrackets, setFetchingBrackets] = useState<boolean>(false)
   const [working, setWorking] = useState<boolean>(false)
   const [error, setError] = useState<string | undefined>()
   const [entrantsPerFetch, setEntrantsPerFetch] = useState<number>(50)
@@ -37,9 +39,15 @@ const App = () => {
   const [game, selectGame] = useState<number>(1386);
   const [timePeriod, setTimePeriod] = useState<number>(6)
   const [staticTimePeriod, setStaticTimePeriod] = useState<number>(6)
+  const [bracketChoices, setBracketChoices] = useState<{ name: string, id: number }[]>([])
+  const [eventId, setEventId] = useState<number>(0);
+
+  const readyToFetchBrackets = !(!tournamentSlug || !token || timePeriod < 1 || isNaN(timePeriod) || entrantsPerFetch < 1 || isNaN(entrantsPerFetch))
+  const disableBaseControls = working || fetchingBrackets || (bracketChoices.length > 0 && !working && !attempted)
 
   const handleTournamentInput = (str: string) => {
     setTournamentSlug(extractTournamentSlug(str))
+    setBracketChoices([])
   }
 
   const handleUpdateEntrantsPerFetch = (str: string) => {
@@ -54,16 +62,24 @@ const App = () => {
     setTimePeriod(parseInt(str) ?? 6)
   }
 
-  const triggerSort = () => {
-    if (!tournamentSlug || !token || timePeriod < 1 || entrantsPerFetch < 1) return
+  const handleChangeBracket = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setEventId(parseInt(e.target.value));
+  };
+
+  const reset = () => {
     setData([])
-    setWorking(true)
+    setWorking(false)
     setError(undefined)
     setAttempted(false)
     setProgress("")
     setStaticTimePeriod(timePeriod)
+    setFetchingBrackets(false)
+    setBracketChoices([])
+  }
 
-    fetchSinglesWinRatesFromTournament(tournamentSlug, game, entrantsPerFetch, token, timePeriod, setProgress)
+  const triggerSort = (e?: number) => {
+    setWorking(true)
+    fetchSinglesWinRatesFromTournament(tournamentSlug, game, entrantsPerFetch, token, timePeriod, eventId ?? e, setProgress)
       .then((rates) => {
         const dat = rates.filter(r => r.gamerTag !== 'bye').map(r => ({ ...r, schuScore: getSchuScoreFromName(r.gamerTag, r.country) }))
         setData(dat)
@@ -72,12 +88,32 @@ const App = () => {
       })
       .catch((e) => {
         console.error(e); setError(e?.message);
-        setAttempted(false)
+        reset()
       })
       .finally(() => {
         setWorking(false);
         setProgress("")
       });
+  }
+
+  const fetchBrackets = () => {
+    if (!readyToFetchBrackets) return
+    setFetchingBrackets(true)
+    fetchSinglesEventIdsByGame(tournamentSlug, game, token).then((res: any) => {
+      setBracketChoices(res)
+      if (res.length > 0) {
+        setEventId(res[0].id)
+        if (res.length === 1) {
+          triggerSort(res[0].id)
+        }
+      }
+    })
+      .catch((e) => {
+        reset()
+        console.error(e); setError(e?.message);
+      }).finally(() => {
+        setFetchingBrackets(false)
+      })
   }
 
   useEffect(() => {
@@ -105,7 +141,7 @@ const App = () => {
             value={tournamentSlug}
             onChange={(e) => handleTournamentInput(e.target.value)}
             style={{ flex: 1 }}
-            disabled={working}
+            disabled={disableBaseControls}
           />
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -114,7 +150,7 @@ const App = () => {
             value={game}
             onChange={handleChangeGame}
             style={{ flex: 1 }}
-            disabled={working}
+            disabled={disableBaseControls}
           >
             <option value="4">64</option>
             <option value="1">Melee</option>
@@ -134,7 +170,7 @@ const App = () => {
             value={timePeriod.toString()}
             onChange={(e) => handleTimePeriod(e.target.value)}
             style={{ flex: 1 }}
-            disabled={working}
+            disabled={disableBaseControls}
             min={1}
           />
         </div>
@@ -146,7 +182,7 @@ const App = () => {
             value={token}
             onChange={(e) => setToken(e.target.value)}
             style={{ flex: 1 }}
-            disabled={working}
+            disabled={disableBaseControls}
           />
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -157,13 +193,40 @@ const App = () => {
             value={entrantsPerFetch.toString()}
             onChange={(e) => handleUpdateEntrantsPerFetch(e.target.value)}
             style={{ flex: 1 }}
-            disabled={working}
+            disabled={disableBaseControls}
             min={1}
             max={512}
           />
         </div>
+
       </div>
-      <button onClick={triggerSort} disabled={working}>Get Entrant Table</button>
+      <button onClick={fetchBrackets} disabled={fetchingBrackets || !readyToFetchBrackets || disableBaseControls}>Get Entrant Table</button>
+
+
+      <>{bracketChoices.length >= 2 ?
+        <div style={{ display: "flex", marginTop: '1rem', flexDirection: "column", gap: "1rem", marginBottom: "1rem" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ width: "350px" }}>
+              This tournament has multiple singles events for your selected game. Choose one:
+            </div>
+            <select
+              value={eventId}
+              onChange={handleChangeBracket}
+              style={{ flex: 1 }}
+              disabled={working}
+            >
+              {bracketChoices.map(b => <option value={b.id}>{b.name}</option>)}
+            </select>
+          </div>
+          <div style={{ display: 'flex', gap: '8px' }}>
+
+            <button onClick={() => triggerSort()} disabled={working}>confirm</button>
+
+            <button onClick={reset} disabled={working}>cancel</button>
+          </div>
+        </div> :
+        <></>}</>
+
 
       {!!error ?
         <div style={{ color: 'red', marginTop: '1rem' }}>error: {error}</div>

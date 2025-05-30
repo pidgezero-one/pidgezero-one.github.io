@@ -19,3 +19,5 @@ export interface Set {
 	winnerId: string;
 	playerId: string;
 }
+
+export const API_URL = "https://api.start.gg/gql/alpha";

@@ -1,6 +1,4 @@
-import { EntrantStats, Set } from "./types";
-
-const API_URL = "https://api.start.gg/gql/alpha";
+import { EntrantStats, Set, API_URL } from "./types";
 
 
 const fetchPlayerSets = async (userId: string, videogameId: number, API_KEY: string, fetchSize: number, timePeriod: number): Promise<Set[]> => {
@@ -118,9 +116,9 @@ export async function fetchSinglesWinRatesFromTournament(
 	fetchSize: number,
 	apiKey: string,
 	timePeriod: number,
+	eventId: number,
 	updateProgress: (s: string) => void
 ): Promise<EntrantStats[]> {
-	const eventId = await fetchFirstSinglesEventIdByGame(tournamentSlug, videoGameId, apiKey);
 
 	const winRates: EntrantStats[] = [];
 	let page = 1;
@@ -211,52 +209,4 @@ export async function fetchSinglesWinRatesFromTournament(
 	}
 
 	return winRates;
-}
-
-
-async function fetchFirstSinglesEventIdByGame(
-	slug: string,
-	videoGameId: number,
-	apiKey: string
-): Promise<number> {
-	const res = await fetch(API_URL, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			Authorization: `Bearer ${apiKey}`,
-		},
-		body: JSON.stringify({
-			query: `
-        query TournamentEvents($slug: String!, $videogameId: [ID]!) {
-          tournament(slug: $slug) {
-            events(filter: {videogameId: $videogameId}) {
-              id
-              name
-			  teamRosterSize { maxPlayers }
-            }
-          }
-        }
-      `,
-			variables: {
-				slug,
-				"videogameId": [videoGameId]
-			},
-		}),
-	});
-
-	const json = await res.json();
-	const events = json?.data?.tournament?.events;
-	if (!events) throw new Error(`No events found for tournament "${slug}"`);
-
-	const match = events.find(
-		(e: any) =>
-			!e.teamRosterSize
-	);
-
-	if (!match)
-		throw new Error(
-			`this tournament does not have a singles bracket for your selected game`
-		);
-
-	return match.id;
 }
