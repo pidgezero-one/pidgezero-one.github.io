@@ -37788,601 +37788,2301 @@
     "name": "Pocket",
     "score": 9520,
     "place": 1,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "ApolloKage",
     "score": 2670,
     "place": 2,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Geist",
     "score": 2080,
     "place": 3,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "ATATA",
     "score": 1750,
     "place": 4,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Candle",
     "score": 1740,
     "place": 5,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Yeti",
     "score": 1530,
     "place": 6,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Atreus",
     "score": 1370,
     "place": 7,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Ikan",
     "score": 1350,
     "place": 8,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "loaf",
     "score": 1340,
     "place": 9,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Doorstop",
     "score": 1330,
     "place": 10,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Jedadeda",
     "score": 1310,
     "place": 11,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "AnthonyIsntCool",
     "score": 1170,
     "place": 12,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "IceKnight",
     "score": 1160,
     "place": 13,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Dice",
     "score": 1100,
     "place": 14,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Arkdee",
     "score": 981.2,
     "place": 15,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Sir Dank",
     "score": 959.4,
     "place": 16,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Ploopy",
     "score": 936.4,
     "place": 17,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Rocke",
     "score": 890.6,
     "place": 18,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Deathspade",
     "score": 868.4,
     "place": 19,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Lucky",
     "score": 856.8,
     "place": 20,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Suspect",
     "score": 782.8,
     "place": 21,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Justin24",
     "score": 735.4,
     "place": 22,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "abezuraa",
     "score": 721.5,
     "place": 23,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Frostbyte",
     "score": 716.5,
     "place": 24,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Colorondo8",
     "score": 715.1,
     "place": 25,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "BADMAN",
     "score": 696.5,
     "place": 26,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "rydra",
     "score": 686.7,
     "place": 27,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Dark Wizzy",
     "score": 684,
     "place": 28,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Ravenking",
     "score": 683.6,
     "place": 29,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Woulphy",
     "score": 683,
     "place": 30,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "skittles",
     "score": 682.5,
     "place": 31,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Rob.",
     "score": 630.4,
     "place": 32,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "PeZ",
     "score": 630.3,
     "place": 33,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Butterkix",
     "score": 590.8,
     "place": 34,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "UKIT",
     "score": 580.8,
     "place": 35,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "TimeGear",
     "score": 577.9,
     "place": 36,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Sytonix",
     "score": 572.6,
     "place": 37,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "deliboid",
     "score": 546.4,
     "place": 38,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "HENRY LUMA",
     "score": 545.4,
     "place": 39,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "WelfarePickles",
     "score": 543.9,
     "place": 40,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Mystearica",
     "score": 542.2,
     "place": 41,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "comet",
     "score": 534.7,
     "place": 42,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "CoolKid85",
     "score": 529.2,
     "place": 43,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "TonyZTank",
     "score": 522,
     "place": 44,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Dr. Kirb",
     "score": 516.4,
     "place": 45,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Revolver",
     "score": 512.6,
     "place": 46,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Blueboo",
     "score": 511.6,
     "place": 47,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "| azyZach",
     "score": 508.4,
     "place": 48,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Mirai_",
     "score": 498.2,
     "place": 49,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Dufaux",
     "score": 497,
     "place": 50,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Dylster",
     "score": 495.3,
     "place": 51,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "doug todd",
     "score": 485,
     "place": 52,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Shelter",
     "score": 481.9,
     "place": 53,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Jin",
     "score": 475.1,
     "place": 54,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Avien",
     "score": 473,
     "place": 55,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Mistral",
     "score": 465.9,
     "place": 56,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Mastronarde",
     "score": 462.5,
     "place": 57,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Shadzix",
     "score": 455.5,
     "place": 58,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "PsyKoD",
     "score": 452,
     "place": 59,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "KilogramHours",
     "score": 451.5,
     "place": 60,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "JoeCool",
     "score": 440.4,
     "place": 61,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Hawk",
     "score": 438.7,
     "place": 62,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Toad",
     "score": 438.3,
     "place": 63,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Scoops",
     "score": 433.6,
     "place": 64,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Feet-Seeking Missile",
     "score": 422.2,
     "place": 65,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "LOE1",
     "score": 420.6,
     "place": 66,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "indecisive",
     "score": 420.4,
     "place": 67,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Savon",
     "score": 401.9,
     "place": 68,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "ToffeeCG",
     "score": 399.8,
     "place": 69,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Symphonies",
     "score": 392.7,
     "place": 70,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Izaiah",
     "score": 386.2,
     "place": 71,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Vencho",
     "score": 383.6,
     "place": 72,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Mewmon",
     "score": 374.5,
     "place": 73,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Sogoodpop",
     "score": 371.1,
     "place": 74,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Erin",
     "score": 368.9,
     "place": 75,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Regulating_Mofo",
     "score": 365.3,
     "place": 76,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Skyward Hero",
     "score": 363.5,
     "place": 77,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Grease All Mighty",
     "score": 363.3,
     "place": 78,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Echofire",
     "score": 360.8,
     "place": 79,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Anthony the Hedgehog",
     "score": 358.9,
     "place": 80,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Drewish",
     "score": 356.3,
     "place": 81,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "ANJELLOH",
     "score": 354.3,
     "place": 82,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Zen",
     "score": 350.4,
     "place": 83,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Prince",
     "score": 348.2,
     "place": 84,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Redacious",
     "score": 345.9,
     "place": 85,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Ehis",
     "score": 345.5,
     "place": 86,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "D-Money",
     "score": 342.7,
     "place": 87,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Pneuma",
     "score": 342.1,
     "place": 88,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Sunny",
     "score": 339.2,
     "place": 89,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Xurii",
     "score": 335.2,
     "place": 90,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Gamerdog",
     "score": 330.7,
     "place": 91,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Nad79",
     "score": 330.7,
     "place": 92,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "sandy",
     "score": 330.1,
     "place": 93,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Meta-Main",
     "score": 326.2,
     "place": 94,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "boku",
     "score": 324.8,
     "place": 95,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "AndrewT",
     "score": 322.4,
     "place": 96,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Elton No Johns",
     "score": 319.7,
     "place": 97,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Scrambled",
     "score": 316.9,
     "place": 98,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "SpaceMiner",
     "score": 310,
     "place": 99,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Jbrav",
     "score": 308.5,
     "place": 100,
-    "region": "MIDWEST"
+    "region": "MIDWEST",
+    "locale": {
+      "country": "us",
+      "states": [
+        "NE",
+        "ND",
+        "SD",
+        "KS",
+        "MO",
+        "IA",
+        "MN",
+        "WI",
+        "IL",
+        "IN",
+        "OH",
+        "MI"
+      ]
+    }
   },
   {
     "name": "Atreus",

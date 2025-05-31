@@ -92,15 +92,15 @@ const EntrantStatsTable: React.FC<Props> = ({ data, game }) => {
 							</td>
 							{game === 1386 && <><td>
 								{entrant.schuAllTimeScore !== undefined
-									? `${entrant.schuAllTimeScore.score.toFixed(2)} (${entrant.schuAllTimeScore.place + 1})`
+									? `${entrant.schuAllTimeScore.score.toFixed(2)} (#${entrant.schuAllTimeScore.place + 1})`
 									: "—"}
 							</td><td>
 									{entrant.schuPointInTimeScore !== undefined
-										? `${entrant.schuPointInTimeScore.score.toFixed(2)} (${entrant.schuPointInTimeScore.place + 1})`
+										? `${entrant.schuPointInTimeScore.score.toFixed(2)} (#${entrant.schuPointInTimeScore.place + 1})`
 										: "—"}
 								</td><td>
 									{entrant.schuRegionalScore !== undefined
-										? `${entrant.schuRegionalScore.score.toFixed(2)} (${entrant.schuRegionalScore.place}, ${entrant.schuRegionalScore.region})`
+										? `${entrant.schuRegionalScore.score.toFixed(2)} (${entrant.schuRegionalScore.region} #${entrant.schuRegionalScore.place})`
 										: "—"}
 								</td></>}
 						</tr>
