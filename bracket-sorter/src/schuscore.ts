@@ -42,7 +42,6 @@ const filterRegional = (name: string, data: any[], countryName?: string, state?:
 	if (countryName) {
 		countryCode = getCountryCodeFromName(countryName)
 	}
-	console.log(countryCode)
 	// probably don't want to match regional stats against players who we don't even know what country they're from, regional stats have the highest risk of name collision
 	if (!countryCode) {
 		return
@@ -96,7 +95,6 @@ const filterRegional = (name: string, data: any[], countryName?: string, state?:
 		return false
 	}
 	let v = data.filter(exact);
-	console.log(v)
 	if (v?.length) {
 		// If this player is on multiple PRs, i.e. Canada and Alberta, choose whichever one their score is higher in
 		const idx = data.indexOf(v.sort((x, y) => y.score - x.score)[0])
