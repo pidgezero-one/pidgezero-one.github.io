@@ -111,7 +111,6 @@ const App = () => {
       if (res.length > 0) {
         setEventId(res[0].id)
         if (res.length === 1) {
-          console.log(res[0].id)
           triggerSort(res[0].id)
         }
       }

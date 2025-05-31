@@ -42,19 +42,77 @@ const filterRegional = (name: string, data: any[], countryName?: string, state?:
 	if (countryName) {
 		countryCode = getCountryCodeFromName(countryName)
 	}
+	console.log(countryCode)
 	// probably don't want to match regional stats against players who we don't even know what country they're from, regional stats have the highest risk of name collision
 	if (!countryCode) {
 		return
 	}
-	const exact = (o: { name: string, score: number, locale: Locale }) => o.name === name && (typeof o.locale.country === "string" ? countryCode === o.locale.country : Array.isArray(o.locale.country) ? o.locale.country.includes(countryCode) : false) && (state && o.locale.states?.length ? o.locale.states.includes(state) : true)
-	const caseless = (o: { name: string, score: number, locale: Locale }) => o.name.toLowerCase() === name.toLowerCase() && (typeof o.locale.country === "string" ? countryCode === o.locale.country : Array.isArray(o.locale.country) ? o.locale.country.includes(countryCode) : false) && (state && o.locale.states?.length ? o.locale.states.includes(state) : true)
+	// case sensitive name matching and state also matches
+	const exact = (o: { name: string, score: number, locale: Locale }) => {
+		if (o.locale?.country) {
+			if (typeof o.locale.country === "string") {
+				return countryCode === o.locale.country && (!!state && !!o.locale.states && o.locale.states.includes(state)) && o.name === name
+			} else if (Array.isArray(o.locale.country)) {
+				return o.locale.country.includes(countryCode) && (!!state && !!o.locale.states && o.locale.states.includes(state)) && o.name === name
+			}
+		}
+		// players who were unparseable, leave out, too unreliable if can't match by country
+		return false
+	}
+	// case insensitive name matching and state also matches
+	const caseless = (o: { name: string, score: number, locale: Locale }) => {
+		if (o.locale?.country) {
+			if (typeof o.locale.country === "string") {
+				return countryCode === o.locale.country && (!!state && !!o.locale.states && o.locale.states.includes(state)) && o.name.toLowerCase() === name.toLowerCase()
+			} else if (Array.isArray(o.locale.country)) {
+				return o.locale.country.includes(countryCode) && (!!state && !!o.locale.states && o.locale.states.includes(state)) && o.name.toLowerCase() === name.toLowerCase()
+			}
+		}
+		// players who were unparseable, leave out, too unreliable if can't match by country
+		return false
+	}
+	// case sensitive name matching, state match is unknown
+	const cs_fuzzy = (o: { name: string, score: number, locale: Locale }) => {
+		if (o.locale?.country) {
+			if (typeof o.locale.country === "string") {
+				return countryCode === o.locale.country && (!state || !o.locale.states) && o.name === name
+			} else if (Array.isArray(o.locale.country)) {
+				return o.locale.country.includes(countryCode) && (!state || !o.locale.states) && o.name === name
+			}
+		}
+		// players who were unparseable, leave out, too unreliable if can't match by country
+		return false
+	}
+	// case insensitive name matching, state match is unknown
+	const ci_fuzzy = (o: { name: string, score: number, locale: Locale }) => {
+		if (o.locale?.country) {
+			if (typeof o.locale.country === "string") {
+				return countryCode === o.locale.country && (!state || !o.locale.states) && o.name.toLowerCase() === name.toLowerCase()
+			} else if (Array.isArray(o.locale.country)) {
+				return o.locale.country.includes(countryCode) && (!state || !o.locale.states) && o.name.toLowerCase() === name.toLowerCase()
+			}
+		}
+		// players who were unparseable, leave out, too unreliable if can't match by country
+		return false
+	}
 	let v = data.filter(exact);
+	console.log(v)
 	if (v?.length) {
 		// If this player is on multiple PRs, i.e. Canada and Alberta, choose whichever one their score is higher in
 		const idx = data.indexOf(v.sort((x, y) => y.score - x.score)[0])
 		return data[idx]
 	}
 	v = data.filter(caseless)
+	if (v?.length) {
+		const idx = data.indexOf(v.sort((x, y) => y.score - x.score)[0])
+		return data[idx]
+	}
+	v = data.filter(cs_fuzzy)
+	if (v?.length) {
+		const idx = data.indexOf(v.sort((x, y) => y.score - x.score)[0])
+		return data[idx]
+	}
+	v = data.filter(ci_fuzzy)
 	if (v?.length) {
 		const idx = data.indexOf(v.sort((x, y) => y.score - x.score)[0])
 		return data[idx]

@@ -4,6 +4,39 @@ import type { Page } from 'puppeteer';
 import path from 'path';
 import { pathToFileURL } from 'url';
 
+async function clearCookies(page: Page, cookieNames: string[] = []): Promise<boolean> {
+	try {
+		const allCookies = await page.cookies();
+
+		if (cookieNames.length === 0) {
+			// Delete all cookies
+			const deletable = allCookies.map(({ name, domain, path }) => ({
+				name,
+				domain,
+				path: path || '/',
+			}));
+			await page.deleteCookie(...deletable);
+		} else {
+			// Delete specific cookies
+			const toDelete = allCookies
+				.filter((c) => cookieNames.includes(c.name))
+				.map(({ name, domain, path }) => ({
+					name,
+					domain,
+					path: path || '/',
+				}));
+			await page.deleteCookie(...toDelete);
+		}
+
+		return true;
+	} catch (error) {
+		console.error('Error clearing cookies:', error);
+		return false;
+	}
+}
+
+
+
 async function delay(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -33,6 +66,7 @@ async function autoScroll(page: Page) {
 async function scrape(url: string) {
 	const browser = await puppeteer.launch({ headless: true });
 	const page = await browser.newPage();
+	clearCookies(page)
 
 	await page.goto(url, { waitUntil: 'networkidle0', timeout: 120000 });
 	await delay(3000);
@@ -59,7 +93,6 @@ async function scrape(url: string) {
 		for (let i = 0; i < containers.length; i++) {
 			const container = containers[i]
 			const svgTextNodes = container.querySelectorAll('svg text');
-			console.log(svgTextNodes)
 			let rankFound = false
 			let tag = ""
 			let lastText = ""
@@ -106,13 +139,13 @@ async function scrape(url: string) {
 		return results;
 	});
 
-	fs.writeFileSync('./src/pointintime.json', JSON.stringify(data, null, 2), 'utf-8');
+	//fs.writeFileSync('./src/pointintime.json', JSON.stringify(data, null, 2), 'utf-8');
 	console.log('Saved to pointintime.json');
 
 	await browser.close();
 }
 
-//const targetURL = 'https://www.schustats.com/seeding_algo';
+// const targetURL = 'https://www.schustats.com/seeding_algo';
 
 const relativePath = './html/seeding_algo.html';
 const absolutePath = path.resolve(relativePath);

@@ -18,6 +18,31 @@ interface CropArea {
 	y2: number;
 }
 
+
+async function clearCookies(page, cookieNames = []) {
+	try {
+		if (cookieNames.length === 0) {
+			// Clearing all cookies
+			await page.evaluate(() => {
+				document.cookie.split(';').forEach((cookie) => {
+					const name = cookie.split('=')[0].trim();
+					document.cookie = `${name}=; expires=Thu, 02 Jan 2024 00:00:00 UTC; path=/;`;
+				});
+			});
+		} else {
+			// Clearing specific cookies
+			await page.deleteCookie(...cookieNames);
+		}
+
+		// Cookies have been cleared successfully
+		return true;
+	} catch (error) {
+		// An error occurred while clearing cookies
+		console.error('Error clearing cookies:', error);
+		return false;
+	}
+}
+
 const stateProvinceMap: Record<string, Locale> = {
 	"alabama": { country: "us", states: ["AL"] },
 	"alaska": { country: "us", states: ["AK"] },
@@ -195,6 +220,7 @@ const stateProvinceMap: Record<string, Locale> = {
 	"boise": { country: "us", states: ["ID"] },
 	"central america": { country: ["bz", "gt", "sv", "hn", "cr", "ni", "pa"] },
 	"philadelphia": { country: "us", states: ["PA"] },
+	"midwest": { country: "us", states: ["NE", "ND", "SD", "KS", "MO", "IA", "MN", "WI", "IL", "IN", "OH", "MI"] }
 };
 
 
@@ -443,6 +469,7 @@ async function scrape(url: string) {
 
 	const browser = await puppeteer.launch({ headless: true });
 	const page = await browser.newPage();
+	clearCookies(page)
 
 	await page.goto(url, { waitUntil: 'networkidle0', timeout: 120000 });
 	await delay(3000);
