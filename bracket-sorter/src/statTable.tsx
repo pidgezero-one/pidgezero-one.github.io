@@ -4,13 +4,12 @@ import { EntrantStats } from "./types";
 type Props = {
 	data: EntrantStats[];
 	game: number;
-	timePeriod: number;
 };
 
-type SortKey = keyof Pick<EntrantStats, "gamerTag" | "winRate" | "schuScore">;
+type SortKey = keyof Pick<EntrantStats, "gamerTag" | "winRate" | "schuAllTimeScore" | "schuPointInTimeScore" | "schuRegionalScore">;
 
-const EntrantStatsTable: React.FC<Props> = ({ data, game, timePeriod }) => {
-	const [sortKey, setSortKey] = useState<SortKey>(game === 1386 ? "schuScore" : "winRate");
+const EntrantStatsTable: React.FC<Props> = ({ data, game }) => {
+	const [sortKey, setSortKey] = useState<SortKey>(game === 1386 ? "schuAllTimeScore" : "winRate");
 	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
 
 	const handleSort = (key: SortKey) => {
@@ -24,7 +23,7 @@ const EntrantStatsTable: React.FC<Props> = ({ data, game, timePeriod }) => {
 
 	useEffect(() => {
 		if (game === 1386) {
-			setSortKey("schuScore")
+			setSortKey("schuAllTimeScore")
 		} else {
 			setSortKey("winRate")
 		}
@@ -37,11 +36,21 @@ const EntrantStatsTable: React.FC<Props> = ({ data, game, timePeriod }) => {
 		let aSortVal: number | string;
 		let bSortVal: number | string;
 
-		if (sortKey === "schuScore") {
+		if (sortKey === "schuAllTimeScore") {
 			aSortVal =
-				a.schuScore?.score ?? (sortDirection === "asc" ? Infinity : -Infinity);
+				a.schuAllTimeScore?.score ?? (sortDirection === "asc" ? Infinity : -Infinity);
 			bSortVal =
-				b.schuScore?.score ?? (sortDirection === "asc" ? Infinity : -Infinity);
+				b.schuAllTimeScore?.score ?? (sortDirection === "asc" ? Infinity : -Infinity);
+		} else if (sortKey === "schuPointInTimeScore") {
+			aSortVal =
+				a.schuPointInTimeScore?.score ?? (sortDirection === "asc" ? Infinity : -Infinity);
+			bSortVal =
+				b.schuPointInTimeScore?.score ?? (sortDirection === "asc" ? Infinity : -Infinity);
+		} else if (sortKey === "schuRegionalScore") {
+			aSortVal =
+				a.schuRegionalScore?.score ?? (sortDirection === "asc" ? Infinity : -Infinity);
+			bSortVal =
+				b.schuRegionalScore?.score ?? (sortDirection === "asc" ? Infinity : -Infinity);
 		} else {
 			aSortVal = aVal as number | string;
 			bSortVal = bVal as number | string;
@@ -64,13 +73,14 @@ const EntrantStatsTable: React.FC<Props> = ({ data, game, timePeriod }) => {
 
 	return (
 		<>
-			{game === 1386 && <p>* Schu score attempts to match to a start.gg user by name and country and not by start.gg user ID, so not all listings may be accurate.</p>}
 			<table style={{ borderCollapse: "collapse", width: "100%" }}>
 				<thead>
 					<tr style={{ textAlign: 'left' }}>
 						{getHeader("Name", "gamerTag")}
-						{getHeader(`start.gg win rate (last ${timePeriod} months)`, "winRate")}
-						{game === 1386 && getHeader("Schu score (as of 2025-02-17)*", "schuScore")}
+						{getHeader(`start.gg win rate`, "winRate")}
+						{game === 1386 && getHeader("All-time schu score (2025-02-17)*", "schuAllTimeScore")}
+						{game === 1386 && getHeader("Current schu score (2025-05-26)*", "schuPointInTimeScore")}
+						{game === 1386 && getHeader("Local schu score (2025-05-30)**", "schuRegionalScore")}
 					</tr>
 				</thead>
 				<tbody>
@@ -80,15 +90,25 @@ const EntrantStatsTable: React.FC<Props> = ({ data, game, timePeriod }) => {
 							<td>
 								{entrant.setsWon} / {entrant.setsWon + entrant.setsLost} ({entrant.winRate.toFixed(2)})
 							</td>
-							{game === 1386 && <td>
-								{entrant.schuScore !== undefined
-									? `${entrant.schuScore.score.toFixed(2)} (${entrant.schuScore.place + 1})`
+							{game === 1386 && <><td>
+								{entrant.schuAllTimeScore !== undefined
+									? `${entrant.schuAllTimeScore.score.toFixed(2)} (${entrant.schuAllTimeScore.place + 1})`
 									: "—"}
-							</td>}
+							</td><td>
+									{entrant.schuPointInTimeScore !== undefined
+										? `${entrant.schuPointInTimeScore.score.toFixed(2)} (${entrant.schuPointInTimeScore.place + 1})`
+										: "—"}
+								</td><td>
+									{entrant.schuRegionalScore !== undefined
+										? `${entrant.schuRegionalScore.score.toFixed(2)} (${entrant.schuRegionalScore.place}, ${entrant.schuRegionalScore.region})`
+										: "—"}
+								</td></>}
 						</tr>
 					))}
 				</tbody>
 			</table>
+			{game === 1386 && <p>* All-time and current schu scores attempt to match to a start.gg user by name and country and not by start.gg user ID. There can be false negative and false positive matches as a result.</p>}
+			{game === 1386 && <p>** Local schu scores additionally rely on OCR scans of ranking graphics to get the player's name and country. It is even more prone to false negatives.</p>}
 		</>
 	);
 };

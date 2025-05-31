@@ -7,7 +7,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "scrape-current": "TS_NODE_PROJECT=tsconfig.scripts.json node --loader ts-node/esm scripts/point-in-time.mts",
+    "scrape-regional": "NODE_NO_WARNINGS=1 TS_NODE_PROJECT=tsconfig.ocr.json node --loader ts-node/esm scripts/regional.mts"
   },
   "eslintConfig": {
     "extends": [
@@ -21,15 +23,17 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.15.23",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "firebase": "^11.8.1",
     "i18n-iso-countries": "^7.14.0",
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^24.9.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-scripts": "^5.0.1",
-    "typescript": "^5.8.3",
+    "sharp": "^0.34.2",
+    "tesseract.js": "^6.0.1",
     "web-vitals": "^2.1.4"
   },
   "browserslist": {
@@ -43,5 +47,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.23",
+    "@types/node-fetch": "^2.6.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }

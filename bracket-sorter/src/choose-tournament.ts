@@ -32,12 +32,12 @@ export async function fetchSinglesEventIdsByGame(
 
 	const json = await res.json();
 	const events = json?.data?.tournament?.events;
-	if (!events) throw new Error(`No events found for tournament "${slug}"`);
+	if (!events.length) throw new Error(`no events matching your criteria found for tournament "${slug}"`);
 
 	const validEvents = events.filter((e: any) =>
 		!e.teamRosterSize || e.teamRosterSize < 2)
 
-	if (!validEvents) throw new Error(`this tournament does not have a singles bracket for your selected game`)
+	if (!validEvents.length) throw new Error(`no singles events matching your criteria found for tournament "${slug}"`)
 
 	return validEvents.map((e: any) => ({ name: e.name, id: e.id }))
 }

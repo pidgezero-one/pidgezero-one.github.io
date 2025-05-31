@@ -144,7 +144,7 @@ export async function fetchSinglesWinRatesFromTournament(
 									participants {
 										gamerTag
 										prefix
-										user { id discriminator location { country } }
+										user { id discriminator location { country state } }
 									}
 								}
 							}
@@ -161,6 +161,7 @@ export async function fetchSinglesWinRatesFromTournament(
 		}
 
 		const json = await response.json();
+		console.log(json)
 		if (json.errors) {
 			throw new Error(json.errors[0].message);
 		}
@@ -192,7 +193,8 @@ export async function fetchSinglesWinRatesFromTournament(
 				setsWon: wins,
 				setsLost: total - wins,
 				winRate,
-				country: participant.user?.location?.country
+				country: participant.user?.location?.country,
+				state: participant.user?.location?.state
 			});
 
 			countedEntrants++

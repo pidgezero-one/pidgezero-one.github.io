@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { getSchuScoreFromName } from "./schuscore";
+import { getSchuAllTimeScoreFromName, getSchuPointInTimeScore, getSchuRegionalScore } from "./schuscore";
 import { fetchSinglesWinRatesFromTournament } from "./localized-winrate";
 import { EntrantStats } from "./types";
 import EntrantStatsTable from "./statTable";
@@ -78,17 +78,21 @@ const App = () => {
   }
 
   const triggerSort = (eventId: number) => {
+    setError(undefined)
     setWorking(true)
     fetchSinglesWinRatesFromTournament(tournamentSlug, game, entrantsPerFetch, token, timePeriod, eventId, setProgress)
       .then((rates) => {
-        const dat = rates.filter(r => r.gamerTag !== 'bye').map(r => ({ ...r, schuScore: getSchuScoreFromName(r.gamerTag, r.country) }))
+        const dat = rates.
+          filter(r => r.gamerTag !== 'bye').
+          map(r => ({ ...r, schuAllTimeScore: getSchuAllTimeScoreFromName(r.gamerTag, r.country), schuPointInTimeScore: getSchuPointInTimeScore(r.gamerTag, r.country), schuRegionalScore: getSchuRegionalScore(r.gamerTag, r.country, r.state) }))
         setData(dat)
         setWorking(false)
         setAttempted(true)
       })
       .catch((e) => {
-        console.error(e); setError(e?.message);
         reset()
+        console.error(e);
+        setError(e?.message);
       })
       .finally(() => {
         setWorking(false);
@@ -98,6 +102,7 @@ const App = () => {
 
   const fetchBrackets = () => {
     if (!readyToFetchBrackets) return
+    setError(undefined)
     setFetchingBrackets(true)
     setData([])
     setAttempted(false)
@@ -112,8 +117,10 @@ const App = () => {
       }
     })
       .catch((e) => {
+        console.log(e)
         reset()
-        console.error(e); setError(e?.message);
+        console.error(e);
+        setError(e?.message);
       }).finally(() => {
         setFetchingBrackets(false)
       })
@@ -244,7 +251,7 @@ const App = () => {
             </div> :
             <>
               {!!data.length ?
-                <EntrantStatsTable data={data} game={game} timePeriod={staticTimePeriod} /> :
+                <EntrantStatsTable data={data} game={game} /> :
                 <>{attempted ?
                   <div style={{ color: 'red', marginTop: '1rem' }}>(no entrants - may not be public yet)</div> :
                   <></>
