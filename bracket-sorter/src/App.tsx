@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { getSchuAllTimeScoreFromName, getSchuPointInTimeScore, getSchuRegionalScore } from "./schuscore";
+import { getSchuAllTimeScore, getSchuPointInTimeScore, getSchuRegionalScore } from "./schuscore";
 import { fetchSinglesWinRatesFromTournament } from "./localized-winrate";
 import { EntrantStats } from "./types";
 import EntrantStatsTable from "./statTable";
@@ -84,7 +84,7 @@ const App = () => {
       .then((rates) => {
         const dat = rates.
           filter(r => r.gamerTag !== 'bye').
-          map(r => ({ ...r, schuAllTimeScore: getSchuAllTimeScoreFromName(r.gamerTag, r.country), schuPointInTimeScore: getSchuPointInTimeScore(r.gamerTag, r.country), schuRegionalScore: getSchuRegionalScore(r.gamerTag, r.country, r.state) }))
+          map(r => ({ ...r, schuAllTimeScore: getSchuAllTimeScore(r.gamerTag, r.country), schuPointInTimeScore: getSchuPointInTimeScore(r.gamerTag, r.country), schuRegionalScore: getSchuRegionalScore(r.gamerTag, r.country, r.state) }))
         setData(dat)
         setWorking(false)
         setAttempted(true)

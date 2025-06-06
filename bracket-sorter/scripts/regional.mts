@@ -443,7 +443,7 @@ async function scrape(url: string) {
 	countries.registerLocale(enLocale);
 
 
-	const browser = await puppeteer.launch({ headless: true });
+	const browser = await puppeteer.launch({ devtools: true });
 	const page = await browser.newPage();
 
 	await page.goto(url, { waitUntil: 'networkidle0', timeout: 120000 });
@@ -458,6 +458,8 @@ async function scrape(url: string) {
 			.map(img => img.getAttribute('src'))
 			.filter(Boolean) as string[];
 	});
+
+	console.log(imageSrcs.length, "ranking images found")
 
 	let results: { name: string; score: number, place: number, region: string, countryCode?: string }[] = [];
 	for (const [j, url] of imageSrcs.entries()) {

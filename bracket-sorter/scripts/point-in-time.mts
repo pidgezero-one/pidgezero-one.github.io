@@ -1,8 +1,13 @@
-import puppeteer from 'puppeteer';
+import puppeteere from 'puppeteer-extra';
 import fs from 'fs';
 import type { Page } from 'puppeteer';
 import path from 'path';
 import { pathToFileURL } from 'url';
+import UserAgent from 'user-agents';
+import plugin from 'puppeteer-extra-plugin-stealth'
+
+const puppeteer = puppeteere.default
+puppeteer.use(plugin())
 
 async function clearCookies(page: Page, cookieNames: string[] = []): Promise<boolean> {
 	try {
@@ -35,8 +40,6 @@ async function clearCookies(page: Page, cookieNames: string[] = []): Promise<boo
 	}
 }
 
-
-
 async function delay(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -63,10 +66,12 @@ async function autoScroll(page: Page) {
 	}
 }
 
-async function scrape(url: string) {
-	const browser = await puppeteer.launch({ headless: true });
+async function scrape(url: string, outputFilename: string) {
+	const browser = await puppeteer.launch({ devtools: true });
 	const page = await browser.newPage();
-	clearCookies(page)
+	await clearCookies(page)
+	await page.setUserAgent(UserAgent.toString())
+	await page.goto("https://www.schustats.com/api/auth/session", { waitUntil: 'networkidle0', timeout: 120000 });
 
 	await page.goto(url, { waitUntil: 'networkidle0', timeout: 120000 });
 	await delay(3000);
@@ -81,6 +86,9 @@ async function scrape(url: string) {
 		function parseScore(score: string): number {
 			const scoreText = score.replace(",", "")
 
+			if (scoreText.endsWith('M')) {
+				return parseFloat(scoreText.slice(0, -1)) * 1000000;
+			}
 			if (scoreText.endsWith('k')) {
 				return parseFloat(scoreText.slice(0, -1)) * 1000;
 			}
@@ -112,7 +120,7 @@ async function scrape(url: string) {
 						tag = remainder
 					}
 				} else {
-					if (text === "Rating") {
+					if (text === "Rating" || text === "Points") {
 						if (lastText.length > 0) {
 							score = parseScore(lastText)
 							tag = tag.slice(0, -1 * lastText.length)
@@ -139,15 +147,22 @@ async function scrape(url: string) {
 		return results;
 	});
 
-	//fs.writeFileSync('./src/pointintime.json', JSON.stringify(data, null, 2), 'utf-8');
-	console.log('Saved to pointintime.json');
+	fs.writeFileSync(`./src/${outputFilename}`, JSON.stringify(data, null, 2), 'utf-8');
+	console.log(`Saved to ${outputFilename}`);
 
 	await browser.close();
 }
 
-// const targetURL = 'https://www.schustats.com/seeding_algo';
-
-const relativePath = './html/seeding_algo.html';
+//const targetURL = 'https://www.schustats.com/seeding_algo';
+/*const relativePath = './html/seeding_algo.html';
 const absolutePath = path.resolve(relativePath);
-const targetURL = pathToFileURL(absolutePath).href;
-scrape(targetURL);
+const targetURL = pathToFileURL(absolutePath).href;*/
+const [, , urlArg, outputArg] = process.argv;
+
+if (!urlArg || !outputArg) {
+	console.error("Usage: scrape-current <url> <outputFilename>");
+	process.exit(1);
+}
+
+scrape(urlArg, outputArg);
+

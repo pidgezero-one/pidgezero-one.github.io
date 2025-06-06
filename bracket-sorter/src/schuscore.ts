@@ -1,6 +1,6 @@
-import alltime_data from './ssdata.json';
 import pit_data from './pointintime.json'
 import region_data from './regional.json'
+import alltime_data from './alltime.json'
 import { SchuScore, RegionalSchuScore } from './types';
 import countries from 'i18n-iso-countries';
 import enLocale from 'i18n-iso-countries/langs/en.json';
@@ -138,44 +138,14 @@ export const getSchuPointInTimeScore = (name: string, countryName?: string): Sch
 	return { score: v.score, place: index };
 }
 
-
-export const getSchuAllTimeScoreFromName = (name: string, countryName?: string): SchuScore | undefined => {
-
-	const exact = (o: { stringValue: string }) => o.stringValue === name
-	const caseless = (o: { stringValue: string }) => o.stringValue.toLowerCase() === name.toLowerCase()
-	const tags = alltime_data.tags.arrayValue.values
-	let v = undefined;
-	let mc = tags.filter(exact);
-	let place;
-	if (mc?.length) {
-		place = tags.indexOf(mc[0])
-		v = tags[place]
-	}
+export const getSchuAllTimeScore = (name: string, countryName?: string): SchuScore | undefined => {
+	const v = filterPIT(name, alltime_data, countryName) as { name: string; score: number; countryCode: string; } | undefined
 	if (!v) {
-		mc = tags.filter(caseless)
-		if (mc?.length) {
-			place = tags.indexOf(mc[0])
-			v = tags[place]
-		}
-	}
-	if (!v || place === undefined) {
 		return undefined
 	}
-
-	const cnames = alltime_data.country_names.arrayValue.values
-
-	if (countryName) {
-		const countryCode = getCountryCodeFromName(countryName);
-		if (countryCode) {
-			const c = cnames.find((o: { stringValue: string }) => o.stringValue.toLocaleLowerCase() === countryCode);
-			if (c !== undefined) {
-				const i = cnames.indexOf(c)
-				// Abort if the start.gg user's country doesn't match schustats' country
-				if (parseInt(alltime_data.countries.arrayValue.values[place].integerValue) !== i) {
-					return undefined
-				}
-			}
-		}
+	const index = alltime_data.indexOf(v);
+	if (index < 0) {
+		return undefined;
 	}
-	return { score: alltime_data.ratings.arrayValue.values[place].doubleValue, place };
-};
+	return { score: v.score, place: index };
+}
