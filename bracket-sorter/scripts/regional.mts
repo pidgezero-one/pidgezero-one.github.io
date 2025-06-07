@@ -183,6 +183,7 @@ const stateProvinceMap: Record<string, Locale> = {
 	"northern ireland": { country: "gb", states: ["NIR"] },
 	"norcal": { country: "us", states: ["CA"] },
 	"cencal": { country: "us", states: ["CA"] },
+	"socal": { country: "us", states: ["CA"] },
 	"sfl": { country: "us", states: ["FL"] },
 	"san diego": { country: "us", states: ["CA"] },
 	"southern tier": { country: "us", states: ["NY"] },
@@ -446,7 +447,7 @@ async function scrape(url: string) {
 	const browser = await puppeteer.launch({ devtools: true });
 	const page = await browser.newPage();
 
-	await page.goto(url, { waitUntil: 'networkidle0', timeout: 120000 });
+	await page.goto(url, { waitUntil: 'networkidle2', timeout: 120000 });
 	await delay(3000);
 
 	console.log('Scrolling...');
@@ -479,10 +480,10 @@ async function scrape(url: string) {
 	await browser.close();
 }
 
-//const targetURL = 'https://www.schustats.com/regional_rankings'; // Replace with actual URL
-const relativePath = './html/regional.html';
+const targetURL = 'https://www.schustats.com/regional_rankings'; // Replace with actual URL
+/*const relativePath = './html/regional.html';
 const absolutePath = path.resolve(relativePath);
-const targetURL = pathToFileURL(absolutePath).href;
+const targetURL = pathToFileURL(absolutePath).href;*/
 
 scrape(targetURL).catch(err => {
 	console.error('Scraping failed:', err);
