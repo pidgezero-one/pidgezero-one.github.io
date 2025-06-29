@@ -7,9 +7,10 @@ import Tesseract from 'tesseract.js';
 import path from 'path';
 import { pathToFileURL } from 'url';
 import { Locale, Player } from '../src/types'
+import UserAgent from 'user-agents';
 
 import countries from 'i18n-iso-countries';
-import enLocale from 'i18n-iso-countries/langs/en.json' assert { type: 'json' };
+import enLocale from 'i18n-iso-countries/langs/en.json' with { type: "json" };
 
 interface CropArea {
 	x1: number;
@@ -170,6 +171,7 @@ const stateProvinceMap: Record<string, Locale> = {
 	"mayotte": { country: "fr", states: ["YT"] },
 
 	// other
+	"albany": { country: "us", states: ["NY"] },
 	"dfw": { country: "us", states: ["TX"] },
 	"houston": { country: "us", states: ["TX"] },
 	"las vegas": { country: "us", states: ["NV"] },
@@ -440,12 +442,45 @@ const parseTop100 = async (img: Buffer<ArrayBufferLike>, j: number) => {
 	return results
 }
 
+async function clearCookies(page: Page, cookieNames: string[] = []): Promise<boolean> {
+	try {
+		const allCookies = await page.cookies();
+
+		if (cookieNames.length === 0) {
+			// Delete all cookies
+			const deletable = allCookies.map(({ name, domain, path }) => ({
+				name,
+				domain,
+				path: path || '/',
+			}));
+			await page.deleteCookie(...deletable);
+		} else {
+			// Delete specific cookies
+			const toDelete = allCookies
+				.filter((c) => cookieNames.includes(c.name))
+				.map(({ name, domain, path }) => ({
+					name,
+					domain,
+					path: path || '/',
+				}));
+			await page.deleteCookie(...toDelete);
+		}
+
+		return true;
+	} catch (error) {
+		console.error('Error clearing cookies:', error);
+		return false;
+	}
+}
+
 async function scrape(url: string) {
 	countries.registerLocale(enLocale);
 
-
 	const browser = await puppeteer.launch({ devtools: true });
 	const page = await browser.newPage();
+	await clearCookies(page)
+	await page.setUserAgent(UserAgent.toString())
+	await page.goto("https://www.schustats.com/api/auth/session", { waitUntil: 'networkidle2', timeout: 120000 });
 
 	await page.goto(url, { waitUntil: 'networkidle2', timeout: 120000 });
 	await delay(3000);

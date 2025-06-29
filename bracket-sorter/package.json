@@ -8,8 +8,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "scrape-current": "TS_NODE_PROJECT=tsconfig.scripts.json node --loader ts-node/esm scripts/point-in-time.mts",
-    "scrape-regional": "NODE_NO_WARNINGS=1 TS_NODE_PROJECT=tsconfig.ocr.json node --loader ts-node/esm scripts/regional.mts"
+    "scrape-current": "cross-env TS_NODE_PROJECT=tsconfig.scripts.json node --loader ts-node/esm scripts/point-in-time.mts",
+    "scrape-regional": "cross-env NODE_NO_WARNINGS=1 TS_NODE_PROJECT=tsconfig.ocr.json node --loader ts-node/esm scripts/regional.mts"
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +55,7 @@
     "@types/node": "^22.15.23",
     "@types/node-fetch": "^2.6.12",
     "@types/user-agents": "^1.0.4",
+    "cross-env": "^7.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }

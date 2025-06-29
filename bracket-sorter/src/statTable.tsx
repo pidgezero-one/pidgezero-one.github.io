@@ -79,8 +79,8 @@ const EntrantStatsTable: React.FC<Props> = ({ data, game }) => {
 						{getHeader("Name", "gamerTag")}
 						{getHeader(`start.gg win rate`, "winRate")}
 						{game === 1386 && getHeader("All-time schu score (2025-05-25)*", "schuAllTimeScore")}
-						{game === 1386 && getHeader("Current schu score (2025-06-03)*", "schuPointInTimeScore")}
-						{game === 1386 && getHeader("Local schu score (2025-06-03)**", "schuRegionalScore")}
+						{game === 1386 && getHeader("Current schu score (2025-06-26)*", "schuPointInTimeScore")}
+						{game === 1386 && getHeader("Local schu score (2025-06-26)**", "schuRegionalScore")}
 					</tr>
 				</thead>
 				<tbody>

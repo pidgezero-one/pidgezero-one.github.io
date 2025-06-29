@@ -71,9 +71,9 @@ async function scrape(url: string, outputFilename: string) {
 	const page = await browser.newPage();
 	await clearCookies(page)
 	await page.setUserAgent(UserAgent.toString())
-	await page.goto("https://www.schustats.com/api/auth/session", { waitUntil: 'networkidle0', timeout: 120000 });
+	await page.goto("https://www.schustats.com/api/auth/session", { waitUntil: 'networkidle2', timeout: 120000 });
 
-	await page.goto(url, { waitUntil: 'networkidle0', timeout: 120000 });
+	await page.goto(url, { waitUntil: 'networkidle2', timeout: 120000 });
 	await delay(3000);
 
 	console.log('Scrolling...');
