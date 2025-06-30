@@ -28,7 +28,7 @@ export const getSheet = async (url: string): Promise<APIResponse> => {
 const valks = ["caeshura", "Demerine", "dijonketchup", "Dravenheart", "Garbi", "KaguyaNicky", "leggystarscream", "Margaret Ann", "Netara", "pidgezero_one", "Sparkover", "sylverfyre", "theRPGchick", "tinahacks"].map(n => n.toLocaleLowerCase())
 
 export const getPeople = (data: APIResponse): Person[] => data.table.rows.slice(1).map((row, rowIndex) => {
-    const aliases = row.c.slice(0, 3).
+    const aliases = row.c.slice(0, 4).
         filter(c => c !== null).
         map(c => c.v)
 

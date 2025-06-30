@@ -62,7 +62,15 @@ const sanitizeShifts = (shifts: Shift[]): Shift[] => {
 export const developSchedule = (data: SheetData): { runs: Run[], shifts: Shift[] } => {
     const getPersonByName = (name: string) => data?.people.find(p => p.aliases.map(a => a.toLocaleLowerCase()).includes(name.toLocaleLowerCase()))
 
-    const parsePeople = (raw: string): Person[] => raw.split(/,\s*/g).map(n => getPersonByName(n)).filter(p => !!p)
+    const parsePeople = (raw: string): Person[] => {
+        const names = raw.split(/,\s*/g)
+        const matches = names.map(n => getPersonByName(n)).filter(p => !!p)
+        if (!!raw && names.length !== matches.length) {
+            console.log(names, matches)
+            console.error(`WARNING! At least one of (${raw}) does not exist in the People tab.`)
+        }
+        return matches
+    }
 
     // parse main schedule shifts
     let endFound = false
