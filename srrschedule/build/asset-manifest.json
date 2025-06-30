@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/srrschedule/build/static/css/main.4f3c472d.css",
+    "main.js": "/srrschedule/build/static/js/main.3d97e782.js",
+    "static/js/534.9983de88.chunk.js": "/srrschedule/build/static/js/534.9983de88.chunk.js",
+    "index.html": "/srrschedule/build/index.html",
+    "main.4f3c472d.css.map": "/srrschedule/build/static/css/main.4f3c472d.css.map",
+    "main.3d97e782.js.map": "/srrschedule/build/static/js/main.3d97e782.js.map",
+    "534.9983de88.chunk.js.map": "/srrschedule/build/static/js/534.9983de88.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4f3c472d.css",
+    "static/js/main.3d97e782.js"
+  ]
+}
