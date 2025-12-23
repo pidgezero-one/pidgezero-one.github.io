@@ -264,7 +264,7 @@ class App extends React.Component {
           <div className="yourSong">
             If you want to submit this to SMRPG Randomizer,
             <br />
-            copy-paste the following into the <a target="_blank" href="https://docs.google.com/forms/d/18h1eYKoxX0oUxVqYBhR2OcrNuhkHHYA0J322foNtKUQ">submission form</a>:
+            copy-paste the following into your GitHub submission:
             <br />
             <br />
             {song.map((n) => {
