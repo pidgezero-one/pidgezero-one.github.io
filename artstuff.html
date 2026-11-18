@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="emotes.css">
+<title>art stuff - pidgezero.one</title>
+</head>
+<body>
+<div class="container">
+<h1>Art Stuff</h1>
+
+<h2>Shirt Designs</h2>
+
+<div class="designs">
+<figure class="design">
+	<a class="design-link" href="designs/sve-2026.png"><img src="designs/sve-2026_preview.png" alt="Shirt design for Streamers vs. Everybody 2026"/></a>
+	<figcaption>created with <a target="_blank" href="https://tantrummerch.com/">Tantrum Merch</a> for <a target="_blank" href="https://tantrummerch.com/sve/">Streamers vs. Everybody</a> (2026), benefiting <a target="_blank" href="https://www.starlight.org/">Starlight Children's Foundation</a></figcaption>
+</figure>
+<figure class="design">
+	<a class="design-link" href="designs/rpglb-2026.png"><img src="designs/rpglb-2026_preview.png" alt="Shirt design for RPG Limit Break 2026"/></a>
+	<figcaption>created with <a target="_blank" href="https://tantrummerch.com/">Tantrum Merch</a> for <a target="_blank" href="https://rpglimitbreak.com/">RPG Limit Break</a> 2026, benefiting <a target="_blank" href="https://www.nami.org/">NAMI</a></figcaption>
+</figure>
+</div>
+
+<div id="lightbox" class="lightbox" hidden>
+	<img alt=""/>
+	<a class="lightbox-full" target="_blank" href="#">open full size</a>
+</div>
+<script>
+(function () {
+	var box = document.getElementById('lightbox');
+	var img = box.querySelector('img');
+	var full = box.querySelector('.lightbox-full');
+	function close() { box.hidden = true; img.removeAttribute('src'); }
+	document.querySelectorAll('.design-link').forEach(function (a) {
+		a.addEventListener('click', function (e) {
+			e.preventDefault();
+			img.src = a.href;
+			img.alt = a.querySelector('img').alt;
+			full.href = a.href;
+			box.hidden = false;
+		});
+	});
+	box.addEventListener('click', function (e) { if (e.target !== full) close(); });
+	document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+})();
+</script>
+
+<h2>Emotes</h2>
+
+<h3>VoHiYo derivatives (pixel art only)</h3>
+
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/grimnir/28.png"/> <img src="emotes/grimnir/56.png"/>
+			</div>
+			<div class="cell2">KOS-MOS for <a target="_blank" href="https://twitch.tv/lordgrimnir">Grimnir</a></div>
+	</div>
+	<img src="emotes/grimnir/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/t0uchan/28.png"/> <img src="emotes/t0uchan/56.png"/>
+			</div>
+			<div class="cell2">for <a target="_blank" href="https://twitch.tv/t0uchan">t0uchan</a></div>
+	</div>
+	<img src="emotes/t0uchan/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/jake/28.png"/> <img src="emotes/jake/56.png"/>
+			</div>
+			<div class="cell2">kitty for <a target="_blank" href="https://twitch.tv/jakefsomenumbers">jakefsomenumbers</a></div>
+	</div>
+	<img src="emotes/jake/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/xelnas/28.png"/> <img src="emotes/xelnas/56.png"/>
+			</div>
+			<div class="cell2">mothman for <a target="_blank" href="https://twitter.com/xelnastv">Xelnas</a></div>
+	</div>
+	<img src="emotes/xelnas/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/maddi/28.png"/> <img src="emotes/maddi/56.png"/>
+			</div>
+			<div class="cell2"><a target="_blank" href="https://twitter.com/maddithefurret">Maddi</a></div>
+	</div>
+	<img src="emotes/maddi/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/v0oid/color_28.png"/> <img src="emotes/v0oid/color_56.png"/>
+			</div>
+			<div class="cell2"><a target="_blank" href="https://twitter.com/V0oid">V0oid</a></div>
+	</div>
+	<img src="emotes/v0oid/color_112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/v0oid/gray_28.png"/> <img src="emotes/v0oid/gray_56.png"/>
+			</div>
+			<div class="cell2"><a target="_blank" href="https://twitter.com/V0oid">V0oid</a> (alternate)</div>
+	</div>
+	<img src="emotes/v0oid/gray_112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/zelda/28.png"/> <img src="emotes/zelda/56.png"/>
+			</div>
+			<div class="cell2">Blue SSBU Zelda for <a target="_blank" href="https://twitter.com/Zyltis">Zyltis</a></div>
+	</div>
+	<img src="emotes/zelda/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/ultros/28.png"/> <img src="emotes/ultros/56.png"/>
+			</div>
+			<div class="cell2">FF6 Ultros for <a target="_blank" href="https://www.twitch.tv/netara">Netara</a></div>
+	</div>
+	<img src="emotes/ultros/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/quagsire/28.png"/> <img src="emotes/quagsire/56.png"/>
+			</div>
+			<div class="cell2">made for <a target="_blank" href="http://twitch.tv/slimyquagsire">SlimyQuagsire</a></div>
+	</div>
+	<img src="emotes/quagsire/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/curly/28.png"/> <img src="emotes/curly/56.png"/>
+			</div>
+			<div class="cell2">Curly Brace from Cave Story, made for <a target="_blank" href="https://www.twitch.tv/ikuyo_194">ikuyo</a></div>
+	</div>
+	<img src="emotes/curly/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/ibuki/28.png"/> <img src="emotes/ibuki/56.png"/>
+			</div>
+			<div class="cell2">Ibuki from Danganronpa, made for <a target="_blank" href="https://www.twitch.tv/BrookeSpeedruns">Brooke</a></div>
+	</div>
+	<img src="emotes/ibuki/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/marle/28.png"/> <img src="emotes/marle/56.png"/>
+			</div>
+			<div class="cell2">Marle from CT, made for <a target="_blank" href="https://twitter.com/Liam_Atlas">Liam Atlas</a></div>
+	</div>
+	<img src="emotes/marle/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/pichu/28b.png"/> <img src="emotes/pichu/56b.png"/>
+			</div>
+			<div class="cell2">pichu (2nd version), made for <a target="_blank" href="https://www.twitch.tv/zeion97">Zeion</a></div>
+	</div>
+	<img src="emotes/pichu/112b.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/pichu/28.png"/> <img src="emotes/pichu/56.png"/>
+			</div>
+			<div class="cell2">pichu, made for <a target="_blank" href="https://www.twitch.tv/zeion97">Zeion</a></div>
+	</div>
+	<img src="emotes/pichu/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/painman/28.png"/> <img src="emotes/painman/56.png"/>
+			</div>
+			<div class="cell2">dark cecil (pain man), made for <a target="_blank" href="https://www.twitch.tv/invenerable">Invenerable</a></div>
+	</div>
+	<img src="emotes/painman/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/ninja/28.png"/> <img src="emotes/ninja/56.png"/>
+			</div>
+			<div class="cell2">female ninja from FFT, made for <a target="_blank" href="https://www.twitch.tv/rudyxx">rudyxx</a></div>
+	</div>
+	<img src="emotes/ninja/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/seancaHiYo/28.png"/> <img src="emotes/seancaHiYo/56.png"/>
+			</div>
+			<div class="cell2">emeralda from xenogears, made for <a target="_blank" href="https://www.twitch.tv/seancass">SeanCass</a></div>
+	</div>
+	<img src="emotes/seancaHiYo/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/pidgezHiYo/28.png"/> <img src="emotes/pidgezHiYo/56.png"/>
+			</div>
+			<div class="cell2">princess peach, made for myself</div>
+	</div>
+	<img src="emotes/pidgezHiYo/112.png"/>
+</div>
+
+<h3>Other emotes (these are all from before i learned how to draw with vectors 😅)</h3>
+
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/belcha/28.png"/> <img src="emotes/belcha/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/v0oid">V0oid</a></div>
+	</div>
+	<img src="emotes/belcha/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/lucina/28.png"/> <img src="emotes/lucina/56.png"/>
+			</div>
+			<div class="cell2">Lucina, made for <a target="_blank" href="https://www.twitch.tv/claris">Claris</a></div>
+	</div>
+	<img src="emotes/lucina/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/girl/28.png"/> <img src="emotes/girl/56.png"/>
+			</div>
+			<div class="cell2">made for <a target="_blank" href="https://www.twitch.tv/claris">Claris</a></div>
+	</div>
+	<img src="emotes/girl/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/pichulurk/28.png"/> <img src="emotes/pichulurk/56.png"/>
+			</div>
+			<div class="cell2">lurking pichu, made for <a target="_blank" href="https://www.twitch.tv/zeion97">Zeion</a></div>
+	</div>
+	<img src="emotes/pichulurk/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/dva_stick/28.png"/> <img src="emotes/dva_stick/56.png"/>
+			</div>
+			<div class="cell2">made for <a target="_blank" href="https://www.twitch.tv/evac">evac</a></div>
+	</div>
+	<img src="emotes/dva_stick/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/potato1/28.png"/> <img src="emotes/potato1/56.png"/>
+			</div>
+			<div class="cell2">tier 1 sub emote for <a target="_blank" href="https://www.twitch.tv/dunhamcw">dunhamcw</a></div>
+	</div>
+	<img src="emotes/potato1/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/potato2/28.png"/> <img src="emotes/potato2/56.png"/>
+			</div>
+			<div class="cell2">tier 2 sub emote for <a target="_blank" href="https://www.twitch.tv/dunhamcw">dunhamcw</a></div>
+	</div>
+	<img src="emotes/potato2/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/potato3/28.png"/> <img src="emotes/potato3/56.png"/>
+			</div>
+			<div class="cell2">tier 3 sub emote for <a target="_blank" href="https://www.twitch.tv/dunhamcw">dunhamcw</a></div>
+	</div>
+	<img src="emotes/potato3/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/sylver1/28.png"/> <img src="emotes/sylver1/56.png"/>
+			</div>
+			<div class="cell2">tier 2 sub emote for <a target="_blank" href="https://www.twitch.tv/sylverfyre">sylverfyre</a></div>
+	</div>
+	<img src="emotes/sylver1/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/sylver2/28.png"/> <img src="emotes/sylver2/56.png"/>
+			</div>
+			<div class="cell2">tier 1 sub emote for <a target="_blank" href="https://www.twitch.tv/sylverfyre">sylverfyre</a></div>
+	</div>
+	<img src="emotes/sylver2/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/sylver3/28.png"/> <img src="emotes/sylver3/56.png"/>
+			</div>
+			<div class="cell2">tier 3 sub emote for <a target="_blank" href="https://www.twitch.tv/sylverfyre">sylverfyre</a></div>
+	</div>
+	<img src="emotes/sylver3/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/dva_pepe/28.png"/> <img src="emotes/dva_pepe/56.png"/>
+			</div>
+			<div class="cell2">made for <a target="_blank" href="https://www.twitch.tv/evac">evac</a>, dva making a O_O pepe face</div>
+	</div>
+	<img src="emotes/dva_pepe/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/OKLink/28.png"/> <img src="emotes/OKLink/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/CrimsonAvix">CrimsonAvix</a>, WW link with FF3 onion knight's helmet making a WHAAAT? face</div>
+	</div>
+	<img src="emotes/OKLink/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/skaiGiggle/28.png"/> <img src="emotes/skaiGiggle/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a></div>
+	</div>
+	<img src="emotes/skaiGiggle/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/skaiSellout/28.png"/> <img src="emotes/skaiSellout/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a></div>
+	</div>
+	<img src="emotes/skaiSellout/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/wark/28.png"/> <img src="emotes/wark/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/amberf_">Amber</a></div>
+	</div>
+	<img src="emotes/wark/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/midoka4/28.png"/> <img src="emotes/midoka4/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/midokamizu">Midoka</a></div>
+	</div>
+	<img src="emotes/midoka4/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/midoka5/28.png"/> <img src="emotes/midoka5/56.png"/>
+			</div>
+			<div class="cell2">BTTV emote for <a target="_blank" href="https://www.twitch.tv/midokamizu">Midoka</a></div>
+	</div>
+	<img src="emotes/midoka5/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/v0oidDerp/28.png"/> <img src="emotes/v0oidDerp/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/v0oid">V0oid</a></div>
+	</div>
+	<img src="emotes/v0oidDerp/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/skaiBills/28.png"/> <img src="emotes/skaiBills/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a></div>
+	</div>
+	<img src="emotes/skaiBills/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/skaiWow/28.png"/> <img src="emotes/skaiWow/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a></div>
+	</div>
+	<img src="emotes/skaiWow/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/midoka/28.png"/> <img src="emotes/midoka/56.png"/>
+			</div>
+			<div class="cell2">BTTV emote for <a target="_blank" href="https://www.twitch.tv/midokamizu">Midoka</a></div>
+	</div>
+	<img src="emotes/midoka/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/midoka2/28.png"/> <img src="emotes/midoka2/56.png"/>
+			</div>
+			<div class="cell2">BTTV emote for <a target="_blank" href="https://www.twitch.tv/midokamizu">Midoka</a></div>
+	</div>
+	<img src="emotes/midoka2/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/midoka3/28.png"/> <img src="emotes/midoka3/56.png"/>
+			</div>
+			<div class="cell2">Sub emote for <a target="_blank" href="https://www.twitch.tv/midokamizu">Midoka</a></div>
+	</div>
+	<img src="emotes/midoka3/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/midokacat2/28.png"/> <img src="emotes/midokacat2/56.png"/>
+			</div>
+			<div class="cell2">BTTV emote for <a target="_blank" href="https://www.twitch.tv/midokamizu">Midoka</a></div>
+	</div>
+	<img src="emotes/midokacat2/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/midokacat1/28.png"/> <img src="emotes/midokacat1/56.png"/>
+			</div>
+			<div class="cell2">BTTV emote for <a target="_blank" href="https://www.twitch.tv/midokamizu">Midoka</a></div>
+	</div>
+	<img src="emotes/midokacat1/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/midoka6/28.png"/> <img src="emotes/midoka6/56.png"/>
+			</div>
+			<div class="cell2">Emote for <a target="_blank" href="https://www.twitch.tv/midokamizu">Midoka</a></div>
+	</div>
+	<img src="emotes/midoka6/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/go/28.png"/> <img src="emotes/go/56.png"/>
+			</div>
+			<div class="cell2">mill asked the smrpg discord if someone could make this and it was probably a meme but i drew it anyway</div>
+	</div>
+	<img src="emotes/go/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/bones/28.png"/> <img src="emotes/bones/56.png"/>
+			</div>
+			<div class="cell2">made for <a target="_blank" href="https://www.twitch.tv/tsukigato">Tsuki</a>, an emote of <a target="_blank" href="https://www.spriters-resource.com/snes/demonscrest/sheet/13682/">demon's crest death sprite</a></div>
+	</div>
+	<img src="emotes/bones/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/dva/28.png"/> <img src="emotes/dva/56.png"/>
+			</div>
+			<div class="cell2">made for <a target="_blank" href="https://www.twitch.tv/evac">evac</a>, an ahegao face of D.Va in the style of his existing emotes</div>
+	</div>
+	<img src="emotes/dva/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/puff/28.png"/> <img src="emotes/puff/56.png"/>
+			</div>
+			<div class="cell2">made for myself, pixel bullshit</div>
+	</div>
+	<img src="emotes/puff/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/bep/28.png"/> <img src="emotes/bep/56.png"/>
+			</div>
+			<div class="cell2">also made for <a target="_blank" href="https://twitch.tv/albrecht84">Albrecht</a>, a christmas edit of <a target="_blank" href="emotes/bep/original.png">this picture</a></div>
+	</div>
+	<img src="emotes/bep/112.png"/>
+</div>
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/datacloud/28.png"/> <img src="emotes/datacloud/56.png"/>
+			</div>
+			<div class="cell2">made for <a target="_blank" href="https://twitch.tv/albrecht84">Albrecht</a>, a combination of <a target="_blank" href="https://www.spriters-resource.com/snes/smariorpg/sheet/48842/">the cloud from SMRPG backgrounds</a> and <a target="_blank" href="http://megaman.wikia.com/wiki/Data">Data from MML</a></div>
+	</div>
+	<img src="emotes/datacloud/112.png"/>
+</div>
+
+<h2>Badges</h2>
+
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/badges/sky/3m/18.png"/> <img src="emotes/badges/sky/3m/36.png"/>
+			</div>
+			<div class="cell2">3 month sub badge for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a></div>
+	</div>
+	<img src="emotes/badges/sky/3m/72.png"/>
+</div>
+
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/badges/sky/6m/18.png"/> <img src="emotes/badges/sky/6m/36.png"/>
+			</div>
+			<div class="cell2">6 month sub badge for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a></div>
+	</div>
+	<img src="emotes/badges/sky/6m/72.png"/>
+</div>
+
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/badges/sky/1y/18.png"/> <img src="emotes/badges/sky/1y/36.png"/>
+			</div>
+			<div class="cell2">1 year sub badge for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a></div>
+	</div>
+	<img src="emotes/badges/sky/1y/72.png"/>
+</div>
+
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/badges/sky/1y_alt/18.png"/> <img src="emotes/badges/sky/1y_alt/36.png"/>
+			</div>
+			<div class="cell2">1 year sub badge for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a> (alternate concept)</div>
+	</div>
+	<img src="emotes/badges/sky/1y_alt/72.png"/>
+</div>
+
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/badges/sky/2y/18.png"/> <img src="emotes/badges/sky/2y/36.png"/>
+			</div>
+			<div class="cell2">2 year sub badge for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a></div>
+	</div>
+	<img src="emotes/badges/sky/2y/72.png"/>
+</div>
+
+<div class="emote-container">
+	<div class="emote-container-hover">
+			<div class="cell">
+				<img src="emotes/badges/sky/2y_alt/18.png"/> <img src="emotes/badges/sky/2y_alt/36.png"/>
+			</div>
+			<div class="cell2">2 year sub badge for <a target="_blank" href="https://www.twitch.tv/skybilz">Skybilz</a> (alternate concept)</div>
+	</div>
+	<img src="emotes/badges/sky/2y_alt/72.png"/>
+</div>
+
+<h2>Miscellaneous</h2>
+
+<div class="designs">
+<figure class="design">
+	<a class="design-link" href="art/smrpg-anniversary.png"><img src="art/smrpg-anniversary_preview.png" alt="Geno, Super Mario RPG anniversary art"/></a>
+	<figcaption>picture i drew in 2024 for SMRPG's 28th anniversary when i was trying to learn how brushes work</figcaption>
+</figure>
+<figure class="design">
+	<a class="design-link" href="art/marrymore-cross-stitch.jpg"><img src="art/marrymore-cross-stitch_preview.jpg" alt="Super Mario RPG Marrymore cutscene cross stitch"/></a>
+	<figcaption>Super Mario RPG Marrymore cutscene cross stitch. I gave this away as a donation prize for AGDQ 2019.</figcaption>
+</figure>
+<figure class="design">
+	<img src="emotes/BASE6.gif"/>
+	<figcaption>i made this gif for <a target="_blank" href="https://www.twitch.tv/Millnium">Mill</a>'s layout in either 2017 or 2018 for some stupid reason that i'm not sure either of us remembers at this point</figcaption>
+</figure>
+<figure class="design">
+	<a class="design-link" href="art/captain-falcon-signature.png"><img src="art/captain-falcon-signature.png" alt="Pokemon White - Captain Falcon trainer signature"/></a>
+	<figcaption>I drew this using my 3DS stylus in the signature area on the back of my Pokemon White trainer card sometime in 2011. Captured using 3DS Capture</figcaption>
+</figure>
+<figure class="design">
+	<a class="design-link" href="art/minion-sig.png"><img src="art/minion-sig.png" alt="Minionfinalcopy"/></a>
+	<figcaption>Secret Santa sig art for Mr. Minionman on Lumine Hall, I did this in either 2010 or 2011<br><br>design was inspired by the cover art for the Spoon album "Ga Ga Ga Ga Ga", with references to R.O.B. from SSB, Henry Hatsworth, TF2, and other inside jokes</figcaption>
+</figure>
+<figure class="design">
+	<a class="design-link" href="art/pidgezero-three.jpg"><img src="art/pidgezero-three.jpg" alt="pidgezero_three"/></a>
+	<figcaption>gaia online avatar art, circa 2008</figcaption>
+</figure>
+<figure class="design design-wide">
+<div class="triptych">
+	<a class="design-link" href="art/lighthouse-1.jpg"><img src="art/lighthouse-1_preview.jpg" alt="Lighthouse I"/></a>
+	<a class="design-link" href="art/lighthouse-2.jpg"><img src="art/lighthouse-2_preview.jpg" alt="Lighthouse II"/></a>
+	<a class="design-link" href="art/lighthouse-3.jpg"><img src="art/lighthouse-3_preview.jpg" alt="Lighthouse III"/></a>
+</div>
+	<figcaption>Lighthouse triptych, circa 2007: I is inspired by impressionist style, II by analytical cubism, and III by Kandinsky</figcaption>
+</figure>
+<figure class="design">
+	<a class="design-link" href="art/self-portrait.jpg"><img src="art/self-portrait_preview.jpg" alt="Self portrait"/></a>
+	<figcaption>Self portrait, inspired by pop art and traditional comic print, circa 2005</figcaption>
+</figure>
+</div>
+
+</div>
+</body>
+</html>

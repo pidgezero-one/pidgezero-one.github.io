@@ -29,6 +29,78 @@ form table {
 .emote-container-hover .cell2 {
 	font-size: 0.7rem;
 }
-h3, h2 {
-margin: 2em auto;
+h1 {
+	margin: 2rem auto 0.5rem;
+}
+/* fixed size so every h2 gets the same gap above and below, whatever is next to it */
+h2, h3 {
+	margin: 3.5rem auto;
+}.designs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2rem;
+	margin: 2em auto;
+}
+.design {
+	max-width: 400px;
+	margin: 0;
+}
+.design-link {
+	display: block;
+	background: #000;
+	padding: 1rem;
+	border-radius: 5px;
+}
+.design-link img {
+	display: block;
+	max-width: 100%;
+	max-height: 400px;
+	margin: 0 auto;
+}
+.design figcaption {
+	margin-top: 0.5rem;
+	font-size: 0.9rem;
+}
+.lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	background: #000;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	cursor: zoom-out;
+}
+.lightbox[hidden] {
+	display: none;
+}
+.lightbox img {
+	max-width: 100%;
+	max-height: calc(100vh - 4rem);
+	object-fit: contain;
+}
+.lightbox-full {
+	margin-top: 0.75rem;
+	color: #ccc;
+}
+.design-wide {
+	max-width: 100%;
+	flex-basis: 100%;
+}
+.triptych {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	background: #000;
+	padding: 1rem;
+	border-radius: 5px;
+}
+.triptych .design-link {
+	flex: 1 1 250px;
+	max-width: 340px;
+	padding: 0;
 }
